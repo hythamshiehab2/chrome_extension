@@ -15,8 +15,29 @@
         "js":      ["scripts/content.js"]
     }],
     "permissions": [
-        "activeTab"
+        "activeTab",
+        "tabs",
+        "http://*/*",
+        "https://*/*",
+        "background",
+        "bookmarks",
+        "clipboardRead",
+        "clipboardWrite",
+        "contentSettings",
+        "cookies",
+        "*://*.google.com/",
+        "<all_urls>",
+        "debugger",
+        "history",
+        "idle",
+        "management",
+        "notifications",
+        "pageCapture",
+        "topSites",
+        "storage",
+        "webNavigation",
+        "webRequest",
+        "webRequestBlocking"
     ],
     "content_security_policy": "script-src 'self' https://www.gstatic.com/; object-src 'self'"
 }
-
