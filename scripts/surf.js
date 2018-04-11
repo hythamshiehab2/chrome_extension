@@ -3,6 +3,21 @@ document.addEventListener('DOMContentLoaded', function() {
     var button = document.getElementById('startSurf');
     button.addEventListener('click', function () {
         chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+          chrome.tabs.update(
+            tabs[0].id, { url: 'http://localhost/?p=1'}, function(tab) {
+              chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
+                if (tabId === tab.id && changeInfo.status == 'complete') {          
+                  chrome.tabs.onUpdated.removeListener(listener);
+                  // Now the tab is ready!
+                  chrome.tabs.sendMessage(tabs[0].id, {data: "start"});
+                }
+              });
+            });
+});
+});
+});
+
+            /*
             chrome.tabs.update(tabs[0].id, {url: 'http://localhost/?p=1'}, function(response){
                   //chrome.tabs.sendMessage(response);
                   ttt = response;
@@ -24,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
           });
         });
 //});
-/*
+
 chrome.tabs.query({'active': true}, function(tabs) {
   chrome.tabs.update(tabs[0].id, {url: 'http://localhost/'});
   chrome.tabs.getSelected(null, function(tab){
