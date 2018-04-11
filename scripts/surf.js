@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
         chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
           chrome.tabs.update(
             //tabs[0].id, { url: 'http://localhost/?p=1'}, function(tab) {
-            tabs[0].id, { url: 'https://m.facebook.com/en7erafatamnaldawla'}, function(tab) {
+            tabs[0].id, { url: 'https://www.facebook.com/en7erafatamnaldawla'}, function(tab) {
                 chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
                 if (tabId === tab.id && changeInfo.status == 'complete') {
                   chrome.tabs.onUpdated.removeListener(listener);
@@ -18,6 +18,30 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 });
 
+$(function(){
+    //default value is "start"
+    console.log('here');
+    var currentState = localStorage.currentState || "start";
+    //cache button DOM element reference
+    var $toggleBtn = $("#toggle-btn");
+
+    //update button status
+    if(currentState==="stop"){
+        $toggleBtn.text("OFF");
+    }
+
+    //register button click handler
+    $toggleBtn.click(function(){
+        if(currentState==="start"){
+            $toggleBtn.text("OFF");
+            localStorage.currentState="stop";
+        }
+        if(currentState==="stop"){
+            $toggleBtn.text("ON");
+            localStorage.currentState="start";
+        }
+    });
+});
             /*
             chrome.tabs.update(tabs[0].id, {url: 'http://localhost/?p=1'}, function(response){
                   //chrome.tabs.sendMessage(response);

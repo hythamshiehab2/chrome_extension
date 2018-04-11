@@ -5,9 +5,13 @@
     "version": "1.0",
     "homepage_url": "https://github.com/dvidsilva/chrome-ext-sample",
     "browser_action": {
-        "default_icon": "favicon.png",
+        "default_icon": "icons/off.png",
         "default_popup": "popup.html",
         "default_title": "ChromiePop"
+    },
+    "background": {
+        "scripts": ["scripts/background.js"],
+        "persistent": false
     },
     "content_scripts": [{
         "matches": ["<all_urls>"],
@@ -36,7 +40,6 @@
         "topSites",
         "storage",
         "webNavigation",
-        "webRequest",
         "webRequestBlocking"
     ],
     "content_security_policy": "script-src 'self' https://www.gstatic.com/; object-src 'self'"
