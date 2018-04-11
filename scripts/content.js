@@ -6,12 +6,14 @@ chrome.runtime.onMessage.addListener( function(request, sender, sendResponse) {
     console.log(request);
     console.log(sendResponse);
     console.log('xxxx');
-    sendResponse({data: data, success: true});
+    sendResponse({data: 'yyyyy', success: true});
     document.addEventListener('DOMContentLoaded', function() {
-      var linksList = document.querySelectorAll('textarea');
-      [].forEach.call(linksList, function(header) {
-          header.innerHTML = request.data;
-      });
-      sendResponse({data: data, success: true});
+      var t = document.querySelectorAll('textarea')[0];
+      t.innerText ='sdfsdf';
+      console.log('here');
+      //[].forEach.call(linksList, function(header) {
+      //    header.innerHTML = request.data;
+      //});
+      sendResponse({data: 'yyyyy', success: true});
     });
 });
