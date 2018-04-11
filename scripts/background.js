@@ -1,3 +1,4 @@
+/*
 var enable=false;
 console.log('starting..');
 chrome.browserAction.onClicked.addListener(function (tab) {
@@ -13,7 +14,6 @@ chrome.browserAction.onClicked.addListener(function (tab) {
   chrome.browserAction.setBadgeText({ text: 'OFF' });
  }
 });
-/*
 var toggle = false;
 chrome.browserAction.onClicked.addListener(function(tab) {
   console.log('from background');
@@ -28,7 +28,6 @@ chrome.browserAction.onClicked.addListener(function(tab) {
   }
 });
 */
-/*
 var toggle = false;
 var status = 'off';
 var the_tab_id = '';
@@ -36,6 +35,7 @@ var the_tab_id = '';
 console.log ('background..');
 
 function set_status() {
+    console.log('set status');
     toggle = !toggle;
     status = 'off';
     if(toggle) { status = 'on'; }
@@ -65,4 +65,3 @@ chrome.browserAction.onClicked.addListener(function(tab) {
 });
 
 chrome.tabs.onUpdated.addListener(my_listener);
-*/

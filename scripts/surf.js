@@ -14,13 +14,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
               });
             });
-});
-});
+          });
+        });
 });
 
 $(function(){
     //default value is "start"
     console.log('here');
+    /*
     var currentState = localStorage.currentState || "start";
     //cache button DOM element reference
     var $toggleBtn = $("#toggle-btn");
@@ -41,6 +42,7 @@ $(function(){
             localStorage.currentState="start";
         }
     });
+    */
 });
             /*
             chrome.tabs.update(tabs[0].id, {url: 'http://localhost/?p=1'}, function(response){
