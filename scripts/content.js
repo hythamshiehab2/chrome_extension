@@ -1,3 +1,21 @@
+function checkFBPageIsLiked() {
+  var ll = document.getElementsByClassName('likeButton')[0];
+  if(!ll)
+  {
+    // not there
+    console.log(' class not found');
+  }
+  else {
+    console.log(' found the likeButton class');
+    console.log('will like!');
+    ll.click();
+  }
+}
+
+function theHypered() {
+  console.log('theHypered is called.');
+}
+
 function generateIdea() {
     var ideas = ["idea1",
         "idea2",
@@ -16,10 +34,9 @@ chrome.runtime.onMessage.addListener( function(request, sender, sendResponse) {
     console.log("xxxx happening from the extension");
     var data = request.data || {};
     console.log('data sent:' + data);
-    console.log('wainting load to complete');
-    console.log(request);
-    console.log(sendResponse);
-    console.log('xxxx');
+    console.log('waiting load to complete');
+    //console.log(request);
+    //console.log(sendResponse);
     /*
     likeButton _4jy0 _4jy4 _517h _51sy _42ft
     */
@@ -31,17 +48,10 @@ chrome.runtime.onMessage.addListener( function(request, sender, sendResponse) {
     });
     */
 
+
     $(document).ready(function() {
-      var ll = document.getElementsByClassName('likeButton')[0];
-      if(ll)
-      {
-        console.log(' found the likeButton class');
-        console.log('will like!');
-        ll.click();
-      }
-      else {
-        console.log(' class not found');
-      }
+      checkFBPageIsLiked();
+      setInterval(theHypered, 10000);
     });
     /*
     $('textarea').trigger({type: 'keypress', which: 13, keyCode: 13});
