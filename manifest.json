@@ -2,8 +2,8 @@
     "manifest_version": 2,
     "name": "Chrome Extension Sample",
     "description": "This extension lets you manipulate the DOM",
-    "version": "1.0",
-    "homepage_url": "https://github.com/dvidsilva/chrome-ext-sample",
+    "version": "0.1",
+    "homepage_url": "https://github.com/hythamshiehab2/chrome-extension",
     "browser_action": {
         "default_icon": "icons/off.png",
         "default_popup": "popup.html",

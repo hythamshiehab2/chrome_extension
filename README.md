@@ -1,6 +1,5 @@
-<<<<<<< HEAD
 # chrome-extension
-Sample chrome extension that make chrome rocks & roll!
+Sample chrome extension that will make Chrome Rocks & Roll!
 =======
-# chrome_extension
->>>>>>> 6eec1e2cfbfc907f3b229168c9c05c042f999fe6
+Using Chrome Extension APIs, this extension will drive Google Chrome to surf the web, with (almost!) a predefined course, doing some stuff!
+ 
