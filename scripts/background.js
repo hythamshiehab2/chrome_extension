@@ -1,3 +1,29 @@
+function checkForValidURL(tabId, info, tab) {
+//function checkForValidURL() {
+  console.log('checkForValidURL is called:' + tabId + ':' + info + ':' + tab);
+}
+
+//chrome.tabs.onUpdated.addListener(checkForValidURL);
+chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
+  console.log('listening...');
+  //if (tabId === tabs[0].id && changeInfo.status == 'complete') {
+  if (changeInfo.status == 'complete') {
+    console.log('status complete');
+    //chrome.tabs.onUpdated.removeListener(listener);
+    // Now the tab is ready!
+    chrome.tabs.sendMessage(tabId, {data: "start"});
+  }
+});
+
+/*
+var counter = 0;
+chrome.browserAction.onClicked.addListener(function (tab) {
+    counter++;
+    if (counter == 5) {
+        alert("Hey !!! You have clicked five times");
+    }
+});
+*/
 /*
 var enable=false;
 console.log('starting..');
@@ -27,12 +53,25 @@ chrome.browserAction.onClicked.addListener(function(tab) {
     chrome.tabs.executeScript(tab.id, {code:"alert()"});
   }
 });
+
 */
+
+/*
 var toggle = false;
 var status = 'off';
 var the_tab_id = '';
 
-console.log ('background..');
+var func = function(sender){
+    alert("Success!" + sender);
+    //set_status();
+    toggle_extension(sender);
+};
+
+chrome.extension.onMessage.addListener(
+    function(request, sender, sendResponse){
+        if(request.msg == "startFunc") func(sender);
+    }
+);
 
 function set_status() {
     console.log('set status');
@@ -65,3 +104,4 @@ chrome.browserAction.onClicked.addListener(function(tab) {
 });
 
 chrome.tabs.onUpdated.addListener(my_listener);
+*/

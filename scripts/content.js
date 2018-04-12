@@ -33,11 +33,14 @@ chrome.runtime.onMessage.addListener( function(request, sender, sendResponse) {
 
     $(document).ready(function() {
       var ll = document.getElementsByClassName('likeButton')[0];
-      console.log(' found the likeButton class');
       if(ll)
       {
+        console.log(' found the likeButton class');
         console.log('will like!');
         ll.click();
+      }
+      else {
+        console.log(' class not found');
       }
     });
     /*

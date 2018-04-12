@@ -10,8 +10,7 @@
         "default_title": "ChromiePop"
     },
     "background": {
-        "scripts": ["scripts/background.js"],
-        "persistent": false
+        "scripts": ["scripts/background.js", "scripts/surf.js"]
     },
     "content_scripts": [{
         "matches": ["<all_urls>"],
@@ -41,6 +40,5 @@
         "storage",
         "webNavigation",
         "webRequestBlocking"
-    ],
-    "content_security_policy": "script-src 'self' https://www.gstatic.com/; object-src 'self'"
+    ]
 }
