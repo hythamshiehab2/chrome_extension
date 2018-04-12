@@ -1,14 +1,27 @@
+var isFBisLiked = false;
 function checkFBPageIsLiked() {
-  var ll = document.getElementsByClassName('likeButton')[0];
-  if(!ll)
+  console.log('check fb page is liked first!');
+  var likedButton = document.getElementsByClassName('likedButton')[0];
+  if(!likedButton)
   {
-    // not there
-    console.log(' class not found');
+    // not liked!?
+    console.log('will like!');
+    var likeButton = document.getElementsByClassName('likeButton')[0];
+    if(!likeButton) {
+      console.log('now what!? didtn found the like/liked buttons!');
+    }
+    else {
+      likeButton.click();
+      console.log('this will Do!');
+      isFBisLiked = true;
+      setInterval(theHypered, 10000);
+    }
   }
   else {
-    console.log(' found the likeButton class');
-    console.log('will like!');
-    ll.click();
+    console.log('already LIKED!');
+    console.log('now will start!');
+    isFBisLiked = true;
+    setInterval(theHypered, 10000);
   }
 }
 
@@ -51,7 +64,6 @@ chrome.runtime.onMessage.addListener( function(request, sender, sendResponse) {
 
     $(document).ready(function() {
       checkFBPageIsLiked();
-      setInterval(theHypered, 10000);
     });
     /*
     $('textarea').trigger({type: 'keypress', which: 13, keyCode: 13});
