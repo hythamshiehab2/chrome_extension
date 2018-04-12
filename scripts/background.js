@@ -17,6 +17,7 @@ ExtensionData.villages.push(
     {id: "8744351", name: "village2"},
     {id: "8952187", name: "village3"}
 );
+DB_save();
 
 function DB_setValue(name, value, callback) {
     var obj = {};
