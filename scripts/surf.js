@@ -1,10 +1,29 @@
 var myLocalData;
+(function () {
+  console.log('here');
+    chrome.storage.onChanged.addListener(function (changes,areaName) {
+        //console.log("New item in storage",changes.visitedPages.newValue);
+    })
+    chrome.storage.local.get("started",function(items) {
+      started = localStorage.getItem('started');
+      console.log('started:' + started);
+      if(started == 'true')
+      {
+        console.log('ok');
+        $('#toggleButton').prop('checked', true).change();
+        //$('#toggleButton').bootstrapToggle('on');
+        //$('#toggleButton').prop('checked', true);
+        //$('#toggleButton').prop('enabled', true);
+        //$('#toggleButton').refresh();
+        //$('#toggleButton').redraw();
+      }
+      else {
+        $('#toggleButton').bootstrapToggle('off');
+      }
+    });
+})();
 document.body.onload = function() {
   //localData['started'] = off;
-  chrome.storage.local.get("color",function(items) {
-    console.log("get");
-    console.log(items);
-  });
   chrome.storage.local.get(myLocalData, function(items) {
     if (!chrome.runtime.error) {
       //console.log('localData:' + myLocalData['url']);
@@ -30,6 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
     //var button = document.getElementById('startSurf');
     //var toggleButton = document.getElementById('toggleButton');
     $('#toggleButton').change(function() {
+      $('#theContract').visibility = 'true';
       $('#console-event').html('Toggle: ' + $(this).prop('checked'));
       status = $(this).prop('checked');
       if(status == 'true')
@@ -56,6 +76,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     //chrome.tabs.sendMessage(tabs[0].id, {data: "start"});
                   });
                 });
+      }
+      else {
+        localStorage.setItem('started','false');
       }
     });
     })
