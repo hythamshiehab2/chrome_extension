@@ -1,6 +1,20 @@
+document.body.onload = function() {
+  chrome.storage.sync.get("data", function(items) {
+    if (!chrome.runtime.error) {
+      console.log(items);
+      //document.getElementById("data").innerText = items.data;
+    }
+  });
+}
+
 document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('status').textContent = "Extension loaded";
-    var button = document.getElementById('startSurf');
+    //document.getElementById('status').textContent = "Extension loaded";
+    //var button = document.getElementById('startSurf');
+    //var toggleButton = document.getElementById('toggleButton');
+    $('#toggleButton').change(function() {
+      //$('#console-event').html('Toggle: ' + $(this).prop('checked'));
+      console.log('xxxxxxx');
+    })
     button.addEventListener('click', function () {
         chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
           chrome.extension.sendMessage({ msg: "startFunc", data: tabs[0] });

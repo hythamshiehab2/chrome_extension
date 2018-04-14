@@ -19,6 +19,16 @@ ExtensionData.villages.push(
 );
 DB_save();
 
+function toggleState() {
+  if (document.getElementById('toggleButton').checked)
+  {
+      alert("Checked")
+  } else
+  {
+      alert("Not Checked")
+  }
+}
+
 function DB_setValue(name, value, callback) {
     var obj = {};
     obj[name] = value;

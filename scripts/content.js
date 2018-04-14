@@ -1,4 +1,5 @@
 var isFBisLiked = false;
+
 function checkFBPageIsLiked() {
   console.log('check fb page is liked first!');
   var likedButton = document.getElementsByClassName('likedButton')[0];
