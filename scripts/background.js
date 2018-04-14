@@ -9,7 +9,11 @@ var ExtensionData = {
   villages: []
 };
 
-
+chrome.storage.onChanged.addListener(function(changes,areaName) {
+  console.log('storage changed');
+  //"sync","local" or "managed"
+  console.log(changes + ':' + areaName);
+});
 //default data
 
 ExtensionData.villages.push(
@@ -18,16 +22,6 @@ ExtensionData.villages.push(
     {id: "8952187", name: "village3"}
 );
 DB_save();
-
-function toggleState() {
-  if (document.getElementById('toggleButton').checked)
-  {
-      alert("Checked")
-  } else
-  {
-      alert("Not Checked")
-  }
-}
 
 function DB_setValue(name, value, callback) {
     var obj = {};
