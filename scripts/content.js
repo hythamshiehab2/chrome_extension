@@ -43,7 +43,7 @@ function generateIdea() {
 
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
   var data = request.data || {};
-  console.log('data:' + data);
+  console.log('content.js:' + data);
   if (request.msg === "updateIcon") {
     if (data) {
       chrome.browserAction.setIcon({
