@@ -1,7 +1,8 @@
 {
   "manifest_version": 2,
-  "name": "المتشعّب",
-  "description": "قيادة جووجل كروم عبر هذه الإضافة",
+  "name": "Chrome Extension Sample",
+  "update_url": "http://localhost/chrome_extension/updates.xml",
+  "description": "This extension lets you manipulate the DOM",
   "version": "0.1",
   "homepage_url": "https://github.com/hythamshiehab2/chrome-extension",
   "browser_action": {
