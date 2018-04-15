@@ -1,3 +1,18 @@
+// chrome.webNavigation.onCommitted.addListener(updateIcon);
+// chrome.webNavigation.onHistoryStateUpdated.addListener(updateIcon);
+// chrome.webNavigation.onBeforeNavigate.addListener(updateIcon);
+
+function updateIcon(details) {
+    // if (details.frameId != 0) {
+    //     return; // only update the icon for main page, not iframe/frame
+    // }
+    console.log('updateIcon:' + details.tabId);
+    chrome.browserAction.setIcon({
+        path: "/icons/icon2.png",
+        tabId: details.tabId
+    });
+}
+
 function checkForValidURL(tabId, info, tab) {
 //function checkForValidURL() {
   console.log('checkForValidURL is called:' + tabId + ':' + info + ':' + tab);
@@ -106,7 +121,7 @@ chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
     console.log('status complete');
     //chrome.tabs.onUpdated.removeListener(listener);
     // Now the tab is ready!
-    chrome.browserAction.setIcon({path: "/icons/on.png"});
+    //chrome.browserAction.setIcon({path: "icons/on.png"});
     chrome.tabs.sendMessage(tabId, {data: "start"});
   }
 });
