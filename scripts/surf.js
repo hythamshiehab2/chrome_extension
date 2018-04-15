@@ -28,10 +28,10 @@ function RR() {
             chrome.tabs.sendMessage(tabs[0].id, {
               data: "start"
             });
-            chrome.browserAction.setIcon({
-              path: "/icons/icon4.png",
-              tabId: tab.tabId
-            });
+            // chrome.browserAction.setIcon({
+            //   path: "/icons/icon4.png",
+            //   tabId: tab.tabId
+            // });
             console.log('rr is on');
           }
         });

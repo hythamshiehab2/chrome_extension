@@ -1,15 +1,50 @@
-chrome.webNavigation.onCommitted.addListener(onIcon);
-chrome.webNavigation.onHistoryStateUpdated.addListener(onIcon);
-chrome.webNavigation.onBeforeNavigate.addListener(onIcon);
+// chrome.webNavigation.onCommitted.addListener(updateIcon);
+// chrome.webNavigation.onHistoryStateUpdated.addListener(updateIcon);
+// chrome.webNavigation.onBeforeNavigate.addListener(updateIcon);
+
+var eventList = ['onBeforeNavigate', 'onCreatedNavigationTarget',
+  'onCommitted', 'onCompleted', 'onDOMContentLoaded',
+  'onErrorOccurred', 'onReferenceFragmentUpdated', 'onTabReplaced',
+  'onHistoryStateUpdated'
+];
+
+eventList.forEach(function(e) {
+  chrome.webNavigation[e].addListener(function(data) {
+    if (typeof data)
+      //console.log(chrome.i18n.getMessage('inHandler'), e, data);
+      updateIcon(data);
+    else
+      console.error(chrome.i18n.getMessage('inHandlerError'), e);
+  });
+});
+//chrome.webNavigation.onCommitted.addListener(function(data) {
+function updateIcon(data) {
+  console.log('onHistory');
+  console.log(data);
+  rocknroll = localStorage.getItem('rocknroll');
+  console.log(rocknroll);
+  if (rocknroll == 'true') {
+    chrome.browserAction.setIcon({
+      path: "/icons/on.png",
+      tabId: data.tabId
+    });
+  } else {
+    chrome.browserAction.setIcon({
+      path: "/icons/off.png",
+      tabId: data.tabId
+    });
+  }
+}
+//chrome.webNavigation.onBeforeNavigate.addListener(onIcon);
 //
 // chrome.webNavigation.onCommitted.addListener(offIcon);
 // chrome.webNavigation.onHistoryStateUpdated.addListener(offIcon);
 // chrome.webNavigation.onBeforeNavigate.addListener(offIcon);
 
 function onIcon(details) {
-  // if (details.frameId != 0) {
-  //     return; // only update the icon for main page, not iframe/frame
-  // }
+  if (details.frameId != 0) {
+    return; // only update the icon for main page, not iframe/frame
+  }
 
   console.log('updateIcon:' + details.tabId);
   //console.log(details.msg);
