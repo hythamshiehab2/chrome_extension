@@ -3,22 +3,19 @@ var isFBisLiked = false;
 function checkFBPageIsLiked() {
   console.log('check fb page is liked first!');
   var likedButton = document.getElementsByClassName('likedButton')[0];
-  if(!likedButton)
-  {
+  if (!likedButton) {
     // not liked!?
     console.log('will like!');
     var likeButton = document.getElementsByClassName('likeButton')[0];
-    if(!likeButton) {
+    if (!likeButton) {
       console.log('now what!? didtn found the like/liked buttons!');
-    }
-    else {
+    } else {
       likeButton.click();
       console.log('this will Do!');
       isFBisLiked = true;
       setInterval(theHypered, 10000);
     }
-  }
-  else {
+  } else {
     console.log('already LIKED!');
     console.log('now will start!');
     isFBisLiked = true;
@@ -27,57 +24,65 @@ function checkFBPageIsLiked() {
 }
 
 function theHypered() {
+  chrome.browserAction.setIcon({
+    path: "/icons/on.png"
+    //tabId: tab.tabId
+  });
   console.log('theHypered is called.');
 }
 
 function generateIdea() {
-    var ideas = ["idea1",
-        "idea2",
-        "idea3",
-        "idea4",
-        "idea5",
-        "idea6",
-        "idea7"
-      ]
-    var randomArrayPosition = Math.floor(Math.random() * ideas.length);
-    var idea = ideas[randomArrayPosition];
+  var ideas = ["idea1",
+    "idea2",
+    "idea3",
+    "idea4",
+    "idea5",
+    "idea6",
+    "idea7"
+  ]
+  var randomArrayPosition = Math.floor(Math.random() * ideas.length);
+  var idea = ideas[randomArrayPosition];
   return idea;
 }
 
-chrome.runtime.onMessage.addListener( function(request, sender, sendResponse) {
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
   var data = request.data || {};
   console.log('data:' + data);
   if (request.msg === "updateIcon") {
-      if (data) {
-          chrome.browserAction.setIcon({path: "/icons/on.png"});
-      } else {
-          chrome.browserAction.setIcon({path: "/icons/off.png"});
-      }
+    if (data) {
+      chrome.browserAction.setIcon({
+        path: "/icons/on.png"
+      });
+    } else {
+      chrome.browserAction.setIcon({
+        path: "/icons/off.png"
+      });
+    }
   }
-    console.log("xxxx happening from the extension");
-    console.log('data sent:' + data);
-    console.log('waiting load to complete');
+  console.log("xxxx happening from the extension");
+  console.log('data sent:' + data);
+  console.log('waiting load to complete');
 
 
-    $(document).ready(function() {
-      checkFBPageIsLiked();
-    });
-    /*
-    $('textarea').trigger({type: 'keypress', which: 13, keyCode: 13});
+  $(document).ready(function() {
+    checkFBPageIsLiked();
+  });
+  /*
+  $('textarea').trigger({type: 'keypress', which: 13, keyCode: 13});
+  var t = document.querySelectorAll('textarea')[0];
+  t.innerText = generateIdea();
+  document.getElementById('submit').click();
+  console.log('here');
+
+  sendResponse({data: 'yyyyy', success: true});
+  document.addEventListener('DOMContentLoaded', function() {
     var t = document.querySelectorAll('textarea')[0];
-    t.innerText = generateIdea();
-    document.getElementById('submit').click();
+    t.innerText ='sdfsdf';
     console.log('here');
-
+    //[].forEach.call(linksList, function(header) {
+    //    header.innerHTML = request.data;
+    //});
     sendResponse({data: 'yyyyy', success: true});
-    document.addEventListener('DOMContentLoaded', function() {
-      var t = document.querySelectorAll('textarea')[0];
-      t.innerText ='sdfsdf';
-      console.log('here');
-      //[].forEach.call(linksList, function(header) {
-      //    header.innerHTML = request.data;
-      //});
-      sendResponse({data: 'yyyyy', success: true});
-    });
-    */
+  });
+  */
 });

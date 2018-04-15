@@ -1,4 +1,4 @@
-A Chrome Extension that will make Chrome Rocks & Roll!
+A Chrome Extension that will make Chrome Rock & Roll!
 =======
 Using Chrome Extension APIs, this extension will drive Google Chrome to surf the web, with (almost!)* a predefined course, doing some stuff!
 

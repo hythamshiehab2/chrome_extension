@@ -1,7 +1,6 @@
 // chrome.webNavigation.onCommitted.addListener(updateIcon);
 // chrome.webNavigation.onHistoryStateUpdated.addListener(updateIcon);
 // chrome.webNavigation.onBeforeNavigate.addListener(updateIcon);
-
 function updateIcon(details) {
     // if (details.frameId != 0) {
     //     return; // only update the icon for main page, not iframe/frame
@@ -104,12 +103,10 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
     if (msg.action === "updateIcon") {
         if (msg.value) {
             console.log('will update the icon:' + msg.value);
-            chrome.browserAction.setIcon({path: "/icons/on.png"});
-            browser.browserAction.setIcon({
-                tabId: tab.id, path: "/icons/on.png"
-            });
+            //chrome.browserAction.setIcon({path: "/icons/on.png"});
+            chrome.browserAction.setIcon({tabId: tab.id, path: "/icons/on.png"});
         } else {
-            chrome.browserAction.setIcon({path: "/icons/off.png"});
+            chrome.browserAction.setIcon({tabId: tab.id,path: "/icons/off.png"});
         }
     }
 });
