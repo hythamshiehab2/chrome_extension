@@ -19,6 +19,7 @@ var myLocalData;
       }
       else {
         $('#toggleButton').bootstrapToggle('off');
+        $('#theContract').css('display', 'none');
       }
     });
 })();
@@ -55,30 +56,53 @@ document.addEventListener('DOMContentLoaded', function() {
       if(status == 'true')
       {
         $('#console-event').html('will r&r!');
-        chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-          chrome.extension.sendMessage({ msg: "startFunc", data: tabs[0] });
-            var activeURL = tabs[0].url;
-            //myLocalData[url] = 'xxxx';
-            localStorage.setItem('started','true');
-            localStorage.setItem('liked','0');
-            chrome.browserAction.setBadgeText({"text":localStorage.length.toString()});
-            chrome.storage.local.set({"color":"red"},function() {
-              console.log("set");
-              //string or array of string or object keys
-            });
-            chrome.tabs.update(
-              tabs[0].id, { url: 'http://localhost/?p=1'}, function(tab) {
-              //tabs[0].id, { url: 'https://www.facebook.com/en7erafatamnaldawla'}, function(tab) {
-                  //chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
-                  //if (tabId === tab.id && changeInfo.status == 'complete') {
-                    //chrome.tabs.onUpdated.removeListener(listener);
-                    // Now the tab is ready!
-                    //chrome.tabs.sendMessage(tabs[0].id, {data: "start"});
-                  });
-                });
+        $('#theContract').css('display', 'inline-block');
       }
       else {
         localStorage.setItem('started','false');
+        $('#theContract').css('display', 'none');
       }
     });
-    })
+
+    $('#toggleStartNow').change(function() {
+      var status = $(this).prop('checked');
+      if(status == 'true')
+      {
+        console.log('update the icons');
+        //chrome.tabs.sendMessage(tabId, {data: "start"});
+        chrome.extension.sendMessage({
+          msg: 'updateIcon',
+          data: true
+        });
+      }
+      else {
+
+      }
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+      chrome.runtime.sendMessage({
+          action: 'updateIcon',
+          value: true
+      });
+
+        chrome.extension.sendMessage({ msg: "startFunc", data: tabs[0] });
+        var activeURL = tabs[0].url;
+        //myLocalData[url] = 'xxxx';
+        localStorage.setItem('started','true');
+        localStorage.setItem('liked','0');
+        chrome.browserAction.setBadgeText({"text":localStorage.length.toString()});
+        chrome.storage.local.set({"color":"red"},function() {
+          console.log("set");
+          //string or array of string or object keys
+        });
+        chrome.tabs.update(
+          tabs[0].id, { url: 'http://localhost/?p=1'}, function(tab) {
+          //tabs[0].id, { url: 'https://www.facebook.com/en7erafatamnaldawla'}, function(tab) {
+              //chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
+              //if (tabId === tab.id && changeInfo.status == 'complete') {
+                //chrome.tabs.onUpdated.removeListener(listener);
+                // Now the tab is ready!
+                //chrome.tabs.sendMessage(tabs[0].id, {data: "start"});
+              });
+            });
+      });
+})

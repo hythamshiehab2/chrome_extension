@@ -45,22 +45,18 @@ function generateIdea() {
 }
 
 chrome.runtime.onMessage.addListener( function(request, sender, sendResponse) {
+  var data = request.data || {};
+  console.log('data:' + data);
+  if (request.msg === "updateIcon") {
+      if (data) {
+          chrome.browserAction.setIcon({path: "/icons/on.png"});
+      } else {
+          chrome.browserAction.setIcon({path: "/icons/off.png"});
+      }
+  }
     console.log("xxxx happening from the extension");
-    var data = request.data || {};
     console.log('data sent:' + data);
     console.log('waiting load to complete');
-    //console.log(request);
-    //console.log(sendResponse);
-    /*
-    likeButton _4jy0 _4jy4 _517h _51sy _42ft
-    */
-    /* for later
-    $(document).ready(function() {
-      $('iframe').load(function() {
-       // do something
-     });
-    });
-    */
 
 
     $(document).ready(function() {
