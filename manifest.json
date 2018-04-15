@@ -3,11 +3,11 @@
   "name": "المتشعّب",
   "description": "قيادة جووجل كروم عبر هذه الإضافة",
   "version": "0.1",
-  "homepage_url": "https://github.com/hythamshiehab2/chrome-extension",
+  "homepage_url": "https://github.com/hythamshiehab2/chrome_extension",
   "browser_action": {
     "default_icon": "icons/off.png",
     "default_popup": "popup.html",
-    "default_title": "ChromiePop"
+    "default_title": "المتشعّب"
   },
   "background": {
     "scripts": ["scripts/background.js", "scripts/surf.js"]
