@@ -38,7 +38,22 @@ function checkFBPageIsLiked() {
 }
 
 function theHypered() {
-  console.log('theHypered is called.');
+  console.log('theHypered is checking...');
+  //var rr = localStorage.getItem('rocknroll');
+  var rr = 0;
+  // chrome.storage.local.set({
+  //   key: value
+  // });
+  chrome.storage.local.get(['rocknroll'], function(result) {
+    console.log(result.key);
+    rr = result.key;
+    console.log('rr:' + rr);
+    if (rr == 'true') {
+      console.log('theHypered will execute.');
+    } else {
+      return;
+    }
+  });
 }
 
 function generateIdea() {
