@@ -1,19 +1,25 @@
-// chrome.webNavigation.onCommitted.addListener(updateIcon);
-// chrome.webNavigation.onHistoryStateUpdated.addListener(updateIcon);
-// chrome.webNavigation.onBeforeNavigate.addListener(updateIcon);
+chrome.webNavigation.onCommitted.addListener(updateIcon);
+chrome.webNavigation.onHistoryStateUpdated.addListener(updateIcon);
+chrome.webNavigation.onBeforeNavigate.addListener(updateIcon);
+
 function updateIcon(details) {
-    // if (details.frameId != 0) {
-    //     return; // only update the icon for main page, not iframe/frame
-    // }
-    console.log('updateIcon:' + details.tabId);
-    chrome.browserAction.setIcon({
-        path: "/icons/icon2.png",
-        tabId: details.tabId
-    });
+  // if (details.frameId != 0) {
+  //     return; // only update the icon for main page, not iframe/frame
+  // }
+
+  console.log('updateIcon:' + details.tabId);
+  //console.log(details.msg);
+  console.log(details);
+  //console.log(details.data.action);
+  //console.log(details.data.value);
+  chrome.browserAction.setIcon({
+    path: "/icons/icon2.png",
+    tabId: details.tabId
+  });
 }
 
 function checkForValidURL(tabId, info, tab) {
-//function checkForValidURL() {
+  //function checkForValidURL() {
   console.log('checkForValidURL is called:' + tabId + ':' + info + ':' + tab);
 }
 
@@ -23,92 +29,109 @@ var ExtensionData = {
   villages: []
 };
 
-chrome.storage.onChanged.addListener(function(changes,areaName) {
+chrome.storage.onChanged.addListener(function(changes, areaName) {
   console.log('storage changed');
   //"sync","local" or "managed"
   console.log(changes + ':' + areaName);
 });
 //default data
 
-ExtensionData.villages.push(
-    {id: "1325848", name: "village1"},
-    {id: "8744351", name: "village2"},
-    {id: "8952187", name: "village3"}
-);
+ExtensionData.villages.push({
+  id: "1325848",
+  name: "village1"
+}, {
+  id: "8744351",
+  name: "village2"
+}, {
+  id: "8952187",
+  name: "village3"
+});
 DB_save();
 
 function DB_setValue(name, value, callback) {
-    var obj = {};
-    obj[name] = value;
-    console.log("Data Saved!");
-    chrome.storage.local.set(obj, function() {
-        if(callback) callback();
-    });
+  var obj = {};
+  obj[name] = value;
+  console.log("Data Saved!");
+  chrome.storage.local.set(obj, function() {
+    if (callback) callback();
+  });
 }
 
 function DB_load(callback) {
-    chrome.storage.local.get(ExtensionDataName, function(r) {
-        if (isEmpty(r[ExtensionDataName])) {
-            DB_setValue(ExtensionDataName, ExtensionData, callback);
-        } else if (r[ExtensionDataName].dataVersion != ExtensionData.dataVersion) {
-            DB_setValue(ExtensionDataName, ExtensionData, callback);
-        } else {
-            ExtensionData = r[ExtensionDataName];
-            callback();
-        }
-    });
+  chrome.storage.local.get(ExtensionDataName, function(r) {
+    if (isEmpty(r[ExtensionDataName])) {
+      DB_setValue(ExtensionDataName, ExtensionData, callback);
+    } else if (r[ExtensionDataName].dataVersion != ExtensionData.dataVersion) {
+      DB_setValue(ExtensionDataName, ExtensionData, callback);
+    } else {
+      ExtensionData = r[ExtensionDataName];
+      callback();
+    }
+  });
 }
 
 function DB_save(callback) {
-    DB_setValue(ExtensionDataName, ExtensionData, function() {
-        if(callback) callback();
-    });
+  DB_setValue(ExtensionDataName, ExtensionData, function() {
+    if (callback) callback();
+  });
 }
 
 function DB_clear(callback) {
-    chrome.storage.local.remove(ExtensionDataName, function() {
-        if(callback) callback();
-    });
+  chrome.storage.local.remove(ExtensionDataName, function() {
+    if (callback) callback();
+  });
 }
 
 function isEmpty(obj) {
-    for(var prop in obj) {
-        if(obj.hasOwnProperty(prop))
-            return false;
-    }
-    return true;
+  for (var prop in obj) {
+    if (obj.hasOwnProperty(prop))
+      return false;
+  }
+  return true;
 }
 
 DB_load(function() {
-    //YOUR MAIN CODE WILL BE HERE
-    console.log(ExtensionData);
-    console.log(ExtensionData.villages); //array of villages
-    console.log(ExtensionData.villages[0]); //first village object
-    console.log(ExtensionData.villages[0].id); //first village id
-    console.log(ExtensionData.villages[0].name); //first village name
+  //YOUR MAIN CODE WILL BE HERE
+  console.log(ExtensionData);
+  console.log(ExtensionData.villages); //array of villages
+  console.log(ExtensionData.villages[0]); //first village object
+  console.log(ExtensionData.villages[0].id); //first village id
+  console.log(ExtensionData.villages[0].name); //first village name
 
-    //HOW TO ITERATE VILLAGES
+  //HOW TO ITERATE VILLAGES
 
-    for (var i = 0; i < ExtensionData.villages.length; i++) {
-        console.log(ExtensionData.villages[i].id); //village id
-        console.log(ExtensionData.villages[i].name); //village name
-    }
+  for (var i = 0; i < ExtensionData.villages.length; i++) {
+    console.log(ExtensionData.villages[i].id); //village id
+    console.log(ExtensionData.villages[i].name); //village name
+  }
 });
 
 //chrome.tabs.onUpdated.addListener(checkForValidURL);
-chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
+chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse) {
   console.log(msg);
+  console.log(sender);
+  //console.log(tabs[0].id);
+  console.log(tab.tabId);
+  console.log(tabId);
+  console.log(tab.id);
+  console.log('x');
   console.log(msg.action);
   console.log(msg.value);
-    if (msg.action === "updateIcon") {
-        if (msg.value) {
-            console.log('will update the icon:' + msg.value);
-            //chrome.browserAction.setIcon({path: "/icons/on.png"});
-            chrome.browserAction.setIcon({tabId: tab.id, path: "/icons/on.png"});
-        } else {
-            chrome.browserAction.setIcon({tabId: tab.id,path: "/icons/off.png"});
-        }
+  if (msg.action === "updateIcon") {
+    if (msg.value) {
+      console.log('will update the icon:' + msg.value);
+      //chrome.browserAction.setIcon({path: "/icons/on.png"});
+      chrome.browserAction.setIcon({
+        tabId: tab.id,
+        path: "/icons/on.png"
+      });
+    } else {
+      chrome.browserAction.setIcon({
+        tabId: tab.id,
+        path: "/icons/off.png"
+      });
     }
+  }
 });
 
 chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
@@ -119,6 +142,8 @@ chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
     //chrome.tabs.onUpdated.removeListener(listener);
     // Now the tab is ready!
     //chrome.browserAction.setIcon({path: "icons/on.png"});
-    chrome.tabs.sendMessage(tabId, {data: "start"});
+    chrome.tabs.sendMessage(tabId, {
+      data: "start"
+    });
   }
 });

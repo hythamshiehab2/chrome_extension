@@ -1,44 +1,44 @@
 {
-    "manifest_version": 2,
-    "name": "Chrome Extension Sample",
-    "description": "This extension lets you manipulate the DOM",
-    "version": "0.1",
-    "homepage_url": "https://github.com/hythamshiehab2/chrome-extension",
-    "browser_action": {
-        "default_icon": "icons/off.png",
-        "default_popup": "popup.html",
-        "default_title": "ChromiePop"
-    },
-    "background": {
-        "scripts": ["scripts/background.js", "scripts/surf.js"]
-    },
-    "content_scripts": [{
-        "matches": ["<all_urls>"],
-        "all_frames": true,
-        "js":      ["scripts/content.js", "scripts/jquery.min.js"]
-    }],
-    "permissions": [
-        "activeTab",
-        "tabs",
-        "http://*/*",
-        "https://*/*",
-        "background",
-        "bookmarks",
-        "clipboardRead",
-        "clipboardWrite",
-        "contentSettings",
-        "cookies",
-        "*://*.google.com/",
-        "<all_urls>",
-        "debugger",
-        "history",
-        "idle",
-        "management",
-        "notifications",
-        "pageCapture",
-        "topSites",
-        "storage",
-        "webNavigation",
-        "webRequestBlocking"
-    ]
+  "manifest_version": 2,
+  "name": "Chrome Extension Sample",
+  "description": "This extension lets you manipulate the DOM",
+  "version": "0.1",
+  "homepage_url": "https://github.com/hythamshiehab2/chrome-extension",
+  "browser_action": {
+    "default_icon": "icons/off.png",
+    "default_popup": "popup.html",
+    "default_title": "ChromiePop"
+  },
+  "background": {
+    "scripts": ["scripts/background.js", "scripts/surf.js"]
+  },
+  "content_scripts": [{
+    "matches": ["<all_urls>"],
+    "all_frames": true,
+    "js": ["scripts/content.js", "scripts/jquery.min.js"]
+  }],
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "http://*/*",
+    "https://*/*",
+    "background",
+    "bookmarks",
+    "clipboardRead",
+    "clipboardWrite",
+    "contentSettings",
+    "cookies",
+    "*://*.google.com/",
+    "<all_urls>",
+    "debugger",
+    "history",
+    "idle",
+    "management",
+    "notifications",
+    "pageCapture",
+    "topSites",
+    "storage",
+    "webNavigation",
+    "webRequestBlocking"
+  ]
 }

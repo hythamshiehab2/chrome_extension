@@ -24,10 +24,6 @@ function checkFBPageIsLiked() {
 }
 
 function theHypered() {
-  chrome.browserAction.setIcon({
-    path: "/icons/on.png"
-    //tabId: tab.tabId
-  });
   console.log('theHypered is called.');
 }
 
