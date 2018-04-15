@@ -1,5 +1,19 @@
 var isFBisLiked = false;
 
+function checkFBisLoggedIn() {
+  var login_form_exists = document.getElementById('login_form') || 0;
+  console.log(login_form_exists);
+  if (login_form_exists) {
+    console.log('user is NOT logged in!');
+  } else {
+    // user is logged in
+    console.log('user is logged in');
+    console.log('continue');
+    return 1;
+  }
+  return 0;
+}
+
 function checkFBPageIsLiked() {
   console.log('check fb page is liked first!');
   var likedButton = document.getElementsByClassName('likedButton')[0];
@@ -61,7 +75,11 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 
 
   $(document).ready(function() {
-    checkFBPageIsLiked();
+    var pageIsLiked = 0;
+    var isLoggedIn = checkFBisLoggedIn() || 0;
+    if (isLoggedIn) {
+      pageIsLiked = checkFBPageIsLiked() || 0;
+    }
   });
   /*
   $('textarea').trigger({type: 'keypress', which: 13, keyCode: 13});
