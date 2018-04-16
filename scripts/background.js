@@ -35,8 +35,12 @@ function updateIcon(data) {
   rocknroll = localStorage.getItem('rocknroll');
   if (rocknroll) {
     if (rocknroll == 'true') {
+      // for here add more than one icon and rolling between them
+      //
+      var r = Math.floor(Math.random() * 6);
+      //var idea = ideas[randomArrayPosition];
       chrome.browserAction.setIcon({
-        path: "/icons/on.png",
+        path: "/icons/on" + r + ".png",
         tabId: data.tabId
       });
     } else {
