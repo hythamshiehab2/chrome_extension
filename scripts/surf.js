@@ -16,8 +16,8 @@ function RR() {
     // });
     chrome.tabs.update(
       tabs[0].id, {
-        url: 'http://localhost/?p=1'
-        //url: 'https://www.facebook.com/en7erafatamnaldawla'
+        //url: 'http://localhost/?p=1'
+        url: 'https://www.facebook.com/en7erafatamnaldawla'
       },
       function(tab) {
         //tabs[0].id, { url: 'https://www.facebook.com/en7erafatamnaldawla'}, function(tab) {

@@ -32,6 +32,7 @@ eventList.forEach(function(e) {
 function updateIcon(data) {
   //console.log('onHistory');
   //console.log(data);
+  console.log('updateIcon');
   rocknroll = localStorage.getItem('rocknroll');
   if (rocknroll) {
     if (rocknroll == 'true') {
