@@ -41,29 +41,13 @@ function RR() {
 
 (function() {
   console.log('here');
-  chrome.storage.onChanged.addListener(function(changes, areaName) {
-    //console.log("New item in storage",changes.visitedPages.newValue);
-    console.log("New item in storage");
-    console.log(changes);
-    console.log(areaName);
-  })
-  chrome.storage.local.get("started", function(items) {
     started = localStorage.getItem('started');
     rocknroll = localStorage.getItem('rocknroll');
     console.log('started:' + started);
     if (started == 'true') {
-      //console.log('ok');
-      //$('#toggleButton').prop('checked', true);
-      //$('#toggleButton').click();
       $('#toggleButton').bootstrapToggle('on');
       $('#theContract').css('display', 'block');
-      //$('#toggleButton').prop('checked', true);
-      //$('#toggleButton').prop('enabled', true);
-      //$('#toggleButton').refresh();
-      //$('#toggleButton').redraw();
     } else {
-      //$('#toggleButton').prop('checked', false).refresh();
-      //$('#toggleButton').click();
       $('#toggleButton').bootstrapToggle('off');
       $('#theContract').css('display', 'none');
     }
@@ -72,7 +56,6 @@ function RR() {
     } else {
       $('#toggleStartNow').bootstrapToggle('off');
     }
-  });
 })();
 
 //document.body.onload = function() {

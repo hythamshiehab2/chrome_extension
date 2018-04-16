@@ -93,11 +93,6 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 
   $(document).ready(function() {
     console.log('document is ready!');
-    chrome.storage.onChanged.addListener(function(changes, areaName) {
-      console.log('storage changed');
-      //"sync","local" or "managed"
-      console.log(changes + ':' + areaName);
-    });
 
     var pageIsLiked = 0;
     var isLoggedIn = checkFBisLoggedIn() || 0;

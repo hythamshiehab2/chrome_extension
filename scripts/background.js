@@ -1,6 +1,17 @@
 // chrome.webNavigation.onCommitted.addListener(updateIcon);
 // chrome.webNavigation.onHistoryStateUpdated.addListener(updateIcon);
 // chrome.webNavigation.onBeforeNavigate.addListener(updateIcon);
+chrome.storage.onChanged.addListener(function(changes, namespace) {
+  for (key in changes) {
+    var storageChange = changes[key];
+    console.log('Storage key "%s" in namespace "%s" changed. ' +
+      'Old value was "%s", new value is "%s".',
+      key,
+      namespace,
+      storageChange.oldValue,
+      storageChange.newValue);
+  }
+});
 
 var eventList = ['onBeforeNavigate', 'onCreatedNavigationTarget',
   'onCommitted', 'onCompleted', 'onDOMContentLoaded',
@@ -14,25 +25,26 @@ eventList.forEach(function(e) {
       //console.log(chrome.i18n.getMessage('inHandler'), e, data);
       updateIcon(data);
     //else
-      //console.error(chrome.i18n.getMessage('inHandlerError'), e);
+    //console.error(chrome.i18n.getMessage('inHandlerError'), e);
   });
 });
 //chrome.webNavigation.onCommitted.addListener(function(data) {
 function updateIcon(data) {
-  console.log('onHistory');
-  console.log(data);
+  //console.log('onHistory');
+  //console.log(data);
   rocknroll = localStorage.getItem('rocknroll');
-  console.log(rocknroll);
-  if (rocknroll == 'true') {
-    chrome.browserAction.setIcon({
-      path: "/icons/on.png",
-      tabId: data.tabId
-    });
-  } else {
-    chrome.browserAction.setIcon({
-      path: "/icons/off.png",
-      tabId: data.tabId
-    });
+  if (rocknroll) {
+    if (rocknroll == 'true') {
+      chrome.browserAction.setIcon({
+        path: "/icons/on.png",
+        tabId: data.tabId
+      });
+    } else {
+      chrome.browserAction.setIcon({
+        path: "/icons/off.png",
+        tabId: data.tabId
+      });
+    }
   }
 }
 //chrome.webNavigation.onBeforeNavigate.addListener(onIcon);
