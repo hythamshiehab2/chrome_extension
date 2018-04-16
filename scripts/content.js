@@ -39,11 +39,13 @@ function checkFBPageIsLiked() {
 
 function theHypered() {
   console.log('theHypered is checking...');
-  //var rr = localStorage.getItem('rocknroll');
-  var rr = 0;
+  var rr = localStorage.getItem('rocknroll');
+  //var rr = 0;
   // chrome.storage.local.set({
   //   key: value
   // });
+  console.log('the RR:');
+  console.log(rr);
   chrome.storage.local.get(['rocknroll'], function(result) {
     console.log(result.key);
     rr = result.key;
@@ -90,6 +92,13 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 
 
   $(document).ready(function() {
+    console.log('document is ready!');
+    chrome.storage.onChanged.addListener(function(changes, areaName) {
+      console.log('storage changed');
+      //"sync","local" or "managed"
+      console.log(changes + ':' + areaName);
+    });
+
     var pageIsLiked = 0;
     var isLoggedIn = checkFBisLoggedIn() || 0;
     if (isLoggedIn) {

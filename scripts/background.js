@@ -13,8 +13,8 @@ eventList.forEach(function(e) {
     if (typeof data)
       //console.log(chrome.i18n.getMessage('inHandler'), e, data);
       updateIcon(data);
-    else
-      console.error(chrome.i18n.getMessage('inHandlerError'), e);
+    //else
+      //console.error(chrome.i18n.getMessage('inHandlerError'), e);
   });
 });
 //chrome.webNavigation.onCommitted.addListener(function(data) {
@@ -77,17 +77,13 @@ function checkForValidURL(tabId, info, tab) {
   console.log('checkForValidURL is called:' + tabId + ':' + info + ':' + tab);
 }
 
+/*
 var ExtensionDataName = "myfirstextensiondata";
 var ExtensionData = {
   dataVersion: 3, //if you want to set a new default data, you must update "dataVersion".
   villages: []
 };
 
-chrome.storage.onChanged.addListener(function(changes, areaName) {
-  console.log('storage changed');
-  //"sync","local" or "managed"
-  console.log(changes + ':' + areaName);
-});
 //default data
 
 ExtensionData.villages.push({
@@ -159,7 +155,7 @@ DB_load(function() {
     console.log(ExtensionData.villages[i].name); //village name
   }
 });
-
+*/
 //chrome.tabs.onUpdated.addListener(checkForValidURL);
 chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse) {
   console.log(msg);

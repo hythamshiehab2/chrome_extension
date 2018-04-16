@@ -43,6 +43,9 @@ function RR() {
   console.log('here');
   chrome.storage.onChanged.addListener(function(changes, areaName) {
     //console.log("New item in storage",changes.visitedPages.newValue);
+    console.log("New item in storage");
+    console.log(changes);
+    console.log(areaName);
   })
   chrome.storage.local.get("started", function(items) {
     started = localStorage.getItem('started');
@@ -72,7 +75,18 @@ function RR() {
   });
 })();
 
-document.body.onload = function() {
+//document.body.onload = function() {
+window.onload = function() {
+  console.log('window is loaded');
+  var rr = 0;
+  rr = localStorage.getItem('rocknroll');
+  console.log('rr:' + rr);
+  chrome.storage.onChanged.addListener(function(changes, areaName) {
+    console.log('storage changed');
+    //"sync","local" or "managed"
+    console.log(changes + ':' + areaName);
+  });
+
   // //localData['started'] = off;
   // chrome.storage.local.get(myLocalData, function(items) {
   //   if (!chrome.runtime.error) {
