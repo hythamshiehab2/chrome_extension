@@ -41,21 +41,21 @@ function RR() {
 
 (function() {
   console.log('here');
-    started = localStorage.getItem('started');
-    rocknroll = localStorage.getItem('rocknroll');
-    console.log('started:' + started);
-    if (started == 'true') {
-      $('#toggleButton').bootstrapToggle('on');
-      $('#theContract').css('display', 'block');
-    } else {
-      $('#toggleButton').bootstrapToggle('off');
-      $('#theContract').css('display', 'none');
-    }
-    if (rocknroll == 'true') {
-      $('#toggleStartNow').bootstrapToggle('on');
-    } else {
-      $('#toggleStartNow').bootstrapToggle('off');
-    }
+  started = localStorage.getItem('started');
+  rocknroll = localStorage.getItem('rocknroll');
+  console.log('started:' + started);
+  if (started == 'true') {
+    $('#toggleButton').bootstrapToggle('on');
+    $('#theContract').css('display', 'block');
+  } else {
+    $('#toggleButton').bootstrapToggle('off');
+    $('#theContract').css('display', 'none');
+  }
+  if (rocknroll == 'true') {
+    $('#toggleStartNow').bootstrapToggle('on');
+  } else {
+    $('#toggleStartNow').bootstrapToggle('off');
+  }
 })();
 
 //document.body.onload = function() {
@@ -90,12 +90,25 @@ $('#toggleButton').change(function() {
   status = $(this).prop('checked');
   if (status == 'true') {
     localStorage.setItem('started', 'true');
+    chrome.storage.local.set({
+      'started': 'true'
+    }, function() {
+      // Notify that we saved.
+      console.log('Settings saved');
+    });
     $('#console-event').html('will r&r!');
     $('#theContract').css('display', 'block');
     //TT();
   } else {
     localStorage.setItem('started', 'false');
     localStorage.setItem('rocknroll', 'false');
+    chrome.storage.local.set({
+      'started': 'false',
+      'rocknroll': 'false'
+    }, function() {
+      // Notify that we saved.
+      console.log('Settings saved');
+    });
     console.log('started:false');
     $('#theContract').css('display', 'none');
   }
@@ -110,18 +123,36 @@ $('#toggleStartNow').change(function() {
     //chrome.browserAction.setIcon({path: 'icons/on.png'});
     //chrome.browserAction.setIcon({path: '/icons/on.png'});
     localStorage.setItem('rocknroll', 'true');
+    chrome.storage.local.set({
+      'rocknroll': 'true'
+    }, function() {
+      // Notify that we saved.
+      console.log('Settings saved');
+    });
     console.log('update the icons');
     RR();
   } else {
     console.log('rr is off');
     localStorage.setItem('rocknroll', 'false');
+    chrome.storage.local.set({
+      'rocknroll': 'false'
+    }, function() {
+      // Notify that we saved.
+      console.log('Settings saved');
+    });
   }
-  chrome.extension.sendMessage({
-    msg: "startFunc",
-    data: tabs[0]
-  });
-  var activeURL = tabs[0].url;
+  // chrome.extension.sendMessage({
+  //   msg: "startFunc",
+  //   data: tabs[0]
+  // });
+  //var activeURL = tabs[0].url;
   localStorage.setItem('liked', '0');
+  chrome.storage.local.set({
+    'liked': '0'
+  }, function() {
+    // Notify that we saved.
+    console.log('Settings saved');
+  });
 });
 
 // document.addEventListener('DOMContentLoaded', function() {

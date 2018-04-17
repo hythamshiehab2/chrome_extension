@@ -28,6 +28,10 @@ eventList.forEach(function(e) {
     //console.error(chrome.i18n.getMessage('inHandlerError'), e);
   });
 });
+chrome.runtime.onMessage.addListener(function(data) {
+  if (typeof data)
+    updateIcon(data);
+});
 //chrome.webNavigation.onCommitted.addListener(function(data) {
 function updateIcon(data) {
   //console.log('onHistory');
