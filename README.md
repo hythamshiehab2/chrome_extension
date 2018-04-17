@@ -1,11 +1,10 @@
-A Chrome Extension that will make Chrome Rock & Roll!
+إضافة جووجل كروم لقيادة جووجل كروم، بيد واحده! (أو بدون!)
 =======
-Using Chrome Extension APIs, this extension will drive Google Chrome to surf the web, with (almost!)* a predefined course, doing some stuff!
+باستخدام واجهات إضافات جووجل كروم البرمجيه (Chrome Extension API)، سوف يجول المتصفّح في الويب، بمسار محدّد (تقريبا!)*، وسوف يقوم ببعض الأشياء!
+* بالنّسبة لـ *تقريبا*، يتحتّم عليّ، إذ هي مهمّة سهلة (لمبرمج!) أن يكتب برامج آلية، لكن هل المبرمج (بشر آخر الأمر!) يجرؤ على قول أنّ *كلّ* الإحتمالات تمّ حسابها، كبرنامج شطرنج حديث!
 
-* As of the *almost* thing, I should!, as it is very easy thing (for a programmer!) to write a bot!, but does the programmer (just a human after all!) dare to say that *all* probabilities has been calculated, as a modern chess program!
+لا عليك!
 
-never mind!
+سوف أقدّم "عقدا" بيني وبين المستخدم، يوضّح ماذا سوف تفعله الإضافة، وسوف أتقيّد به.
 
-I will introduce a contract, to the end-user, for what exactly the bot will do, and I will honor it.
-
-And for the programmers, it might be a corner-stone for more hyper approach!
+و لفيالق المطوّرين، قد تصبح (الإضافة) حجر أساس لمزيد من الوجهات المثيرة!
