@@ -89,7 +89,11 @@ function generateIdea() {
 
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
   var data = request.data || {};
+  var whatToDo = '';
+  var nextMove = request.msg;
+
   console.log('content.js:' + data);
+  console.log('content.js:' + nextMove);
   // zoltrix
 
   // if (request.msg === "updateIcon") {
@@ -104,21 +108,16 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
   //   }
   // }
 
-  if (request.msg === "startRR") {
-    if (data) {
-      chrome.browserAction.setIcon({
-        path: "/icons/on.png"
-      });
-    } else {
-      chrome.browserAction.setIcon({
-        path: "/icons/off.png"
-      });
-    }
-  }
   console.log('waiting load to complete');
 
   $(document).ready(function() {
     console.log('document is ready!');
+    if (request.msg === "startRR") {
+       console.log('StarRR');
+    }
+    if (request.msg === "startRRR") {
+
+    }
     //console.log('finished RRR');
   });
   /*

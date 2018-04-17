@@ -4,17 +4,30 @@ function TT() {
   console.log('TT is called');
 }
 
-function startRR() {
-  // RR();
-  // RRR();
-  RR(function() {
-    RRR(function () {
-      //console.log('sdfwoieewfsioqw,x');
-    });
-  });
+function callback() {
+  console.log('callback is called');
 }
 
-function RRR(param, callback) {
+function startRR() {
+  //   RR(function() {
+  //     RRR();
+  //   }
+  // });
+  //RR();
+  //RRR();
+  $.when(RR()).done(function() {
+    RRR();
+  });
+  // RR(function(callback) {
+  //   callback();
+  // });
+  // RRR(function(callback) {
+  //   callback();
+  // });
+  //RR().then(RRR());
+}
+
+function RRR() {
   console.log('RRRRRRRR is callled ');
   chrome.tabs.query({
     active: true,
@@ -37,7 +50,7 @@ function RRR(param, callback) {
             //chrome.tabs.onUpdated.removeListener(listener);
             // Now the tab is ready!
             chrome.tabs.sendMessage(tabs[0].id, {
-              data: "startRR"
+              data: "startRRR"
             });
             // chrome.browserAction.setIcon({
             //   path: "/icons/icon4.png",
@@ -47,10 +60,9 @@ function RRR(param, callback) {
         });
       });
   });
-  callback();
 }
 
-function RR(param, callback) {
+function RR() {
   chrome.tabs.query({
     active: true,
     currentWindow: true
@@ -72,7 +84,7 @@ function RR(param, callback) {
             //chrome.tabs.onUpdated.removeListener(listener);
             // Now the tab is ready!
             chrome.tabs.sendMessage(tabs[0].id, {
-              data: "start"
+              data: "startRR"
             });
             // chrome.browserAction.setIcon({
             //   path: "/icons/icon4.png",
@@ -83,7 +95,6 @@ function RR(param, callback) {
         });
       });
   });
-  callback();
 }
 
 (function() {
