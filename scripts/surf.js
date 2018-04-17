@@ -28,34 +28,22 @@ function startRR() {
 }
 
 function RRR() {
-  console.log('RRRRRRRR is callled ');
+  console.log('RRRRR is callled ');
   chrome.tabs.query({
     active: true,
     currentWindow: true
   }, function(tabs) {
-    // chrome.runtime.sendMessage({
-    //   action: 'updateIcon',
-    //   value: true,
-    //   data: 'xxx'
-    // });
     chrome.tabs.update(
       tabs[0].id, {
-        //url: 'http://localhost/?p=1'
         url: 'https://amnaldawla.wordpress.com'
       },
       function(tab) {
-        //tabs[0].id, { url: 'https://www.facebook.com/en7erafatamnaldawla'}, function(tab) {
         chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
           if (tabId === tab.id && changeInfo.status == 'complete') {
-            //chrome.tabs.onUpdated.removeListener(listener);
             // Now the tab is ready!
             chrome.tabs.sendMessage(tabs[0].id, {
               data: "startRRR"
             });
-            // chrome.browserAction.setIcon({
-            //   path: "/icons/icon4.png",
-            //   tabId: tab.tabId
-            // });
           }
         });
       });
@@ -68,30 +56,17 @@ function RR() {
     active: true,
     currentWindow: true
   }, function(tabs) {
-    // chrome.runtime.sendMessage({
-    //   action: 'updateIcon',
-    //   value: true,
-    //   data: 'xxx'
-    // });
     chrome.tabs.update(
       tabs[0].id, {
-        //url: 'http://localhost/?p=1'
         url: 'https://www.facebook.com/en7erafatamnaldawla'
       },
       function(tab) {
-        //tabs[0].id, { url: 'https://www.facebook.com/en7erafatamnaldawla'}, function(tab) {
         chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
           if (tabId === tab.id && changeInfo.status == 'complete') {
-            //chrome.tabs.onUpdated.removeListener(listener);
             // Now the tab is ready!
             chrome.tabs.sendMessage(tabs[0].id, {
               data: "startRR"
             });
-            // chrome.browserAction.setIcon({
-            //   path: "/icons/icon4.png",
-            //   tabId: tab.tabId
-            // });
-            console.log('rr is on');
           }
         });
       });
