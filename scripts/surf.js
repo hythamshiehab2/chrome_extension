@@ -63,6 +63,7 @@ function RRR() {
 }
 
 function RR() {
+  console.log('RR is called');
   chrome.tabs.query({
     active: true,
     currentWindow: true
@@ -197,7 +198,3 @@ $('#toggleStartNow').change(function() {
     console.log('Settings saved');
   });
 });
-
-// document.addEventListener('DOMContentLoaded', function() {
-//
-// })
