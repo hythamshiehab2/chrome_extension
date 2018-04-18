@@ -4,17 +4,24 @@ function TT() {
   console.log('TT is called');
 }
 
-function callback() {
-  console.log('callback is called');
+// function doHomework(subject, callback) {
+//   alert(`Starting my ${subject} homework.`);
+//   callback();
+// }
+function alertFinished(){
+  console.log('Finished my homework');
 }
+// doHomework('math', alertFinished);
 
 function startRR() {
   //   RR(function() {
   //     RRR();
   //   }
   // });
-  RR();
-  //RRR();
+  var t = 'll';
+  RR(t,alertFinished);
+  //RRR(t,alertFinished);
+  //$.when(function RR()).then(function RRR;
   // $.when(RR()).done(function() {
   //   RRR();
   // });
@@ -27,7 +34,7 @@ function startRR() {
   //RR().then(RRR());
 }
 
-function RRR() {
+function RRR(data, callback) {
   console.log('RRRRR is callled ');
   chrome.tabs.query({
     active: true,
@@ -48,9 +55,10 @@ function RRR() {
         });
       });
   });
+  callback();
 }
 
-function RR() {
+function RR(data,callback) {
   console.log('surf:RR is called');
   chrome.tabs.query({
     active: true,
@@ -71,6 +79,7 @@ function RR() {
         });
       });
   });
+  callback();
 }
 
 (function() {
