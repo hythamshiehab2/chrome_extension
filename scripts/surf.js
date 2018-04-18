@@ -1,11 +1,4 @@
 var myLocalData;
-//This line opens up a long-lived connection to your background page.
-// var port = chrome.runtime.connect({name:"mycontentscript"});
-// port.onMessage.addListener(function(message,sender){
-//   if(message.greeting === "hello"){
-//     //alert(message.greeting);
-//   }
-// });
 
 function TT() {
   console.log('TT is called');
@@ -26,7 +19,7 @@ function startRR() {
   //   }
   // });
   var t = 'll';
-  RR(t,alertFinished);
+  RR();
   //RRR(t,alertFinished);
   //$.when(function RR()).then(function RRR;
   // $.when(RR()).done(function() {
@@ -41,7 +34,7 @@ function startRR() {
   //RR().then(RRR());
 }
 
-function RRR(data, callback) {
+function RRR() {
   console.log('RRRRR is callled ');
   chrome.tabs.query({
     active: true,
@@ -62,13 +55,9 @@ function RRR(data, callback) {
         });
       });
   });
-  callback();
 }
 
-function RRisFinished() {
-  console.log('xxxxxxxxxxx');
-}
-function RR(data,callback) {
+function RR() {
   console.log('surf:RR is called');
   chrome.tabs.query({
     active: true,
@@ -82,14 +71,14 @@ function RR(data,callback) {
         chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
           if (tabId === tab.id && changeInfo.status == 'complete') {
             // Now the tab is ready!
-            chrome.tabs.sendMessage(tabs[0].id, {
+            console.log('surf.js:tabId:' + tabId);
+            chrome.tabs.sendMessage(tabId, {
               data: "startRR"
             });
           }
         });
       });
   });
-  callback();
 }
 
 (function() {
