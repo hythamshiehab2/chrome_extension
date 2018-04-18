@@ -4,6 +4,7 @@ var isFBisLiked = false;
 // so we can mitigate the user account being locked up
 //
 // <img class="img" src="https://www.facebook.com/captcha/tfbimage.php?captcha_challenge_code=1523901580-89a13273a09b7f35e763c3ca40ae8408&amp;captcha_challenge_hash=AZmRaKxJX7tUo4zsn6ANaEDoCoZXYa0lf1wrhX6GJOXS4PdiTrbBwESIDVl5j1P3pL4vWA_otf_1bl-GM6knG-LZ2fOaiQZY9qIZkeknVJj_VIxk4V3MPu4bhNlpQtIAy7GFRciON_OIXca03F53lv4fPSORBSZuNQlu_aiWtl5mvbL504bd31gmZXK1USWPVb8" alt="Hit reload on your browser to refresh this page if this image doesn't load.">
+
 function ShareSomething() {
   console.log('will share something');
   //document.location = 'https://amnaldawla.wordpress.com';
@@ -67,10 +68,14 @@ function theHypered() {
   //   console.log('rr:' + rr);
   if (rr == 'true') {
     console.log('theHypered will execute.');
-    ShareSomething();
+    //ShareSomething();
     //RockNRoll();
     // zoltrix
     //document.location = 'https://amnaldawla.wordpress.com';
+    //RRR();
+    chrome.runtime.sendMessage({greeting: "hello"}, function(response) {
+      console.log(response);
+    });
   } else {
     return;
   } // });
@@ -102,6 +107,15 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     sendResponse({farewell: "goodbye"});
 
   console.log('content.js:' + data);
+  if (data == 'startRR');
+  {
+    checkFBisLoggedIn();
+    checkFBPageIsLiked();
+  }
+  if (data == 'startRRR')
+  {
+    ShareSomething();
+  }
   //console.log('content.js:' + nextMove);
   // zoltrix
 
@@ -124,8 +138,8 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     console.log('content:document is ready!');
     if(data == 'start')
     {
-      checkFBisLoggedIn();
-      checkFBPageIsLiked();
+      //checkFBisLoggedIn();
+      //checkFBPageIsLiked();
       //ShareSomething();
       //sendResponse({data: 'yyyyy', success: true});
     }

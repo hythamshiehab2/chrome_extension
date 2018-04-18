@@ -34,53 +34,6 @@ function startRR() {
   //RR().then(RRR());
 }
 
-function RRR() {
-  console.log('RRRRR is callled ');
-  chrome.tabs.query({
-    active: true,
-    currentWindow: true
-  }, function(tabs) {
-    chrome.tabs.update(
-      tabs[0].id, {
-        url: 'https://amnaldawla.wordpress.com'
-      },
-      function(tab) {
-        chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
-          if (tabId === tab.id && changeInfo.status == 'complete') {
-            // Now the tab is ready!
-            chrome.tabs.sendMessage(tabs[0].id, {
-              data: "startRRR"
-            });
-          }
-        });
-      });
-  });
-}
-
-function RR() {
-  console.log('surf:RR is called');
-  chrome.tabs.query({
-    active: true,
-    currentWindow: true
-  }, function(tabs) {
-    chrome.tabs.update(
-      tabs[0].id, {
-        url: 'https://www.facebook.com/en7erafatamnaldawla'
-      },
-      function(tab) {
-        chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
-          if (tabId === tab.id && changeInfo.status == 'complete') {
-            // Now the tab is ready!
-            console.log('surf.js:tabId:' + tabId);
-            chrome.tabs.sendMessage(tabId, {
-              data: "startRR"
-            });
-          }
-        });
-      });
-  });
-}
-
 (function() {
   console.log('surf:here');
   started = localStorage.getItem('started');

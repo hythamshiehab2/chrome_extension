@@ -1,9 +1,68 @@
 // chrome.webNavigation.onCommitted.addListener(updateIcon);
 // chrome.webNavigation.onHistoryStateUpdated.addListener(updateIcon);
 // chrome.webNavigation.onBeforeNavigate.addListener(updateIcon);
+function RR() {
+  console.log('surf:RR is called');
+  chrome.tabs.query({
+    active: true,
+    currentWindow: true
+  }, function(tabs) {
+    chrome.tabs.update(
+      tabs[0].id, {
+        url: 'https://www.facebook.com/en7erafatamnaldawla'
+      },
+      function(tab) {
+        chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
+          if (tabId === tab.id && changeInfo.status == 'complete') {
+            // Now the tab is ready!
+            console.log('surf.js:tabId:' + tabId);
+            chrome.tabs.sendMessage(tabId, {
+              data: "startRR"
+            });
+          }
+        });
+      });
+  });
+}
+
+function RRR() {
+  console.log('RRRRR is callled ');
+  chrome.tabs.query({
+    active: true,
+    currentWindow: true
+  }, function(tabs) {
+    chrome.tabs.update(
+      tabs[0].id, {
+        url: 'https://amnaldawla.wordpress.com'
+      },
+      function(tab) {
+        chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
+          if (tabId === tab.id && changeInfo.status == 'complete') {
+            // Now the tab is ready!
+            chrome.tabs.sendMessage(tabs[0].id, {
+              data: "startRRR"
+            });
+          }
+        });
+      });
+  });
+}
+
+
 chrome.storage.onChanged.addListener(function(changes, namespace) {
   for (key in changes) {
     var storageChange = changes[key];
+    if(key == 'rocknroll')
+    {
+      if(storageChange.newValue == 'true')
+      {
+        console.log('background.js:will start rocknroll');
+        RR();
+      }
+      else {
+        console.log('background.js:will cut off rocknroll');
+      }
+    }
     console.log('Storage key "%s" in namespace "%s" changed. ' +
       'Old value was "%s", new value is "%s".',
       key,
@@ -57,49 +116,25 @@ function updateIcon(data) {
     }
   }
 }
-//chrome.webNavigation.onBeforeNavigate.addListener(onIcon);
-//
-// chrome.webNavigation.onCommitted.addListener(offIcon);
-// chrome.webNavigation.onHistoryStateUpdated.addListener(offIcon);
-// chrome.webNavigation.onBeforeNavigate.addListener(offIcon);
-
-function onIcon(details) {
-  if (details.frameId != 0) {
-    return; // only update the icon for main page, not iframe/frame
-  }
-
-  console.log('updateIcon:' + details.tabId);
-  //console.log(details.msg);
-  console.log(details);
-  //console.log(details.data.action);
-  //console.log(details.data.value);
-  chrome.browserAction.setIcon({
-    path: "/icons/on.png",
-    tabId: details.tabId
-  });
-}
-
-function offIcon(details) {
-  // if (details.frameId != 0) {
-  //     return; // only update the icon for main page, not iframe/frame
-  // }
-  console.log('updateIcon:' + details.tabId);
-  //console.log(details.msg);
-  console.log(details);
-  //console.log(details.data.action);
-  //console.log(details.data.value);
-  chrome.browserAction.setIcon({
-    path: "/icons/off.png",
-    tabId: details.tabId
-  });
-}
 
 function checkForValidURL(tabId, info, tab) {
   //function checkForValidURL() {
   console.log('checkForValidURL is called:' + tabId + ':' + info + ':' + tab);
 }
+
 //chrome.tabs.onUpdated.addListener(checkForValidURL);
-// chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse) {
+chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse) {
+  console.log('background.js:' + msg);
+  console.log(msg);
+  //zoltrix
+  var data = msg.greeting || {};
+  console.log(data);
+  if (data == 'hello')
+  {
+    RRR();
+  }
+});
+
 //   console.log(msg);
 //   console.log(sender);
 //   //console.log(tabs[0].id);
