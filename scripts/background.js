@@ -30,7 +30,10 @@ eventList.forEach(function(e) {
 });
 chrome.runtime.onMessage.addListener(function(data) {
   if (typeof data)
+  {
+    console.log(data);
     updateIcon(data);
+  }
 });
 //chrome.webNavigation.onCommitted.addListener(function(data) {
 function updateIcon(data) {
