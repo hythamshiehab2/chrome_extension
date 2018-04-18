@@ -7,7 +7,6 @@ var isFBisLiked = false;
 
 function ShareSomething() {
   console.log('will share something');
-  //document.location = 'https://amnaldawla.wordpress.com';
 }
 
 function checkFBisLoggedIn() {
@@ -50,11 +49,6 @@ function checkFBPageIsLiked() {
 
 function theHypered() {
   console.log('theHypered is checking...');
-  //var rr = localStorage.getItem('rocknroll');
-  //var rr = 0;
-  // chrome.storage.local.set({
-  //   key: value
-  // });
   chrome.storage.local.get(['rocknroll'], function(result) {
     console.log('content:my rocknroll is ' + result.rocknroll);
     rr = result.rocknroll;
@@ -62,23 +56,14 @@ function theHypered() {
   console.log('content:the RR:');
   console.log(rr);
 
-  // chrome.storage.local.get(['rocknroll'], function(result) {
-  //   console.log(result.key);
-  //   rr = result.key;
-  //   console.log('rr:' + rr);
   if (rr == 'true') {
     console.log('theHypered will execute.');
-    //ShareSomething();
-    //RockNRoll();
-    // zoltrix
-    //document.location = 'https://amnaldawla.wordpress.com';
-    //RRR();
     chrome.runtime.sendMessage({greeting: "hello"}, function(response) {
       console.log(response);
     });
   } else {
     return;
-  } // });
+  }
 }
 
 function generateIdea() {
@@ -98,7 +83,6 @@ function generateIdea() {
 
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
   var data = request.data || {};
-
   console.log(sender.tab ?
               "from a content script:" + sender.tab.url :
               "from the extension");
@@ -116,20 +100,6 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
   {
     ShareSomething();
   }
-  //console.log('content.js:' + nextMove);
-  // zoltrix
-
-  // if (request.msg === "updateIcon") {
-  //   if (data) {
-  //     chrome.browserAction.setIcon({
-  //       path: "/icons/on.png"
-  //     });
-  //   } else {
-  //     chrome.browserAction.setIcon({
-  //       path: "/icons/off.png"
-  //     });
-  //   }
-  // }
 
   console.log('waiting load to complete');
 
@@ -138,10 +108,6 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     console.log('content:document is ready!');
     if(data == 'start')
     {
-      //checkFBisLoggedIn();
-      //checkFBPageIsLiked();
-      //ShareSomething();
-      //sendResponse({data: 'yyyyy', success: true});
     }
     if (data == "startRR") {
       console.log('StarRR');
@@ -149,24 +115,5 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     if (data == "startRRR") {
       console.log('StartRRR');
     }
-    //console.log('finished RRR');
   });
-  /*
-  $('textarea').trigger({type: 'keypress', which: 13, keyCode: 13});
-  var t = document.querySelectorAll('textarea')[0];
-  t.innerText = generateIdea();
-  document.getElementById('submit').click();
-  console.log('here');
-
-  sendResponse({data: 'yyyyy', success: true});
-  document.addEventListener('DOMContentLoaded', function() {
-    var t = document.querySelectorAll('textarea')[0];
-    t.innerText ='sdfsdf';
-    console.log('here');
-    //[].forEach.call(linksList, function(header) {
-    //    header.innerHTML = request.data;
-    //});
-    sendResponse({data: 'yyyyy', success: true});
-  });
-  */
 });

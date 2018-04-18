@@ -4,34 +4,8 @@ function TT() {
   console.log('TT is called');
 }
 
-// function doHomework(subject, callback) {
-//   alert(`Starting my ${subject} homework.`);
-//   callback();
-// }
 function alertFinished(){
   console.log('Finished my homework');
-}
-// doHomework('math', alertFinished);
-
-function startRR() {
-  //   RR(function() {
-  //     RRR();
-  //   }
-  // });
-  var t = 'll';
-  RR();
-  //RRR(t,alertFinished);
-  //$.when(function RR()).then(function RRR;
-  // $.when(RR()).done(function() {
-  //   RRR();
-  // });
-  // RR(function(callback) {
-  //   callback();
-  // });
-  // RRR(function(callback) {
-  //   callback();
-  // });
-  //RR().then(RRR());
 }
 
 (function() {
@@ -77,7 +51,6 @@ $('#toggleButton').change(function() {
     });
     $('#console-event').html('will r&r!');
     $('#theContract').css('display', 'block');
-    //TT();
   } else {
     localStorage.setItem('started', 'false');
     localStorage.setItem('rocknroll', 'false');
