@@ -13,11 +13,11 @@ function startRR() {
   //     RRR();
   //   }
   // });
-  //RR();
+  RR();
   //RRR();
-  $.when(RR()).done(function() {
-    RRR();
-  });
+  // $.when(RR()).done(function() {
+  //   RRR();
+  // });
   // RR(function(callback) {
   //   callback();
   // });
@@ -51,7 +51,7 @@ function RRR() {
 }
 
 function RR() {
-  console.log('RR is called');
+  console.log('surf:RR is called');
   chrome.tabs.query({
     active: true,
     currentWindow: true
@@ -74,10 +74,10 @@ function RR() {
 }
 
 (function() {
-  console.log('here');
+  console.log('surf:here');
   started = localStorage.getItem('started');
   rocknroll = localStorage.getItem('rocknroll');
-  console.log('started:' + started);
+  console.log('surf:started:' + started);
   if (started == 'true') {
     $('#toggleButton').bootstrapToggle('on');
     $('#theContract').css('display', 'block');
@@ -93,7 +93,7 @@ function RR() {
 })();
 
 window.onload = function() {
-  console.log('window is loaded');
+  console.log('surf:window is loaded');
   var rr = 0;
   rr = localStorage.getItem('rocknroll');
   console.log('rr:' + rr);
@@ -112,7 +112,7 @@ $('#toggleButton').change(function() {
       'started': 'true'
     }, function() {
       // Notify that we saved.
-      console.log('Settings saved');
+      console.log('surf:Settings saved');
     });
     $('#console-event').html('will r&r!');
     $('#theContract').css('display', 'block');
@@ -125,7 +125,7 @@ $('#toggleButton').change(function() {
       'rocknroll': 'false'
     }, function() {
       // Notify that we saved.
-      console.log('Settings saved');
+      console.log('surf:Settings saved');
     });
     console.log('started:false');
     $('#theContract').css('display', 'none');
@@ -138,18 +138,14 @@ $('#toggleStartNow').change(function() {
     chrome.browserAction.setBadgeText({
       "text": localStorage.length.toString()
     });
-    //chrome.browserAction.setIcon({path: 'icons/on.png'});
-    //chrome.browserAction.setIcon({path: '/icons/on.png'});
     localStorage.setItem('rocknroll', 'true');
     chrome.storage.local.set({
       'rocknroll': 'true'
     }, function() {
       // Notify that we saved.
-      console.log('Settings saved');
+      console.log('surf:Settings saved');
     });
-    console.log('update the icons');
     startRR();
-    //RRR();
   } else {
     console.log('rr is off');
     localStorage.setItem('rocknroll', 'false');
@@ -157,19 +153,14 @@ $('#toggleStartNow').change(function() {
       'rocknroll': 'false'
     }, function() {
       // Notify that we saved.
-      console.log('Settings saved');
+      console.log('surf:Settings saved');
     });
   }
-  // chrome.extension.sendMessage({
-  //   msg: "startFunc",
-  //   data: tabs[0]
-  // });
-  //var activeURL = tabs[0].url;
   localStorage.setItem('liked', '0');
   chrome.storage.local.set({
     'liked': '0'
   }, function() {
     // Notify that we saved.
-    console.log('Settings saved');
+    console.log('surf:Settings saved');
   });
 });

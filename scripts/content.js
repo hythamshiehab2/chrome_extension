@@ -9,6 +9,7 @@ function ShareSomething() {
 }
 
 function checkFBisLoggedIn() {
+  console.log('content:checkFBisLoggedIn');
   var login_form_exists = document.getElementById('login_form') || 0;
   console.log(login_form_exists);
   if (login_form_exists) {
@@ -23,23 +24,23 @@ function checkFBisLoggedIn() {
 }
 
 function checkFBPageIsLiked() {
-  console.log('check fb page is liked first!');
+  console.log('content:checkFBPageIsLiked');
   var likedButton = document.getElementsByClassName('likedButton')[0];
   if (!likedButton) {
     // not liked!?
-    console.log('will like!');
+    console.log('content:will like!');
     var likeButton = document.getElementsByClassName('likeButton')[0];
     if (!likeButton) {
-      console.log('now what!? didtn found the like/liked buttons!');
+      console.log('content:now what!? didtn found the like/liked buttons!');
     } else {
       likeButton.click();
-      console.log('this will Do!');
+      console.log('content:this will Do!');
       isFBisLiked = true;
       setInterval(theHypered, 10000);
     }
   } else {
-    console.log('already LIKED!');
-    console.log('now will start!');
+    console.log('content:already LIKED!');
+    console.log('content:now will start!');
     isFBisLiked = true;
     setInterval(theHypered, 10000);
   }
@@ -53,24 +54,24 @@ function theHypered() {
   //   key: value
   // });
   chrome.storage.local.get(['rocknroll'], function(result) {
-    console.log('my rocknroll is ' + result.rocknroll);
+    console.log('content:my rocknroll is ' + result.rocknroll);
     rr = result.rocknroll;
   });
-  console.log('the RR:');
+  console.log('content:the RR:');
   console.log(rr);
 
   // chrome.storage.local.get(['rocknroll'], function(result) {
   //   console.log(result.key);
   //   rr = result.key;
   //   console.log('rr:' + rr);
-    if (rr == 'true') {
-      console.log('theHypered will execute.');
-      //RockNRoll();
-      // zoltrix
-      //document.location = 'https://amnaldawla.wordpress.com';
-    } else {
-      return;
-    }  // });
+  if (rr == 'true') {
+    console.log('theHypered will execute.');
+    //RockNRoll();
+    // zoltrix
+    //document.location = 'https://amnaldawla.wordpress.com';
+  } else {
+    return;
+  } // });
 }
 
 function generateIdea() {
@@ -93,7 +94,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
   var nextMove = request.msg;
 
   console.log('content.js:' + data);
-  console.log('content.js:' + nextMove);
+  //console.log('content.js:' + nextMove);
   // zoltrix
 
   // if (request.msg === "updateIcon") {
@@ -111,12 +112,13 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
   console.log('waiting load to complete');
 
   $(document).ready(function() {
-    console.log('document is ready!');
-    if (request.msg === "startRR") {
-       console.log('StarRR');
+    console.log('content:data sent:' + data);
+    console.log('content:document is ready!');
+    if (data == "startRR") {
+      console.log('StarRR');
     }
-    if (request.msg === "startRRR") {
-
+    if (data == "startRRR") {
+      console.log('StartRRR');
     }
     //console.log('finished RRR');
   });
