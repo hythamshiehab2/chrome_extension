@@ -1,4 +1,11 @@
 var myLocalData;
+//This line opens up a long-lived connection to your background page.
+// var port = chrome.runtime.connect({name:"mycontentscript"});
+// port.onMessage.addListener(function(message,sender){
+//   if(message.greeting === "hello"){
+//     //alert(message.greeting);
+//   }
+// });
 
 function TT() {
   console.log('TT is called');
@@ -58,6 +65,9 @@ function RRR(data, callback) {
   callback();
 }
 
+function RRisFinished() {
+  console.log('xxxxxxxxxxx');
+}
 function RR(data,callback) {
   console.log('surf:RR is called');
   chrome.tabs.query({

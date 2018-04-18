@@ -90,6 +90,10 @@ function generateIdea() {
   return idea;
 }
 
+// chrome.runtime.onConnect.addListener(function(port){
+//   //port.postMessage({greeting:"hello"});
+// });
+
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
   var data = request.data || {};
   var whatToDo = '';
@@ -123,8 +127,12 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
       //ShareSomething();
       //sendResponse({data: 'yyyyy', success: true});
     }
+
     if (data == "startRR") {
       console.log('StarRR');
+      //sendResponse({"data":"Test Message Y"});
+      //sendResponse({data: 'yyyyy', success: true});
+      //port.postMessage({greeting:"hello"});
     }
     if (data == "startRRR") {
       console.log('StartRRR');
