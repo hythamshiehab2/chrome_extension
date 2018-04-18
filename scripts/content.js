@@ -114,6 +114,10 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
   $(document).ready(function() {
     console.log('content:data sent:' + data);
     console.log('content:document is ready!');
+    if(data == 'start')
+    {
+      checkFBisLoggedIn();
+    }
     if (data == "startRR") {
       console.log('StarRR');
     }
