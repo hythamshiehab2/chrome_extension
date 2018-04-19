@@ -6,7 +6,7 @@
   "homepage_url": "https://github.com/hythamshiehab2/chrome_extension",
   "browser_action": {
     "default_icon": "icons/off.png",
-    "default_popup": "popup.html",
+    "default_popup": "popup2.html",
     "default_title": "المتشعّب"
   },
   "icons": {
