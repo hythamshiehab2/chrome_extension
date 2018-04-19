@@ -9,6 +9,10 @@
     "default_popup": "popup.html",
     "default_title": "المتشعّب"
   },
+  "icons": {
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
   "background": {
     "scripts": ["scripts/background.js", "scripts/surf.js"]
   },
