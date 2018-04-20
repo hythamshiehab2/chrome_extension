@@ -9,6 +9,12 @@ function ShareSomething() {
   console.log('will share something');
 }
 
+function tweet() {
+  //document.getElementById('global-new-tweet-button').click()
+  //getElementByXpath('//*[@id="Tweetstorm-tweet-box-0"]/div[2]/div[1]/div[2]/div[2]/div[2]/div[1]/div').innerText = 'sdfsdf'
+  //document.getElementsByClassName('SendTweetsButton')[0].click()
+}
+
 function postOnFB() {
   // on the user profile page
   // this will get the '...' element, which by clicking, open the new textarea
