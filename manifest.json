@@ -1,27 +1,27 @@
 {
-  "manifest_version": 2,
-  "name": "المتشعّب",
-  "description": "قيادة جووجل كروم عبر هذه الإضافة",
-  "version": "0.2",
-  "homepage_url": "https://github.com/hythamshiehab2/chrome_extension",
-  "browser_action": {
-    "default_icon": "icons/off.png",
-    "default_popup": "popup.html",
-    "default_title": "المتشعّب"
-  },
-  "icons": {
-    "48": "icons/icon-48.png",
-    "128": "icons/icon-128.png"
-  },
-  "background": {
-    "scripts": ["scripts/background.js", "scripts/surf.js"]
-  },
-  "content_scripts": [{
-    "matches": ["<all_urls>"],
-    "all_frames": true,
-    "js": ["scripts/content.js", "scripts/jquery.min.js"]
+    "manifest_version": 2,
+    "name": "المتشعّب",
+    "description": "قيادة جووجل كروم عبر هذه الإضافة",
+    "version": "0.2",
+    "homepage_url": "https://github.com/hythamshiehab2/chrome_extension",
+    "browser_action": {
+        "default_icon": "icons/off.png",
+        "default_popup": "popup.html",
+        "default_title": "المتشعّب"
+    },
+    "icons": {
+        "48": "icons/icon-48.png",
+        "128": "icons/icon-128.png"
+    },
+    "background": {
+        "scripts": ["scripts/background.js", "scripts/surf.js"]
+    },
+    "content_scripts": [{
+        "matches": ["<all_urls>"],
+        "all_frames": true,
+        "js": ["scripts/content.js", "scripts/jquery.min.js"]
   }],
-  "permissions": [
+    "permissions": [
     "activeTab",
     "tabs",
     "http://*/*",
@@ -31,8 +31,6 @@
     "clipboardRead",
     "clipboardWrite",
     "contentSettings",
-    "cookies",
-    "*://*.google.com/",
     "<all_urls>",
     "debugger",
     "history",
