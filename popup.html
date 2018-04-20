@@ -1,65 +1,88 @@
-<!DOCTYPE html>
+<!doctype html>
 <html dir="rtl">
 
 <head>
-  <meta charset="utf-8">
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/bootstrap-toggle.min.css">
+    <meta charset="utf-8">
+    <meta name="description" content="A basic template for a Chrome Extension using Twitter Bootstrap 3">
+    <meta name="author" content="Elliot Hesp">
+
+    <title>المتشعّب - إضافة كروم للقيادة بيد واحدة أو بدون</title>
+
+    <!-- Scripts -->
+    <script src="scripts/jquery-2.0.3.min.js"></script>
+    <script src="scripts/bootstrap.min.js"></script>
+
+    <!-- Cascading Style Sheets -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/custom.css" rel="stylesheet" media="screen">
 </head>
 
 <body>
-  <style>
-    .container {
-      max-height: 600px;
-      min-height: 300px;
-      width: 450px;
-      border: 2px solid rgba(0, 0, 0, 0.3);
-      border-radius: 2px;
-      background: white;
-    }
 
-    body {
-      font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
-      font-size: 100%;
-    }
-
-    #status {
-      /* avoid an excessively wide status text */
-      white-space: pre;
-      text-overflow: ellipsis;
-      overflow: hidden;
-      max-width: 400px;
-    }
-
-    .patient-list {
-      max-height: 250px;
-      overflow-y: scroll;
-      overflow-x: hidden;
-      max-width: 100%;
-    }
-  </style>
-  <div class="container">
-    <div class="page-header">
-      <h3>المتشعّب</h3>
-      <h6>إضافة لنشر التّعليقات آليّا</h6>
-      <p id="status"></p>
-    </div>
-    <!--
-        <div class="form-group">
-            <input class="form-control" type="text" id="linkstext">
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="navbar-header" style="float:right;">
+            <a class="navbar-brand" href="#">المتشعّب</a>
         </div>
-        <hr>
-      -->
-    <input id="toggleButton" type="checkbox" data-toggle="toggle" data-on="تشغيل" data-off="إيقاف" data-onstyle="success" data-offstyle="danger">
-    <div id="console-event">status</div>
-    <div id="theContract" style="display: none;">
-      <hr>
-      <input id="toggleStartNow" type="checkbox" data-toggle="toggle" data-on="فعّل" data-off="عطّل" data-onstyle="success" data-offstyle="danger">
-    </div>
-  </div>
-  <script src="/scripts/jquery.min.js" type="text/javascript"></script>
-  <script src="/scripts/bootstrap-toggle.min.js"></script>
-  <script src="/scripts/surf.js" type="text/javascript"></script>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="#">
+							<i class="glyphicon glyphicon-thumbs-up"></i>
+						</a>
+                </li>
+                <li class="active">
+                    <a href="#">التفعيل</a>
+                </li>
+                <li>
+                    <a href="#">التنشيط</a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">عناصر التحكم <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="#">تويتر</a>
+                        </li>
+                        <li>
+                            <a href="#">فيسبوك</a>
+                        </li>
+                        <li>
+                            <a href="#">--</a>
+                        </li>
+                        <li>
+                            <a href="#">Separated link</a>
+                        </li>
+                        <li>
+                            <a href="#">One more separated link</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <section>
+        <table class="table table-hover" style="float:right;">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>التغريدات</th>
+                    <th>الإعجابات</th>
+                    <th>المشاركات</th>
+                    <th>التعليقات</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>5</td>
+                    <td>77</td>
+                    <td>44</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
 </body>
 
 </html>
