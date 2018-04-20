@@ -1,18 +1,36 @@
 var isFBisLiked = false;
+var msgFlow = [];
 // We should also check for any captcha!
 // keep an eye (counter) for captcha per session(s)
 // so we can mitigate the user account being locked up
 //
 // <img class="img" src="https://www.facebook.com/captcha/tfbimage.php?captcha_challenge_code=1523901580-89a13273a09b7f35e763c3ca40ae8408&amp;captcha_challenge_hash=AZmRaKxJX7tUo4zsn6ANaEDoCoZXYa0lf1wrhX6GJOXS4PdiTrbBwESIDVl5j1P3pL4vWA_otf_1bl-GM6knG-LZ2fOaiQZY9qIZkeknVJj_VIxk4V3MPu4bhNlpQtIAy7GFRciON_OIXca03F53lv4fPSORBSZuNQlu_aiWtl5mvbL504bd31gmZXK1USWPVb8" alt="Hit reload on your browser to refresh this page if this image doesn't load.">
+function checkMessage(message) {
+    return msgFlow.find
+}
+
+function myFunction() {
+    document.getElementById("demo").innerHTML = ages.find(checkAdult);
+}
 
 function ShareSomething() {
   console.log('will share something');
 }
 
-function tweet() {
-  //document.getElementById('global-new-tweet-button').click()
-  //getElementByXpath('//*[@id="Tweetstorm-tweet-box-0"]/div[2]/div[1]/div[2]/div[2]/div[2]/div[1]/div').innerText = 'sdfsdf'
-  //document.getElementsByClassName('SendTweetsButton')[0].click()
+function T_tweet() {
+  document.getElementById('global-new-tweet-button').click();
+  sleep(5);
+  getElementByXpath('//*[@id="Tweetstorm-tweet-box-0"]/div[2]/div[1]/div[2]/div[2]/div[2]/div[1]/div').innerText = 'https://amnaldawla.wordpress.com';
+  sleep(5);
+  document.getElementsByClassName('SendTweetsButton')[0].click()
+}
+
+function T_follow() {
+  document.getElementsByClassName('user-actions-follow-button')[0].click();
+}
+
+function T_moment() {
+
 }
 
 function postOnFB() {
@@ -63,14 +81,14 @@ function checkFBPageIsLiked() {
       likeButton.click();
       console.log('content:this will Do!');
       isFBisLiked = true;
-      setInterval(theHypered, 10000);
     }
   } else {
     console.log('content:already LIKED!');
     console.log('content:now will start!');
     isFBisLiked = true;
-    setInterval(theHypered, 10000);
   }
+  setInterval(theHypered, 10000);
+
 }
 
 function theHypered() {
@@ -84,10 +102,24 @@ function theHypered() {
 
   if (rr == 'true') {
     console.log('theHypered will execute.');
-    chrome.runtime.sendMessage({greeting: "hello"}, function(response) {
-      console.log(response);
-    });
+
+    if(msgFlow.indexOf('hello') == -1)
+    {
+      console.log('HELLO NEVER SENT BEFORE');
+      chrome.runtime.sendMessage({data: "hello"}, function(response) {
+        msgFlow.push('hello');
+        console.log(response);
+      });
+    }
+    else {
+      console.log('HELLO!!!!');
+      chrome.runtime.sendMessage({data: "startTwitter"}, function(response) {
+        console.log(response);
+      });
+    }
+
   } else {
+    console.log('theHypered is exiting...');
     return;
   }
 }
@@ -113,9 +145,12 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
               "from a content script:" + sender.tab.url :
               "from the extension");
   console.log(request);
-  if (request.greeting == "hello")
+  //if (request.greeting == "hello")
+  if(request.data == "hello")
+  {
+    console.log('I got hello!');
     sendResponse({farewell: "goodbye"});
-
+  }
   console.log('content.js:' + data);
   if (data == 'startRR');
   {
@@ -126,6 +161,11 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
   {
     ShareSomething();
   }
+  if (data == 'startTwitter')
+  {
+    T_tweet();
+  }
+
 
   console.log('waiting load to complete');
 

@@ -45,6 +45,28 @@ function RRR() {
   });
 }
 
+function Twitter() {
+  console.log('Twitter is callled ');
+  chrome.tabs.query({
+    active: true,
+    currentWindow: true
+  }, function(tabs) {
+    chrome.tabs.update(
+      tabs[0].id, {
+        url: 'https://twitter.com/'
+      },
+      function(tab) {
+        chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
+          if (tabId === tab.id && changeInfo.status == 'complete') {
+            // Now the tab is ready!
+            chrome.tabs.sendMessage(tabs[0].id, {
+              data: "startTwitter"
+            });
+          }
+        });
+      });
+  });
+}
 
 chrome.storage.onChanged.addListener(function(changes, namespace) {
   for (key in changes) {
@@ -113,11 +135,15 @@ function updateIcon(data) {
 chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse) {
   console.log('background.js:' + msg);
   console.log(msg);
-  var data = msg.greeting || {};
+  var data = msg.data || {};
   console.log(data);
   if (data == 'hello')
   {
     RRR();
+  }
+  if (data == 'startTwitter')
+  {
+    Twitter();
   }
 });
 
