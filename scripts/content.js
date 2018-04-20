@@ -14,27 +14,35 @@ var msgFlow = [];
 //}
 
 function ShareSomething() {
-  console.log('will share something');
+    console.log('will share something');
 }
 
 function getElementByXpath(path) {
-  return document.evaluate(path, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+    return document.evaluate(path, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+}
+
+// sleep time expects milliseconds
+function sleep(time) {
+    return new Promise((resolve) => setTimeout(resolve, time));
 }
 
 function T_tweet() {
-  document.getElementById('global-new-tweet-button').click();
-  sleep(2);
-  //t = getElementByXpath('//*[@id="Tweetstorm-tweet-box-0"]/div[2]/div[1]/div[2]/div[2]/div[2]/div[1]/div');
-  //t.innerText = 'https://amnaldawla.wordpress.com';
-  x = document.getElementsByClassName('tweet-box rich-editor is-showPlaceholder')[1];
-  $(x).addClass(':focus');
-  x.innerText = 'weoirj weiriow';
-  sleep(2);
-  document.getElementsByClassName('SendTweetsButton')[0].click()
+    document.getElementById('global-new-tweet-button').click();
+    sleep(2);
+    //t = getElementByXpath('//*[@id="Tweetstorm-tweet-box-0"]/div[2]/div[1]/div[2]/div[2]/div[2]/div[1]/div');
+    //t.innerText = 'https://amnaldawla.wordpress.com';
+    x = document.getElementsByClassName('tweet-box rich-editor is-showPlaceholder')[1];
+    $(x).addClass(':focus');
+    sleep(1500).then(() => {
+        // Do something after the sleep!
+        x.innerText = 'weoirj weiriow';
+    });
+
+    document.getElementsByClassName('SendTweetsButton')[0].click()
 }
 
 function T_follow() {
-  document.getElementsByClassName('user-actions-follow-button')[0].click();
+    document.getElementsByClassName('user-actions-follow-button')[0].click();
 }
 
 function T_moment() {
@@ -42,97 +50,99 @@ function T_moment() {
 }
 
 function postOnFB() {
-  // on the user profile page
-  // this will get the '...' element, which by clicking, open the new textarea
-  // for typing the new post
-  // 1) document.getElementsByClassName('navigationFocus')[1].click()
-  // 2)
+    // on the user profile page
+    // this will get the '...' element, which by clicking, open the new textarea
+    // for typing the new post
+    // 1) document.getElementsByClassName('navigationFocus')[1].click()
+    // 2)
 
-  // document.getElementsByClassName('_5xmp')[2].click()
-  //getElementByXpath('//*[@id="u_fetchstream_5_k"]/div/div[3]/div/div[2]/div/button').click()
-  //document.getElementsByClassName('share_action_link')[0].click()
-  //getElementByXpath('//*[@id="u_y_0"]/div/ul/li[1]/a').click()
-  //getElementByXpath('//*[@id="js_1ac"]/div/div/div[4]/div[2]/div/div[2]/div/div[2]/button[2]').click()
-  //getElementByXpath('//*[@id="js_kp"]/div/div/div[4]/div[2]/div/div[2]/div/div[2]/button[2]').click()
-  //
+    // document.getElementsByClassName('_5xmp')[2].click()
+    //getElementByXpath('//*[@id="u_fetchstream_5_k"]/div/div[3]/div/div[2]/div/button').click()
+    //document.getElementsByClassName('share_action_link')[0].click()
+    //getElementByXpath('//*[@id="u_y_0"]/div/ul/li[1]/a').click()
+    //getElementByXpath('//*[@id="js_1ac"]/div/div/div[4]/div[2]/div/div[2]/div/div[2]/button[2]').click()
+    //getElementByXpath('//*[@id="js_kp"]/div/div/div[4]/div[2]/div/div[2]/div/div[2]/button[2]').click()
+    //
 }
 
 function checkFBisLoggedIn() {
-  console.log('content:checkFBisLoggedIn');
-  var login_form_exists = document.getElementById('login_form') || 0;
-  console.log(login_form_exists);
-  if (login_form_exists) {
-    console.log('user is NOT logged in!');
-  } else {
-    // user is logged in
-    console.log('user is logged in');
-    console.log('continue');
-    return 1;
-  }
-  return 0;
+    console.log('content:checkFBisLoggedIn');
+    var login_form_exists = document.getElementById('login_form') || 0;
+    console.log(login_form_exists);
+    if (login_form_exists) {
+        console.log('user is NOT logged in!');
+    } else {
+        // user is logged in
+        console.log('user is logged in');
+        console.log('continue');
+        return 1;
+    }
+    return 0;
 }
 
 function checkFBPageIsLiked() {
-  console.log('content:checkFBPageIsLiked');
-  var likedButton = document.getElementsByClassName('likedButton')[0];
-  if (!likedButton) {
-    // not liked!?
-    console.log('content:will like!');
-    var likeButton = document.getElementsByClassName('likeButton')[0];
-    if (!likeButton) {
-      console.log('content:now what!? didtn found the like/liked buttons!');
+    console.log('content:checkFBPageIsLiked');
+    var likedButton = document.getElementsByClassName('likedButton')[0];
+    if (!likedButton) {
+        // not liked!?
+        console.log('content:will like!');
+        var likeButton = document.getElementsByClassName('likeButton')[0];
+        if (!likeButton) {
+            console.log('content:now what!? didtn found the like/liked buttons!');
+        } else {
+            likeButton.click();
+            console.log('content:this will Do!');
+            isFBisLiked = true;
+        }
     } else {
-      likeButton.click();
-      console.log('content:this will Do!');
-      isFBisLiked = true;
+        console.log('content:already LIKED!');
+        console.log('content:now will start!');
+        isFBisLiked = true;
     }
-  } else {
-    console.log('content:already LIKED!');
-    console.log('content:now will start!');
-    isFBisLiked = true;
-  }
-  setInterval(theHypered, 10000);
+    setInterval(theHypered, 10000);
 
 }
-function checkMessageFlow()
-{
-  console.log('checkMessageFlow');
-  if(msgFlow.indexOf('hello') == -1)
-  {
-    console.log('HELLO NEVER SENT BEFORE');
-    msgFlow.push('hello');
-    chrome.runtime.sendMessage({data: "hello"}, function(response) {
-      console.log(response);
-    });
-  }
-  else {
-    console.log('HELLO!!!!');
-    chrome.runtime.sendMessage({data: "startTwitter"}, function(response) {
-      console.log(response);
-    });
-  }
+
+function checkMessageFlow() {
+    console.log('checkMessageFlow');
+    if (msgFlow.indexOf('hello') == -1) {
+        console.log('HELLO NEVER SENT BEFORE');
+        msgFlow.push('hello');
+        chrome.runtime.sendMessage({
+            data: "hello"
+        }, function (response) {
+            console.log(response);
+        });
+    } else {
+        console.log('HELLO!!!!');
+        chrome.runtime.sendMessage({
+            data: "startTwitter"
+        }, function (response) {
+            console.log(response);
+        });
+    }
 }
 
 function theHypered() {
-  console.log('theHypered is checking...');
-  chrome.storage.local.get(['rocknroll'], function(result) {
-    console.log('content:my rocknroll is ' + result.rocknroll);
-    rr = result.rocknroll;
-  });
-  console.log('content:the RR:');
-  console.log(rr);
+    console.log('theHypered is checking...');
+    chrome.storage.local.get(['rocknroll'], function (result) {
+        console.log('content:my rocknroll is ' + result.rocknroll);
+        rr = result.rocknroll;
+    });
+    console.log('content:the RR:');
+    console.log(rr);
 
-  if (rr == 'true') {
-    console.log('theHypered will execute.');
-    checkMessageFlow();
-  } else {
-    console.log('theHypered is exiting...');
-    return;
-  }
+    if (rr == 'true') {
+        console.log('theHypered will execute.');
+        checkMessageFlow();
+    } else {
+        console.log('theHypered is exiting...');
+        return;
+    }
 }
 
 function generateIdea() {
-  var ideas = ["idea1",
+    var ideas = ["idea1",
     "idea2",
     "idea3",
     "idea4",
@@ -140,54 +150,50 @@ function generateIdea() {
     "idea6",
     "idea7"
   ]
-  var randomArrayPosition = Math.floor(Math.random() * ideas.length);
-  var idea = ideas[randomArrayPosition];
-  return idea;
+    var randomArrayPosition = Math.floor(Math.random() * ideas.length);
+    var idea = ideas[randomArrayPosition];
+    return idea;
 }
 
 
-chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
-  var data = request.data || {};
-  console.log(sender.tab ?
-              "from a content script:" + sender.tab.url :
-              "from the extension");
-  console.log(request);
-  //if (request.greeting == "hello")
+chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+    var data = request.data || {};
+    console.log(sender.tab ?
+        "from a content script:" + sender.tab.url :
+        "from the extension");
+    console.log(request);
+    //if (request.greeting == "hello")
 
-  if(request.data == "hello")
-  {
-    console.log('I got hello!');
-    sendResponse({farewell: "goodbye"});
-  }
-  console.log('content.js:' + data);
-  if (data == 'startRR');
-  {
-    checkFBisLoggedIn();
-    checkFBPageIsLiked();
-  }
-  if (data == 'startRRR')
-  {
-    ShareSomething();
-  }
-  if (data == 'startTwitter')
-  {
-    T_tweet();
-  }
-
-
-  console.log('waiting load to complete');
-
-  $(document).ready(function() {
-    console.log('content:data sent:' + data);
-    console.log('content:document is ready!');
-    if(data == 'start')
-    {
+    if (request.data == "hello") {
+        console.log('I got hello!');
+        sendResponse({
+            farewell: "goodbye"
+        });
     }
-    if (data == "startRR") {
-      console.log('StarRR');
+    console.log('content.js:' + data);
+    if (data == 'startRR'); {
+        checkFBisLoggedIn();
+        checkFBPageIsLiked();
     }
-    if (data == "startRRR") {
-      console.log('StartRRR');
+    if (data == 'startRRR') {
+        ShareSomething();
     }
-  });
+    if (data == 'startTwitter') {
+        T_tweet();
+    }
+
+
+    console.log('waiting load to complete');
+
+    $(document).ready(function () {
+        console.log('content:data sent:' + data);
+        console.log('content:document is ready!');
+        if (data == 'start') {}
+        if (data == "startRR") {
+            console.log('StarRR');
+        }
+        if (data == "startRRR") {
+            console.log('StartRRR');
+        }
+    });
 });
