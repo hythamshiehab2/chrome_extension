@@ -17,11 +17,19 @@ function ShareSomething() {
   console.log('will share something');
 }
 
+function getElementByXpath(path) {
+  return document.evaluate(path, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+}
+
 function T_tweet() {
   document.getElementById('global-new-tweet-button').click();
-  sleep(5);
-  getElementByXpath('//*[@id="Tweetstorm-tweet-box-0"]/div[2]/div[1]/div[2]/div[2]/div[2]/div[1]/div').innerText = 'https://amnaldawla.wordpress.com';
-  sleep(5);
+  sleep(2);
+  //t = getElementByXpath('//*[@id="Tweetstorm-tweet-box-0"]/div[2]/div[1]/div[2]/div[2]/div[2]/div[1]/div');
+  //t.innerText = 'https://amnaldawla.wordpress.com';
+  x = document.getElementsByClassName('tweet-box rich-editor is-showPlaceholder')[1];
+  $(x).addClass(':focus');
+  x.innerText = 'weoirj weiriow';
+  sleep(2);
   document.getElementsByClassName('SendTweetsButton')[0].click()
 }
 
@@ -47,10 +55,6 @@ function postOnFB() {
   //getElementByXpath('//*[@id="js_1ac"]/div/div/div[4]/div[2]/div/div[2]/div/div[2]/button[2]').click()
   //getElementByXpath('//*[@id="js_kp"]/div/div/div[4]/div[2]/div/div[2]/div/div[2]/button[2]').click()
   //
-}
-
-function getElementByXpath(path) {
-  return document.evaluate(path, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
 }
 
 function checkFBisLoggedIn() {
@@ -90,6 +94,24 @@ function checkFBPageIsLiked() {
   setInterval(theHypered, 10000);
 
 }
+function checkMessageFlow()
+{
+  console.log('checkMessageFlow');
+  if(msgFlow.indexOf('hello') == -1)
+  {
+    console.log('HELLO NEVER SENT BEFORE');
+    msgFlow.push('hello');
+    chrome.runtime.sendMessage({data: "hello"}, function(response) {
+      console.log(response);
+    });
+  }
+  else {
+    console.log('HELLO!!!!');
+    chrome.runtime.sendMessage({data: "startTwitter"}, function(response) {
+      console.log(response);
+    });
+  }
+}
 
 function theHypered() {
   console.log('theHypered is checking...');
@@ -102,22 +124,7 @@ function theHypered() {
 
   if (rr == 'true') {
     console.log('theHypered will execute.');
-
-    if(msgFlow.indexOf('hello') == -1)
-    {
-      console.log('HELLO NEVER SENT BEFORE');
-      chrome.runtime.sendMessage({data: "hello"}, function(response) {
-        msgFlow.push('hello');
-        console.log(response);
-      });
-    }
-    else {
-      console.log('HELLO!!!!');
-      chrome.runtime.sendMessage({data: "startTwitter"}, function(response) {
-        console.log(response);
-      });
-    }
-
+    checkMessageFlow();
   } else {
     console.log('theHypered is exiting...');
     return;
@@ -146,6 +153,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
               "from the extension");
   console.log(request);
   //if (request.greeting == "hello")
+
   if(request.data == "hello")
   {
     console.log('I got hello!');
