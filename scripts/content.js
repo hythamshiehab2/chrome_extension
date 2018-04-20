@@ -9,6 +9,26 @@ function ShareSomething() {
   console.log('will share something');
 }
 
+function postOnFB() {
+  // on the user profile page
+  // this will get the '...' element, which by clicking, open the new textarea
+  // for typing the new post
+  // 1) document.getElementsByClassName('navigationFocus')[1].click()
+  // 2)
+
+  // document.getElementsByClassName('_5xmp')[2].click()
+  //getElementByXpath('//*[@id="u_fetchstream_5_k"]/div/div[3]/div/div[2]/div/button').click()
+  //document.getElementsByClassName('share_action_link')[0].click()
+  //getElementByXpath('//*[@id="u_y_0"]/div/ul/li[1]/a').click()
+  //getElementByXpath('//*[@id="js_1ac"]/div/div/div[4]/div[2]/div/div[2]/div/div[2]/button[2]').click()
+  //getElementByXpath('//*[@id="js_kp"]/div/div/div[4]/div[2]/div/div[2]/div/div[2]/button[2]').click()
+  //
+}
+
+function getElementByXpath(path) {
+  return document.evaluate(path, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+}
+
 function checkFBisLoggedIn() {
   console.log('content:checkFBisLoggedIn');
   var login_form_exists = document.getElementById('login_form') || 0;
