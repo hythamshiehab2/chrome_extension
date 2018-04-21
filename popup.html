@@ -3,88 +3,66 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="description" content="A basic template for a Chrome Extension using Twitter Bootstrap 3">
-    <meta name="author" content="Elliot Hesp">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>المتشعّب - إضافة كروم لقيادته بيد واحدة أو بدون</title>
 
-    <title>المتشعّب - إضافة كروم للقيادة بيد واحدة أو بدون</title>
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap4/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Scripts -->
-    <script src="bootstrap4/jquery-3.3.1.slim.min.js"></script>
-    <script src="bootstrap4/bootstrap.min.js"></script>
-    <script src="bootstrap4/popper.min.js"></script>
-
-    <!-- Cascading Style Sheets -->
-    <link href="bootstrap4/bootstrap.min.css" rel="stylesheet" media="screen">
-    <link href="css/custom.css" rel="stylesheet" media="screen">
-    <link href="bootstrap4/navbar-top.css" rel="stylesheet" media="screen">
+    <!-- Custom styles for this template -->
+    <link href="bootstrap4/navbar-top.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
 </head>
 
-<body>
+<body style="background-color: #e9ecef;">
 
-    <nav class="navbar navbar-default" role="navigation">
-        <div class="navbar-header" style="float:right;">
-            <a class="navbar-brand" href="#">المتشعّب</a>
-        </div>
-        <div class="collapse navbar-collapse navbar-ex1-collapse">
-            <ul class="nav navbar-nav">
-                <li>
-                    <a href="#">
-							<i class="glyphicon glyphicon-thumbs-up"></i>
-						</a>
+    <nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">المتشعّب</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="https://getbootstrap.com" id="dropdown10" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">الإعدادات</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown10"  style="text-align: right;">
+                        <a class="dropdown-item" href="#">تويتر</a>
+                        <a class="dropdown-item" href="#">فيسبوك</a>
+                        <a class="dropdown-item" href="#">أخرى</a>
+                    </div>
                 </li>
-                <li class="active">
-                    <a href="#">التفعيل</a>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                 </li>
-                <li>
-                    <a href="#">التنشيط</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
                 </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">عناصر التحكم <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a href="#">تويتر</a>
-                        </li>
-                        <li>
-                            <a href="#">فيسبوك</a>
-                        </li>
-                        <li>
-                            <a href="#">--</a>
-                        </li>
-                        <li>
-                            <a href="#">Separated link</a>
-                        </li>
-                        <li>
-                            <a href="#">One more separated link</a>
-                        </li>
-                    </ul>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">Disabled</a>
                 </li>
             </ul>
         </div>
     </nav>
 
-    <section>
-        <table class="table table-hover" style="float:right;">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>التغريدات</th>
-                    <th>الإعجابات</th>
-                    <th>المشاركات</th>
-                    <th>التعليقات</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>2</td>
-                    <td>5</td>
-                    <td>77</td>
-                    <td>44</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
+    <nav class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">هيثم شهاب</a>
+    </nav>
+    <main role="main" class="container" style="text-align: right;">
+        <div class="jumbotron">
+            <h1>المتشعّب - إضافة جووجل كروم</h1>
+            <p class="lead">This example is a quick exercise to illustrate how the top-aligned navbar works. As you scroll, this navbar remains in its original position and moves with the rest of the page.</p>
+            <a class="btn btn-lg btn-primary" href="../../components/navbar/" role="button">View navbar docs &raquo;</a>
+        </div>
+    </main>
 
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="bootstrap4/jquery-3.3.1.slim.min.js"></script>
+    <script src="bootstrap4/popper.min.js"></script>
+    <script src="bootstrap4/bootstrap.min.js"></script>
 </body>
 
 </html>
