@@ -115,21 +115,21 @@ function checkFBPageIsLiked() {
 
 function checkMessageFlow() {
     console.log('checkMessageFlow');
-
-    if (msgFlow.indexOf('doWordpressStuff') === -1) {
-        msgFlow.push('doWordpressStuff');
-        chrome.runtime.sendMessage({
-            data: "doWordpressStuff"
-        }, function (response) {
-            console.log(response);
-        });
-    } else {
-        chrome.runtime.sendMessage({
-            data: "doTwitterStuff"
-        }, function (response) {
-            console.log(response);
-        });
-    }
+//
+//    if (msgFlow.indexOf('doWordpressStuff') === -1) {
+//        msgFlow.push('doWordpressStuff');
+//        chrome.runtime.sendMessage({
+//            data: "doWordpressStuff"
+//        }, function (response) {
+//            console.log(response);
+//        });
+//    } else {
+//        chrome.runtime.sendMessage({
+//            data: "doTwitterStuff"
+//        }, function (response) {
+//            console.log(response);
+//        });
+//    }
 }
 
 function theHypered() {
@@ -183,6 +183,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     if (data === 'doFacebookStuff'); {
         checkFBisLoggedIn();
         checkFBPageIsLiked();
+        sendResponse('doFacebookStuff_DONE');
     }
     if (data === 'doWordpressStuff') {
         ShareSomething();
