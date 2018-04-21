@@ -14,7 +14,7 @@ function RR() {
             // Now the tab is ready!
             console.log('surf.js:tabId:' + tabId);
             chrome.tabs.sendMessage(tabId, {
-              data: "startRR"
+              data: "doFacebookStuff"
             });
           }
         });
@@ -37,7 +37,7 @@ function RRR() {
           if (tabId === tab.id && changeInfo.status == 'complete') {
             // Now the tab is ready!
             chrome.tabs.sendMessage(tabs[0].id, {
-              data: "startRRR"
+              data: "doWordpressStuff"
             });
           }
         });
@@ -60,7 +60,7 @@ function Twitter() {
           if (tabId === tab.id && changeInfo.status == 'complete') {
             // Now the tab is ready!
             chrome.tabs.sendMessage(tabs[0].id, {
-              data: "startTwitter"
+              data: "doTwitterStuff"
             });
           }
         });
@@ -137,11 +137,11 @@ chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse) {
   console.log(msg);
   var data = msg.data || {};
   console.log(data);
-  if (data == 'hello')
+  if (data === 'doWordpressStuff')
   {
     RRR();
   }
-  if (data == 'startTwitter')
+  if (data === 'doTwitterStuff')
   {
     Twitter();
   }

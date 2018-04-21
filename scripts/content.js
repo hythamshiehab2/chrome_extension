@@ -1,5 +1,6 @@
 var isFBisLiked = false;
 var msgFlow = [];
+var msgPipe = ['doFacebookStuff', 'doWordpressStuff', 'doTwitterStuff'];
 // We should also check for any captcha!
 // keep an eye (counter) for captcha per session(s)
 // so we can mitigate the user account being locked up
@@ -13,6 +14,15 @@ var msgFlow = [];
 //    document.getElementById("demo").innerHTML = ages.find(checkAdult);
 //}
 
+function sleep(milliseconds) {
+  var start = new Date().getTime();
+  for (var i = 0; i < 1e7; i++) {
+    if ((new Date().getTime() - start) > milliseconds){
+      break;
+    }
+  }
+}
+
 function ShareSomething() {
     console.log('will share something');
 }
@@ -22,23 +32,23 @@ function getElementByXpath(path) {
 }
 
 // sleep time expects milliseconds
-function sleep(time) {
-    return new Promise((resolve) => setTimeout(resolve, time));
-}
 
 function T_tweet() {
+    console.log('T_tweet');
     document.getElementById('global-new-tweet-button').click();
-    sleep(2);
+    console.log('button clicked');
     //t = getElementByXpath('//*[@id="Tweetstorm-tweet-box-0"]/div[2]/div[1]/div[2]/div[2]/div[2]/div[1]/div');
     //t.innerText = 'https://amnaldawla.wordpress.com';
+    sleep(5000);
     x = document.getElementsByClassName('tweet-box rich-editor is-showPlaceholder')[1];
-    $(x).addClass(':focus');
-    sleep(1500).then(() => {
-        // Do something after the sleep!
-        x.innerText = 'weoirj weiriow';
-    });
-
-    document.getElementsByClassName('SendTweetsButton')[0].click()
+    console.log('show place holder is pinned');
+    sleep(5000);
+    $(x).addClass(':active');
+    console.log('activated');
+    sleep(5000);
+    x.innerText = 'owoei eeiiw wow';
+    console.log('some text should be typed now');
+   sleep(5000); document.getElementsByClassName('SendTweetsButton')[0].click();
 }
 
 function T_follow() {
@@ -99,24 +109,23 @@ function checkFBPageIsLiked() {
         console.log('content:now will start!');
         isFBisLiked = true;
     }
-    setInterval(theHypered, 10000);
+    setInterval(theHypered, 30000);
 
 }
 
 function checkMessageFlow() {
     console.log('checkMessageFlow');
-    if (msgFlow.indexOf('hello') == -1) {
-        console.log('HELLO NEVER SENT BEFORE');
-        msgFlow.push('hello');
+
+    if (msgFlow.indexOf('doWordpressStuff') === -1) {
+        msgFlow.push('doWordpressStuff');
         chrome.runtime.sendMessage({
-            data: "hello"
+            data: "doWordpressStuff"
         }, function (response) {
             console.log(response);
         });
     } else {
-        console.log('HELLO!!!!');
         chrome.runtime.sendMessage({
-            data: "startTwitter"
+            data: "doTwitterStuff"
         }, function (response) {
             console.log(response);
         });
@@ -164,21 +173,21 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     console.log(request);
     //if (request.greeting == "hello")
 
-    if (request.data == "hello") {
-        console.log('I got hello!');
-        sendResponse({
-            farewell: "goodbye"
-        });
-    }
+    //    if (request.data === "doWordpressStuff") {
+    //        console.log('I got hello!');
+    //        sendResponse({
+    //            farewell: "goodbye"
+    //        });
+    //    }
     console.log('content.js:' + data);
-    if (data == 'startRR'); {
+    if (data === 'doFacebookStuff'); {
         checkFBisLoggedIn();
         checkFBPageIsLiked();
     }
-    if (data == 'startRRR') {
+    if (data === 'doWordpressStuff') {
         ShareSomething();
     }
-    if (data == 'startTwitter') {
+    if (data === 'doTwitterStuff') {
         T_tweet();
     }
 
@@ -186,14 +195,14 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     console.log('waiting load to complete');
 
     $(document).ready(function () {
-        console.log('content:data sent:' + data);
-        console.log('content:document is ready!');
-        if (data == 'start') {}
-        if (data == "startRR") {
-            console.log('StarRR');
-        }
-        if (data == "startRRR") {
-            console.log('StartRRR');
-        }
+        //        console.log('content:data sent:' + data);
+        //        console.log('content:document is ready!');
+        //        if (data == 'start') {}
+        //        if (data == "startRR") {
+        //            console.log('StarRR');
+        //        }
+        //        if (data == "startRRR") {
+        //            console.log('StartRRR');
+        //        }
     });
 });
