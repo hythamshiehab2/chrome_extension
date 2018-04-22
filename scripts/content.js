@@ -15,12 +15,12 @@ var msgPipe = ['doFacebookStuff', 'doWordpressStuff', 'doTwitterStuff'];
 //}
 
 function sleep(milliseconds) {
-  var start = new Date().getTime();
-  for (var i = 0; i < 1e7; i++) {
-    if ((new Date().getTime() - start) > milliseconds){
-      break;
+    var start = new Date().getTime();
+    for (var i = 0; i < 1e7; i++) {
+        if ((new Date().getTime() - start) > milliseconds) {
+            break;
+        }
     }
-  }
 }
 
 function ShareSomething() {
@@ -48,7 +48,8 @@ function T_tweet() {
     sleep(5000);
     x.innerText = 'owoei eeiiw wow';
     console.log('some text should be typed now');
-   sleep(5000); document.getElementsByClassName('SendTweetsButton')[0].click();
+    sleep(5000);
+    document.getElementsByClassName('SendTweetsButton')[0].click();
 }
 
 function T_follow() {
@@ -114,22 +115,26 @@ function checkFBPageIsLiked() {
 }
 
 function checkMessageFlow() {
+    // this will keep track of the flow of the procedures, acting as the officer of Elmoror
+    // Till now, I have no IDEA how!
+    //
     console.log('checkMessageFlow');
-//
-//    if (msgFlow.indexOf('doWordpressStuff') === -1) {
-//        msgFlow.push('doWordpressStuff');
-//        chrome.runtime.sendMessage({
-//            data: "doWordpressStuff"
-//        }, function (response) {
-//            console.log(response);
-//        });
-//    } else {
-//        chrome.runtime.sendMessage({
-//            data: "doTwitterStuff"
-//        }, function (response) {
-//            console.log(response);
-//        });
-//    }
+
+    //
+    //    if (msgFlow.indexOf('doWordpressStuff') === -1) {
+    //        msgFlow.push('doWordpressStuff');
+    //        chrome.runtime.sendMessage({
+    //            data: "doWordpressStuff"
+    //        }, function (response) {
+    //            console.log(response);
+    //        });
+    //    } else {
+    //        chrome.runtime.sendMessage({
+    //            data: "doTwitterStuff"
+    //        }, function (response) {
+    //            console.log(response);
+    //        });
+    //    }
 }
 
 function theHypered() {
@@ -184,6 +189,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         checkFBisLoggedIn();
         checkFBPageIsLiked();
         sendResponse('doFacebookStuff_DONE');
+        msgFlow.push('doFacebookStuff_DONE');
     }
     if (data === 'doWordpressStuff') {
         ShareSomething();
