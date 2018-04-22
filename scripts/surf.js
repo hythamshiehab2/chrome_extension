@@ -17,18 +17,17 @@ function alertFinished() {
 
 (function () {
     console.log('surf:here');
-    started = localStorage.getItem('started');
-    rocknroll = localStorage.getItem('rocknroll');
-    tabId = localStorage.getItem('tabId');
+    started = localStorage.getItem('started') || 'false';
+    rocknroll = localStorage.getItem('rocknroll') || 'false';
     console.log('surf:started:' + started);
-    if (started == 'true') {
+    if (started === 'true') {
         $('#toggleButton').bootstrapToggle('on');
         $('#theContract').css('display', 'block');
     } else {
         $('#toggleButton').bootstrapToggle('off');
         $('#theContract').css('display', 'none');
     }
-    if (rocknroll == 'true') {
+    if (rocknroll === 'true') {
         $('#toggleStartNow').bootstrapToggle('on');
     } else {
         $('#toggleStartNow').bootstrapToggle('off');

@@ -5,6 +5,14 @@ THIS IS NOT TO BE USED BY ANY (KNWON BY *OTHERS* AS BAD) PARTIES TO HARM ANY GOO
 BY *OTHERS* I MEAN ME, AND/OR ANY OTHER GOOD PARTIES
 */
 
+chrome.runtime.onInstalled.addListener(function () {
+    //Replace all rules
+    localStorage.setItem('tabId', 0);
+    localStorage.setItem('started', 'false');
+    localStorage.setItem('rocknroll', 'false');
+    localStorage.setItem('liked', 'false');
+});
+
 function RR() {
     console.log('surf:RR is called');
     chrome.tabs.query({
@@ -131,22 +139,23 @@ function updateIcon(data) {
                 path: "/icons/on" + r + ".png",
                 tabId: data.tabId
             });
+            tabId = localStorage.getItem('tabId') || 0;
+            if (!tabId) {
+                localStorage.setItem('tabId', data.tabId);
+                console.log('setting tabId');
+                chrome.storage.local.set({
+                    'tabId': data.tabId
+                }, function () {
+                    // Notify that we saved.
+                    console.log('surf:Settings saved');
+                });
+            }
         } else {
             chrome.browserAction.setIcon({
                 path: "/icons/off.png",
                 tabId: data.tabId
             });
         }
-    }
-    tabId = localStorage.getItem('tabId') || false;
-    if (!tabId) {
-        localStorage.setItem('tabId', data.tabId);
-        chrome.storage.local.set({
-            'tabId': data.tabId
-        }, function () {
-            // Notify that we saved.
-            console.log('surf:Settings saved');
-        });
     }
 }
 
@@ -193,8 +202,16 @@ chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
         console.log(changeInfo);
         // Now the tab is ready!
         console.log('background.js:tabId:' + tabId);
-        //        chrome.tabs.sendMessage(tabId, {
-        //            data: "start"
-        //        });
+        tabId = localStorage.getItem('tabId') || 0;
+        if (!tabId) {
+            localStorage.setItem('tabId', tabId);
+            console.log('setting tabId');
+            chrome.storage.local.set({
+                'tabId': tabId
+            }, function () {
+                // Notify that we saved.
+                console.log('surf:Settings saved');
+            });
+        }
     }
 });
