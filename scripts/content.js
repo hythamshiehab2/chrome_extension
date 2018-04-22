@@ -33,24 +33,59 @@ function ShareSomething() {
     console.log('will share something');
 }
 
-function get_b() {
-    b = document.getElementById('global-new-tweet-button') || false;
-    return b;
+function get_Ta() {
+    var b = document.getElementById('global-new-tweet-button') || false;
+    if (!b) {
+        setTimeout(get_Ta, 2000);
+    } else {
+        console.log('I got a:' + b);
+        return b;
+    }
 }
+
+function get_Tb() {
+    var b = document.getElementsByClassName('tweet-box rich-editor is-showPlaceholder')[1];
+    if (!b) {
+        setTimeout(get_Tb, 2000);
+    } else {
+        console.log('I got b:' + b);
+        return b;
+    }
+}
+
+function get_Tc() {
+    var c = document.getElementsByClassName('SendTweetsButton')[0];
+    if (!c) {
+        setTimeout(get_Tc, 2000);
+    } else {
+        console.log('I got c:' + c);
+        console.log(c);
+        return c;
+    }
+}
+
+var wait = ms => new Promise((r, j) => setTimeout(r, ms));
 
 function T_tweet() {
     console.log('T_tweet');
     //    var b = document.getElementById('global-new-tweet-button') || false;
-    document.getElementById('global-new-tweet-button').click();
+    b = get_Ta();
+    b.click();
     console.log('button clicked');
-    t = document.getElementsByClassName('tweet-box rich-editor is-showPlaceholder')[1];
-    sleep(1000);
+    //sleep(1000);
+    t = get_Tb();
     t.innerText = 'إذا عدتم عدنا';
-    sleep(1000);
+    //sleep(1000);
     simulate(t, "mousedown");
-    sleep(1000);
-    document.getElementsByClassName('SendTweetsButton')[0].click();
-    sleep(1000);
+    c = get_Tc();
+    //c.click();
+    //sleep(2000);
+    //    await wait(2000);
+    var prom = wait(2000) // prom, is a promise
+    var showdone = () => simulate(c, "click");
+    prom.then(showdone);
+
+    //sleep(5000);
     console.log('tweeted!');
 }
 
