@@ -5,36 +5,49 @@ THIS IS NOT TO BE USED BY ANY (KNWON BY *OTHERS* AS BAD) PARTIES TO HARM ANY GOO
 BY *OTHERS* I MEAN ME, AND/OR ANY OTHER GOOD PARTIES
 */
 
-function simulate(element, eventName)
-{
+function theHypered() {
+    console.log('theHypered is checking...');
+    chrome.storage.local.get(['rocknroll'], function (result) {
+        console.log('content:my rocknroll is ' + result.rocknroll);
+        rr = result.rocknroll;
+    });
+    console.log('content:the RR:');
+    console.log(rr);
+
+    if (rr == 'true') {
+        console.log('theHypered will execute.');
+        //checkMessageFlow();
+    } else {
+        console.log('theHypered is exiting...');
+        return;
+    }
+}
+
+function simulate(element, eventName) {
     var options = extend(defaultOptions, arguments[2] || {});
     var oEvent, eventType = null;
 
-    for (var name in eventMatchers)
-    {
-        if (eventMatchers[name].test(eventName)) { eventType = name; break; }
+    for (var name in eventMatchers) {
+        if (eventMatchers[name].test(eventName)) {
+            eventType = name;
+            break;
+        }
     }
 
     if (!eventType)
         throw new SyntaxError('Only HTMLEvents and MouseEvents interfaces are supported');
 
-    if (document.createEvent)
-    {
+    if (document.createEvent) {
         oEvent = document.createEvent(eventType);
-        if (eventType == 'HTMLEvents')
-        {
+        if (eventType == 'HTMLEvents') {
             oEvent.initEvent(eventName, options.bubbles, options.cancelable);
-        }
-        else
-        {
+        } else {
             oEvent.initMouseEvent(eventName, options.bubbles, options.cancelable, document.defaultView,
-            options.button, options.pointerX, options.pointerY, options.pointerX, options.pointerY,
-            options.ctrlKey, options.altKey, options.shiftKey, options.metaKey, options.button, element);
+                options.button, options.pointerX, options.pointerY, options.pointerX, options.pointerY,
+                options.ctrlKey, options.altKey, options.shiftKey, options.metaKey, options.button, element);
         }
         element.dispatchEvent(oEvent);
-    }
-    else
-    {
+    } else {
         options.clientX = options.pointerX;
         options.clientY = options.pointerY;
         var evt = document.createEventObject();
@@ -46,7 +59,7 @@ function simulate(element, eventName)
 
 function extend(destination, source) {
     for (var property in source)
-      destination[property] = source[property];
+        destination[property] = source[property];
     return destination;
 }
 

@@ -153,10 +153,23 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
     //        RRR();
     //    }
     if (data === 'doTwitterStuff_DONE') {
+        sendResponse('doTwitterStuff_DONE:CONFIRMED');
         //console.log('WILL DO: doTwitterStuff');
         //Twitter();
         console.log('Twitter STUFF IS DONE!');
-        console.log('what should I do now!?');
+        //console.log('what should I do now!?');
+        //        chrome.runtime.sendMessage({
+        //            data: "doTwitterStuff_DONE"
+        //        }, function (response) {
+        //            console.log(response);
+        //        });
+        //        chrome.tabs.sendMessage(tabs[0].id, {
+        //            data: "doTwitterStuff"
+        //        }, function (response) {
+        //            console.log('from Twitter()');
+        //            console.log(response);
+        //        });
+        //theHypered();
     }
 });
 

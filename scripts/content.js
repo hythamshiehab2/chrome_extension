@@ -71,10 +71,11 @@ function T_tweet() {
     prom.then(showdone);
     console.log('tweeted!');
     chrome.runtime.sendMessage({
-        data: "doWordpressStuff_DONE"
+        data: "doTwitterStuff_DONE"
     }, function (response) {
         console.log(response);
     });
+    theHypered();
 }
 
 function T_follow() {
@@ -161,24 +162,6 @@ function checkMessageFlow() {
     //            console.log(response);
     //        });
     //    }
-}
-
-function theHypered() {
-    console.log('theHypered is checking...');
-    chrome.storage.local.get(['rocknroll'], function (result) {
-        console.log('content:my rocknroll is ' + result.rocknroll);
-        rr = result.rocknroll;
-    });
-    console.log('content:the RR:');
-    console.log(rr);
-
-    if (rr == 'true') {
-        console.log('theHypered will execute.');
-        checkMessageFlow();
-    } else {
-        console.log('theHypered is exiting...');
-        return;
-    }
 }
 
 function generateIdea() {
