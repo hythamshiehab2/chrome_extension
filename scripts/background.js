@@ -119,7 +119,7 @@ eventList.forEach(function (e) {
 });
 
 function updateIcon(data) {
-    console.log('updateIcon');
+    //console.log('updateIcon');
     rocknroll = localStorage.getItem('rocknroll');
     if (rocknroll) {
         if (rocknroll == 'true') {
@@ -148,24 +148,29 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
     console.log(msg);
     var data = msg.data || {};
     console.log(data);
-    if (data === 'doWordpressStuff') {
-        RRR();
-    }
-    if (data === 'doTwitterStuff') {
-        Twitter();
+    //    if (data === 'doWordpressStuff') {
+    //        console.log('WILL DO: doWordpressStuff');
+    //        RRR();
+    //    }
+    if (data === 'doTwitterStuff_DONE') {
+        //console.log('WILL DO: doTwitterStuff');
+        //Twitter();
+        console.log('Twitter STUFF IS DONE!');
+        console.log('what should I do now!?');
     }
 });
 
 chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
     console.log('listening...');
     //if (tabId === tabs[0].id && changeInfo.status == 'complete') {
+    console.log(changeInfo.status);
     if (changeInfo.status == 'complete') {
         console.log('status complete');
         console.log(changeInfo);
         // Now the tab is ready!
         console.log('background.js:tabId:' + tabId);
-        chrome.tabs.sendMessage(tabId, {
-            data: "start"
-        });
+        //        chrome.tabs.sendMessage(tabId, {
+        //            data: "start"
+        //        });
     }
 });

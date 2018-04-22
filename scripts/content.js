@@ -20,15 +20,6 @@ var msgPipe = ['doFacebookStuff', 'doWordpressStuff', 'doTwitterStuff'];
 //    document.getElementById("demo").innerHTML = ages.find(checkAdult);
 //}
 
-function sleep(milliseconds) {
-    var start = new Date().getTime();
-    for (var i = 0; i < 1e7; i++) {
-        if ((new Date().getTime() - start) > milliseconds) {
-            break;
-        }
-    }
-}
-
 function ShareSomething() {
     console.log('will share something');
 }
@@ -79,6 +70,11 @@ function T_tweet() {
     var showdone = () => simulate(c, "click");
     prom.then(showdone);
     console.log('tweeted!');
+    chrome.runtime.sendMessage({
+        data: "doWordpressStuff_DONE"
+    }, function (response) {
+        console.log(response);
+    });
 }
 
 function T_follow() {
@@ -215,15 +211,16 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     //        });
     //    }
     console.log('content.js:' + data);
-    if (data === 'doFacebookStuff'); {
-        checkFBisLoggedIn();
-        checkFBPageIsLiked();
-        sendResponse('doFacebookStuff_DONE');
-        msgFlow.push('doFacebookStuff_DONE');
-    }
-    if (data === 'doWordpressStuff') {
-        ShareSomething();
-    }
+
+    //    if (data === 'doFacebookStuff'); {
+    //        checkFBisLoggedIn();
+    //        checkFBPageIsLiked();
+    //        sendResponse('doFacebookStuff_DONE');
+    //        msgFlow.push('doFacebookStuff_DONE');
+    //    }
+    //    if (data === 'doWordpressStuff') {
+    //        ShareSomething();
+    //    }
     if (data === 'doTwitterStuff') {
         T_tweet();
         msgFlow.push('doTwitterStuff_DONE');
