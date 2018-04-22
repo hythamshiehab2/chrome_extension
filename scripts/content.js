@@ -41,21 +41,14 @@ function T_tweet() {
     console.log('T_tweet');
     document.getElementById('global-new-tweet-button').click();
     console.log('button clicked');
-    //t = getElementByXpath('//*[@id="Tweetstorm-tweet-box-0"]/div[2]/div[1]/div[2]/div[2]/div[2]/div[1]/div');
-    //t.innerText = 'https://amnaldawla.wordpress.com';
     sleep(5000);
-    x = document.getElementsByClassName('tweet-box rich-editor is-showPlaceholder')[1];
-    // or
-    ////*[@id="Tweetstorm-tweet-box-0"]/div[2]/div[1]/div[2]/div[2]/div[2]/div[1]/div
-    console.log('show place holder is pinned');
-    sleep(5000);
-    $(x).addClass(':active');
-    console.log('activated');
-    sleep(5000);
-    x.innerText = 'owoei eeiiw wow';
-    console.log('some text should be typed now');
-    sleep(5000);
-    document.getElementsByClassName('SendTweetsButton')[0].click();
+    t = document.getElementsByClassName('tweet-box rich-editor is-showPlaceholder')[1];
+    sleep(2000);
+    t.innerText = 'إذا عدتم عدنا';
+    sleep(2000);
+    simulate(t, "mousedown");
+   sleep(2000); document.getElementsByClassName('SendTweetsButton EdgeButton EdgeButton--primary EdgeButton--medium js-send-tweets')[0].click();
+    console.log('tweeted!');
 }
 
 function T_follow() {
