@@ -68,24 +68,16 @@ var wait = ms => new Promise((r, j) => setTimeout(r, ms));
 
 function T_tweet() {
     console.log('T_tweet');
-    //    var b = document.getElementById('global-new-tweet-button') || false;
     b = get_Ta();
     b.click();
     console.log('button clicked');
-    //sleep(1000);
     t = get_Tb();
     t.innerText = 'إذا عدتم عدنا';
-    //sleep(1000);
     simulate(t, "mousedown");
     c = get_Tc();
-    //c.click();
-    //sleep(2000);
-    //    await wait(2000);
     var prom = wait(2000) // prom, is a promise
     var showdone = () => simulate(c, "click");
     prom.then(showdone);
-
-    //sleep(5000);
     console.log('tweeted!');
 }
 
