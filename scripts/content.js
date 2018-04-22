@@ -27,9 +27,7 @@ function ShareSomething() {
     console.log('will share something');
 }
 
-function getElementByXpath(path) {
-    return document.evaluate(path, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-}
+
 
 // sleep time expects milliseconds
 
@@ -41,6 +39,8 @@ function T_tweet() {
     //t.innerText = 'https://amnaldawla.wordpress.com';
     sleep(5000);
     x = document.getElementsByClassName('tweet-box rich-editor is-showPlaceholder')[1];
+    // or
+    ////*[@id="Tweetstorm-tweet-box-0"]/div[2]/div[1]/div[2]/div[2]/div[2]/div[1]/div
     console.log('show place holder is pinned');
     sleep(5000);
     $(x).addClass(':active');
