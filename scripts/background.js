@@ -82,6 +82,7 @@ function Twitter() {
 }
 
 chrome.storage.onChanged.addListener(function (changes, namespace) {
+    updateIcon();
     for (key in changes) {
         var storageChange = changes[key];
         if (key == 'rocknroll') {
@@ -137,6 +138,16 @@ function updateIcon(data) {
             });
         }
     }
+//    tabId = localStorage.getItem('tabId') || false;
+//    if (!tabId) {
+//        localStorage.setItem('tabId', data.tabId);
+//        chrome.storage.local.set({
+//            'tabId': data.tabId
+//        }, function () {
+//            // Notify that we saved.
+//            console.log('surf:Settings saved');
+//        });
+//    }
 }
 
 // function checkForValidURL(tabId, info, tab) {
