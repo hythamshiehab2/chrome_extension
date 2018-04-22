@@ -33,26 +33,52 @@ function ShareSomething() {
     console.log('will share something');
 }
 
-
-
-// sleep time expects milliseconds
+function get_b() {
+    b = document.getElementById('global-new-tweet-button') || false;
+    return b;
+}
 
 function T_tweet() {
     console.log('T_tweet');
-    document.getElementById('global-new-tweet-button').click();
+    //    var b = document.getElementById('global-new-tweet-button') || false;
+    var b = document.getElementById('global-new-tweet-button') || false;
+    //    if (b == false) {
+    //        console.log('failed to getElementByClassName, retrying after 2s');
+    //        setTimeout(get_b(), 2000);
+    //    }
+    b.click();
     console.log('button clicked');
-    sleep(5000);
-    t = document.getElementsByClassName('tweet-box rich-editor is-showPlaceholder')[1];
-    sleep(2000);
+    var t = document.getElementsByClassName('tweet-box rich-editor is-showPlaceholder')[1] || false;;
+    //    while (!t) {
+    //        if (!t) {
+    //            console.log('failed to getElementByClassName, retrying after 2s');
+    //            setTimeout(function () {
+    //                t = document.getElementsByClassName('tweet-box rich-editor is-showPlaceholder')[1] || false;
+    //            }, 2000);
+    //        }
+    //    }
+    //
     t.innerText = 'إذا عدتم عدنا';
     sleep(2000);
     simulate(t, "mousedown");
-   sleep(2000); document.getElementsByClassName('SendTweetsButton EdgeButton EdgeButton--primary EdgeButton--medium js-send-tweets')[0].click();
+    sleep(2000);
+    var c = document.getElementsByClassName('SendTweetsButton')[0] || false;
+    //    while (!c) {
+    //        if (!c) {
+    //            console.log('failed to getElementByClassName, retrying after 2s');
+    //            setTimeout(function () {
+    //                c = document.getElementsByClassName('SendTweetsButton')[0] || false;
+    //            }, 2000);
+    //        }
+    //    }
+    c.click();
+    sleep(2000);
     console.log('tweeted!');
 }
 
 function T_follow() {
-    document.getElementsByClassName('user-actions-follow-button')[0].click();
+    //    document.getElementsByClassName('user-actions-follow-button')[0].click();
+    document.getElementsByClassName('user-actions-follow-button js-follow-btn follow-button')[0].click();
 }
 
 function T_moment() {
@@ -195,6 +221,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     }
     if (data === 'doTwitterStuff') {
         T_tweet();
+        msgFlow.push('doTwitterStuff_DONE');
     }
 
 

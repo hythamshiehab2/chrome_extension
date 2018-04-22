@@ -71,6 +71,9 @@ function Twitter() {
                         // Now the tab is ready!
                         chrome.tabs.sendMessage(tabs[0].id, {
                             data: "doTwitterStuff"
+                        }, function (response) {
+                            console.log('from Twitter()');
+                            console.log(response);
                         });
                     }
                 });
@@ -84,7 +87,8 @@ chrome.storage.onChanged.addListener(function (changes, namespace) {
         if (key == 'rocknroll') {
             if (storageChange.newValue == 'true') {
                 console.log('background.js:will start rocknroll');
-                RR();
+                //RR();
+                Twitter();
             } else {
                 console.log('background.js:will cut off rocknroll');
             }
