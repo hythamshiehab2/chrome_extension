@@ -41,38 +41,16 @@ function get_b() {
 function T_tweet() {
     console.log('T_tweet');
     //    var b = document.getElementById('global-new-tweet-button') || false;
-    var b = document.getElementById('global-new-tweet-button') || false;
-    //    if (b == false) {
-    //        console.log('failed to getElementByClassName, retrying after 2s');
-    //        setTimeout(get_b(), 2000);
-    //    }
-    b.click();
+    document.getElementById('global-new-tweet-button').click();
     console.log('button clicked');
-    var t = document.getElementsByClassName('tweet-box rich-editor is-showPlaceholder')[1] || false;;
-    //    while (!t) {
-    //        if (!t) {
-    //            console.log('failed to getElementByClassName, retrying after 2s');
-    //            setTimeout(function () {
-    //                t = document.getElementsByClassName('tweet-box rich-editor is-showPlaceholder')[1] || false;
-    //            }, 2000);
-    //        }
-    //    }
-    //
+    t = document.getElementsByClassName('tweet-box rich-editor is-showPlaceholder')[1];
+    sleep(1000);
     t.innerText = 'إذا عدتم عدنا';
-    sleep(2000);
+    sleep(1000);
     simulate(t, "mousedown");
-    sleep(2000);
-    var c = document.getElementsByClassName('SendTweetsButton')[0] || false;
-    //    while (!c) {
-    //        if (!c) {
-    //            console.log('failed to getElementByClassName, retrying after 2s');
-    //            setTimeout(function () {
-    //                c = document.getElementsByClassName('SendTweetsButton')[0] || false;
-    //            }, 2000);
-    //        }
-    //    }
-    c.click();
-    sleep(2000);
+    sleep(1000);
+    document.getElementsByClassName('SendTweetsButton')[0].click();
+    sleep(1000);
     console.log('tweeted!');
 }
 
