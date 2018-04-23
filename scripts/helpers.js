@@ -4,27 +4,44 @@ DISCLAIMER:
 THIS IS NOT TO BE USED BY ANY (KNWON BY *OTHERS* AS BAD) PARTIES TO HARM ANY GOOD PARTIES.
 BY *OTHERS* I MEAN ME, AND/OR ANY OTHER GOOD PARTIES
 */
+var isFBisLiked = false;
+var msgFlow = [];
+var msgPipe = ['doTwitterStuff', 'doFacebookStuff', 'doWordpressStuff'];
 
-$(document).ready({
-
-    //document.onload = function () {
-    //var a = chrome.extension.getURL("css/myactivetab.css");
-    //$('<link rel="stylesheet" type="text/css" href="' + a + '" >').appendTo("head");
-    //var a = '#elmotasha3eb {position: fixed;width: 100 % ;height: 100 % ;top: 0;left: 0;right: 0;bottom: 0;background - color: rgba(93, 51, 204, 0.29);z - index: 10000000;cursor: pointer;}';
-    //$('<style>' + a + '</style').appendTo("head");
-    //$('<div id="elmotasha3eb"></div>').appendTo("body");
-
-    //        console.log('content:data sent:' + data);
-    //        console.log('content:document is ready!');
-    //        if (data == 'start') {}
-    //        if (data == "startRR") {
-    //            console.log('StarRR');
-    //        }
-    //        if (data == "startRRR") {
-    //            console.log('StartRRR');
-    //        }
-    //}
-});
+function checkMessageFlow() {
+    // this will keep track of the flow of the procedures, acting as the officer of Elmoror
+    // Till now, I have no IDEA how!
+    //
+    console.log('checkMessageFlow');
+    //var msg = msgFlow.shift();
+    var randomArrayPosition = Math.floor(Math.random() * msgPipe.length);
+    var willGoTo = msgPipe[randomArrayPosition];
+    console.log('willGoTo:' + willGoTo);
+    if (willGoTo === 'doTwitterStuff') {
+        T_tweet();
+    }
+    if (willGoTo === 'doFacebookStuff') {
+        RR();
+    }
+    if (willGoTo === 'doWordpressStuff') {
+        RRR();
+    }
+    //
+    //    if (msgFlow.indexOf('doWordpressStuff') === -1) {
+    //        msgFlow.push('doWordpressStuff');
+    //        chrome.runtime.sendMessage({
+    //            data: "doWordpressStuff"
+    //        }, function (response) {
+    //            console.log(response);
+    //        });
+    //    } else {
+    //        chrome.runtime.sendMessage({
+    //            data: "doTwitterStuff"
+    //        }, function (response) {
+    //            console.log(response);
+    //        });
+    //    }
+}
 
 function theHypered() {
     console.log('theHypered is checking...');
@@ -32,12 +49,9 @@ function theHypered() {
         console.log('content:my rocknroll is ' + result.rocknroll);
         rr = result.rocknroll;
     });
-    console.log('content:the RR:');
-    console.log(rr);
-
     if (rr == 'true') {
         console.log('theHypered will execute.');
-        //checkMessageFlow();
+        checkMessageFlow();
     } else {
         console.log('theHypered is exiting...');
         return;

@@ -90,7 +90,6 @@ function T_tweet() {
     }, function (response) {
         console.log(response);
     });
-    theHypered();
 }
 
 function T_follow() {
@@ -152,31 +151,6 @@ function checkFBPageIsLiked() {
         console.log('content:now will start!');
         isFBisLiked = true;
     }
-    setInterval(theHypered, 30000);
-
-}
-
-function checkMessageFlow() {
-    // this will keep track of the flow of the procedures, acting as the officer of Elmoror
-    // Till now, I have no IDEA how!
-    //
-    console.log('checkMessageFlow');
-
-    //
-    //    if (msgFlow.indexOf('doWordpressStuff') === -1) {
-    //        msgFlow.push('doWordpressStuff');
-    //        chrome.runtime.sendMessage({
-    //            data: "doWordpressStuff"
-    //        }, function (response) {
-    //            console.log(response);
-    //        });
-    //    } else {
-    //        chrome.runtime.sendMessage({
-    //            data: "doTwitterStuff"
-    //        }, function (response) {
-    //            console.log(response);
-    //        });
-    //    }
 }
 
 function generateIdea() {
@@ -221,8 +195,12 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     //    }
     injectStuff();
     if (data === 'doTwitterStuff') {
-        T_tweet();
-        msgFlow.push('doTwitterStuff_DONE');
+        //T_tweet();
+        //msgFlow.push('doTwitterStuff_DONE');
+        msgFlow.push('doTwitterStuff');
     }
+    //theHypered();
+    setTimeout(theHypered, 30000);
+
     console.log('waiting load to complete');
 });
