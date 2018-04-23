@@ -21,10 +21,10 @@ function checkMessageFlow() {
         T_tweet();
     }
     if (willGoTo === 'doFacebookStuff') {
-        RR();
+        FB_share_like();
     }
     if (willGoTo === 'doWordpressStuff') {
-        RRR();
+        ShareSomething();
     }
     //
     //    if (msgFlow.indexOf('doWordpressStuff') === -1) {
@@ -44,12 +44,13 @@ function checkMessageFlow() {
 }
 
 function theHypered() {
+    var ctx = 0;
     console.log('theHypered is checking...');
     chrome.storage.local.get(['rocknroll'], function (result) {
         console.log('content:my rocknroll is ' + result.rocknroll);
-        rr = result.rocknroll;
+        ctx = result.rocknroll;
     });
-    if (rr == 'true') {
+    if (ctx == 'true') {
         console.log('theHypered will execute.');
         checkMessageFlow();
     } else {

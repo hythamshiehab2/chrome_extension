@@ -18,6 +18,7 @@ function flipDice() {
     console.log('Dice:' + r);
     if (r === 1) {
         RR();
+        //Twitter();
     }
     if (r === 2) {
         RRR();
@@ -186,28 +187,17 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
     console.log(msg);
     var data = msg.data || {};
     console.log(data);
-    //    if (data === 'doWordpressStuff') {
-    //        console.log('WILL DO: doWordpressStuff');
-    //        RRR();
-    //    }
     if (data === 'doTwitterStuff_DONE') {
         sendResponse('doTwitterStuff_DONE:CONFIRMED');
-        //console.log('WILL DO: doTwitterStuff');
-        //Twitter();
         console.log('Twitter STUFF IS DONE!');
-        //console.log('what should I do now!?');
-        //        chrome.runtime.sendMessage({
-        //            data: "doTwitterStuff_DONE"
-        //        }, function (response) {
-        //            console.log(response);
-        //        });
-        //        chrome.tabs.sendMessage(tabs[0].id, {
-        //            data: "doTwitterStuff"
-        //        }, function (response) {
-        //            console.log('from Twitter()');
-        //            console.log(response);
-        //        });
-        //theHypered();
+    }
+    if (data === 'doFacebookStuff_DONE') {
+        sendResponse('doFacebookStuff_DONE:CONFIRMED');
+        console.log('Facebook STUFF IS DONE!');
+    }
+    if (data === 'doWordpressStuff_DONE') {
+        sendResponse('doWordpressStuff_DONE:CONFIRMED');
+        console.log('Wordpress STUFF IS DONE!');
     }
 });
 
