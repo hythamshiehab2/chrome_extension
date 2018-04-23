@@ -10,7 +10,7 @@ var msgPipe = ['doFacebookStuff', 'doWordpressStuff', 'doTwitterStuff'];
 
 function injectStuff() {
     console.log('xxxxxxxxxxxxxxxxxxx');
-    chrome.extension.getURL("css/myactivetab.css");
+    var a = chrome.extension.getURL("css/myactivetab.css");
     $('<link rel="stylesheet" type="text/css" href="' + a + '" >').appendTo("head");
     //var a = '#elmotasha3eb {position: fixed;width: 100 % ;height: 100 % ;top: 0;left: 0;right: 0;bottom: 0;background - color: rgba(93, 51, 204, 0.29);z - index: 10000000;cursor: pointer;}';
     //$('<style>' + a + '</style').appendTo("head");
@@ -219,9 +219,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     //    if (data === 'doWordpressStuff') {
     //        ShareSomething();
     //    }
-    if (data === 'INJECT') {
-        injectStuff();
-    }
+    injectStuff();
     if (data === 'doTwitterStuff') {
         T_tweet();
         msgFlow.push('doTwitterStuff_DONE');
