@@ -54,8 +54,8 @@ function theHypered() {
         checkMessageFlow();
     } else {
         console.log('theHypered is exiting...');
-        return;
     }
+    //setTimeout(theHypered, 30000);
 }
 
 function simulate(element, eventName) {

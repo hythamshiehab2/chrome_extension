@@ -37,6 +37,12 @@ function injectStuff() {
 
 function ShareSomething() {
     console.log('will share something');
+    chrome.runtime.sendMessage({
+        data: "doWordpressStuff_DONE"
+    }, function (response) {
+        console.log(response);
+    });
+
 }
 
 function get_Ta() {
@@ -151,6 +157,12 @@ function checkFBPageIsLiked() {
         console.log('content:now will start!');
         isFBisLiked = true;
     }
+    chrome.runtime.sendMessage({
+        data: "doFacebookStuff_DONE"
+    }, function (response) {
+        console.log(response);
+    });
+
 }
 
 function generateIdea() {
@@ -194,13 +206,13 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     //        ShareSomething();
     //    }
     injectStuff();
-    if (data === 'doTwitterStuff') {
-        //T_tweet();
-        //msgFlow.push('doTwitterStuff_DONE');
-        msgFlow.push('doTwitterStuff');
-    }
-    //theHypered();
-    setTimeout(theHypered, 30000);
+    //    if (data === 'doTwitterStuff') {
+    //        //T_tweet();
+    //        //msgFlow.push('doTwitterStuff_DONE');
+    //        msgFlow.push('doTwitterStuff');
+    //    }
+    theHypered();
+    //setTimeout(theHypered, 30000);
 
     console.log('waiting load to complete');
 });

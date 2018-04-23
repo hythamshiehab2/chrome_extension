@@ -13,6 +13,20 @@ chrome.runtime.onInstalled.addListener(function () {
     localStorage.setItem('liked', 'false');
 });
 
+function flipDice() {
+    var r = Math.floor(Math.random() * 3);
+    console.log('Dice:' + r);
+    if (r === 1) {
+        RR();
+    }
+    if (r === 2) {
+        RRR();
+    }
+    if (r === 3) {
+        Twitter();
+    }
+}
+
 function RR() {
     console.log('surf:RR is called');
     chrome.tabs.query({
@@ -56,6 +70,9 @@ function RRR() {
                         // Now the tab is ready!
                         chrome.tabs.sendMessage(tabs[0].id, {
                             data: "doWordpressStuff"
+                        }, function (response) {
+                            console.log('from RRR()');
+                            console.log(response);
                         });
                     }
                 });
@@ -97,7 +114,8 @@ chrome.storage.onChanged.addListener(function (changes, namespace) {
             if (storageChange.newValue == 'true') {
                 console.log('background.js:will start rocknroll');
                 //RR();
-                Twitter();
+                //Twitter();
+                flipDice();
             } else {
                 console.log('background.js:will cut off rocknroll');
             }
