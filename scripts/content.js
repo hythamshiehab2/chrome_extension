@@ -7,6 +7,21 @@ BY *OTHERS* I MEAN ME, AND/OR ANY OTHER GOOD PARTIES
 var isFBisLiked = false;
 var msgFlow = [];
 var msgPipe = ['doFacebookStuff', 'doWordpressStuff', 'doTwitterStuff'];
+
+function injectStuff() {
+    console.log('xxxxxxxxxxxxxxxxxxx');
+    chrome.extension.getURL("css/myactivetab.css");
+    $('<link rel="stylesheet" type="text/css" href="' + a + '" >').appendTo("head");
+    //var a = '#elmotasha3eb {position: fixed;width: 100 % ;height: 100 % ;top: 0;left: 0;right: 0;bottom: 0;background - color: rgba(93, 51, 204, 0.29);z - index: 10000000;cursor: pointer;}';
+    //$('<style>' + a + '</style').appendTo("head");
+    $('<div id="elmotasha3eb"></div>').appendTo("body");
+}
+
+//    var buttonID = document.getElementById(sendMessageButtonID);
+//    buttonID.addEventListener("click", function (ce) {
+//        //This message will be intercepted by event_script.js
+//        chrome.runtime.sendMessage(extensionID, message, responseCallback);
+//    });
 // We should also check for any captcha!
 // keep an eye (counter) for captcha per session(s)
 // so we can mitigate the user account being locked up
@@ -204,23 +219,12 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     //    if (data === 'doWordpressStuff') {
     //        ShareSomething();
     //    }
+    if (data === 'INJECT') {
+        injectStuff();
+    }
     if (data === 'doTwitterStuff') {
         T_tweet();
         msgFlow.push('doTwitterStuff_DONE');
     }
-
-
     console.log('waiting load to complete');
-
-    $(document).ready(function () {
-        //        console.log('content:data sent:' + data);
-        //        console.log('content:document is ready!');
-        //        if (data == 'start') {}
-        //        if (data == "startRR") {
-        //            console.log('StarRR');
-        //        }
-        //        if (data == "startRRR") {
-        //            console.log('StartRRR');
-        //        }
-    });
 });

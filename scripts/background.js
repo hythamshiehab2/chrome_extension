@@ -199,7 +199,11 @@ chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
     console.log(changeInfo.status);
     if (changeInfo.status == 'complete') {
         console.log('status complete');
-        console.log(changeInfo);
+        chrome.runtime.sendMessage({
+            data: "INJECT"
+        }, function (response) {
+            console.log(response);
+        });
         // Now the tab is ready!
         console.log('background.js:tabId:' + tabId);
         tabId = localStorage.getItem('tabId') || 0;

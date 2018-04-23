@@ -5,6 +5,27 @@ THIS IS NOT TO BE USED BY ANY (KNWON BY *OTHERS* AS BAD) PARTIES TO HARM ANY GOO
 BY *OTHERS* I MEAN ME, AND/OR ANY OTHER GOOD PARTIES
 */
 
+$(document).ready({
+
+    //document.onload = function () {
+    //var a = chrome.extension.getURL("css/myactivetab.css");
+    //$('<link rel="stylesheet" type="text/css" href="' + a + '" >').appendTo("head");
+    //var a = '#elmotasha3eb {position: fixed;width: 100 % ;height: 100 % ;top: 0;left: 0;right: 0;bottom: 0;background - color: rgba(93, 51, 204, 0.29);z - index: 10000000;cursor: pointer;}';
+    //$('<style>' + a + '</style').appendTo("head");
+    //$('<div id="elmotasha3eb"></div>').appendTo("body");
+
+    //        console.log('content:data sent:' + data);
+    //        console.log('content:document is ready!');
+    //        if (data == 'start') {}
+    //        if (data == "startRR") {
+    //            console.log('StarRR');
+    //        }
+    //        if (data == "startRRR") {
+    //            console.log('StartRRR');
+    //        }
+    //}
+});
+
 function theHypered() {
     console.log('theHypered is checking...');
     chrome.storage.local.get(['rocknroll'], function (result) {

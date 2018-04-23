@@ -19,17 +19,20 @@
     "content_scripts": [{
         "matches": ["<all_urls>"],
         "all_frames": true,
-        "js": ["scripts/content.js", "scripts/jquery.min.js","scripts/helpers.js"]
+        "js": ["scripts/content.js", "scripts/jquery.min.js", "scripts/helpers.js"]
   }],
+    "web_accessible_resources": [
+      "css/myactivetab.css"
+],
     "permissions": [
     "activeTab",
-    "tabs",
+    //"tabs",
     "http://*/*",
     "https://*/*",
     "background",
     "bookmarks",
-    "clipboardRead",
-    "clipboardWrite",
+    //"clipboardRead",
+    //"clipboardWrite",
     "contentSettings",
     "<all_urls>",
     "debugger",
