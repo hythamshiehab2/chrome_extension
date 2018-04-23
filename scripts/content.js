@@ -170,33 +170,9 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         "from a content script:" + sender.tab.url :
         "from the extension");
     console.log(request);
-    //if (request.greeting == "hello")
-
-    //    if (request.data === "doWordpressStuff") {
-    //        console.log('I got hello!');
-    //        sendResponse({
-    //            farewell: "goodbye"
-    //        });
-    //    }
     console.log('content.js:' + data);
-
-    //    if (data === 'doFacebookStuff'); {
-    //        checkFBisLoggedIn();
-    //        checkFBPageIsLiked();
-    //        sendResponse('doFacebookStuff_DONE');
-    //        msgFlow.push('doFacebookStuff_DONE');
-    //    }
-    //    if (data === 'doWordpressStuff') {
-    //        ShareSomething();
-    //    }
+    msgFlow.push(data);
     injectStuff();
-    //    if (data === 'doTwitterStuff') {
-    //        //T_tweet();
-    //        //msgFlow.push('doTwitterStuff_DONE');
-    //        msgFlow.push('doTwitterStuff');
-    //    }
     theHypered();
-    //setTimeout(theHypered, 30000);
-
     console.log('waiting load to complete');
 });

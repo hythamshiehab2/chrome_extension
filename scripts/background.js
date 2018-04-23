@@ -14,22 +14,22 @@ chrome.runtime.onInstalled.addListener(function () {
 });
 
 function flipDice() {
-    var r = Math.floor(Math.random() * 3);
+    var r = Math.floor(Math.random() * 3) + 1;
     console.log('Dice:' + r);
+    //r = 3;
     if (r === 1) {
-        RR();
-        //Twitter();
+        Facebook();
     }
     if (r === 2) {
-        RRR();
+        Wordpress();
     }
     if (r === 3) {
         Twitter();
     }
 }
 
-function RR() {
-    console.log('surf:RR is called');
+function Facebook() {
+    console.log('surf:Facebook is called');
     chrome.tabs.query({
         active: true,
         currentWindow: true
@@ -46,7 +46,7 @@ function RR() {
                         chrome.tabs.sendMessage(tabId, {
                             data: "doFacebookStuff"
                         }, function (response) {
-                            console.log('from RR()');
+                            console.log('from Facebook()');
                             console.log(response);
                         });
                     }
@@ -55,8 +55,8 @@ function RR() {
     });
 }
 
-function RRR() {
-    console.log('RRRRR is callled ');
+function Wordpress() {
+    console.log('Wordpress is callled ');
     chrome.tabs.query({
         active: true,
         currentWindow: true
@@ -72,7 +72,7 @@ function RRR() {
                         chrome.tabs.sendMessage(tabs[0].id, {
                             data: "doWordpressStuff"
                         }, function (response) {
-                            console.log('from RRR()');
+                            console.log('from Wordpress()');
                             console.log(response);
                         });
                     }
@@ -114,8 +114,6 @@ chrome.storage.onChanged.addListener(function (changes, namespace) {
         if (key == 'rocknroll') {
             if (storageChange.newValue == 'true') {
                 console.log('background.js:will start rocknroll');
-                //RR();
-                //Twitter();
                 flipDice();
             } else {
                 console.log('background.js:will cut off rocknroll');

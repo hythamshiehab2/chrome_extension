@@ -9,112 +9,101 @@ var msgFlow = [];
 var msgPipe = ['doTwitterStuff', 'doFacebookStuff', 'doWordpressStuff'];
 
 function checkMessageFlow() {
-    // this will keep track of the flow of the procedures, acting as the officer of Elmoror
-    // Till now, I have no IDEA how!
-    //
-    console.log('checkMessageFlow');
-    //var msg = msgFlow.shift();
+  // this will keep track of the flow of the procedures, acting as the officer of Elmoror
+  // Till now, I have no IDEA how!
+  //
+  console.log('checkMessageFlow');
+  var msg = msgFlow.shift() || false;
+  console.log('msg:' + msg);
+  var willGoTo = msg;
+  if (!willGoTo) {
     var randomArrayPosition = Math.floor(Math.random() * msgPipe.length);
-    var willGoTo = msgPipe[randomArrayPosition];
-    console.log('willGoTo:' + willGoTo);
-    if (willGoTo === 'doTwitterStuff') {
-        T_tweet();
-    }
-    if (willGoTo === 'doFacebookStuff') {
-        FB_share_like();
-    }
-    if (willGoTo === 'doWordpressStuff') {
-        ShareSomething();
-    }
-    //
-    //    if (msgFlow.indexOf('doWordpressStuff') === -1) {
-    //        msgFlow.push('doWordpressStuff');
-    //        chrome.runtime.sendMessage({
-    //            data: "doWordpressStuff"
-    //        }, function (response) {
-    //            console.log(response);
-    //        });
-    //    } else {
-    //        chrome.runtime.sendMessage({
-    //            data: "doTwitterStuff"
-    //        }, function (response) {
-    //            console.log(response);
-    //        });
-    //    }
+    willGoTo = msgPipe[randomArrayPosition];
+  }
+  console.log('willGoTo:' + willGoTo);
+  if (willGoTo === 'doTwitterStuff') {
+    T_tweet();
+  }
+  if (willGoTo === 'doFacebookStuff') {
+    FB_share_like();
+  }
+  if (willGoTo === 'doWordpressStuff') {
+    ShareSomething();
+  }
 }
 
 function theHypered() {
-    var ctx = 0;
-    console.log('theHypered is checking...');
-    chrome.storage.local.get(['rocknroll'], function (result) {
-        console.log('content:my rocknroll is ' + result.rocknroll);
-        ctx = result.rocknroll;
-    });
+  var ctx = 0;
+  console.log('theHypered is checking...');
+  chrome.storage.local.get(['rocknroll'], function(result) {
+    console.log('content:my rocknroll is ' + result.rocknroll);
+    ctx = result.rocknroll;
     if (ctx == 'true') {
-        console.log('theHypered will execute.');
-        checkMessageFlow();
+      console.log('theHypered will execute.');
+      checkMessageFlow();
     } else {
-        console.log('theHypered is exiting...');
+      console.log('theHypered is exiting...');
     }
-    //setTimeout(theHypered, 30000);
+  });
+  //setTimeout(theHypered, 30000);
 }
 
 function simulate(element, eventName) {
-    var options = extend(defaultOptions, arguments[2] || {});
-    var oEvent, eventType = null;
+  var options = extend(defaultOptions, arguments[2] || {});
+  var oEvent, eventType = null;
 
-    for (var name in eventMatchers) {
-        if (eventMatchers[name].test(eventName)) {
-            eventType = name;
-            break;
-        }
+  for (var name in eventMatchers) {
+    if (eventMatchers[name].test(eventName)) {
+      eventType = name;
+      break;
     }
+  }
 
-    if (!eventType)
-        throw new SyntaxError('Only HTMLEvents and MouseEvents interfaces are supported');
+  if (!eventType)
+    throw new SyntaxError('Only HTMLEvents and MouseEvents interfaces are supported');
 
-    if (document.createEvent) {
-        oEvent = document.createEvent(eventType);
-        if (eventType == 'HTMLEvents') {
-            oEvent.initEvent(eventName, options.bubbles, options.cancelable);
-        } else {
-            oEvent.initMouseEvent(eventName, options.bubbles, options.cancelable, document.defaultView,
-                options.button, options.pointerX, options.pointerY, options.pointerX, options.pointerY,
-                options.ctrlKey, options.altKey, options.shiftKey, options.metaKey, options.button, element);
-        }
-        element.dispatchEvent(oEvent);
+  if (document.createEvent) {
+    oEvent = document.createEvent(eventType);
+    if (eventType == 'HTMLEvents') {
+      oEvent.initEvent(eventName, options.bubbles, options.cancelable);
     } else {
-        options.clientX = options.pointerX;
-        options.clientY = options.pointerY;
-        var evt = document.createEventObject();
-        oEvent = extend(evt, options);
-        element.fireEvent('on' + eventName, oEvent);
+      oEvent.initMouseEvent(eventName, options.bubbles, options.cancelable, document.defaultView,
+        options.button, options.pointerX, options.pointerY, options.pointerX, options.pointerY,
+        options.ctrlKey, options.altKey, options.shiftKey, options.metaKey, options.button, element);
     }
-    return element;
+    element.dispatchEvent(oEvent);
+  } else {
+    options.clientX = options.pointerX;
+    options.clientY = options.pointerY;
+    var evt = document.createEventObject();
+    oEvent = extend(evt, options);
+    element.fireEvent('on' + eventName, oEvent);
+  }
+  return element;
 }
 
 function extend(destination, source) {
-    for (var property in source)
-        destination[property] = source[property];
-    return destination;
+  for (var property in source)
+    destination[property] = source[property];
+  return destination;
 }
 
 var eventMatchers = {
-    'HTMLEvents': /^(?:load|unload|abort|error|select|change|submit|reset|focus|blur|resize|scroll)$/,
-    'MouseEvents': /^(?:click|dblclick|mouse(?:down|up|over|move|out))$/
+  'HTMLEvents': /^(?:load|unload|abort|error|select|change|submit|reset|focus|blur|resize|scroll)$/,
+  'MouseEvents': /^(?:click|dblclick|mouse(?:down|up|over|move|out))$/
 }
 var defaultOptions = {
-    pointerX: 0,
-    pointerY: 0,
-    button: 0,
-    ctrlKey: false,
-    altKey: false,
-    shiftKey: false,
-    metaKey: false,
-    bubbles: true,
-    cancelable: true
+  pointerX: 0,
+  pointerY: 0,
+  button: 0,
+  ctrlKey: false,
+  altKey: false,
+  shiftKey: false,
+  metaKey: false,
+  bubbles: true,
+  cancelable: true
 }
 
 function getElementByXpath(path) {
-    return document.evaluate(path, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+  return document.evaluate(path, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
 }
