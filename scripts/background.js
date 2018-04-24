@@ -5,127 +5,153 @@ THIS IS NOT TO BE USED BY ANY (KNWON BY *OTHERS* AS BAD) PARTIES TO HARM ANY GOO
 BY *OTHERS* I MEAN ME, AND/OR ANY OTHER GOOD PARTIES
 */
 
-chrome.runtime.onInstalled.addListener(function () {
-    //Replace all rules
-    localStorage.setItem('tabId', 0);
-    localStorage.setItem('started', 'false');
-    localStorage.setItem('rocknroll', 'false');
-    localStorage.setItem('liked', 'false');
+chrome.runtime.onInstalled.addListener(function() {
+  //Replace all rules
+  localStorage.setItem('tabId', 0);
+  localStorage.setItem('started', 'false');
+  localStorage.setItem('rocknroll', 'false');
+  localStorage.setItem('liked', 'false');
 });
 
-function flipDice() {
-    var r = Math.floor(Math.random() * 3) + 1;
-    console.log('Dice:' + r);
-    //r = 3;
-    if (r === 1) {
-        Facebook();
-    }
-    if (r === 2) {
-        Wordpress();
-    }
-    if (r === 3) {
-        Twitter();
-    }
+function rollDice() {
+  var r = Math.floor(Math.random() * 3) + 1;
+  console.log('Dice:' + r);
+  r = 3;
+  if (r === 1) {
+    Facebook();
+  }
+  if (r === 2) {
+    Wordpress();
+  }
+  if (r === 3) {
+    Twitter();
+  }
+}
+
+function startIgnition() {
+  console.log('surf:Facebook is called');
+  chrome.tabs.query({
+    active: true,
+    currentWindow: true
+  }, function(tabs) {
+    chrome.tabs.update(
+      tabs[0].id, {
+        url: '/starter.html'
+      },
+      function(tab) {
+        chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
+          if (tabId === tab.id && changeInfo.status == 'complete') {
+            // Now the tab is ready!
+            chrome.tabs.sendMessage(tabId, {
+              data: "startIgnition"
+            }, function(response) {
+              console.log('from startIgnition()');
+              console.log(response);
+            });
+          }
+        });
+      });
+  });
 }
 
 function Facebook() {
-    console.log('surf:Facebook is called');
-    chrome.tabs.query({
-        active: true,
-        currentWindow: true
-    }, function (tabs) {
-        chrome.tabs.update(
-            tabs[0].id, {
-                url: 'https://www.facebook.com/en7erafatamnaldawla'
-            },
-            function (tab) {
-                chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
-                    if (tabId === tab.id && changeInfo.status == 'complete') {
-                        // Now the tab is ready!
-                        console.log('surf.js:tabId:' + tabId);
-                        chrome.tabs.sendMessage(tabId, {
-                            data: "doFacebookStuff"
-                        }, function (response) {
-                            console.log('from Facebook()');
-                            console.log(response);
-                        });
-                    }
-                });
+  console.log('surf:Facebook is called');
+  chrome.tabs.query({
+    active: true,
+    currentWindow: true
+  }, function(tabs) {
+    chrome.tabs.update(
+      tabs[0].id, {
+        url: 'https://www.facebook.com/en7erafatamnaldawla'
+      },
+      function(tab) {
+        chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
+          if (tabId === tab.id && changeInfo.status == 'complete') {
+            // Now the tab is ready!
+            console.log('surf.js:tabId:' + tabId);
+            chrome.tabs.sendMessage(tabId, {
+              data: "doFacebookStuff"
+            }, function(response) {
+              console.log('from Facebook()');
+              console.log(response);
             });
-    });
+          }
+        });
+      });
+  });
 }
 
 function Wordpress() {
-    console.log('Wordpress is callled ');
-    chrome.tabs.query({
-        active: true,
-        currentWindow: true
-    }, function (tabs) {
-        chrome.tabs.update(
-            tabs[0].id, {
-                url: 'https://amnaldawla.wordpress.com'
-            },
-            function (tab) {
-                chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
-                    if (tabId === tab.id && changeInfo.status == 'complete') {
-                        // Now the tab is ready!
-                        chrome.tabs.sendMessage(tabs[0].id, {
-                            data: "doWordpressStuff"
-                        }, function (response) {
-                            console.log('from Wordpress()');
-                            console.log(response);
-                        });
-                    }
-                });
+  console.log('Wordpress is callled ');
+  chrome.tabs.query({
+    active: true,
+    currentWindow: true
+  }, function(tabs) {
+    chrome.tabs.update(
+      tabs[0].id, {
+        url: 'https://amnaldawla.wordpress.com'
+      },
+      function(tab) {
+        chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
+          if (tabId === tab.id && changeInfo.status == 'complete') {
+            // Now the tab is ready!
+            chrome.tabs.sendMessage(tabs[0].id, {
+              data: "doWordpressStuff"
+            }, function(response) {
+              console.log('from Wordpress()');
+              console.log(response);
             });
-    });
+          }
+        });
+      });
+  });
 }
 
 function Twitter() {
-    console.log('Twitter is callled ');
-    chrome.tabs.query({
-        active: true,
-        currentWindow: true
-    }, function (tabs) {
-        chrome.tabs.update(
-            tabs[0].id, {
-                url: 'https://twitter.com/'
-            },
-            function (tab) {
-                chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
-                    if (tabId === tab.id && changeInfo.status == 'complete') {
-                        // Now the tab is ready!
-                        chrome.tabs.sendMessage(tabs[0].id, {
-                            data: "doTwitterStuff"
-                        }, function (response) {
-                            console.log('from Twitter()');
-                            console.log(response);
-                        });
-                    }
-                });
+  console.log('Twitter is callled ');
+  chrome.tabs.query({
+    active: true,
+    currentWindow: true
+  }, function(tabs) {
+    chrome.tabs.update(
+      tabs[0].id, {
+        url: 'https://twitter.com/'
+      },
+      function(tab) {
+        chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
+          if (tabId === tab.id && changeInfo.status == 'complete') {
+            // Now the tab is ready!
+            chrome.tabs.sendMessage(tabs[0].id, {
+              data: "doTwitterStuff"
+            }, function(response) {
+              console.log('from Twitter()');
+              console.log(response);
             });
-    });
+          }
+        });
+      });
+  });
 }
 
-chrome.storage.onChanged.addListener(function (changes, namespace) {
-    //updateIcon();
-    for (key in changes) {
-        var storageChange = changes[key];
-        if (key == 'rocknroll') {
-            if (storageChange.newValue == 'true') {
-                console.log('background.js:will start rocknroll');
-                flipDice();
-            } else {
-                console.log('background.js:will cut off rocknroll');
-            }
-        }
-        console.log('Storage key "%s" in namespace "%s" changed. ' +
-            'Old value was "%s", new value is "%s".',
-            key,
-            namespace,
-            storageChange.oldValue,
-            storageChange.newValue);
+chrome.storage.onChanged.addListener(function(changes, namespace) {
+  //updateIcon();
+  for (key in changes) {
+    var storageChange = changes[key];
+    if (key == 'rocknroll') {
+      if (storageChange.newValue == 'true') {
+        console.log('background.js:will start rocknroll');
+        startIgnition();
+      } else {
+        console.log('background.js:will cut off rocknroll');
+      }
     }
+    console.log('Storage key "%s" in namespace "%s" changed. ' +
+      'Old value was "%s", new value is "%s".',
+      key,
+      namespace,
+      storageChange.oldValue,
+      storageChange.newValue);
+  }
 });
 
 var eventList = ['onBeforeNavigate', 'onCreatedNavigationTarget',
@@ -134,89 +160,104 @@ var eventList = ['onBeforeNavigate', 'onCreatedNavigationTarget',
   'onHistoryStateUpdated'
 ];
 
-eventList.forEach(function (e) {
-    chrome.webNavigation[e].addListener(function (data) {
-        if (typeof data)
-            //console.log(chrome.i18n.getMessage('inHandler'), e, data);
-            updateIcon(data);
-        //else
-        //console.error(chrome.i18n.getMessage('inHandlerError'), e);
-    });
+eventList.forEach(function(e) {
+  chrome.webNavigation[e].addListener(function(data) {
+    if (typeof data)
+      //console.log(chrome.i18n.getMessage('inHandler'), e, data);
+      updateIcon(data);
+    //else
+    //console.error(chrome.i18n.getMessage('inHandlerError'), e);
+  });
 });
 
 function updateIcon(data) {
-    //console.log('updateIcon');
-    rocknroll = localStorage.getItem('rocknroll');
-    if (rocknroll) {
-        if (rocknroll == 'true') {
-            // for here add more than one icon and rolling between them
-            //
-            var r = Math.floor(Math.random() * 6);
-            chrome.browserAction.setIcon({
-                path: "/icons/on" + r + ".png",
-                tabId: data.tabId
-            });
-            tabId = localStorage.getItem('tabId') || 0;
-            if (!tabId) {
-                localStorage.setItem('tabId', data.tabId);
-                console.log('setting tabId');
-                chrome.storage.local.set({
-                    'tabId': data.tabId
-                }, function () {
-                    // Notify that we saved.
-                    console.log('surf:Settings saved');
-                });
-            }
-        } else {
-            chrome.browserAction.setIcon({
-                path: "/icons/off.png",
-                tabId: data.tabId
-            });
-        }
+  //console.log('updateIcon');
+  rocknroll = localStorage.getItem('rocknroll');
+  if (rocknroll) {
+    if (rocknroll == 'true') {
+      // for here add more than one icon and rolling between them
+      //
+      var r = Math.floor(Math.random() * 6);
+      chrome.browserAction.setIcon({
+        path: "/icons/on" + r + ".png",
+        tabId: data.tabId
+      });
+      tabId = localStorage.getItem('tabId') || 0;
+      if (!tabId) {
+        localStorage.setItem('tabId', data.tabId);
+        console.log('setting tabId');
+        chrome.storage.local.set({
+          'tabId': data.tabId
+        }, function() {
+          // Notify that we saved.
+          console.log('surf:Settings saved');
+        });
+      }
+    } else {
+      chrome.browserAction.setIcon({
+        path: "/icons/off.png",
+        tabId: data.tabId
+      });
     }
+  }
 }
 
 // function checkForValidURL(tabId, info, tab) {
 //   console.log('checkForValidURL is called:' + tabId + ':' + info + ':' + tab);
 // }
 
-chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
-    console.log('background.js:' + msg);
-    console.log(msg);
-    var data = msg.data || {};
-    console.log(data);
-    if (data === 'doTwitterStuff_DONE') {
-        sendResponse('doTwitterStuff_DONE:CONFIRMED');
-        console.log('Twitter STUFF IS DONE!');
-    }
-    if (data === 'doFacebookStuff_DONE') {
-        sendResponse('doFacebookStuff_DONE:CONFIRMED');
-        console.log('Facebook STUFF IS DONE!');
-    }
-    if (data === 'doWordpressStuff_DONE') {
-        sendResponse('doWordpressStuff_DONE:CONFIRMED');
-        console.log('Wordpress STUFF IS DONE!');
-    }
+chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse) {
+  console.log('background.js:' + msg);
+  console.log(msg);
+  var data = msg.data || {};
+  console.log(data);
+  if (data === 'doTwitterStuff_DONE') {
+    sendResponse('doTwitterStuff_DONE:CONFIRMED');
+    console.log('Twitter STUFF IS DONE!');
+  }
+  if (data === 'doFacebookStuff_DONE') {
+    sendResponse('doFacebookStuff_DONE:CONFIRMED');
+    console.log('Facebook STUFF IS DONE!');
+  }
+  if (data === 'doWordpressStuff_DONE') {
+    sendResponse('doWordpressStuff_DONE:CONFIRMED');
+    console.log('Wordpress STUFF IS DONE!');
+  }
+
+  if (data === 'surfStartIgnition') {
+    console.log('surfStartIgnition:CONFIRMED')
+    sendResponse('surfStartIgnition_DONE');
+    rollDice();
+    //console.log('Wordpress STUFF IS DONE!');
+  }
+  // if (data === 'surfStartIgnition_DONE') {
+  //   console.log('surfStartIgnition_DONE:CONFIRMED')
+  //   //sendResponse('surfStartIgnition_DONE');
+  //   //startIgnition();
+  //   //console.log('Wordpress STUFF IS DONE!');
+  // }
 });
 
+// chrome.tabs.onUpdated.addListener(function(msg, sender, sendResponse) {
+// });
+
 chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
-    console.log('listening...');
-    //if (tabId === tabs[0].id && changeInfo.status == 'complete') {
-    console.log(changeInfo.status);
-    if (changeInfo.status == 'complete') {
-        console.log('status complete');
-        // Now the tab is ready!
-        console.log('background.js:tabId:' + tabId);
-        tabId = localStorage.getItem('tabId') || 0;
-        if (!tabId) {
-            localStorage.setItem('tabId', tabId);
-            console.log('setting tabId');
-            chrome.storage.local.set({
-                'tabId': tabId
-            }, function () {
-                // Notify that we saved.
-                console.log('surf:Settings saved');
-            });
-        }
-    }
+  console.log('listening...');
+  //if (tabId === tabs[0].id && changeInfo.status == 'complete') {
+  console.log(changeInfo.status);
+  if (changeInfo.status == 'complete') {
+    console.log('status complete');
+    // Now the tab is ready!
+    console.log('background.js:tabId:' + tabId);
+    tabId2 = localStorage.getItem('tabId');
+    if (tabId != tabId2)
+      localStorage.setItem('tabId', tabId);
+    console.log('setting tabId');
+    chrome.storage.local.set({
+      'tabId': tabId
+    }, function() {
+      // Notify that we saved.
+      console.log('surf:Settings saved');
+    });
+  }
 });

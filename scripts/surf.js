@@ -7,10 +7,6 @@ BY *OTHERS* I MEAN ME, AND/OR ANY OTHER GOOD PARTIES
 
 var myLocalData;
 
-function TT() {
-    console.log('TT is called');
-}
-
 function alertFinished() {
     console.log('Finished my homework');
 }
@@ -34,16 +30,16 @@ function alertFinished() {
     }
 })();
 
-window.onload = function () {
-    console.log('surf:window is loaded');
-    var rr = 0;
-    rr = localStorage.getItem('rocknroll');
-    console.log('rr:' + rr);
-    chrome.storage.onChanged.addListener(function (changes, areaName) {
-        console.log('storage changed');
-        console.log(changes + ':' + areaName);
-    });
-}
+// window.onload = function () {
+//     console.log('surf:window is loaded');
+//     var rr = 0;
+//     rr = localStorage.getItem('rocknroll');
+//     console.log('rr:' + rr);
+//     chrome.storage.onChanged.addListener(function (changes, areaName) {
+//         console.log('storage changed');
+//         console.log(changes + ':' + areaName);
+//     });
+// }
 
 $('#toggleButton').change(function () {
     $('#console-event').html('Toggle: ' + $(this).prop('checked'));
@@ -85,6 +81,12 @@ $('#toggleStartNow').change(function () {
         }, function () {
             // Notify that we saved.
             console.log('surf:Settings saved');
+        });
+        chrome.runtime.sendMessage({
+            data: "surfStartIgnition"
+        }, function (response) {
+            console.log("from background:" + response);
+            console.log(response);
         });
     } else {
         console.log('rr is off');
