@@ -1,5 +1,5 @@
 /*
-by Hytham Shiehab <hytham.shiehab.2@gmail.com>
+CREDITS:Hytham Shiehab <hytham.shiehab.2@gmail.com>
 DISCLAIMER:
 THIS IS NOT TO BE USED BY ANY (KNWON BY *OTHERS* AS BAD) PARTIES TO HARM ANY GOOD PARTIES.
 BY *OTHERS* I MEAN ME, AND/OR ANY OTHER GOOD PARTIES
@@ -13,7 +13,7 @@ chrome.runtime.onInstalled.addListener(function() {
   localStorage.setItem('liked', 'false');
 });
 
-function rollDice() {
+function rollTheDice() {
   var r = Math.floor(Math.random() * 3) + 1;
   console.log('Dice:' + r);
   r = 3;
@@ -227,7 +227,7 @@ chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse) {
   if (data === 'surfStartIgnition') {
     console.log('surfStartIgnition:CONFIRMED')
     sendResponse('surfStartIgnition_DONE');
-    rollDice();
+    rollTheDice();
     //console.log('Wordpress STUFF IS DONE!');
   }
   // if (data === 'surfStartIgnition_DONE') {

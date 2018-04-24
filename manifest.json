@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "المتشعّب",
-    "description": "قيادة جووجل كروم عبر هذه الإضافة",
+    "description": "!قيادة جووجل كروم بيد واحدة أو بدون",
     "version": "0.2",
     "homepage_url": "https://github.com/hythamshiehab2/chrome_extension",
     "browser_action": {

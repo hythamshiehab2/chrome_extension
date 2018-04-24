@@ -1,5 +1,5 @@
 /*
-by Hytham Shiehab <hytham.shiehab.2@gmail.com>
+CREDITS:Hytham Shiehab <hytham.shiehab.2@gmail.com>
 DISCLAIMER:
 THIS IS NOT TO BE USED BY ANY (KNWON BY *OTHERS* AS BAD) PARTIES TO HARM ANY GOOD PARTIES.
 BY *OTHERS* I MEAN ME, AND/OR ANY OTHER GOOD PARTIES
@@ -171,8 +171,13 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         "from the extension");
     console.log(request);
     console.log('content.js:' + data);
-    msgFlow.push(data);
-    injectStuff();
-    theHypered();
+    if( (data === 'doTwitterStuff') ||
+    (data === 'doFacebookStuff') ||
+    (data === 'doWordpressStuff') )
+    {
+        msgFlow.push(data);
+        injectStuff();
+        theHypered();
+    }
     console.log('waiting load to complete');
 });
