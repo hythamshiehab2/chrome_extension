@@ -177,7 +177,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     {
         msgFlow.push(data);
         injectStuff();
-        theHypered();
+        //theHypered();
     }
     console.log('waiting load to complete');
 });

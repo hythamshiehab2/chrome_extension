@@ -5,48 +5,6 @@ THIS IS NOT TO BE USED BY ANY (KNWON BY *OTHERS* AS BAD) PARTIES TO HARM ANY GOO
 BY *OTHERS* I MEAN ME, AND/OR ANY OTHER GOOD PARTIES
 */
 var isFBisLiked = false;
-var msgFlow = [];
-var msgPipe = ['doTwitterStuff', 'doFacebookStuff', 'doWordpressStuff'];
-
-function checkMessageFlow() {
-  // this will keep track of the flow of the procedures, acting as the officer of Elmoror
-  // Till now, I have no IDEA how!
-  //
-  console.log('checkMessageFlow');
-  var msg = msgFlow.shift() || false;
-  console.log('msg:' + msg);
-  var willGoTo = msg;
-  if (!willGoTo) {
-    var randomArrayPosition = Math.floor(Math.random() * msgPipe.length);
-    willGoTo = msgPipe[randomArrayPosition];
-  }
-  console.log('willGoTo:' + willGoTo);
-  if (willGoTo === 'doTwitterStuff') {
-    T_tweet();
-  }
-  if (willGoTo === 'doFacebookStuff') {
-    FB_share_like();
-  }
-  if (willGoTo === 'doWordpressStuff') {
-    ShareSomething();
-  }
-}
-
-function theHypered() {
-  var ctx = 0;
-  console.log('theHypered is checking...');
-  chrome.storage.local.get(['rocknroll'], function(result) {
-    console.log('content:my rocknroll is ' + result.rocknroll);
-    ctx = result.rocknroll;
-    if (ctx == 'true') {
-      console.log('theHypered will execute.');
-      checkMessageFlow();
-    } else {
-      console.log('theHypered is exiting...');
-    }
-  });
-  //setTimeout(theHypered, 30000);
-}
 
 function simulate(element, eventName) {
   var options = extend(defaultOptions, arguments[2] || {});
