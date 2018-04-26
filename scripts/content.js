@@ -83,6 +83,7 @@ function T_tweet() {
     chrome.runtime.sendMessage({
         data: "doTwitterStuff_DONE"
     }, function (response) {
+        console.log('XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX');
         console.log(response);
     });
 }
@@ -177,7 +178,13 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     {
         msgFlow.push(data);
         injectStuff();
-        //theHypered();
+        theHypered();
     }
-    console.log('waiting load to complete');
+
+    /* THIS MESSAGE NEVER CATCHED HERE */
+    // if(data === 'doTwitterStuff_DONE')
+    // {
+    //     console.log('YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY');
+    // }
+    // console.log('waiting load to complete');
 });

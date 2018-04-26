@@ -16,50 +16,15 @@ chrome.runtime.onInstalled.addListener(function() {
   localStorage.setItem('liked', 'false');
 });
 
-function checkMessageFlow() {
-  // this will keep track of the flow of the procedures, acting as the officer of Elmoror
-  // Till now, I have no IDEA how!
-  //
-  console.log('checkMessageFlow');
-  var msg = msgFlow.shift() || false;
-  console.log('msg:' + msg);
-  var willGoTo = msg;
-  if (!willGoTo) {
-    var randomArrayPosition = Math.floor(Math.random() * msgPipe.length);
-    willGoTo = msgPipe[randomArrayPosition];
-  }
-  console.log('willGoTo:' + willGoTo);
-  if (willGoTo === 'doTwitterStuff') {
-    T_tweet();
-  }
-  if (willGoTo === 'doFacebookStuff') {
-    FB_share_like();
-  }
-  if (willGoTo === 'doWordpressStuff') {
-    ShareSomething();
-  }
-}
-
-function theHypered() {
-  var ctx = 0;
-  console.log('theHypered is checking...');
-  chrome.storage.local.get(['rocknroll'], function(result) {
-    console.log('content:my rocknroll is ' + result.rocknroll);
-    ctx = result.rocknroll;
-    if (ctx == 'true') {
-      console.log('theHypered will execute.');
-      checkMessageFlow();
-    } else {
-      console.log('theHypered is exiting...');
-    }
-  });
-  //setTimeout(theHypered, 30000);
-}
-
-function rollTheDice() {
-  var r = Math.floor(Math.random() * 3) + 1;
+function rollTheDice(t) {
+  msgFlow = [];
+  var r = t || Math.floor(Math.random() * 3) + 1 ;
   console.log('Dice:' + r);
-  r = 3;
+  //r = 3;
+  if (r === 1000) {
+    startIgnition();
+  }
+
   if (r === 1) {
     Facebook();
   }
@@ -257,14 +222,17 @@ chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse) {
   if (data === 'doTwitterStuff_DONE') {
     sendResponse('doTwitterStuff_DONE:CONFIRMED');
     console.log('Twitter STUFF IS DONE!');
+    //rollTheDice();
   }
   if (data === 'doFacebookStuff_DONE') {
     sendResponse('doFacebookStuff_DONE:CONFIRMED');
     console.log('Facebook STUFF IS DONE!');
+    //rollTheDice();
   }
   if (data === 'doWordpressStuff_DONE') {
     sendResponse('doWordpressStuff_DONE:CONFIRMED');
     console.log('Wordpress STUFF IS DONE!');
+    //rollTheDice();
   }
 
   if (data === 'surfStartIgnition') {
@@ -273,12 +241,7 @@ chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse) {
     rollTheDice();
     //console.log('Wordpress STUFF IS DONE!');
   }
-  // if (data === 'surfStartIgnition_DONE') {
-  //   console.log('surfStartIgnition_DONE:CONFIRMED')
-  //   //sendResponse('surfStartIgnition_DONE');
-  //   //startIgnition();
-  //   //console.log('Wordpress STUFF IS DONE!');
-  // }
+
 });
 
 // chrome.tabs.onUpdated.addListener(function(msg, sender, sendResponse) {
