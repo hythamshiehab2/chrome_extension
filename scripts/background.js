@@ -4,10 +4,6 @@ DISCLAIMER:
 THIS IS NOT TO BE USED BY ANY (KNWON BY *OTHERS* AS BAD) PARTIES TO HARM ANY GOOD PARTIES.
 BY *OTHERS* I MEAN ME, AND/OR ANY OTHER GOOD PARTIES
 */
-var isFBisLiked = false;
-var msgFlow = [];
-var msgPipe = ['doTwitterStuff', 'doFacebookStuff', 'doWordpressStuff'];
-
 chrome.runtime.onInstalled.addListener(function() {
   //Replace all rules
   localStorage.setItem('tabId', 0);
@@ -17,7 +13,7 @@ chrome.runtime.onInstalled.addListener(function() {
 });
 
 function rollTheDice(t) {
-  msgFlow = [];
+  msgFlow.length = 0;
   var r = t || Math.floor(Math.random() * 3) + 1 ;
   console.log('Dice:' + r);
   //r = 3;
@@ -37,7 +33,6 @@ function rollTheDice(t) {
 }
 
 function startIgnition() {
-  console.log('surf:Facebook is called');
   chrome.tabs.query({
     active: true,
     currentWindow: true
@@ -103,7 +98,7 @@ function Wordpress() {
         chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
           if (tabId === tab.id && changeInfo.status == 'complete') {
             // Now the tab is ready!
-            chrome.tabs.sendMessage(tabs[0].id, {
+            chrome.tabs.sendMessage(tabId, {
               data: "doWordpressStuff"
             }, function(response) {
               console.log('from Wordpress()');
@@ -129,7 +124,7 @@ function Twitter() {
         chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
           if (tabId === tab.id && changeInfo.status == 'complete') {
             // Now the tab is ready!
-            chrome.tabs.sendMessage(tabs[0].id, {
+            chrome.tabs.sendMessage(tabId, {
               data: "doTwitterStuff"
             }, function(response) {
               console.log('from Twitter()');
@@ -222,17 +217,17 @@ chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse) {
   if (data === 'doTwitterStuff_DONE') {
     sendResponse('doTwitterStuff_DONE:CONFIRMED');
     console.log('Twitter STUFF IS DONE!');
-    //rollTheDice();
+    rollTheDice();
   }
   if (data === 'doFacebookStuff_DONE') {
     sendResponse('doFacebookStuff_DONE:CONFIRMED');
     console.log('Facebook STUFF IS DONE!');
-    //rollTheDice();
+    rollTheDice();
   }
   if (data === 'doWordpressStuff_DONE') {
     sendResponse('doWordpressStuff_DONE:CONFIRMED');
     console.log('Wordpress STUFF IS DONE!');
-    //rollTheDice();
+    rollTheDice();
   }
 
   if (data === 'surfStartIgnition') {
@@ -244,10 +239,9 @@ chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse) {
 
 });
 
-// chrome.tabs.onUpdated.addListener(function(msg, sender, sendResponse) {
-// });
-
-chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
+//chrome.tabs.onUpdated.addListener(function(msg, sender, sendResponse) {
+//chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
+chrome.tabs.onUpdated.addListener(function(tabId,changeInfo,tab) {
   console.log('listening...');
   //if (tabId === tabs[0].id && changeInfo.status == 'complete') {
   console.log(changeInfo.status);

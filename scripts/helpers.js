@@ -5,6 +5,9 @@ THIS IS NOT TO BE USED BY ANY (KNWON BY *OTHERS* AS BAD) PARTIES TO HARM ANY GOO
 BY *OTHERS* I MEAN ME, AND/OR ANY OTHER GOOD PARTIES
 */
 var isFBisLiked = false;
+var isFBisLiked = false;
+var msgFlow = [];
+var msgPipe = ['doFacebookStuff', 'doWordpressStuff', 'doTwitterStuff'];
 
 function theHypered() {
   var ctx = 0;
