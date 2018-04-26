@@ -1,5 +1,5 @@
 /*
-CREDITS:Hytham Shiehab <hytham.shiehab.2@gmail.com>
+CREDITS:Hytham Shiehab <hytham.shiehab.2@gmail.com>, <https://twitter.com/hythamshiehab2>
 DISCLAIMER:
 THIS IS NOT TO BE USED BY ANY (KNWON BY *OTHERS* AS BAD) PARTIES TO HARM ANY GOOD PARTIES.
 BY *OTHERS* I MEAN ME, AND/OR ANY OTHER GOOD PARTIES
@@ -174,7 +174,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     if (msgFlow.length === 0) {
       console.log('ZZZZZZZZZZZZZZZZZZZZZz');
       msgFlow.push(data);
-      injectStuff();
+      //injectStuff();
       theHypered();
     }
   }

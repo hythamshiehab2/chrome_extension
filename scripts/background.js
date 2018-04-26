@@ -1,5 +1,5 @@
 /*
-CREDITS:Hytham Shiehab <hytham.shiehab.2@gmail.com>
+CREDITS:Hytham Shiehab <hytham.shiehab.2@gmail.com>, <https://twitter.com/hythamshiehab2>
 DISCLAIMER:
 THIS IS NOT TO BE USED BY ANY (KNWON BY *OTHERS* AS BAD) PARTIES TO HARM ANY GOOD PARTIES.
 BY *OTHERS* I MEAN ME, AND/OR ANY OTHER GOOD PARTIES
@@ -14,7 +14,7 @@ chrome.runtime.onInstalled.addListener(function() {
 
 function rollTheDice(t) {
   msgFlow.length = 0;
-  var r = t || Math.floor(Math.random() * 3) + 1 ;
+  var r = t || Math.floor(Math.random() * 3) + 1;
   console.log('Dice:' + r);
   //r = 3;
   if (r === 1000) {
@@ -43,7 +43,19 @@ function startIgnition() {
       },
       function(tab) {
         chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
+          var a = chrome.extension.getURL("css/myactivetab.css");
           if (tabId === tab.id && changeInfo.status == 'complete') {
+            chrome.tabs.insertCSS({
+              //file: a
+              code: "#elmotasha3eb {position: fixed;width: 100%;height: 100%;top: 0 !important;left: 0 !important;right: 0 !important;bottom: 0 !important;background-color: rgba(93, 51, 204, 0.29) !important;z-index: 10000000 !important;cursor: pointer !important;}"
+            });
+            var javascriptCode = "var divElement = document.createElement('div');";
+            javascriptCode += "divElement.id = 'elmotasha3eb';";
+            javascriptCode += "document.body.appendChild(divElement);";
+            chrome.tabs.executeScript({
+              //file: a
+              code: javascriptCode
+            });
             // Now the tab is ready!
             chrome.tabs.sendMessage(tabId, {
               data: "startIgnition"
@@ -241,7 +253,7 @@ chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse) {
 
 //chrome.tabs.onUpdated.addListener(function(msg, sender, sendResponse) {
 //chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
-chrome.tabs.onUpdated.addListener(function(tabId,changeInfo,tab) {
+chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
   console.log('listening...');
   //if (tabId === tabs[0].id && changeInfo.status == 'complete') {
   console.log(changeInfo.status);
