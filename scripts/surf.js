@@ -106,3 +106,13 @@ $('#toggleStartNow').change(function () {
         console.log('surf:Settings saved');
     });
 });
+
+chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse) {
+  var data = msg.data || {};
+  console.log('surf.js:');
+  console.log(data);
+  if (data === 'doTwitterStuff_DONE') {
+    sendResponse('doTwitterStuff_DONE:CONFIRMED');
+    console.log('surft.js:Twitter STUFF IS DONE!');
+  }
+});

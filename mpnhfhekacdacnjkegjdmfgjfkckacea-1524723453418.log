@@ -1,0 +1,207 @@
+08:16:13.237 newtab?ie=UTF-8&client=ubuntu:7 SW registered
+08:16:40.510 Navigated to chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/starter.html
+08:16:40.816 VM99 background.js:289 listening...
+08:16:40.846 VM99 background.js:291 complete
+08:16:40.854 VM99 background.js:293 status complete
+08:16:40.862 VM99 background.js:295 background.js:tabId:590
+08:16:40.871 VM99 background.js:299 setting tabId
+08:16:41.035 VM99 background.js:253 background.js:[object Object]
+08:16:41.083 VM99 background.js:254 {data: "startIgnition"}
+08:16:41.133 VM99 background.js:256 startIgnition
+08:16:41.375 VM99 background.js:191 Storage key "tabId" in namespace "local" changed. Old value was "567", new value is "590".
+08:16:41.574 VM99 background.js:304 surf:Settings saved
+08:16:43.989 VM122 background.js:289 listening...
+08:16:44.015 VM122 background.js:291 loading
+08:16:44.068 Navigated to chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/starter.html
+08:16:44.177 VM122 background.js:289 listening...
+08:16:44.191 VM122 background.js:291 complete
+08:16:44.197 VM122 background.js:293 status complete
+08:16:44.211 VM122 background.js:295 background.js:tabId:590
+08:16:44.216 VM122 background.js:299 setting tabId
+08:16:44.478 VM122 background.js:253 background.js:[object Object]
+08:16:44.490 VM122 background.js:254 {data: "startIgnition"}
+08:16:44.524 VM122 background.js:256 startIgnition
+08:16:44.913 VM122 background.js:304 surf:Settings saved
+08:16:47.253 VM145 background.js:289 listening...
+08:16:47.288 VM145 background.js:291 loading
+08:16:47.324 Navigated to chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/starter.html
+08:16:47.466 VM145 background.js:289 listening...
+08:16:47.472 VM145 background.js:291 complete
+08:16:47.492 VM145 background.js:293 status complete
+08:16:47.496 VM145 background.js:295 background.js:tabId:590
+08:16:47.497 VM145 background.js:299 setting tabId
+08:16:47.740 VM145 background.js:253 background.js:[object Object]
+08:16:47.753 VM145 background.js:254 {data: "startIgnition"}
+08:16:47.780 VM145 background.js:256 startIgnition
+08:16:48.353 VM145 background.js:304 surf:Settings saved
+08:16:50.628 Navigated to chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/starter.html
+08:16:50.969 VM168 background.js:289 listening...
+08:16:51.016 VM168 background.js:291 complete
+08:16:51.024 VM168 background.js:293 status complete
+08:16:51.029 VM168 background.js:295 background.js:tabId:590
+08:16:51.036 VM168 background.js:299 setting tabId
+08:16:51.112 VM168 background.js:253 background.js:[object Object]
+08:16:51.134 VM168 background.js:254 {data: "startIgnition"}
+08:16:51.162 VM168 background.js:256 startIgnition
+08:16:51.550 VM168 background.js:304 surf:Settings saved
+08:16:54.213 VM189 background.js:289 listening...
+08:16:54.230 VM189 background.js:291 loading
+08:16:54.232 Navigated to chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/starter.html
+08:16:54.374 VM189 background.js:289 listening...
+08:16:54.377 VM189 background.js:291 complete
+08:16:54.392 VM189 background.js:293 status complete
+08:16:54.407 VM189 background.js:295 background.js:tabId:590
+08:16:54.418 VM189 background.js:299 setting tabId
+08:16:54.650 VM189 background.js:253 background.js:[object Object]
+08:16:54.664 VM189 background.js:254 {data: "startIgnition"}
+08:16:54.702 VM189 background.js:256 startIgnition
+08:16:55.107 VM189 background.js:304 surf:Settings saved
+08:16:57.595 Navigated to chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/starter.html
+08:16:57.659 VM212 background.js:289 listening...
+08:16:57.683 VM212 background.js:291 loading
+08:16:57.902 VM212 background.js:289 listening...
+08:16:57.920 VM212 background.js:291 complete
+08:16:57.939 VM212 background.js:293 status complete
+08:16:57.941 VM212 background.js:295 background.js:tabId:590
+08:16:57.949 VM212 background.js:299 setting tabId
+08:16:58.107 VM212 background.js:253 background.js:[object Object]
+08:16:58.124 VM212 background.js:254 {data: "startIgnition"}
+08:16:58.173 VM212 background.js:256 startIgnition
+08:16:58.598 VM212 background.js:304 surf:Settings saved
+08:17:01.070 Navigated to chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/starter.html
+08:17:01.160 VM235 background.js:289 listening...
+08:17:01.248 VM235 background.js:291 loading
+08:17:01.492 VM235 background.js:289 listening...
+08:17:01.509 VM235 background.js:291 complete
+08:17:01.521 VM235 background.js:293 status complete
+08:17:01.534 VM235 background.js:295 background.js:tabId:590
+08:17:01.543 VM235 background.js:299 setting tabId
+08:17:01.874 VM235 background.js:253 background.js:[object Object]
+08:17:01.904 VM235 background.js:254 {data: "startIgnition"}
+08:17:01.944 VM235 background.js:256 startIgnition
+08:17:02.328 VM235 background.js:304 surf:Settings saved
+08:17:04.458 VM258 background.js:289 listening...
+08:17:04.479 VM258 background.js:291 loading
+08:17:04.634 VM258 background.js:289 listening...
+08:17:04.644 VM258 background.js:291 complete
+08:17:04.648 VM258 background.js:293 status complete
+08:17:04.660 VM258 background.js:295 background.js:tabId:590
+08:17:04.670 VM258 background.js:299 setting tabId
+08:17:04.673 Navigated to chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/starter.html
+08:17:04.871 VM258 background.js:253 background.js:[object Object]
+08:17:04.888 VM258 background.js:254 {data: "startIgnition"}
+08:17:04.937 VM258 background.js:256 startIgnition
+08:17:05.707 VM258 background.js:304 surf:Settings saved
+08:17:09.990 VM281 background.js:289 listening...
+08:17:10.031 VM281 background.js:291 loading
+08:17:10.125 Navigated to chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/starter.html
+08:17:10.193 VM281 background.js:289 listening...
+08:17:10.205 VM281 background.js:291 complete
+08:17:10.210 VM281 background.js:293 status complete
+08:17:10.215 VM281 background.js:295 background.js:tabId:590
+08:17:10.239 VM281 background.js:299 setting tabId
+08:17:10.588 VM281 background.js:253 background.js:[object Object]
+08:17:10.620 VM281 background.js:254 {data: "startIgnition"}
+08:17:10.659 VM281 background.js:256 startIgnition
+08:17:11.401 VM281 background.js:304 surf:Settings saved
+08:17:13.152 VM304 background.js:289 listening...
+08:17:13.175 VM304 background.js:291 loading
+08:17:13.219 Navigated to chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/starter.html
+08:17:13.396 VM304 background.js:289 listening...
+08:17:13.402 VM304 background.js:291 complete
+08:17:13.403 VM304 background.js:293 status complete
+08:17:13.409 VM304 background.js:295 background.js:tabId:590
+08:17:13.410 VM304 background.js:299 setting tabId
+08:17:14.708 VM304 background.js:253 background.js:[object Object]
+08:17:14.720 VM304 background.js:254 {data: "startIgnition"}
+08:17:14.759 VM304 background.js:256 startIgnition
+08:17:15.493 VM304 background.js:304 surf:Settings saved
+08:17:16.800 Navigated to chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/starter.html
+08:17:17.458 VM327 background.js:289 listening...
+08:17:17.486 VM327 background.js:291 complete
+08:17:17.501 VM327 background.js:293 status complete
+08:17:17.513 VM327 background.js:295 background.js:tabId:590
+08:17:17.523 VM327 background.js:299 setting tabId
+08:17:17.768 VM327 background.js:253 background.js:[object Object]
+08:17:17.798 VM327 background.js:254 {data: "startIgnition"}
+08:17:17.975 VM327 background.js:256 startIgnition
+08:17:18.473 VM327 background.js:304 surf:Settings saved
+08:17:19.875 Navigated to chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/starter.html
+08:17:20.335 VM350 background.js:289 listening...
+08:17:20.387 VM350 background.js:291 complete
+08:17:20.404 VM350 background.js:293 status complete
+08:17:20.413 VM350 background.js:295 background.js:tabId:590
+08:17:20.427 VM350 background.js:299 setting tabId
+08:17:20.549 VM350 background.js:253 background.js:[object Object]
+08:17:20.571 VM350 background.js:254 {data: "startIgnition"}
+08:17:20.611 VM350 background.js:256 startIgnition
+08:17:21.192 VM350 background.js:304 surf:Settings saved
+08:17:23.305 Navigated to chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/starter.html
+08:17:23.370 VM371 background.js:289 listening...
+08:17:23.410 VM371 background.js:291 loading
+08:17:23.565 VM371 background.js:289 listening...
+08:17:23.574 VM371 background.js:291 complete
+08:17:23.581 VM371 background.js:293 status complete
+08:17:23.589 VM371 background.js:295 background.js:tabId:590
+08:17:23.604 VM371 background.js:299 setting tabId
+08:17:24.567 VM371 background.js:253 background.js:[object Object]
+08:17:24.592 VM371 background.js:254 {data: "startIgnition"}
+08:17:24.627 VM371 background.js:256 startIgnition
+08:17:25.485 VM371 background.js:304 surf:Settings saved
+08:17:27.296 VM394 background.js:289 listening...
+08:17:27.335 VM394 background.js:291 loading
+08:17:27.412 Navigated to chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/starter.html
+08:17:27.492 VM394 background.js:289 listening...
+08:17:27.509 VM394 background.js:291 complete
+08:17:27.527 VM394 background.js:293 status complete
+08:17:27.537 VM394 background.js:295 background.js:tabId:590
+08:17:27.556 VM394 background.js:299 setting tabId
+08:17:27.947 VM394 background.js:253 background.js:[object Object]
+08:17:27.971 VM394 background.js:254 {data: "startIgnition"}
+08:17:28.060 VM394 background.js:256 startIgnition
+08:17:28.685 VM394 background.js:304 surf:Settings saved
+08:17:30.336 Navigated to chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/starter.html
+08:17:30.773 VM417 background.js:289 listening...
+08:17:30.806 VM417 background.js:291 complete
+08:17:30.813 VM417 background.js:293 status complete
+08:17:30.833 VM417 background.js:295 background.js:tabId:590
+08:17:30.844 VM417 background.js:299 setting tabId
+08:17:31.194 VM417 background.js:253 background.js:[object Object]
+08:17:31.206 VM417 background.js:254 {data: "startIgnition"}
+08:17:31.263 VM417 background.js:256 startIgnition
+08:17:31.946 VM417 background.js:304 surf:Settings saved
+08:17:35.270 VM438 background.js:289 listening...
+08:17:35.304 VM438 background.js:291 loading
+08:17:35.397 Navigated to chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/starter.html
+08:17:35.482 VM438 background.js:289 listening...
+08:17:35.496 VM438 background.js:291 complete
+08:17:35.498 VM438 background.js:293 status complete
+08:17:35.502 VM438 background.js:295 background.js:tabId:590
+08:17:35.513 VM438 background.js:299 setting tabId
+08:17:35.939 VM438 background.js:253 background.js:[object Object]
+08:17:35.946 VM438 background.js:254 {data: "startIgnition"}
+08:17:35.971 VM438 background.js:256 startIgnition
+08:17:36.442 VM438 background.js:304 surf:Settings saved
+08:17:38.119 VM461 background.js:289 listening...
+08:17:38.165 VM461 background.js:291 loading
+08:17:38.202 Navigated to chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/starter.html
+08:17:38.318 VM461 background.js:289 listening...
+08:17:38.334 VM461 background.js:291 complete
+08:17:38.340 VM461 background.js:293 status complete
+08:17:38.350 VM461 background.js:295 background.js:tabId:590
+08:17:38.361 VM461 background.js:299 setting tabId
+08:17:38.552 VM461 background.js:253 background.js:[object Object]
+08:17:38.573 VM461 background.js:254 {data: "startIgnition"}
+08:17:38.627 VM461 background.js:256 startIgnition
+08:17:39.221 VM461 background.js:304 surf:Settings saved
+08:17:41.557 Navigated to chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/starter.html
+08:17:41.641 background.js:289 listening...
+08:17:41.652 background.js:291 complete
+08:17:41.663 background.js:293 status complete
+08:17:41.652 background.js:291 complete
+08:17:41.663 background.js:293 status complete
+08:17:41.668 background.js:295 background.js:tabId:590
+08:17:41.679 background.js:299 setting tabId
+08:17:41.985 background.js:253 background.js:[object Object]
+08:17:41.995 background.js:254 {data: "startIgnition"}
+08:17:42.075 background.js:256 startIgnition

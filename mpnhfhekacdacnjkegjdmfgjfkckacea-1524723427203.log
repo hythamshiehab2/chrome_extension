@@ -1,0 +1,133 @@
+08:16:39.260 background.js:253 background.js:[object Object]
+08:16:39.281 background.js:254 {data: "surfStartIgnition"}
+08:16:39.304 background.js:256 surfStartIgnition
+08:16:39.312 background.js:271 surfStartIgnition:CONFIRMED
+08:16:39.331 background.js:75 surf:Facebook is called
+08:16:40.272 background.js:289 listening...
+08:16:40.297 background.js:291 loading
+08:16:40.755 background.js:289 listening...
+08:16:40.756 background.js:291 complete
+08:16:40.759 background.js:293 status complete
+08:16:40.767 background.js:295 background.js:tabId:590
+08:16:40.780 background.js:299 setting tabId
+08:16:41.372 background.js:191 Storage key "tabId" in namespace "local" changed. Old value was "567", new value is "590".
+08:16:41.392 background.js:304 surf:Settings saved
+08:16:41.482 background.js:91 from startIgnition()
+08:16:41.484 background.js:92 undefined
+08:16:43.960 background.js:289 listening...
+08:16:43.971 background.js:291 loading
+08:16:44.125 background.js:289 listening...
+08:16:44.136 background.js:291 complete
+08:16:44.146 background.js:293 status complete
+08:16:44.154 background.js:295 background.js:tabId:590
+08:16:44.159 background.js:299 setting tabId
+08:16:44.732 background.js:304 surf:Settings saved
+08:16:44.887 background.js:91 from startIgnition()
+08:16:44.889 background.js:92 undefined
+08:16:47.231 background.js:289 listening...
+08:16:47.233 background.js:291 loading
+08:16:47.414 background.js:289 listening...
+08:16:47.426 background.js:291 complete
+08:16:47.431 background.js:293 status complete
+08:16:47.443 background.js:295 background.js:tabId:590
+08:16:47.448 background.js:299 setting tabId
+08:16:48.077 background.js:304 surf:Settings saved
+08:16:48.229 background.js:91 from startIgnition()
+08:16:48.231 background.js:92 undefined
+08:16:50.553 background.js:289 listening...
+08:16:50.566 background.js:291 loading
+08:16:50.897 background.js:289 listening...
+08:16:50.920 background.js:291 complete
+08:16:50.933 background.js:293 status complete
+08:16:50.936 background.js:295 background.js:tabId:590
+08:16:50.944 background.js:299 setting tabId
+08:16:51.278 background.js:304 surf:Settings saved
+08:16:51.387 background.js:91 from startIgnition()
+08:16:51.389 background.js:92 undefined
+08:16:54.195 background.js:289 listening...
+08:16:54.208 background.js:291 loading
+08:16:54.330 background.js:289 listening...
+08:16:54.335 background.js:291 complete
+08:16:54.343 background.js:293 status complete
+08:16:54.350 background.js:295 background.js:tabId:590
+08:16:54.356 background.js:299 setting tabId
+08:16:54.916 background.js:304 surf:Settings saved
+08:16:55.065 background.js:91 from startIgnition()
+08:16:55.067 background.js:92 undefined
+08:16:57.648 background.js:289 listening...
+08:16:57.650 background.js:291 loading
+08:16:57.818 background.js:289 listening...
+08:16:57.837 background.js:291 complete
+08:16:57.851 background.js:293 status complete
+08:16:57.866 background.js:295 background.js:tabId:590
+08:16:57.873 background.js:299 setting tabId
+08:16:58.370 background.js:304 surf:Settings saved
+08:16:58.573 background.js:91 from startIgnition()
+08:16:58.576 background.js:92 undefined
+08:17:01.118 background.js:289 listening...
+08:17:01.150 background.js:291 loading
+08:17:01.399 background.js:289 listening...
+08:17:01.417 background.js:291 complete
+08:17:01.439 background.js:293 status complete
+08:17:01.449 background.js:295 background.js:tabId:590
+08:17:01.473 background.js:299 setting tabId
+08:17:02.170 background.js:304 surf:Settings saved
+08:17:02.333 background.js:91 from startIgnition()
+08:17:02.348 background.js:92 undefined
+08:17:04.454 background.js:289 listening...
+08:17:04.455 background.js:291 loading
+08:17:04.591 background.js:289 listening...
+08:17:04.594 background.js:291 complete
+08:17:04.596 background.js:293 status complete
+08:17:04.604 background.js:295 background.js:tabId:590
+08:17:04.615 background.js:299 setting tabId
+08:17:05.389 background.js:304 surf:Settings saved
+08:17:05.653 background.js:91 from startIgnition()
+08:17:05.655 background.js:92 undefined
+08:17:09.985 background.js:289 listening...
+08:17:09.987 background.js:291 loading
+08:17:10.144 background.js:289 listening...
+08:17:10.153 background.js:291 complete
+08:17:10.160 background.js:293 status complete
+08:17:10.163 background.js:295 background.js:tabId:590
+08:17:10.176 background.js:299 setting tabId
+08:17:11.027 background.js:304 surf:Settings saved
+08:17:11.349 background.js:91 from startIgnition()
+08:17:11.362 background.js:92 undefined
+08:17:13.117 background.js:289 listening...
+08:17:13.125 background.js:291 loading
+08:17:13.366 background.js:289 listening...
+08:17:13.371 background.js:291 complete
+08:17:13.380 background.js:293 status complete
+08:17:13.385 background.js:295 background.js:tabId:590
+08:17:13.388 background.js:299 setting tabId
+08:17:15.312 background.js:304 surf:Settings saved
+08:17:15.539 background.js:91 from startIgnition()
+08:17:15.543 background.js:92 undefined
+08:17:16.373 background.js:289 listening...
+08:17:16.388 background.js:291 loading
+08:17:17.422 background.js:289 listening...
+08:17:17.423 background.js:291 complete
+08:17:17.424 background.js:293 status complete
+08:17:17.426 background.js:295 background.js:tabId:590
+08:17:17.438 background.js:299 setting tabId
+08:17:18.197 background.js:304 surf:Settings saved
+08:17:18.521 background.js:91 from startIgnition()
+08:17:18.524 background.js:92 undefined
+08:17:19.756 background.js:289 listening...
+08:17:19.771 background.js:291 loading
+08:17:20.299 background.js:289 listening...
+08:17:20.300 background.js:291 complete
+08:17:20.301 background.js:293 status complete
+08:17:20.309 background.js:295 background.js:tabId:590
+08:17:20.321 background.js:299 setting tabId
+08:17:20.931 background.js:304 surf:Settings saved
+08:17:21.077 background.js:91 from startIgnition()
+08:17:21.079 background.js:92 undefined
+08:17:23.365 background.js:289 listening...
+08:17:23.367 background.js:291 loading
+08:17:23.517 background.js:289 listening...
+08:17:23.529 background.js:291 complete
+08:17:23.533 background.js:293 status complete
+08:17:23.546 background.js:295 background.js:tabId:590
+08:17:23.554 background.js:299 setting tabId

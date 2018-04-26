@@ -72,13 +72,17 @@ function rollTheDice() {
 }
 
 function startIgnition() {
-  console.log('surf:Facebook is called');
-  chrome.tabs.query({
-    active: true,
-    currentWindow: true
-  }, function(tabs) {
-    chrome.tabs.update(
-      tabs[0].id, {
+  console.log('startIgnition()');
+  // chrome.tabs.query({
+  //   active: true,
+  //   currentWindow: true
+  // }, function(tabs) {
+    //chrome.tabs.update(
+    // tabs[0].id, {
+    //   url: '/starter.html'
+    // },
+    chrome.tabs.create(
+      {
         url: '/starter.html'
       },
       function(tab) {
@@ -94,7 +98,6 @@ function startIgnition() {
           }
         });
       });
-  });
 }
 
 function Facebook() {
@@ -270,15 +273,16 @@ chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse) {
   if (data === 'surfStartIgnition') {
     console.log('surfStartIgnition:CONFIRMED')
     sendResponse('surfStartIgnition_DONE');
-    rollTheDice();
+    startIgnition();
+    //rollTheDice();
     //console.log('Wordpress STUFF IS DONE!');
   }
-  // if (data === 'surfStartIgnition_DONE') {
-  //   console.log('surfStartIgnition_DONE:CONFIRMED')
-  //   //sendResponse('surfStartIgnition_DONE');
-  //   //startIgnition();
-  //   //console.log('Wordpress STUFF IS DONE!');
-  // }
+  if (data === 'surfStartIgnition_DONE') {
+    console.log('surfStartIgnition_DONE:CONFIRMED');
+    sendResponse('surfStartIgnition_DONE:CONFIRMED');
+    //startIgnition();
+    //console.log('Wordpress STUFF IS DONE!');
+  }
 });
 
 // chrome.tabs.onUpdated.addListener(function(msg, sender, sendResponse) {

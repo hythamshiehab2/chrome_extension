@@ -171,6 +171,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         "from the extension");
     console.log(request);
     console.log('content.js:' + data);
+    console.log(data);
     if( (data === 'doTwitterStuff') ||
     (data === 'doFacebookStuff') ||
     (data === 'doWordpressStuff') )
@@ -179,5 +180,6 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         injectStuff();
         //theHypered();
     }
+    //if(data === 'su')
     console.log('waiting load to complete');
 });
