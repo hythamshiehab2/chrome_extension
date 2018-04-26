@@ -73,31 +73,38 @@ function rollTheDice() {
 
 function startIgnition() {
   console.log('startIgnition()');
-  // chrome.tabs.query({
-  //   active: true,
-  //   currentWindow: true
-  // }, function(tabs) {
-    //chrome.tabs.update(
-    // tabs[0].id, {
-    //   url: '/starter.html'
-    // },
-    chrome.tabs.create(
-      {
-        url: '/starter.html'
-      },
-      function(tab) {
-        chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
-          if (tabId === tab.id && changeInfo.status == 'complete') {
-            // Now the tab is ready!
-            chrome.tabs.sendMessage(tabId, {
-              data: "startIgnition"
-            }, function(response) {
-              console.log('from startIgnition()');
-              console.log(response);
-            });
-          }
-        });
+  chrome.tabs.create({
+      url: '/starter.html',
+    },
+    function(tab) {
+      //function(integer tabId, object changeInfo, Tab tab) {
+      chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo, tab) {
+        if (tabId === tab.id && changeInfo.status == 'complete') {
+          // Now the tab is ready!
+          chrome.tabs.sendMessage(tabId, {
+            data: "startIgnition"
+          }, function(response) {
+            console.log('from startIgnition()');
+            console.log(response);
+          });
+        }
+        // chrome.tabs.executeScript(tabId, {
+        //   code: 'document.querySelector(\'link[rel*="icon"]\').href = "//icons/icon3.png"'
+        // });
+        // chrome.tabs.executeScript(tabId, {
+        //   code: 'document.title="الناموسية - لوحة التحكم"'
+        // });
+        // chrome.tabs.update(
+        //   tab.id, {
+        //     title: 'howier ekrwo ',
+        //     pinned: true
+        //   },
+        // );
+        tab.favIconUrl = "/icons/icon4.png";
+        tab.title = "الناموسية - لوحة التحكم";
+        tab.pinned = true;
       });
+    });
 }
 
 function Facebook() {
