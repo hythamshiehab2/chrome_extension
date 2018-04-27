@@ -3,9 +3,10 @@ DISCLAIMER:
 THIS IS NOT TO BE USED BY ANY (KNWON BY *OTHERS* AS BAD) PARTIES TO HARM ANY GOOD PARTIES.
 BY *OTHERS* I MEAN ME, AND/OR ANY OTHER GOOD PARTIES */
 
-document.addEventListener('DOMContentLoaded', function(dcle) {
-  console.log('CONTENT:document is loaded');
-});
+/* this never fired! */
+// document.addEventListener('DOMContentLoaded', function(dcle) {
+//   console.log('CONTENT:document is loaded');
+// });
 
 function injectStuff() {
   var a = chrome.extension.getURL("css/myactivetab.css");
@@ -25,12 +26,13 @@ function resetState() {
 
 function ShareSomething() {
   console.log('will share something');
+  resetState();
   chrome.runtime.sendMessage({
     data: "doWordpressStuff_DONE"
   }, function(response) {
     console.log(response);
+    console.log('WWWWWWWWWWWWWWWWWWWWWWWW');
   });
-  resetState();
 }
 
 function get_Ta() {
@@ -88,7 +90,7 @@ function T_tweet() {
   chrome.runtime.sendMessage({
     data: "doTwitterStuff_DONE"
   }, function(response) {
-    console.log('XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX');
+    console.log('TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT');
     console.log(response);
   });
 }
@@ -158,6 +160,7 @@ function checkFBPageIsLiked() {
     data: "doFacebookStuff_DONE"
   }, function(response) {
     console.log(response);
+    console.log('FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF');
   });
 
 }
@@ -187,10 +190,14 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
   console.log('content.js:' + data);
   if ((data === 'doTwitterStuff') || (data === 'doFacebookStuff') || (data === 'doWordpressStuff')) {
     if (msgFlow.length === 0) {
-      console.log('ZZZZZZZZZZZZZZZZZZZZZz');
+      console.log('GO GO GO GO');
       msgFlow.push(data);
       //injectStuff();
       theHypered();
+    }
+    else {
+      console.log('msgFlow IS NOT EMPTY!');
+      console.log(msgFlow);
     }
   }
 

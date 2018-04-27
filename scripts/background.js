@@ -13,7 +13,6 @@ chrome.runtime.onInstalled.addListener(function() {
 });
 
 function rollTheDice(t) {
-  //msgFlow.length = 0;
   var r = t || Math.floor(Math.random() * 3) + 1;
   console.log('Dice:' + r);
   //r = 3;
@@ -70,13 +69,15 @@ function startIgnition() {
 }
 
 function Facebook() {
+  tab_id = localStorage.getItem('tabId');
+  tab_id = parseInt(tab_id);
   console.log('surf:Facebook is called');
   chrome.tabs.query({
     active: true,
     currentWindow: true
   }, function(tabs) {
     chrome.tabs.update(
-      tabs[0].id, {
+      tab_id, {
         url: 'https://www.facebook.com/en7erafatamnaldawla'
       },
       function(tab) {
@@ -97,13 +98,15 @@ function Facebook() {
 }
 
 function Wordpress() {
+  tab_id = localStorage.getItem('tabId');
+  tab_id = parseInt(tab_id);
   console.log('Wordpress is callled ');
   chrome.tabs.query({
     active: true,
     currentWindow: true
   }, function(tabs) {
     chrome.tabs.update(
-      tabs[0].id, {
+      tab_id, {
         url: 'https://amnaldawla.wordpress.com'
       },
       function(tab) {
@@ -123,13 +126,15 @@ function Wordpress() {
 }
 
 function Twitter() {
+  tab_id = localStorage.getItem('tabId');
+  tab_id = parseInt(tab_id);
   console.log('Twitter is callled ');
   chrome.tabs.query({
     active: true,
     currentWindow: true
   }, function(tabs) {
     chrome.tabs.update(
-      tabs[0].id, {
+      tab_id, {
         url: 'https://twitter.com/'
       },
       function(tab) {
@@ -230,17 +235,23 @@ chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse) {
   if (data === 'doTwitterStuff_DONE') {
     sendResponse('doTwitterStuff_DONE:CONFIRMED');
     console.log('Twitter STUFF IS DONE!');
-    rollTheDice();
+    //rollTheDice();
+    console.log('will rollTheDice in 30s');
+    setTimeout(rollTheDice, 30000);
   }
   if (data === 'doFacebookStuff_DONE') {
     sendResponse('doFacebookStuff_DONE:CONFIRMED');
     console.log('Facebook STUFF IS DONE!');
-    rollTheDice();
+    //rollTheDice();
+    console.log('will rollTheDice in 30s');
+    setTimeout(rollTheDice, 30000);
   }
   if (data === 'doWordpressStuff_DONE') {
     sendResponse('doWordpressStuff_DONE:CONFIRMED');
     console.log('Wordpress STUFF IS DONE!');
-    rollTheDice();
+    //rollTheDice();
+    console.log('will rollTheDice in 30s');
+    setTimeout(rollTheDice, 30000);
   }
 
   if (data === 'surfStartIgnition') {
