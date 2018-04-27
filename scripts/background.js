@@ -13,6 +13,13 @@ chrome.runtime.onInstalled.addListener(function() {
 });
 
 function rollTheDice(t) {
+  chrome.runtime.sendMessage({
+    data: "CHECK_MSG_FLOW"
+  }, function(response) {
+    console.log('CHECK_MSG_FLOW_RESPONSE');
+    console.log(response);
+  });
+
   var r = t || Math.floor(Math.random() * 3) + 1;
   console.log('Dice:' + r);
   //r = 3;

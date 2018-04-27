@@ -201,6 +201,13 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     }
   }
 
+  if(data === 'CHECK_MSG_FLOW')
+  {
+    var t = msgFlow.length;
+    sendResponse(t);
+    //return msgFlow.length;
+  }
+
   /* THIS MESSAGE NEVER CATCHED HERE */
   // if(data === 'doTwitterStuff_DONE')
   // {
