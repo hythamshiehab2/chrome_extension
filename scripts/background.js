@@ -84,7 +84,8 @@ function Facebook() {
     currentWindow: true
   }, function(tabs) {
     chrome.tabs.update(
-      tab_id, {
+      tabs[0].id, {
+      //tab_id, {
         url: 'https://www.facebook.com/en7erafatamnaldawla'
       },
       function(tab) {
@@ -113,7 +114,8 @@ function Wordpress() {
     currentWindow: true
   }, function(tabs) {
     chrome.tabs.update(
-      tab_id, {
+      tabs[0].id, {
+      //tab_id, {
         url: 'https://amnaldawla.wordpress.com'
       },
       function(tab) {
@@ -141,7 +143,8 @@ function Twitter() {
     currentWindow: true
   }, function(tabs) {
     chrome.tabs.update(
-      tab_id, {
+      tabs[0].id, {
+      //tab_id, {
         url: 'https://twitter.com/'
       },
       function(tab) {

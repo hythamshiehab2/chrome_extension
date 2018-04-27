@@ -14,6 +14,16 @@ function injectStuff() {
   $('<div id="elmotasha3eb"></div>').appendTo("body");
 }
 
+function sendMsgFlowResponse(t) {
+  console.log('sendMsgFlowResponse:' + t);
+  chrome.runtime.sendMessage({
+    data: t
+  }, function(response) {
+    console.log(response);
+    console.log('#################3');
+  });
+}
+
 function resetState() {
   msgFlow.lengh = 0;
   console.log('RESET msgFlow');
@@ -188,24 +198,23 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     : "from the extension");
   console.log(request);
   console.log('content.js:' + data);
+
   if ((data === 'doTwitterStuff') || (data === 'doFacebookStuff') || (data === 'doWordpressStuff')) {
     if (msgFlow.length === 0) {
       console.log('GO GO GO GO');
       msgFlow.push(data);
       //injectStuff();
       theHypered();
-    }
-    else {
+    } else {
       console.log('msgFlow IS NOT EMPTY!');
       console.log(msgFlow);
     }
   }
 
-  if(data === 'CHECK_MSG_FLOW')
-  {
+  if (data === 'CHECK_MSG_FLOW') {
+    console.log('RECIEVED:CHECK_MSG_FLOW')
     var t = msgFlow.length;
-    sendResponse(t);
-    //return msgFlow.length;
+    sendMsgFlowResponse(t);
   }
 
   /* THIS MESSAGE NEVER CATCHED HERE */

@@ -1,0 +1,1336 @@
+18:14:31.753 Navigated to https://amnaldawla.wordpress.com/
+18:14:32.235 (index):91 GET https://s2.wp.com/wp-content/themes/pub/independent-publisher-2/rtl.css?m=1496180247 net::ERR_ABORTED
+18:14:32.390 ??-eJyFztEKwjAMBdAfsquTiXsRv6XWOFKXtDbphn69HeiDMBQCgdzDJXZOBtmP5QJiQ517gfx4rybIxv4ChnDITqEh5A/2kRVYF0vxjCOYIpDdUG+16BpXXIqiBCIVraTfLyFPCPNfFkCT8zeTQfC5tJ7o2Hb9Yde3+24bXjRNW9I=:9 JQMIGRATE: Migrate is installed, version 1.4.1
+18:14:32.717 webfont.js:6 Slow network is detected. See https://www.chromestatus.com/feature/5636954674692096 for more details. Fallback font will be used while loading: https://fonts.gstatic.com/s/ubuntu/v11/4iCs6KVjbNBYlgoKfw72.woff2
+18:14:32.809 webfont.js:6 Slow network is detected. See https://www.chromestatus.com/feature/5636954674692096 for more details. Fallback font will be used while loading: https://fonts.gstatic.com/s/ubuntu/v11/4iCu6KVjbNBYlgoKej70l0k.woff2
+18:14:32.821 webfont.js:6 Slow network is detected. See https://www.chromestatus.com/feature/5636954674692096 for more details. Fallback font will be used while loading: https://fonts.gstatic.com/s/ubuntu/v11/4iCv6KVjbNBYlgoCxCvjsGyN.woff2
+18:14:32.839 webfont.js:6 Slow network is detected. See https://www.chromestatus.com/feature/5636954674692096 for more details. Fallback font will be used while loading: https://fonts.gstatic.com/s/ubuntu/v11/4iCp6KVjbNBYlgoKejZPslyPN4E.woff2
+18:14:32.904 (index):91 GET https://s2.wp.com/wp-content/themes/pub/independent-publisher-2/rtl.css?m=1496180247 net::ERR_ABORTED
+18:14:40.718 jquery.js:1 [Deprecation] Synchronous XMLHttpRequest on the main thread is deprecated because of its detrimental effects to the end user's experience. For more help, check https://xhr.spec.whatwg.org/.
+send @ jquery.js:1
+ajax @ jquery.js:1
+loadTranslation @ follow-rest.js:16
+wpFollow @ follow-rest.js:4
+(anonymous) @ follow-rest.js:25
+(anonymous) @ follow-rest.js:25
+18:14:42.685 _CQdR4pZvc7.js?_nc_eui2=v1%3AAeHG8XisJgVVXETeFp7HucJH9pKLcIPv2kfxOoqoPaD6wSI0kZBrLfqvj2cC_1vE6RTQJoApEXz_J0OKNsV60vbOAL1IiA27VEvFLtFdiZUIIA:57 ErrorUtils caught an error: "Cannot listen to an undefined element. TAAL[2]". Subsequent errors won't be logged; see https://fburl.com/debugjs.
+reportError @ _CQdR4pZvc7.js?_nc_eui2=v1%3AAeHG8XisJgVVXETeFp7HucJH9pKLcIPv2kfxOoqoPaD6wSI0kZBrLfqvj2cC_1vE6RTQJoApEXz_J0OKNsV60vbOAL1IiA27VEvFLtFdiZUIIA:57
+j.$1 @ _CQdR4pZvc7.js?_nc_eui2=v1%3AAeHG8XisJgVVXETeFp7HucJH9pKLcIPv2kfxOoqoPaD6wSI0kZBrLfqvj2cC_1vE6RTQJoApEXz_J0OKNsV60vbOAL1IiA27VEvFLtFdiZUIIA:95
+j.mustfix @ _CQdR4pZvc7.js?_nc_eui2=v1%3AAeHG8XisJgVVXETeFp7HucJH9pKLcIPv2kfxOoqoPaD6wSI0kZBrLfqvj2cC_1vE6RTQJoApEXz_J0OKNsV60vbOAL1IiA27VEvFLtFdiZUIIA:95
+listen @ _CQdR4pZvc7.js?_nc_eui2=v1%3AAeHG8XisJgVVXETeFp7HucJH9pKLcIPv2kfxOoqoPaD6wSI0kZBrLfqvj2cC_1vE6RTQJoApEXz_J0OKNsV60vbOAL1IiA27VEvFLtFdiZUIIA:233
+l @ tCH806IRWKK.js?_nc_eui2=v1%3AAeHR3E49ntt_mTo59TpgiVSV9sLyte-U6GhcSHGPm4jMoQIkoBOO4JFjrqS5Rl0Lwoe5EG82RR5BfUU3imgWL78AzLHl59sku10Y1AnFF9zhcA:8
+initializeClickLoggers @ tCH806IRWKK.js?_nc_eui2=v1%3AAeHR3E49ntt_mTo59TpgiVSV9sLyte-U6GhcSHGPm4jMoQIkoBOO4JFjrqS5Rl0Lwoe5EG82RR5BfUU3imgWL78AzLHl59sku10Y1AnFF9zhcA:8
+(anonymous) @ _CQdR4pZvc7.js?_nc_eui2=v1%3AAeHG8XisJgVVXETeFp7HucJH9pKLcIPv2kfxOoqoPaD6wSI0kZBrLfqvj2cC_1vE6RTQJoApEXz_J0OKNsV60vbOAL1IiA27VEvFLtFdiZUIIA:130
+applyWithGuard @ _CQdR4pZvc7.js?_nc_eui2=v1%3AAeHG8XisJgVVXETeFp7HucJH9pKLcIPv2kfxOoqoPaD6wSI0kZBrLfqvj2cC_1vE6RTQJoApEXz_J0OKNsV60vbOAL1IiA27VEvFLtFdiZUIIA:57
+d @ _CQdR4pZvc7.js?_nc_eui2=v1%3AAeHG8XisJgVVXETeFp7HucJH9pKLcIPv2kfxOoqoPaD6wSI0kZBrLfqvj2cC_1vE6RTQJoApEXz_J0OKNsV60vbOAL1IiA27VEvFLtFdiZUIIA:57
+B @ _CQdR4pZvc7.js?_nc_eui2=v1%3AAeHG8XisJgVVXETeFp7HucJH9pKLcIPv2kfxOoqoPaD6wSI0kZBrLfqvj2cC_1vE6RTQJoApEXz_J0OKNsV60vbOAL1IiA27VEvFLtFdiZUIIA:38
+z @ _CQdR4pZvc7.js?_nc_eui2=v1%3AAeHG8XisJgVVXETeFp7HucJH9pKLcIPv2kfxOoqoPaD6wSI0kZBrLfqvj2cC_1vE6RTQJoApEXz_J0OKNsV60vbOAL1IiA27VEvFLtFdiZUIIA:38
+I @ _CQdR4pZvc7.js?_nc_eui2=v1%3AAeHG8XisJgVVXETeFp7HucJH9pKLcIPv2kfxOoqoPaD6wSI0kZBrLfqvj2cC_1vE6RTQJoApEXz_J0OKNsV60vbOAL1IiA27VEvFLtFdiZUIIA:38
+a.$11 @ _CQdR4pZvc7.js?_nc_eui2=v1%3AAeHG8XisJgVVXETeFp7HucJH9pKLcIPv2kfxOoqoPaD6wSI0kZBrLfqvj2cC_1vE6RTQJoApEXz_J0OKNsV60vbOAL1IiA27VEvFLtFdiZUIIA:130
+applyWithGuard @ _CQdR4pZvc7.js?_nc_eui2=v1%3AAeHG8XisJgVVXETeFp7HucJH9pKLcIPv2kfxOoqoPaD6wSI0kZBrLfqvj2cC_1vE6RTQJoApEXz_J0OKNsV60vbOAL1IiA27VEvFLtFdiZUIIA:57
+a.$10 @ _CQdR4pZvc7.js?_nc_eui2=v1%3AAeHG8XisJgVVXETeFp7HucJH9pKLcIPv2kfxOoqoPaD6wSI0kZBrLfqvj2cC_1vE6RTQJoApEXz_J0OKNsV60vbOAL1IiA27VEvFLtFdiZUIIA:130
+(anonymous) @ _CQdR4pZvc7.js?_nc_eui2=v1%3AAeHG8XisJgVVXETeFp7HucJH9pKLcIPv2kfxOoqoPaD6wSI0kZBrLfqvj2cC_1vE6RTQJoApEXz_J0OKNsV60vbOAL1IiA27VEvFLtFdiZUIIA:130
+j @ _CQdR4pZvc7.js?_nc_eui2=v1%3AAeHG8XisJgVVXETeFp7HucJH9pKLcIPv2kfxOoqoPaD6wSI0kZBrLfqvj2cC_1vE6RTQJoApEXz_J0OKNsV60vbOAL1IiA27VEvFLtFdiZUIIA:130
+a.handle @ _CQdR4pZvc7.js?_nc_eui2=v1%3AAeHG8XisJgVVXETeFp7HucJH9pKLcIPv2kfxOoqoPaD6wSI0kZBrLfqvj2cC_1vE6RTQJoApEXz_J0OKNsV60vbOAL1IiA27VEvFLtFdiZUIIA:130
+handleServerJS @ _CQdR4pZvc7.js?_nc_eui2=v1%3AAeHG8XisJgVVXETeFp7HucJH9pKLcIPv2kfxOoqoPaD6wSI0kZBrLfqvj2cC_1vE6RTQJoApEXz_J0OKNsV60vbOAL1IiA27VEvFLtFdiZUIIA:252
+require.guard.root @ page.php?app_id=249643311490&channel=https%3A%2F%2Fstaticxx.facebook.com%2Fconnect%2Fxd_arbiter%2Fr%2FJW5GlLnAsFw.js%3Fversion%3D42%23cb%3Df25126fcd38b5c%26domain%3Damnaldawla.wordpress.com%26origin%3Dhttps%3A%2F%2Famnaldawla.wordpress.com%2Ff3e16738655924c%26relation%3Dparent.parent&container_width=740&height=432&hide_cover=false&href=https%3A%2F%2Fwww.facebook.com%2Fen7erafatamnaldawla&locale=ar_AR&sdk=joey&show_facepile=true&show_posts=false&width=340:18
+applyWithGuard @ _CQdR4pZvc7.js?_nc_eui2=v1%3AAeHG8XisJgVVXETeFp7HucJH9pKLcIPv2kfxOoqoPaD6wSI0kZBrLfqvj2cC_1vE6RTQJoApEXz_J0OKNsV60vbOAL1IiA27VEvFLtFdiZUIIA:57
+d @ _CQdR4pZvc7.js?_nc_eui2=v1%3AAeHG8XisJgVVXETeFp7HucJH9pKLcIPv2kfxOoqoPaD6wSI0kZBrLfqvj2cC_1vE6RTQJoApEXz_J0OKNsV60vbOAL1IiA27VEvFLtFdiZUIIA:102
+(anonymous) @ page.php?app_id=249643311490&channel=https%3A%2F%2Fstaticxx.facebook.com%2Fconnect%2Fxd_arbiter%2Fr%2FJW5GlLnAsFw.js%3Fversion%3D42%23cb%3Df25126fcd38b5c%26domain%3Damnaldawla.wordpress.com%26origin%3Dhttps%3A%2F%2Famnaldawla.wordpress.com%2Ff3e16738655924c%26relation%3Dparent.parent&container_width=740&height=432&hide_cover=false&href=https%3A%2F%2Fwww.facebook.com%2Fen7erafatamnaldawla&locale=ar_AR&sdk=joey&show_facepile=true&show_posts=false&width=340:18
+18:14:46.050 content.js:194 from the extension
+18:14:46.136 content.js:198 {data: "doWordpressStuff"}
+18:14:46.195 content.js:199 content.js:doWordpressStuff
+18:14:46.203 content.js:202 GO GO GO GO
+18:14:46.231 helpers.js:14 theHypered is checking...
+18:14:46.339 content.js:194 from the extension
+18:14:46.384 content.js:198 {data: "doWordpressStuff"}
+18:14:46.448 content.js:199 content.js:doWordpressStuff
+18:14:46.468 content.js:202 GO GO GO GO
+18:14:46.491 helpers.js:14 theHypered is checking...
+18:14:46.577 content.js:194 from the extension
+18:14:46.620 content.js:198 {data: "doWordpressStuff"}
+18:14:46.671 content.js:199 content.js:doWordpressStuff
+18:14:46.688 content.js:202 GO GO GO GO
+18:14:46.692 helpers.js:14 theHypered is checking...
+18:14:46.800 content.js:194 from the extension
+18:14:46.847 content.js:198 {data: "doWordpressStuff"}
+18:14:46.873 content.js:199 content.js:doWordpressStuff
+18:14:46.929 content.js:202 GO GO GO GO
+18:14:46.956 helpers.js:14 theHypered is checking...
+18:14:47.090 content.js:194 from the extension
+18:14:47.124 content.js:198 {data: "doWordpressStuff"}
+18:14:47.168 content.js:199 content.js:doWordpressStuff
+18:14:47.175 content.js:202 GO GO GO GO
+18:14:47.190 helpers.js:14 theHypered is checking...
+18:14:47.266 content.js:194 from the extension
+18:14:47.294 content.js:198 {data: "doWordpressStuff"}
+18:14:47.319 content.js:199 content.js:doWordpressStuff
+18:14:47.331 content.js:202 GO GO GO GO
+18:14:47.343 helpers.js:14 theHypered is checking...
+18:14:47.430 helpers.js:16 content:my rocknroll is true
+18:14:47.442 helpers.js:19 theHypered will execute.
+18:14:47.443 helpers.js:32 checkMessageFlow
+18:14:47.452 helpers.js:33 ["doWordpressStuff"]
+18:14:47.456 helpers.js:35 msg:doWordpressStuff
+18:14:47.551 helpers.js:41 willGoTo:doWordpressStuff
+18:14:47.557 content.js:37 will share something
+18:14:47.585 content.js:28 RESET msgFlow
+18:14:47.785 helpers.js:16 content:my rocknroll is true
+18:14:47.832 helpers.js:19 theHypered will execute.
+18:14:47.860 helpers.js:32 checkMessageFlow
+18:14:47.864 helpers.js:33 ["doWordpressStuff"]
+18:14:47.909 helpers.js:35 msg:doWordpressStuff
+18:14:47.929 helpers.js:41 willGoTo:doWordpressStuff
+18:14:47.970 content.js:37 will share something
+18:14:47.978 content.js:28 RESET msgFlow
+18:14:48.090 helpers.js:16 content:my rocknroll is true
+18:14:48.113 helpers.js:19 theHypered will execute.
+18:14:48.128 helpers.js:32 checkMessageFlow
+18:14:48.137 helpers.js:33 ["doWordpressStuff"]
+18:14:48.155 helpers.js:35 msg:doWordpressStuff
+18:14:48.172 helpers.js:41 willGoTo:doWordpressStuff
+18:14:48.188 content.js:37 will share something
+18:14:48.198 content.js:28 RESET msgFlow
+18:14:49.262 helpers.js:16 content:my rocknroll is true
+18:14:49.275 helpers.js:19 theHypered will execute.
+18:14:49.288 helpers.js:32 checkMessageFlow
+18:14:49.304 helpers.js:33 ["doWordpressStuff"]
+18:14:49.311 helpers.js:35 msg:doWordpressStuff
+18:14:49.316 helpers.js:41 willGoTo:doWordpressStuff
+18:14:49.329 content.js:37 will share something
+18:14:49.345 content.js:28 RESET msgFlow
+18:14:49.796 helpers.js:16 content:my rocknroll is true
+18:14:49.807 helpers.js:19 theHypered will execute.
+18:14:49.808 helpers.js:32 checkMessageFlow
+18:14:49.817 helpers.js:33 ["doWordpressStuff"]
+18:14:49.830 helpers.js:35 msg:doWordpressStuff
+18:14:49.835 helpers.js:41 willGoTo:doWordpressStuff
+18:14:49.840 content.js:37 will share something
+18:14:49.843 content.js:28 RESET msgFlow
+18:14:49.974 helpers.js:16 content:my rocknroll is true
+18:14:49.987 helpers.js:19 theHypered will execute.
+18:14:49.989 helpers.js:32 checkMessageFlow
+18:14:49.996 helpers.js:33 ["doWordpressStuff"]
+18:14:50.006 helpers.js:35 msg:doWordpressStuff
+18:14:50.011 helpers.js:41 willGoTo:doWordpressStuff
+18:14:50.020 content.js:37 will share something
+18:14:50.027 content.js:28 RESET msgFlow
+18:14:50.357 content.js:42 doWordpressStuff_DONE:CONFIRMED
+18:14:50.360 content.js:43 WWWWWWWWWWWWWWWWWWWWWWWW
+18:14:50.550 content.js:42 doWordpressStuff_DONE:CONFIRMED
+18:14:50.556 content.js:43 WWWWWWWWWWWWWWWWWWWWWWWW
+18:14:50.785 content.js:42 doWordpressStuff_DONE:CONFIRMED
+18:14:50.789 content.js:43 WWWWWWWWWWWWWWWWWWWWWWWW
+18:14:51.407 content.js:42 doWordpressStuff_DONE:CONFIRMED
+18:14:51.409 content.js:43 WWWWWWWWWWWWWWWWWWWWWWWW
+18:14:52.087 content.js:42 doWordpressStuff_DONE:CONFIRMED
+18:14:52.089 content.js:43 WWWWWWWWWWWWWWWWWWWWWWWW
+18:14:52.391 content.js:42 doWordpressStuff_DONE:CONFIRMED
+18:14:52.393 content.js:43 WWWWWWWWWWWWWWWWWWWWWWWW
+18:15:24.169 Navigated to https://twitter.com/
+18:15:24.645 VM22 content.js:194 from the extension
+18:15:24.679 VM22 content.js:198 {data: "doWordpressStuff"}
+18:15:24.714 VM22 content.js:199 content.js:doWordpressStuff
+18:15:24.732 VM22 content.js:202 GO GO GO GO
+18:15:24.742 VM36 helpers.js:14 theHypered is checking...
+18:15:24.811 VM22 content.js:194 from the extension
+18:15:24.824 VM22 content.js:198 {data: "doTwitterStuff"}
+18:15:24.834 VM22 content.js:199 content.js:doTwitterStuff
+18:15:24.837 VM22 content.js:207 msgFlow IS NOT EMPTY!
+18:15:24.851 VM22 content.js:208 ["doWordpressStuff"]
+18:15:24.863 VM22 content.js:194 from the extension
+18:15:24.884 VM22 content.js:198 {data: "doWordpressStuff"}
+18:15:24.895 VM22 content.js:199 content.js:doWordpressStuff
+18:15:24.900 VM22 content.js:207 msgFlow IS NOT EMPTY!
+18:15:24.912 VM22 content.js:208 ["doWordpressStuff"]
+18:15:24.932 VM22 content.js:194 from the extension
+18:15:24.939 VM22 content.js:198 {data: "doFacebookStuff"}
+18:15:24.954 VM22 content.js:199 content.js:doFacebookStuff
+18:15:24.967 VM22 content.js:207 msgFlow IS NOT EMPTY!
+18:15:24.976 VM22 content.js:208 ["doWordpressStuff"]
+18:15:25.002 VM22 content.js:194 from the extension
+18:15:25.014 VM22 content.js:198 {data: "doFacebookStuff"}
+18:15:25.030 VM22 content.js:199 content.js:doFacebookStuff
+18:15:25.066 VM22 content.js:207 msgFlow IS NOT EMPTY!
+18:15:25.080 VM22 content.js:208 ["doWordpressStuff"]
+18:15:25.104 VM22 content.js:194 from the extension
+18:15:25.139 VM22 content.js:198 {data: "doWordpressStuff"}
+18:15:25.147 VM22 content.js:199 content.js:doWordpressStuff
+18:15:25.161 VM22 content.js:207 msgFlow IS NOT EMPTY!
+18:15:25.179 VM22 content.js:208 ["doWordpressStuff"]
+18:15:25.196 VM22 content.js:194 from the extension
+18:15:25.215 VM22 content.js:198 {data: "doTwitterStuff"}
+18:15:25.229 VM22 content.js:199 content.js:doTwitterStuff
+18:15:25.240 VM22 content.js:207 msgFlow IS NOT EMPTY!
+18:15:25.247 VM22 content.js:208 ["doWordpressStuff"]
+18:15:26.748 Navigated to https://twitter.com/
+18:15:33.905 VM48 content.js:194 from the extension
+18:15:33.961 VM48 content.js:198 {data: "doWordpressStuff"}
+18:15:34.006 VM48 content.js:199 content.js:doWordpressStuff
+18:15:34.044 VM48 content.js:202 GO GO GO GO
+18:15:34.094 VM62 helpers.js:14 theHypered is checking...
+18:15:34.288 VM48 content.js:194 from the extension
+18:15:34.303 VM48 content.js:198 {data: "doTwitterStuff"}
+18:15:34.316 VM48 content.js:199 content.js:doTwitterStuff
+18:15:34.328 VM48 content.js:207 msgFlow IS NOT EMPTY!
+18:15:34.341 VM48 content.js:208 ["doWordpressStuff"]
+18:15:34.376 VM48 content.js:194 from the extension
+18:15:34.388 VM48 content.js:198 {data: "doWordpressStuff"}
+18:15:34.397 VM48 content.js:199 content.js:doWordpressStuff
+18:15:34.410 VM48 content.js:207 msgFlow IS NOT EMPTY!
+18:15:34.427 VM48 content.js:208 ["doWordpressStuff"]
+18:15:34.456 VM48 content.js:194 from the extension
+18:15:34.488 VM48 content.js:198 {data: "doFacebookStuff"}
+18:15:34.503 VM48 content.js:199 content.js:doFacebookStuff
+18:15:34.519 VM48 content.js:207 msgFlow IS NOT EMPTY!
+18:15:34.523 VM48 content.js:208 ["doWordpressStuff"]
+18:15:34.896 VM48 content.js:194 from the extension
+18:15:34.906 VM48 content.js:198 {data: "doFacebookStuff"}
+18:15:34.915 VM48 content.js:199 content.js:doFacebookStuff
+18:15:34.921 VM48 content.js:207 msgFlow IS NOT EMPTY!
+18:15:34.938 VM48 content.js:208 ["doWordpressStuff"]
+18:15:42.551 VM48 content.js:194 from the extension
+18:15:42.560 VM48 content.js:198 {data: "doWordpressStuff"}
+18:15:42.564 VM48 content.js:199 content.js:doWordpressStuff
+18:15:42.578 VM48 content.js:207 msgFlow IS NOT EMPTY!
+18:15:42.589 VM48 content.js:208 ["doWordpressStuff"]
+18:15:42.731 VM48 content.js:194 from the extension
+18:15:42.757 VM48 content.js:198 {data: "doTwitterStuff"}
+18:15:42.762 VM48 content.js:199 content.js:doTwitterStuff
+18:15:42.796 VM48 content.js:207 msgFlow IS NOT EMPTY!
+18:15:42.804 VM48 content.js:208 ["doWordpressStuff"]
+18:15:42.892 VM62 helpers.js:16 content:my rocknroll is true
+18:15:42.905 VM62 helpers.js:19 theHypered will execute.
+18:15:42.912 VM62 helpers.js:32 checkMessageFlow
+18:15:42.915 VM62 helpers.js:33 ["doWordpressStuff"]
+18:15:42.923 VM62 helpers.js:35 msg:doWordpressStuff
+18:15:42.926 VM62 helpers.js:41 willGoTo:doWordpressStuff
+18:15:42.938 VM48 content.js:37 will share something
+18:15:42.948 VM48 content.js:28 RESET msgFlow
+18:15:45.308 VM63 init.ar.5fd79e54a57c8838e11f.js:14 GET https://t.tellapart.com/twitterinitmatch?tpm_cb=partnerIdSyncComplete&guest_id=152320778816833818&_=1524845732728 net::ERR_NAME_NOT_RESOLVED
+send @ VM63 init.ar.5fd79e54a57c8838e11f.js:14
+ajax @ VM63 init.ar.5fd79e54a57c8838e11f.js:16
+JSONRequest @ VM63 init.ar.5fd79e54a57c8838e11f.js:12
+get @ VM63 init.ar.5fd79e54a57c8838e11f.js:12
+syncWithPartner @ VM63 init.ar.5fd79e54a57c8838e11f.js:2
+(anonymous) @ VM63 init.ar.5fd79e54a57c8838e11f.js:2
+handlePartnerIdSyncResponse @ VM63 init.ar.5fd79e54a57c8838e11f.js:2
+callSuccessHandler @ VM63 init.ar.5fd79e54a57c8838e11f.js:12
+(anonymous) @ VM63 init.ar.5fd79e54a57c8838e11f.js:12
+(anonymous) @ VM63 init.ar.5fd79e54a57c8838e11f.js:12
+l @ VM63 init.ar.5fd79e54a57c8838e11f.js:2
+fireWith @ VM63 init.ar.5fd79e54a57c8838e11f.js:2
+g @ VM63 init.ar.5fd79e54a57c8838e11f.js:16
+(anonymous) @ VM63 init.ar.5fd79e54a57c8838e11f.js:14
+load (async)
+send @ VM63 init.ar.5fd79e54a57c8838e11f.js:14
+ajax @ VM63 init.ar.5fd79e54a57c8838e11f.js:16
+JSONRequest @ VM63 init.ar.5fd79e54a57c8838e11f.js:12
+get @ VM63 init.ar.5fd79e54a57c8838e11f.js:12
+doPartnerIdSync @ VM63 init.ar.5fd79e54a57c8838e11f.js:2
+(anonymous) @ VM63 init.ar.5fd79e54a57c8838e11f.js:2
+(anonymous) @ VM63 init.ar.5fd79e54a57c8838e11f.js:33
+(anonymous) @ VM63 init.ar.5fd79e54a57c8838e11f.js:33
+(anonymous) @ VM63 init.ar.5fd79e54a57c8838e11f.js:2
+each @ VM63 init.ar.5fd79e54a57c8838e11f.js:2
+each @ VM63 init.ar.5fd79e54a57c8838e11f.js:2
+c @ VM63 init.ar.5fd79e54a57c8838e11f.js:2
+a @ VM63 init.ar.5fd79e54a57c8838e11f.js:2
+s @ VM67 0.commons.ar.eafcdde615f8c5d610ff.js:1
+e.default @ VM66 8.pages_home.ar.e5388f036368fa95c48c.js:45
+(anonymous) @ VM63 init.ar.5fd79e54a57c8838e11f.js:14
+(anonymous) @ VM63 init.ar.5fd79e54a57c8838e11f.js:14
+r @ VM63 init.ar.5fd79e54a57c8838e11f.js:14
+r @ VM63 init.ar.5fd79e54a57c8838e11f.js:12
+(anonymous) @ VM63 init.ar.5fd79e54a57c8838e11f.js:12
+Promise.then (async)
+n @ VM63 init.ar.5fd79e54a57c8838e11f.js:12
+r @ VM63 init.ar.5fd79e54a57c8838e11f.js:12
+i @ VM63 init.ar.5fd79e54a57c8838e11f.js:14
+(anonymous) @ VM63 init.ar.5fd79e54a57c8838e11f.js:2
+d @ VM63 init.ar.5fd79e54a57c8838e11f.js:2
+h @ VM63 init.ar.5fd79e54a57c8838e11f.js:2
+setTimeout (async)
+(anonymous) @ VM63 init.ar.5fd79e54a57c8838e11f.js:2
+l @ VM63 init.ar.5fd79e54a57c8838e11f.js:2
+fireWith @ VM63 init.ar.5fd79e54a57c8838e11f.js:2
+fire @ VM63 init.ar.5fd79e54a57c8838e11f.js:2
+l @ VM63 init.ar.5fd79e54a57c8838e11f.js:2
+fireWith @ VM63 init.ar.5fd79e54a57c8838e11f.js:2
+ready @ VM63 init.ar.5fd79e54a57c8838e11f.js:12
+setTimeout (async)
+(anonymous) @ VM63 init.ar.5fd79e54a57c8838e11f.js:12
+Y2CE @ VM63 init.ar.5fd79e54a57c8838e11f.js:12
+e @ VM63 init.ar.5fd79e54a57c8838e11f.js:1
+4kSj @ VM63 init.ar.5fd79e54a57c8838e11f.js:2
+e @ VM63 init.ar.5fd79e54a57c8838e11f.js:1
+(anonymous) @ VM63 init.ar.5fd79e54a57c8838e11f.js:2
+RCB8 @ VM63 init.ar.5fd79e54a57c8838e11f.js:2
+e @ VM63 init.ar.5fd79e54a57c8838e11f.js:1
+WXBK @ VM63 init.ar.5fd79e54a57c8838e11f.js:12
+e @ VM63 init.ar.5fd79e54a57c8838e11f.js:1
+0 @ VM63 init.ar.5fd79e54a57c8838e11f.js:2
+e @ VM63 init.ar.5fd79e54a57c8838e11f.js:1
++/oQ @ VM63 init.ar.5fd79e54a57c8838e11f.js:1
+(anonymous) @ VM63 init.ar.5fd79e54a57c8838e11f.js:1
+18:16:49.550 VM63 init.ar.5fd79e54a57c8838e11f.js:14 [Deprecation] Synchronous XMLHttpRequest on the main thread is deprecated because of its detrimental effects to the end user's experience. For more help, check https://xhr.spec.whatwg.org/.
+send @ VM63 init.ar.5fd79e54a57c8838e11f.js:14
+ajax @ VM63 init.ar.5fd79e54a57c8838e11f.js:16
+flush @ VM63 init.ar.5fd79e54a57c8838e11f.js:2
+(anonymous) @ VM63 init.ar.5fd79e54a57c8838e11f.js:2
+dispatch @ VM63 init.ar.5fd79e54a57c8838e11f.js:2
+S.handle @ VM63 init.ar.5fd79e54a57c8838e11f.js:2
+18:16:51.467 VM177 content.js:195 from the extension
+18:16:51.497 VM177 content.js:199 {data: "doTwitterStuff"}
+18:16:51.533 VM177 content.js:200 content.js:doTwitterStuff
+18:16:51.550 VM177 content.js:203 GO GO GO GO
+18:16:51.577 VM191 helpers.js:14 theHypered is checking...
+18:16:51.861 Navigated to https://twitter.com/
+18:16:52.785 Navigated to https://twitter.com/
+18:16:53.786 (index):1 Slow network is detected. See https://www.chromestatus.com/feature/5636954674692096 for more details. Fallback font will be used while loading: https://abs.twimg.com/a/1524507162/font/edge-icons-Regular.woff
+18:16:58.049 VM204 content.js:195 from the extension
+18:16:58.113 VM204 content.js:199 {data: "doTwitterStuff"}
+18:16:58.168 VM204 content.js:200 content.js:doTwitterStuff
+18:16:58.172 VM204 content.js:203 GO GO GO GO
+18:16:58.198 VM218 helpers.js:14 theHypered is checking...
+18:16:58.813 VM218 helpers.js:16 content:my rocknroll is true
+18:16:58.832 VM218 helpers.js:19 theHypered will execute.
+18:16:58.851 VM218 helpers.js:32 checkMessageFlow
+18:16:58.853 VM218 helpers.js:33 ["doTwitterStuff"]
+18:16:58.879 VM218 helpers.js:35 msg:doTwitterStuff
+18:16:58.883 VM218 helpers.js:41 willGoTo:doTwitterStuff
+18:16:58.893 VM204 content.js:87 T_tweet
+18:16:58.901 VM204 content.js:53 I got a:[object HTMLButtonElement]
+18:16:58.914 VM204 content.js:90 button clicked
+18:16:58.935 (index):1 Error in response to storage.get: TypeError: Cannot set property 'innerText' of undefined
+    at T_tweet (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/content.js:92:15)
+    at checkMessageFlow (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/helpers.js:43:5)
+    at Object.callback (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/helpers.js:20:7)
+    at theHypered (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/helpers.js:15:24)
+    at chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/content.js:206:7
+18:17:04.367 VM204 content.js:63 I got b:[object HTMLDivElement]
+18:17:05.200 VM203 init.ar.5fd79e54a57c8838e11f.js:14 GET https://t.tellapart.com/twitterinitmatch?tpm_cb=partnerIdSyncComplete&guest_id=152320778816833818&_=1524845816948 net::ERR_NAME_NOT_RESOLVED
+send @ VM203 init.ar.5fd79e54a57c8838e11f.js:14
+ajax @ VM203 init.ar.5fd79e54a57c8838e11f.js:16
+JSONRequest @ VM203 init.ar.5fd79e54a57c8838e11f.js:12
+get @ VM203 init.ar.5fd79e54a57c8838e11f.js:12
+syncWithPartner @ VM203 init.ar.5fd79e54a57c8838e11f.js:2
+(anonymous) @ VM203 init.ar.5fd79e54a57c8838e11f.js:2
+handlePartnerIdSyncResponse @ VM203 init.ar.5fd79e54a57c8838e11f.js:2
+callSuccessHandler @ VM203 init.ar.5fd79e54a57c8838e11f.js:12
+(anonymous) @ VM203 init.ar.5fd79e54a57c8838e11f.js:12
+(anonymous) @ VM203 init.ar.5fd79e54a57c8838e11f.js:12
+l @ VM203 init.ar.5fd79e54a57c8838e11f.js:2
+fireWith @ VM203 init.ar.5fd79e54a57c8838e11f.js:2
+g @ VM203 init.ar.5fd79e54a57c8838e11f.js:16
+(anonymous) @ VM203 init.ar.5fd79e54a57c8838e11f.js:14
+load (async)
+send @ VM203 init.ar.5fd79e54a57c8838e11f.js:14
+ajax @ VM203 init.ar.5fd79e54a57c8838e11f.js:16
+JSONRequest @ VM203 init.ar.5fd79e54a57c8838e11f.js:12
+get @ VM203 init.ar.5fd79e54a57c8838e11f.js:12
+doPartnerIdSync @ VM203 init.ar.5fd79e54a57c8838e11f.js:2
+(anonymous) @ VM203 init.ar.5fd79e54a57c8838e11f.js:2
+(anonymous) @ VM203 init.ar.5fd79e54a57c8838e11f.js:33
+(anonymous) @ VM203 init.ar.5fd79e54a57c8838e11f.js:33
+(anonymous) @ VM203 init.ar.5fd79e54a57c8838e11f.js:2
+each @ VM203 init.ar.5fd79e54a57c8838e11f.js:2
+each @ VM203 init.ar.5fd79e54a57c8838e11f.js:2
+c @ VM203 init.ar.5fd79e54a57c8838e11f.js:2
+a @ VM203 init.ar.5fd79e54a57c8838e11f.js:2
+s @ VM223 0.commons.ar.eafcdde615f8c5d610ff.js:1
+e.default @ VM221 8.pages_home.ar.e5388f036368fa95c48c.js:45
+(anonymous) @ VM203 init.ar.5fd79e54a57c8838e11f.js:14
+(anonymous) @ VM203 init.ar.5fd79e54a57c8838e11f.js:14
+r @ VM203 init.ar.5fd79e54a57c8838e11f.js:14
+r @ VM203 init.ar.5fd79e54a57c8838e11f.js:12
+(anonymous) @ VM203 init.ar.5fd79e54a57c8838e11f.js:12
+Promise.then (async)
+n @ VM203 init.ar.5fd79e54a57c8838e11f.js:12
+r @ VM203 init.ar.5fd79e54a57c8838e11f.js:12
+i @ VM203 init.ar.5fd79e54a57c8838e11f.js:14
+(anonymous) @ VM203 init.ar.5fd79e54a57c8838e11f.js:2
+d @ VM203 init.ar.5fd79e54a57c8838e11f.js:2
+h @ VM203 init.ar.5fd79e54a57c8838e11f.js:2
+setTimeout (async)
+(anonymous) @ VM203 init.ar.5fd79e54a57c8838e11f.js:2
+l @ VM203 init.ar.5fd79e54a57c8838e11f.js:2
+fireWith @ VM203 init.ar.5fd79e54a57c8838e11f.js:2
+fire @ VM203 init.ar.5fd79e54a57c8838e11f.js:2
+l @ VM203 init.ar.5fd79e54a57c8838e11f.js:2
+fireWith @ VM203 init.ar.5fd79e54a57c8838e11f.js:2
+ready @ VM203 init.ar.5fd79e54a57c8838e11f.js:12
+setTimeout (async)
+(anonymous) @ VM203 init.ar.5fd79e54a57c8838e11f.js:12
+Y2CE @ VM203 init.ar.5fd79e54a57c8838e11f.js:12
+e @ VM203 init.ar.5fd79e54a57c8838e11f.js:1
+4kSj @ VM203 init.ar.5fd79e54a57c8838e11f.js:2
+e @ VM203 init.ar.5fd79e54a57c8838e11f.js:1
+(anonymous) @ VM203 init.ar.5fd79e54a57c8838e11f.js:2
+RCB8 @ VM203 init.ar.5fd79e54a57c8838e11f.js:2
+e @ VM203 init.ar.5fd79e54a57c8838e11f.js:1
+WXBK @ VM203 init.ar.5fd79e54a57c8838e11f.js:12
+e @ VM203 init.ar.5fd79e54a57c8838e11f.js:1
+0 @ VM203 init.ar.5fd79e54a57c8838e11f.js:2
+e @ VM203 init.ar.5fd79e54a57c8838e11f.js:1
++/oQ @ VM203 init.ar.5fd79e54a57c8838e11f.js:1
+(anonymous) @ VM203 init.ar.5fd79e54a57c8838e11f.js:1
+18:17:07.536 VM261 content.js:195 from the extension
+18:17:07.569 VM261 content.js:199 {data: "doTwitterStuff"}
+18:17:07.595 VM261 content.js:200 content.js:doTwitterStuff
+18:17:07.606 VM261 content.js:203 GO GO GO GO
+18:17:07.610 VM275 helpers.js:14 theHypered is checking...
+18:17:07.697 VM245 content.js:195 from the extension
+18:17:07.741 VM245 content.js:199 {data: "doTwitterStuff"}
+18:17:07.778 VM245 content.js:200 content.js:doTwitterStuff
+18:17:07.793 VM245 content.js:203 GO GO GO GO
+18:17:07.821 VM259 helpers.js:14 theHypered is checking...
+18:17:07.896 VM229 content.js:195 from the extension
+18:17:07.947 VM229 content.js:199 {data: "doTwitterStuff"}
+18:17:07.987 VM229 content.js:200 content.js:doTwitterStuff
+18:17:07.997 VM229 content.js:203 GO GO GO GO
+18:17:08.006 VM243 helpers.js:14 theHypered is checking...
+18:17:08.074 VM204 content.js:195 from the extension
+18:17:08.088 VM204 content.js:199 {data: "doTwitterStuff"}
+18:17:08.101 VM204 content.js:200 content.js:doTwitterStuff
+18:17:08.110 VM204 content.js:203 GO GO GO GO
+18:17:08.121 VM218 helpers.js:14 theHypered is checking...
+18:17:08.328 VM275 helpers.js:16 content:my rocknroll is true
+18:17:08.339 VM275 helpers.js:19 theHypered will execute.
+18:17:08.344 VM275 helpers.js:32 checkMessageFlow
+18:17:08.351 VM275 helpers.js:33 ["doTwitterStuff"]
+18:17:08.359 VM275 helpers.js:35 msg:doTwitterStuff
+18:17:08.365 VM275 helpers.js:41 willGoTo:doTwitterStuff
+18:17:08.380 VM261 content.js:87 T_tweet
+18:17:08.386 /i/cards/tfw/v1/989900755556544515?cardname=summary_large_image&autoplay_disabled=true&forward=true&earned=true&edge=true&lang=ar&card_height=344&scribe_context=%7B%22client%22%3A%22web%22%2C%22page%22%3A%22home%22%2C%22section%22%3A%22home%22%2C%22component%22%3A%22tweet%22%7D&bearer_token=AAAAAAAAAAAAAAAAAAAAAPYXBAAAAAAACLXUNDekMxqa8h%252F40K4moUkGsoc%253DTYfbDKbT3jJPCEVnMYqilB28NHfOPqkca3qaAxGfsyKCs0wRbw#xdm_e=https%3A%2F%2Ftwitter.com&xdm_c=default8037&xdm_p=1:1 Error in response to storage.get: TypeError: Cannot read property 'click' of undefined
+    at T_tweet (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/content.js:89:5)
+    at checkMessageFlow (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/helpers.js:43:5)
+    at Object.callback (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/helpers.js:20:7)
+    at theHypered (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/helpers.js:15:24)
+    at chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/content.js:206:7
+18:17:08.406 VM259 helpers.js:16 content:my rocknroll is true
+18:17:08.422 VM259 helpers.js:19 theHypered will execute.
+18:17:08.430 VM259 helpers.js:32 checkMessageFlow
+18:17:08.431 VM259 helpers.js:33 ["doTwitterStuff"]
+18:17:08.439 VM259 helpers.js:35 msg:doTwitterStuff
+18:17:08.444 VM259 helpers.js:41 willGoTo:doTwitterStuff
+18:17:08.450 VM245 content.js:87 T_tweet
+18:17:08.458 /i/cards/tfw/v1/989899885188087808?cardname=summary&autoplay_disabled=true&forward=true&earned=true&edge=true&lang=ar&card_height=130&scribe_context=%7B%22client%22%3A%22web%22%2C%22page%22%3A%22home%22%2C%22section%22%3A%22home%22%2C%22component%22%3A%22tweet%22%7D&bearer_token=AAAAAAAAAAAAAAAAAAAAAPYXBAAAAAAACLXUNDekMxqa8h%252F40K4moUkGsoc%253DTYfbDKbT3jJPCEVnMYqilB28NHfOPqkca3qaAxGfsyKCs0wRbw#xdm_e=https%3A%2F%2Ftwitter.com&xdm_c=default8039&xdm_p=1:1 Error in response to storage.get: TypeError: Cannot read property 'click' of undefined
+    at T_tweet (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/content.js:89:5)
+    at checkMessageFlow (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/helpers.js:43:5)
+    at Object.callback (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/helpers.js:20:7)
+    at theHypered (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/helpers.js:15:24)
+    at chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/content.js:206:7
+18:17:08.661 VM243 helpers.js:16 content:my rocknroll is true
+18:17:08.677 VM243 helpers.js:19 theHypered will execute.
+18:17:08.680 VM243 helpers.js:32 checkMessageFlow
+18:17:08.688 VM243 helpers.js:33 ["doTwitterStuff"]
+18:17:08.710 VM243 helpers.js:35 msg:doTwitterStuff
+18:17:08.720 VM243 helpers.js:41 willGoTo:doTwitterStuff
+18:17:08.727 VM229 content.js:87 T_tweet
+18:17:08.738 /i/cards/tfw/v1/989900305490903040?cardname=summary_large_image&autoplay_disabled=true&forward=true&earned=true&edge=true&lang=ar&card_height=344&scribe_context=%7B%22client%22%3A%22web%22%2C%22page%22%3A%22home%22%2C%22section%22%3A%22home%22%2C%22component%22%3A%22tweet%22%7D&bearer_token=AAAAAAAAAAAAAAAAAAAAAPYXBAAAAAAACLXUNDekMxqa8h%252F40K4moUkGsoc%253DTYfbDKbT3jJPCEVnMYqilB28NHfOPqkca3qaAxGfsyKCs0wRbw#xdm_e=https%3A%2F%2Ftwitter.com&xdm_c=default8038&xdm_p=1:1 Error in response to storage.get: TypeError: Cannot read property 'click' of undefined
+    at T_tweet (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/content.js:89:5)
+    at checkMessageFlow (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/helpers.js:43:5)
+    at Object.callback (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/helpers.js:20:7)
+    at theHypered (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/helpers.js:15:24)
+    at chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/content.js:206:7
+18:17:08.813 VM218 helpers.js:16 content:my rocknroll is true
+18:17:08.820 VM218 helpers.js:19 theHypered will execute.
+18:17:08.823 VM218 helpers.js:32 checkMessageFlow
+18:17:08.831 VM218 helpers.js:33 ["doTwitterStuff"]
+18:17:08.838 VM218 helpers.js:35 msg:doTwitterStuff
+18:17:08.842 VM218 helpers.js:41 willGoTo:doTwitterStuff
+18:17:08.844 VM204 content.js:87 T_tweet
+18:17:08.855 VM204 content.js:53 I got a:[object HTMLButtonElement]
+18:17:09.078 VM204 content.js:90 button clicked
+18:17:09.121 VM204 content.js:63 I got b:[object HTMLDivElement]
+18:17:09.207 VM204 content.js:73 I got c:[object HTMLButtonElement]
+18:17:09.224 VM204 content.js:74 <button class=​"SendTweetsButton EdgeButton EdgeButton--primary EdgeButton--medium js-send-tweets" type=​"button">​…​</button>​
+18:17:09.239 VM204 content.js:98 tweeted!
+18:17:09.251 VM204 content.js:29 RESET msgFlow
+18:17:10.369 VM204 content.js:103 TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+18:17:10.376 VM204 content.js:104 doTwitterStuff_DONE:CONFIRMED
+18:17:14.182 api.twitter.com/1.1/statuses/update.json:1 POST https://api.twitter.com/1.1/statuses/update.json 403 ()
+18:19:29.836 VM203 init.ar.5fd79e54a57c8838e11f.js:14 [Deprecation] Synchronous XMLHttpRequest on the main thread is deprecated because of its detrimental effects to the end user's experience. For more help, check https://xhr.spec.whatwg.org/.
+send @ VM203 init.ar.5fd79e54a57c8838e11f.js:14
+ajax @ VM203 init.ar.5fd79e54a57c8838e11f.js:16
+flush @ VM203 init.ar.5fd79e54a57c8838e11f.js:2
+(anonymous) @ VM203 init.ar.5fd79e54a57c8838e11f.js:2
+dispatch @ VM203 init.ar.5fd79e54a57c8838e11f.js:2
+S.handle @ VM203 init.ar.5fd79e54a57c8838e11f.js:2
+18:19:32.208 Navigated to https://twitter.com/
+18:19:32.377 VM345 content.js:195 from the extension
+18:19:32.430 VM345 content.js:199 {data: "doTwitterStuff"}
+18:19:32.499 VM345 content.js:200 content.js:doTwitterStuff
+18:19:32.508 VM345 content.js:203 GO GO GO GO
+18:19:32.522 VM359 helpers.js:14 theHypered is checking...
+18:19:33.195 Navigated to https://twitter.com/
+18:19:34.835 (index):1 Slow network is detected. See https://www.chromestatus.com/feature/5636954674692096 for more details. Fallback font will be used while loading: https://abs.twimg.com/a/1524507162/font/edge-icons-Regular.woff
+18:19:39.067 VM371 content.js:195 from the extension
+18:19:39.119 VM371 content.js:199 {data: "doTwitterStuff"}
+18:19:39.175 VM371 content.js:200 content.js:doTwitterStuff
+18:19:39.185 VM371 content.js:203 GO GO GO GO
+18:19:39.203 VM385 helpers.js:14 theHypered is checking...
+18:19:39.560 VM385 helpers.js:16 content:my rocknroll is true
+18:19:39.584 VM385 helpers.js:19 theHypered will execute.
+18:19:39.588 VM385 helpers.js:32 checkMessageFlow
+18:19:39.592 VM385 helpers.js:33 ["doTwitterStuff"]
+18:19:39.629 VM385 helpers.js:35 msg:doTwitterStuff
+18:19:39.635 VM385 helpers.js:41 willGoTo:doTwitterStuff
+18:19:39.645 VM371 content.js:87 T_tweet
+18:19:39.650 VM371 content.js:53 I got a:[object HTMLButtonElement]
+18:19:39.672 VM371 content.js:90 button clicked
+18:19:39.740 (index):1 Error in response to storage.get: TypeError: Cannot set property 'innerText' of undefined
+    at T_tweet (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/content.js:92:15)
+    at checkMessageFlow (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/helpers.js:43:5)
+    at Object.callback (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/helpers.js:20:7)
+    at theHypered (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/helpers.js:15:24)
+    at chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/content.js:206:7
+18:19:44.988 VM371 content.js:63 I got b:[object HTMLDivElement]
+18:19:47.198 VM386 init.ar.5fd79e54a57c8838e11f.js:14 GET https://t.tellapart.com/twitterinitmatch?tpm_cb=partnerIdSyncComplete&guest_id=152320778816833818&_=1524845978188 net::ERR_NAME_NOT_RESOLVED
+send @ VM386 init.ar.5fd79e54a57c8838e11f.js:14
+ajax @ VM386 init.ar.5fd79e54a57c8838e11f.js:16
+JSONRequest @ VM386 init.ar.5fd79e54a57c8838e11f.js:12
+get @ VM386 init.ar.5fd79e54a57c8838e11f.js:12
+syncWithPartner @ VM386 init.ar.5fd79e54a57c8838e11f.js:2
+(anonymous) @ VM386 init.ar.5fd79e54a57c8838e11f.js:2
+handlePartnerIdSyncResponse @ VM386 init.ar.5fd79e54a57c8838e11f.js:2
+callSuccessHandler @ VM386 init.ar.5fd79e54a57c8838e11f.js:12
+(anonymous) @ VM386 init.ar.5fd79e54a57c8838e11f.js:12
+(anonymous) @ VM386 init.ar.5fd79e54a57c8838e11f.js:12
+l @ VM386 init.ar.5fd79e54a57c8838e11f.js:2
+fireWith @ VM386 init.ar.5fd79e54a57c8838e11f.js:2
+g @ VM386 init.ar.5fd79e54a57c8838e11f.js:16
+(anonymous) @ VM386 init.ar.5fd79e54a57c8838e11f.js:14
+load (async)
+send @ VM386 init.ar.5fd79e54a57c8838e11f.js:14
+ajax @ VM386 init.ar.5fd79e54a57c8838e11f.js:16
+JSONRequest @ VM386 init.ar.5fd79e54a57c8838e11f.js:12
+get @ VM386 init.ar.5fd79e54a57c8838e11f.js:12
+doPartnerIdSync @ VM386 init.ar.5fd79e54a57c8838e11f.js:2
+(anonymous) @ VM386 init.ar.5fd79e54a57c8838e11f.js:2
+(anonymous) @ VM386 init.ar.5fd79e54a57c8838e11f.js:33
+(anonymous) @ VM386 init.ar.5fd79e54a57c8838e11f.js:33
+(anonymous) @ VM386 init.ar.5fd79e54a57c8838e11f.js:2
+each @ VM386 init.ar.5fd79e54a57c8838e11f.js:2
+each @ VM386 init.ar.5fd79e54a57c8838e11f.js:2
+c @ VM386 init.ar.5fd79e54a57c8838e11f.js:2
+a @ VM386 init.ar.5fd79e54a57c8838e11f.js:2
+s @ VM391 0.commons.ar.eafcdde615f8c5d610ff.js:1
+e.default @ VM390 8.pages_home.ar.e5388f036368fa95c48c.js:45
+(anonymous) @ VM386 init.ar.5fd79e54a57c8838e11f.js:14
+(anonymous) @ VM386 init.ar.5fd79e54a57c8838e11f.js:14
+r @ VM386 init.ar.5fd79e54a57c8838e11f.js:14
+r @ VM386 init.ar.5fd79e54a57c8838e11f.js:12
+(anonymous) @ VM386 init.ar.5fd79e54a57c8838e11f.js:12
+Promise.then (async)
+n @ VM386 init.ar.5fd79e54a57c8838e11f.js:12
+r @ VM386 init.ar.5fd79e54a57c8838e11f.js:12
+i @ VM386 init.ar.5fd79e54a57c8838e11f.js:14
+(anonymous) @ VM386 init.ar.5fd79e54a57c8838e11f.js:2
+d @ VM386 init.ar.5fd79e54a57c8838e11f.js:2
+h @ VM386 init.ar.5fd79e54a57c8838e11f.js:2
+setTimeout (async)
+(anonymous) @ VM386 init.ar.5fd79e54a57c8838e11f.js:2
+l @ VM386 init.ar.5fd79e54a57c8838e11f.js:2
+fireWith @ VM386 init.ar.5fd79e54a57c8838e11f.js:2
+fire @ VM386 init.ar.5fd79e54a57c8838e11f.js:2
+l @ VM386 init.ar.5fd79e54a57c8838e11f.js:2
+fireWith @ VM386 init.ar.5fd79e54a57c8838e11f.js:2
+ready @ VM386 init.ar.5fd79e54a57c8838e11f.js:12
+setTimeout (async)
+(anonymous) @ VM386 init.ar.5fd79e54a57c8838e11f.js:12
+Y2CE @ VM386 init.ar.5fd79e54a57c8838e11f.js:12
+e @ VM386 init.ar.5fd79e54a57c8838e11f.js:1
+4kSj @ VM386 init.ar.5fd79e54a57c8838e11f.js:2
+e @ VM386 init.ar.5fd79e54a57c8838e11f.js:1
+(anonymous) @ VM386 init.ar.5fd79e54a57c8838e11f.js:2
+RCB8 @ VM386 init.ar.5fd79e54a57c8838e11f.js:2
+e @ VM386 init.ar.5fd79e54a57c8838e11f.js:1
+WXBK @ VM386 init.ar.5fd79e54a57c8838e11f.js:12
+e @ VM386 init.ar.5fd79e54a57c8838e11f.js:1
+0 @ VM386 init.ar.5fd79e54a57c8838e11f.js:2
+e @ VM386 init.ar.5fd79e54a57c8838e11f.js:1
++/oQ @ VM386 init.ar.5fd79e54a57c8838e11f.js:1
+(anonymous) @ VM386 init.ar.5fd79e54a57c8838e11f.js:1
+18:19:49.076 VM396 content.js:195 from the extension
+18:19:49.140 VM396 content.js:199 {data: "doTwitterStuff"}
+18:19:49.168 VM396 content.js:200 content.js:doTwitterStuff
+18:19:49.180 VM396 content.js:203 GO GO GO GO
+18:19:49.195 VM410 helpers.js:14 theHypered is checking...
+18:19:49.249 VM413 content.js:195 from the extension
+18:19:49.282 VM413 content.js:199 {data: "doTwitterStuff"}
+18:19:49.312 VM413 content.js:200 content.js:doTwitterStuff
+18:19:49.325 VM413 content.js:203 GO GO GO GO
+18:19:49.341 VM427 helpers.js:14 theHypered is checking...
+18:19:49.413 VM371 content.js:195 from the extension
+18:19:49.435 VM371 content.js:199 {data: "doTwitterStuff"}
+18:19:49.452 VM371 content.js:200 content.js:doTwitterStuff
+18:19:49.464 VM371 content.js:203 GO GO GO GO
+18:19:49.479 VM385 helpers.js:14 theHypered is checking...
+18:19:49.488 VM429 content.js:195 from the extension
+18:19:49.523 VM429 content.js:199 {data: "doTwitterStuff"}
+18:19:49.555 VM429 content.js:200 content.js:doTwitterStuff
+18:19:49.566 VM429 content.js:203 GO GO GO GO
+18:19:49.575 VM443 helpers.js:14 theHypered is checking...
+18:19:49.948 VM410 helpers.js:16 content:my rocknroll is true
+18:19:49.962 VM410 helpers.js:19 theHypered will execute.
+18:19:49.964 VM410 helpers.js:32 checkMessageFlow
+18:19:49.970 VM410 helpers.js:33 ["doTwitterStuff"]
+18:19:49.979 VM410 helpers.js:35 msg:doTwitterStuff
+18:19:49.983 VM410 helpers.js:41 willGoTo:doTwitterStuff
+18:19:49.987 VM396 content.js:87 T_tweet
+18:19:49.993 /i/cards/tfw/v1/989900305490903040?cardname=summary_large_image&autoplay_disabled=true&forward=true&earned=true&edge=true&lang=ar&card_height=344&scribe_context=%7B%22client%22%3A%22web%22%2C%22page%22%3A%22home%22%2C%22section%22%3A%22home%22%2C%22component%22%3A%22tweet%22%7D&bearer_token=AAAAAAAAAAAAAAAAAAAAAPYXBAAAAAAACLXUNDekMxqa8h%252F40K4moUkGsoc%253DTYfbDKbT3jJPCEVnMYqilB28NHfOPqkca3qaAxGfsyKCs0wRbw#xdm_e=https%3A%2F%2Ftwitter.com&xdm_c=default9781&xdm_p=1:1 Error in response to storage.get: TypeError: Cannot read property 'click' of undefined
+    at T_tweet (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/content.js:89:5)
+    at checkMessageFlow (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/helpers.js:43:5)
+    at Object.callback (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/helpers.js:20:7)
+    at theHypered (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/helpers.js:15:24)
+    at chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/content.js:206:7
+18:19:50.030 VM427 helpers.js:16 content:my rocknroll is true
+18:19:50.045 VM427 helpers.js:19 theHypered will execute.
+18:19:50.049 VM427 helpers.js:32 checkMessageFlow
+18:19:50.065 VM427 helpers.js:33 ["doTwitterStuff"]
+18:19:50.079 VM427 helpers.js:35 msg:doTwitterStuff
+18:19:50.089 VM427 helpers.js:41 willGoTo:doTwitterStuff
+18:19:50.094 VM413 content.js:87 T_tweet
+18:19:50.106 /i/cards/tfw/v1/989899885188087808?cardname=summary&autoplay_disabled=true&forward=true&earned=true&edge=true&lang=ar&card_height=130&scribe_context=%7B%22client%22%3A%22web%22%2C%22page%22%3A%22home%22%2C%22section%22%3A%22home%22%2C%22component%22%3A%22tweet%22%7D&bearer_token=AAAAAAAAAAAAAAAAAAAAAPYXBAAAAAAACLXUNDekMxqa8h%252F40K4moUkGsoc%253DTYfbDKbT3jJPCEVnMYqilB28NHfOPqkca3qaAxGfsyKCs0wRbw#xdm_e=https%3A%2F%2Ftwitter.com&xdm_c=default9782&xdm_p=1:1 Error in response to storage.get: TypeError: Cannot read property 'click' of undefined
+    at T_tweet (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/content.js:89:5)
+    at checkMessageFlow (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/helpers.js:43:5)
+    at Object.callback (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/helpers.js:20:7)
+    at theHypered (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/helpers.js:15:24)
+    at chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/content.js:206:7
+18:19:50.235 VM385 helpers.js:16 content:my rocknroll is true
+18:19:50.246 VM385 helpers.js:19 theHypered will execute.
+18:19:50.254 VM385 helpers.js:32 checkMessageFlow
+18:19:50.258 VM385 helpers.js:33 ["doTwitterStuff"]
+18:19:50.268 VM385 helpers.js:35 msg:doTwitterStuff
+18:19:50.274 VM385 helpers.js:41 willGoTo:doTwitterStuff
+18:19:50.280 VM371 content.js:87 T_tweet
+18:19:50.287 VM371 content.js:53 I got a:[object HTMLButtonElement]
+18:19:50.616 VM371 content.js:90 button clicked
+18:19:50.630 VM371 content.js:63 I got b:[object HTMLDivElement]
+18:19:50.689 VM371 content.js:73 I got c:[object HTMLButtonElement]
+18:19:50.705 VM371 content.js:74 <button class=​"SendTweetsButton EdgeButton EdgeButton--primary EdgeButton--medium js-send-tweets" type=​"button">​…​</button>​
+18:19:50.714 VM371 content.js:98 tweeted!
+18:19:50.722 VM371 content.js:29 RESET msgFlow
+18:19:50.909 VM443 helpers.js:16 content:my rocknroll is true
+18:19:50.919 VM443 helpers.js:19 theHypered will execute.
+18:19:50.926 VM443 helpers.js:32 checkMessageFlow
+18:19:50.929 VM443 helpers.js:33 ["doTwitterStuff"]
+18:19:50.954 VM443 helpers.js:35 msg:doTwitterStuff
+18:19:50.961 VM443 helpers.js:41 willGoTo:doTwitterStuff
+18:19:50.968 VM429 content.js:87 T_tweet
+18:19:50.980 /i/cards/tfw/v1/989900755556544515?cardname=summary_large_image&autoplay_disabled=true&forward=true&earned=true&edge=true&lang=ar&card_height=344&scribe_context=%7B%22client%22%3A%22web%22%2C%22page%22%3A%22home%22%2C%22section%22%3A%22home%22%2C%22component%22%3A%22tweet%22%7D&bearer_token=AAAAAAAAAAAAAAAAAAAAAPYXBAAAAAAACLXUNDekMxqa8h%252F40K4moUkGsoc%253DTYfbDKbT3jJPCEVnMYqilB28NHfOPqkca3qaAxGfsyKCs0wRbw#xdm_e=https%3A%2F%2Ftwitter.com&xdm_c=default9780&xdm_p=1:1 Error in response to storage.get: TypeError: Cannot read property 'click' of undefined
+    at T_tweet (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/content.js:89:5)
+    at checkMessageFlow (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/helpers.js:43:5)
+    at Object.callback (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/helpers.js:20:7)
+    at theHypered (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/helpers.js:15:24)
+    at chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/content.js:206:7
+18:19:51.725 VM371 content.js:103 TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+18:19:51.729 VM371 content.js:104 doTwitterStuff_DONE:CONFIRMED
+18:19:56.516 api.twitter.com/1.1/statuses/update.json:1 POST https://api.twitter.com/1.1/statuses/update.json 403 ()
+18:20:21.998 VM386 init.ar.5fd79e54a57c8838e11f.js:14 [Deprecation] Synchronous XMLHttpRequest on the main thread is deprecated because of its detrimental effects to the end user's experience. For more help, check https://xhr.spec.whatwg.org/.
+send @ VM386 init.ar.5fd79e54a57c8838e11f.js:14
+ajax @ VM386 init.ar.5fd79e54a57c8838e11f.js:16
+flush @ VM386 init.ar.5fd79e54a57c8838e11f.js:2
+(anonymous) @ VM386 init.ar.5fd79e54a57c8838e11f.js:2
+dispatch @ VM386 init.ar.5fd79e54a57c8838e11f.js:2
+S.handle @ VM386 init.ar.5fd79e54a57c8838e11f.js:2
+18:20:24.870 content.js:195 from the extension
+18:20:24.920 content.js:199 {data: "doTwitterStuff"}
+18:20:24.968 content.js:200 content.js:doTwitterStuff
+18:20:24.993 content.js:203 GO GO GO GO
+18:20:25.021 helpers.js:14 theHypered is checking...
+18:20:25.166 content.js:195 from the extension
+18:20:25.192 content.js:199 {data: "doTwitterStuff"}
+18:20:25.206 content.js:200 content.js:doTwitterStuff
+18:20:25.233 content.js:208 msgFlow IS NOT EMPTY!
+18:20:25.253 content.js:209 ["doTwitterStuff"]
+18:20:25.621 Navigated to https://twitter.com/
+18:20:27.021 Navigated to https://twitter.com/
+18:20:31.514 VM536 content.js:195 from the extension
+18:20:31.558 VM536 content.js:199 {data: "doTwitterStuff"}
+18:20:31.628 VM536 content.js:200 content.js:doTwitterStuff
+18:20:31.641 VM536 content.js:203 GO GO GO GO
+18:20:31.663 VM550 helpers.js:14 theHypered is checking...
+18:20:31.769 VM536 content.js:195 from the extension
+18:20:31.795 VM536 content.js:199 {data: "doTwitterStuff"}
+18:20:31.819 VM536 content.js:200 content.js:doTwitterStuff
+18:20:31.826 VM536 content.js:208 msgFlow IS NOT EMPTY!
+18:20:31.836 VM536 content.js:209 ["doTwitterStuff"]
+18:20:32.094 VM550 helpers.js:16 content:my rocknroll is true
+18:20:32.137 VM550 helpers.js:19 theHypered will execute.
+18:20:32.138 VM550 helpers.js:32 checkMessageFlow
+18:20:32.152 VM550 helpers.js:33 ["doTwitterStuff"]
+18:20:32.165 VM550 helpers.js:35 msg:doTwitterStuff
+18:20:32.172 VM550 helpers.js:41 willGoTo:doTwitterStuff
+18:20:32.176 VM536 content.js:87 T_tweet
+18:20:32.196 VM536 content.js:53 I got a:[object HTMLButtonElement]
+18:20:32.220 VM536 content.js:90 button clicked
+18:20:32.261 (index):1 Error in response to storage.get: TypeError: Cannot set property 'innerText' of undefined
+    at T_tweet (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/content.js:92:15)
+    at checkMessageFlow (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/helpers.js:43:5)
+    at Object.callback (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/helpers.js:20:7)
+    at theHypered (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/helpers.js:15:24)
+    at chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/content.js:206:7
+18:20:37.789 VM536 content.js:63 I got b:[object HTMLDivElement]
+18:20:39.783 VM559 content.js:195 from the extension
+18:20:39.809 VM559 content.js:199 {data: "doTwitterStuff"}
+18:20:39.843 VM559 content.js:200 content.js:doTwitterStuff
+18:20:39.848 VM559 content.js:203 GO GO GO GO
+18:20:39.860 VM573 helpers.js:14 theHypered is checking...
+18:20:39.930 VM536 content.js:195 from the extension
+18:20:39.935 VM536 content.js:199 {data: "doTwitterStuff"}
+18:20:39.948 VM536 content.js:200 content.js:doTwitterStuff
+18:20:39.958 VM536 content.js:203 GO GO GO GO
+18:20:39.964 VM550 helpers.js:14 theHypered is checking...
+18:20:39.981 VM575 content.js:195 from the extension
+18:20:40.009 VM575 content.js:199 {data: "doTwitterStuff"}
+18:20:40.042 VM575 content.js:200 content.js:doTwitterStuff
+18:20:40.067 VM575 content.js:203 GO GO GO GO
+18:20:40.076 VM589 helpers.js:14 theHypered is checking...
+18:20:40.216 VM559 content.js:195 from the extension
+18:20:40.231 VM559 content.js:199 {data: "doTwitterStuff"}
+18:20:40.247 VM559 content.js:200 content.js:doTwitterStuff
+18:20:40.260 VM559 content.js:208 msgFlow IS NOT EMPTY!
+18:20:40.264 VM559 content.js:209 ["doTwitterStuff"]
+18:20:40.301 VM536 content.js:195 from the extension
+18:20:40.315 VM536 content.js:199 {data: "doTwitterStuff"}
+18:20:40.331 VM536 content.js:200 content.js:doTwitterStuff
+18:20:40.342 VM536 content.js:208 msgFlow IS NOT EMPTY!
+18:20:40.356 VM536 content.js:209 ["doTwitterStuff"]
+18:20:40.388 VM575 content.js:195 from the extension
+18:20:40.400 VM575 content.js:199 {data: "doTwitterStuff"}
+18:20:40.413 VM575 content.js:200 content.js:doTwitterStuff
+18:20:40.422 VM575 content.js:208 msgFlow IS NOT EMPTY!
+18:20:40.435 VM575 content.js:209 ["doTwitterStuff"]
+18:20:40.643 VM573 helpers.js:16 content:my rocknroll is true
+18:20:40.648 VM573 helpers.js:19 theHypered will execute.
+18:20:40.649 VM573 helpers.js:32 checkMessageFlow
+18:20:40.652 VM573 helpers.js:33 ["doTwitterStuff"]
+18:20:40.664 VM573 helpers.js:35 msg:doTwitterStuff
+18:20:40.668 VM573 helpers.js:41 willGoTo:doTwitterStuff
+18:20:40.676 VM559 content.js:87 T_tweet
+18:20:40.686 /i/cards/tfw/v1/989900755556544515?cardname=summary_large_image&autoplay_disabled=true&forward=true&earned=true&edge=true&lang=ar&card_height=344&scribe_context=%7B%22client%22%3A%22web%22%2C%22page%22%3A%22home%22%2C%22section%22%3A%22home%22%2C%22component%22%3A%22tweet%22%7D&bearer_token=AAAAAAAAAAAAAAAAAAAAAPYXBAAAAAAACLXUNDekMxqa8h%252F40K4moUkGsoc%253DTYfbDKbT3jJPCEVnMYqilB28NHfOPqkca3qaAxGfsyKCs0wRbw#xdm_e=https%3A%2F%2Ftwitter.com&xdm_c=default2477&xdm_p=1:1 Error in response to storage.get: TypeError: Cannot read property 'click' of undefined
+    at T_tweet (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/content.js:89:5)
+    at checkMessageFlow (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/helpers.js:43:5)
+    at Object.callback (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/helpers.js:20:7)
+    at theHypered (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/helpers.js:15:24)
+    at chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/content.js:206:7
+18:20:40.703 VM550 helpers.js:16 content:my rocknroll is true
+18:20:40.708 VM550 helpers.js:19 theHypered will execute.
+18:20:40.712 VM550 helpers.js:32 checkMessageFlow
+18:20:40.717 VM550 helpers.js:33 ["doTwitterStuff"]
+18:20:40.721 VM550 helpers.js:35 msg:doTwitterStuff
+18:20:40.726 VM550 helpers.js:41 willGoTo:doTwitterStuff
+18:20:40.728 VM536 content.js:87 T_tweet
+18:20:40.730 VM536 content.js:53 I got a:[object HTMLButtonElement]
+18:20:40.932 VM536 content.js:90 button clicked
+18:20:40.945 VM536 content.js:63 I got b:[object HTMLDivElement]
+18:20:40.984 VM536 content.js:73 I got c:[object HTMLButtonElement]
+18:20:40.994 VM536 content.js:74 <button class=​"SendTweetsButton EdgeButton EdgeButton--primary EdgeButton--medium js-send-tweets" type=​"button">​…​</button>​
+18:20:41.008 VM536 content.js:98 tweeted!
+18:20:41.013 VM536 content.js:29 RESET msgFlow
+18:20:41.206 VM589 helpers.js:16 content:my rocknroll is true
+18:20:41.215 VM589 helpers.js:19 theHypered will execute.
+18:20:41.226 VM589 helpers.js:32 checkMessageFlow
+18:20:41.230 VM589 helpers.js:33 ["doTwitterStuff"]
+18:20:41.236 VM589 helpers.js:35 msg:doTwitterStuff
+18:20:41.241 VM589 helpers.js:41 willGoTo:doTwitterStuff
+18:20:41.247 VM575 content.js:87 T_tweet
+18:20:41.259 /i/cards/tfw/v1/989901990015651840?cardname=summary_large_image&autoplay_disabled=true&forward=true&earned=true&edge=true&lang=ar&card_height=344&scribe_context=%7B%22client%22%3A%22web%22%2C%22page%22%3A%22home%22%2C%22section%22%3A%22home%22%2C%22component%22%3A%22tweet%22%7D&bearer_token=AAAAAAAAAAAAAAAAAAAAAPYXBAAAAAAACLXUNDekMxqa8h%252F40K4moUkGsoc%253DTYfbDKbT3jJPCEVnMYqilB28NHfOPqkca3qaAxGfsyKCs0wRbw#xdm_e=https%3A%2F%2Ftwitter.com&xdm_c=default2476&xdm_p=1:1 Error in response to storage.get: TypeError: Cannot read property 'click' of undefined
+    at T_tweet (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/content.js:89:5)
+    at checkMessageFlow (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/helpers.js:43:5)
+    at Object.callback (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/helpers.js:20:7)
+    at theHypered (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/helpers.js:15:24)
+    at chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/content.js:206:7
+18:20:41.263 vVbFjNAb:1 GET https://pbs.twimg.com/card_img/989902018603986944/vVbFjNAb?format=jpg&name=386x202 404 ()
+Image (async)
+_loadImagesAsync @ VM558 native_bundle_v1_e4606b6c8375fb1fb40799c7b20e023c21e2d677.js:39
+setTimeout (async)
+n.exports @ VM558 native_bundle_v1_e4606b6c8375fb1fb40799c7b20e023c21e2d677.js:39
+(anonymous) @ VM558 native_bundle_v1_e4606b6c8375fb1fb40799c7b20e023c21e2d677.js:39
+f @ VM558 native_bundle_v1_e4606b6c8375fb1fb40799c7b20e023c21e2d677.js:34
+(anonymous) @ VM558 native_bundle_v1_e4606b6c8375fb1fb40799c7b20e023c21e2d677.js:34
+setTimeout (async)
+_ @ VM558 native_bundle_v1_e4606b6c8375fb1fb40799c7b20e023c21e2d677.js:34
+(anonymous) @ VM558 native_bundle_v1_e4606b6c8375fb1fb40799c7b20e023c21e2d677.js:39
+(anonymous) @ VM558 native_bundle_v1_e4606b6c8375fb1fb40799c7b20e023c21e2d677.js:39
+18:20:42.509 VM536 content.js:103 TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+18:20:42.511 VM536 content.js:104 doTwitterStuff_DONE:CONFIRMED
+18:20:46.792 api.twitter.com/1.1/statuses/update.json:1 POST https://api.twitter.com/1.1/statuses/update.json 403 ()
+18:20:48.171 VM535 init.ar.5fd79e54a57c8838e11f.js:14 GET https://t.tellapart.com/twitterinitmatch?tpm_cb=partnerIdSyncComplete&guest_id=152320778816833818&_=1524846030113 net::ERR_NAME_NOT_RESOLVED
+send @ VM535 init.ar.5fd79e54a57c8838e11f.js:14
+ajax @ VM535 init.ar.5fd79e54a57c8838e11f.js:16
+JSONRequest @ VM535 init.ar.5fd79e54a57c8838e11f.js:12
+get @ VM535 init.ar.5fd79e54a57c8838e11f.js:12
+syncWithPartner @ VM535 init.ar.5fd79e54a57c8838e11f.js:2
+(anonymous) @ VM535 init.ar.5fd79e54a57c8838e11f.js:2
+handlePartnerIdSyncResponse @ VM535 init.ar.5fd79e54a57c8838e11f.js:2
+callSuccessHandler @ VM535 init.ar.5fd79e54a57c8838e11f.js:12
+(anonymous) @ VM535 init.ar.5fd79e54a57c8838e11f.js:12
+(anonymous) @ VM535 init.ar.5fd79e54a57c8838e11f.js:12
+l @ VM535 init.ar.5fd79e54a57c8838e11f.js:2
+fireWith @ VM535 init.ar.5fd79e54a57c8838e11f.js:2
+g @ VM535 init.ar.5fd79e54a57c8838e11f.js:16
+(anonymous) @ VM535 init.ar.5fd79e54a57c8838e11f.js:14
+load (async)
+send @ VM535 init.ar.5fd79e54a57c8838e11f.js:14
+ajax @ VM535 init.ar.5fd79e54a57c8838e11f.js:16
+JSONRequest @ VM535 init.ar.5fd79e54a57c8838e11f.js:12
+get @ VM535 init.ar.5fd79e54a57c8838e11f.js:12
+doPartnerIdSync @ VM535 init.ar.5fd79e54a57c8838e11f.js:2
+(anonymous) @ VM535 init.ar.5fd79e54a57c8838e11f.js:2
+(anonymous) @ VM535 init.ar.5fd79e54a57c8838e11f.js:33
+(anonymous) @ VM535 init.ar.5fd79e54a57c8838e11f.js:33
+(anonymous) @ VM535 init.ar.5fd79e54a57c8838e11f.js:2
+each @ VM535 init.ar.5fd79e54a57c8838e11f.js:2
+each @ VM535 init.ar.5fd79e54a57c8838e11f.js:2
+c @ VM535 init.ar.5fd79e54a57c8838e11f.js:2
+a @ VM535 init.ar.5fd79e54a57c8838e11f.js:2
+s @ VM555 0.commons.ar.eafcdde615f8c5d610ff.js:1
+e.default @ VM554 8.pages_home.ar.e5388f036368fa95c48c.js:45
+(anonymous) @ VM535 init.ar.5fd79e54a57c8838e11f.js:14
+(anonymous) @ VM535 init.ar.5fd79e54a57c8838e11f.js:14
+r @ VM535 init.ar.5fd79e54a57c8838e11f.js:14
+r @ VM535 init.ar.5fd79e54a57c8838e11f.js:12
+(anonymous) @ VM535 init.ar.5fd79e54a57c8838e11f.js:12
+Promise.then (async)
+n @ VM535 init.ar.5fd79e54a57c8838e11f.js:12
+r @ VM535 init.ar.5fd79e54a57c8838e11f.js:12
+i @ VM535 init.ar.5fd79e54a57c8838e11f.js:14
+(anonymous) @ VM535 init.ar.5fd79e54a57c8838e11f.js:2
+d @ VM535 init.ar.5fd79e54a57c8838e11f.js:2
+h @ VM535 init.ar.5fd79e54a57c8838e11f.js:2
+setTimeout (async)
+(anonymous) @ VM535 init.ar.5fd79e54a57c8838e11f.js:2
+l @ VM535 init.ar.5fd79e54a57c8838e11f.js:2
+fireWith @ VM535 init.ar.5fd79e54a57c8838e11f.js:2
+fire @ VM535 init.ar.5fd79e54a57c8838e11f.js:2
+l @ VM535 init.ar.5fd79e54a57c8838e11f.js:2
+fireWith @ VM535 init.ar.5fd79e54a57c8838e11f.js:2
+ready @ VM535 init.ar.5fd79e54a57c8838e11f.js:12
+setTimeout (async)
+(anonymous) @ VM535 init.ar.5fd79e54a57c8838e11f.js:12
+Y2CE @ VM535 init.ar.5fd79e54a57c8838e11f.js:12
+e @ VM535 init.ar.5fd79e54a57c8838e11f.js:1
+4kSj @ VM535 init.ar.5fd79e54a57c8838e11f.js:2
+e @ VM535 init.ar.5fd79e54a57c8838e11f.js:1
+(anonymous) @ VM535 init.ar.5fd79e54a57c8838e11f.js:2
+RCB8 @ VM535 init.ar.5fd79e54a57c8838e11f.js:2
+e @ VM535 init.ar.5fd79e54a57c8838e11f.js:1
+WXBK @ VM535 init.ar.5fd79e54a57c8838e11f.js:12
+e @ VM535 init.ar.5fd79e54a57c8838e11f.js:1
+0 @ VM535 init.ar.5fd79e54a57c8838e11f.js:2
+e @ VM535 init.ar.5fd79e54a57c8838e11f.js:1
++/oQ @ VM535 init.ar.5fd79e54a57c8838e11f.js:1
+(anonymous) @ VM535 init.ar.5fd79e54a57c8838e11f.js:1
+18:21:12.623 VM535 init.ar.5fd79e54a57c8838e11f.js:14 [Deprecation] Synchronous XMLHttpRequest on the main thread is deprecated because of its detrimental effects to the end user's experience. For more help, check https://xhr.spec.whatwg.org/.
+send @ VM535 init.ar.5fd79e54a57c8838e11f.js:14
+ajax @ VM535 init.ar.5fd79e54a57c8838e11f.js:16
+flush @ VM535 init.ar.5fd79e54a57c8838e11f.js:2
+(anonymous) @ VM535 init.ar.5fd79e54a57c8838e11f.js:2
+dispatch @ VM535 init.ar.5fd79e54a57c8838e11f.js:2
+S.handle @ VM535 init.ar.5fd79e54a57c8838e11f.js:2
+18:21:14.547 Navigated to https://twitter.com/
+18:21:15.005 VM635 content.js:195 from the extension
+18:21:15.088 VM635 content.js:199 {data: "doTwitterStuff"}
+18:21:15.147 VM635 content.js:200 content.js:doTwitterStuff
+18:21:15.177 VM635 content.js:203 GO GO GO GO
+18:21:15.191 VM649 helpers.js:14 theHypered is checking...
+18:21:15.304 VM635 content.js:195 from the extension
+18:21:15.316 VM635 content.js:199 {data: "doTwitterStuff"}
+18:21:15.331 VM635 content.js:200 content.js:doTwitterStuff
+18:21:15.343 VM635 content.js:208 msgFlow IS NOT EMPTY!
+18:21:15.357 VM635 content.js:209 ["doTwitterStuff"]
+18:21:15.391 VM635 content.js:195 from the extension
+18:21:15.412 VM635 content.js:199 {data: "doTwitterStuff"}
+18:21:15.433 VM635 content.js:200 content.js:doTwitterStuff
+18:21:15.451 VM635 content.js:208 msgFlow IS NOT EMPTY!
+18:21:15.463 VM635 content.js:209 ["doTwitterStuff"]
+18:21:16.665 Navigated to https://twitter.com/
+18:21:20.830 VM662 content.js:195 from the extension
+18:21:20.867 VM662 content.js:199 {data: "doTwitterStuff"}
+18:21:20.916 VM662 content.js:200 content.js:doTwitterStuff
+18:21:20.931 VM662 content.js:203 GO GO GO GO
+18:21:20.949 VM676 helpers.js:14 theHypered is checking...
+18:21:21.045 VM662 content.js:195 from the extension
+18:21:21.074 VM662 content.js:199 {data: "doTwitterStuff"}
+18:21:21.089 VM662 content.js:200 content.js:doTwitterStuff
+18:21:21.101 VM662 content.js:208 msgFlow IS NOT EMPTY!
+18:21:21.131 VM662 content.js:209 ["doTwitterStuff"]
+18:21:21.172 VM662 content.js:195 from the extension
+18:21:21.189 VM662 content.js:199 {data: "doTwitterStuff"}
+18:21:21.205 VM662 content.js:200 content.js:doTwitterStuff
+18:21:21.220 VM662 content.js:208 msgFlow IS NOT EMPTY!
+18:21:21.235 VM662 content.js:209 ["doTwitterStuff"]
+18:21:21.339 VM676 helpers.js:16 content:my rocknroll is true
+18:21:21.342 VM676 helpers.js:19 theHypered will execute.
+18:21:21.344 VM676 helpers.js:32 checkMessageFlow
+18:21:21.351 VM676 helpers.js:33 ["doTwitterStuff"]
+18:21:21.355 VM676 helpers.js:35 msg:doTwitterStuff
+18:21:21.357 VM676 helpers.js:41 willGoTo:doTwitterStuff
+18:21:21.364 VM662 content.js:87 T_tweet
+18:21:21.371 VM662 content.js:53 I got a:[object HTMLButtonElement]
+18:21:21.380 VM662 content.js:90 button clicked
+18:21:21.415 (index):1 Error in response to storage.get: TypeError: Cannot set property 'innerText' of undefined
+    at T_tweet (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/content.js:92:15)
+    at checkMessageFlow (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/helpers.js:43:5)
+    at Object.callback (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/helpers.js:20:7)
+    at theHypered (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/helpers.js:15:24)
+    at chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/content.js:206:7
+18:21:26.444 VM662 content.js:63 I got b:[object HTMLDivElement]
+18:21:27.159 VM661 init.ar.5fd79e54a57c8838e11f.js:14 GET https://t.tellapart.com/twitterinitmatch?tpm_cb=partnerIdSyncComplete&guest_id=152320778816833818&_=1524846079795 net::ERR_NAME_NOT_RESOLVED
+send @ VM661 init.ar.5fd79e54a57c8838e11f.js:14
+ajax @ VM661 init.ar.5fd79e54a57c8838e11f.js:16
+JSONRequest @ VM661 init.ar.5fd79e54a57c8838e11f.js:12
+get @ VM661 init.ar.5fd79e54a57c8838e11f.js:12
+syncWithPartner @ VM661 init.ar.5fd79e54a57c8838e11f.js:2
+(anonymous) @ VM661 init.ar.5fd79e54a57c8838e11f.js:2
+handlePartnerIdSyncResponse @ VM661 init.ar.5fd79e54a57c8838e11f.js:2
+callSuccessHandler @ VM661 init.ar.5fd79e54a57c8838e11f.js:12
+(anonymous) @ VM661 init.ar.5fd79e54a57c8838e11f.js:12
+(anonymous) @ VM661 init.ar.5fd79e54a57c8838e11f.js:12
+l @ VM661 init.ar.5fd79e54a57c8838e11f.js:2
+fireWith @ VM661 init.ar.5fd79e54a57c8838e11f.js:2
+g @ VM661 init.ar.5fd79e54a57c8838e11f.js:16
+(anonymous) @ VM661 init.ar.5fd79e54a57c8838e11f.js:14
+load (async)
+send @ VM661 init.ar.5fd79e54a57c8838e11f.js:14
+ajax @ VM661 init.ar.5fd79e54a57c8838e11f.js:16
+JSONRequest @ VM661 init.ar.5fd79e54a57c8838e11f.js:12
+get @ VM661 init.ar.5fd79e54a57c8838e11f.js:12
+doPartnerIdSync @ VM661 init.ar.5fd79e54a57c8838e11f.js:2
+(anonymous) @ VM661 init.ar.5fd79e54a57c8838e11f.js:2
+(anonymous) @ VM661 init.ar.5fd79e54a57c8838e11f.js:33
+(anonymous) @ VM661 init.ar.5fd79e54a57c8838e11f.js:33
+(anonymous) @ VM661 init.ar.5fd79e54a57c8838e11f.js:2
+each @ VM661 init.ar.5fd79e54a57c8838e11f.js:2
+each @ VM661 init.ar.5fd79e54a57c8838e11f.js:2
+c @ VM661 init.ar.5fd79e54a57c8838e11f.js:2
+a @ VM661 init.ar.5fd79e54a57c8838e11f.js:2
+s @ VM681 0.commons.ar.eafcdde615f8c5d610ff.js:1
+e.default @ VM680 8.pages_home.ar.e5388f036368fa95c48c.js:45
+(anonymous) @ VM661 init.ar.5fd79e54a57c8838e11f.js:14
+(anonymous) @ VM661 init.ar.5fd79e54a57c8838e11f.js:14
+r @ VM661 init.ar.5fd79e54a57c8838e11f.js:14
+r @ VM661 init.ar.5fd79e54a57c8838e11f.js:12
+(anonymous) @ VM661 init.ar.5fd79e54a57c8838e11f.js:12
+Promise.then (async)
+n @ VM661 init.ar.5fd79e54a57c8838e11f.js:12
+r @ VM661 init.ar.5fd79e54a57c8838e11f.js:12
+i @ VM661 init.ar.5fd79e54a57c8838e11f.js:14
+(anonymous) @ VM661 init.ar.5fd79e54a57c8838e11f.js:2
+d @ VM661 init.ar.5fd79e54a57c8838e11f.js:2
+h @ VM661 init.ar.5fd79e54a57c8838e11f.js:2
+setTimeout (async)
+(anonymous) @ VM661 init.ar.5fd79e54a57c8838e11f.js:2
+l @ VM661 init.ar.5fd79e54a57c8838e11f.js:2
+fireWith @ VM661 init.ar.5fd79e54a57c8838e11f.js:2
+fire @ VM661 init.ar.5fd79e54a57c8838e11f.js:2
+l @ VM661 init.ar.5fd79e54a57c8838e11f.js:2
+fireWith @ VM661 init.ar.5fd79e54a57c8838e11f.js:2
+ready @ VM661 init.ar.5fd79e54a57c8838e11f.js:12
+setTimeout (async)
+(anonymous) @ VM661 init.ar.5fd79e54a57c8838e11f.js:12
+Y2CE @ VM661 init.ar.5fd79e54a57c8838e11f.js:12
+e @ VM661 init.ar.5fd79e54a57c8838e11f.js:1
+4kSj @ VM661 init.ar.5fd79e54a57c8838e11f.js:2
+e @ VM661 init.ar.5fd79e54a57c8838e11f.js:1
+(anonymous) @ VM661 init.ar.5fd79e54a57c8838e11f.js:2
+RCB8 @ VM661 init.ar.5fd79e54a57c8838e11f.js:2
+e @ VM661 init.ar.5fd79e54a57c8838e11f.js:1
+WXBK @ VM661 init.ar.5fd79e54a57c8838e11f.js:12
+e @ VM661 init.ar.5fd79e54a57c8838e11f.js:1
+0 @ VM661 init.ar.5fd79e54a57c8838e11f.js:2
+e @ VM661 init.ar.5fd79e54a57c8838e11f.js:1
++/oQ @ VM661 init.ar.5fd79e54a57c8838e11f.js:1
+(anonymous) @ VM661 init.ar.5fd79e54a57c8838e11f.js:1
+18:21:28.895 VM662 content.js:195 from the extension
+18:21:28.902 VM662 content.js:199 {data: "doTwitterStuff"}
+18:21:28.920 VM662 content.js:200 content.js:doTwitterStuff
+18:21:28.932 VM662 content.js:203 GO GO GO GO
+18:21:28.943 VM676 helpers.js:14 theHypered is checking...
+18:21:28.964 VM686 content.js:195 from the extension
+18:21:28.994 VM686 content.js:199 {data: "doTwitterStuff"}
+18:21:29.033 VM686 content.js:200 content.js:doTwitterStuff
+18:21:29.048 VM686 content.js:203 GO GO GO GO
+18:21:29.068 VM700 helpers.js:14 theHypered is checking...
+18:21:29.141 VM702 content.js:195 from the extension
+18:21:29.168 VM702 content.js:199 {data: "doTwitterStuff"}
+18:21:29.200 VM702 content.js:200 content.js:doTwitterStuff
+18:21:29.209 VM702 content.js:203 GO GO GO GO
+18:21:29.219 VM716 helpers.js:14 theHypered is checking...
+18:21:29.308 VM662 content.js:195 from the extension
+18:21:29.315 VM662 content.js:199 {data: "doTwitterStuff"}
+18:21:29.330 VM662 content.js:200 content.js:doTwitterStuff
+18:21:29.338 VM662 content.js:208 msgFlow IS NOT EMPTY!
+18:21:29.345 VM662 content.js:209 ["doTwitterStuff"]
+18:21:29.357 VM686 content.js:195 from the extension
+18:21:29.369 VM686 content.js:199 {data: "doTwitterStuff"}
+18:21:29.386 VM686 content.js:200 content.js:doTwitterStuff
+18:21:29.395 VM686 content.js:208 msgFlow IS NOT EMPTY!
+18:21:29.404 VM686 content.js:209 ["doTwitterStuff"]
+18:21:29.435 VM702 content.js:195 from the extension
+18:21:29.450 VM702 content.js:199 {data: "doTwitterStuff"}
+18:21:29.459 VM702 content.js:200 content.js:doTwitterStuff
+18:21:29.467 VM702 content.js:208 msgFlow IS NOT EMPTY!
+18:21:29.479 VM702 content.js:209 ["doTwitterStuff"]
+18:21:29.508 VM662 content.js:195 from the extension
+18:21:29.528 VM662 content.js:199 {data: "doTwitterStuff"}
+18:21:29.542 VM662 content.js:200 content.js:doTwitterStuff
+18:21:29.554 VM662 content.js:208 msgFlow IS NOT EMPTY!
+18:21:29.563 VM662 content.js:209 ["doTwitterStuff"]
+18:21:29.575 VM686 content.js:195 from the extension
+18:21:29.585 VM686 content.js:199 {data: "doTwitterStuff"}
+18:21:29.617 VM686 content.js:200 content.js:doTwitterStuff
+18:21:29.630 VM686 content.js:208 msgFlow IS NOT EMPTY!
+18:21:29.642 VM686 content.js:209 ["doTwitterStuff"]
+18:21:29.656 VM702 content.js:195 from the extension
+18:21:29.670 VM702 content.js:199 {data: "doTwitterStuff"}
+18:21:29.690 VM702 content.js:200 content.js:doTwitterStuff
+18:21:29.701 VM702 content.js:208 msgFlow IS NOT EMPTY!
+18:21:29.711 VM702 content.js:209 ["doTwitterStuff"]
+18:21:29.847 VM676 helpers.js:16 content:my rocknroll is true
+18:21:29.860 VM676 helpers.js:19 theHypered will execute.
+18:21:29.864 VM676 helpers.js:32 checkMessageFlow
+18:21:29.867 VM676 helpers.js:33 ["doTwitterStuff"]
+18:21:29.879 VM676 helpers.js:35 msg:doTwitterStuff
+18:21:29.882 VM676 helpers.js:41 willGoTo:doTwitterStuff
+18:21:29.897 VM662 content.js:87 T_tweet
+18:21:29.900 VM662 content.js:53 I got a:[object HTMLButtonElement]
+18:21:30.118 VM662 content.js:90 button clicked
+18:21:30.129 VM662 content.js:63 I got b:[object HTMLDivElement]
+18:21:30.178 VM662 content.js:73 I got c:[object HTMLButtonElement]
+18:21:30.192 VM662 content.js:74 <button class=​"SendTweetsButton EdgeButton EdgeButton--primary EdgeButton--medium js-send-tweets" type=​"button">​…​</button>​
+18:21:30.210 VM662 content.js:98 tweeted!
+18:21:30.218 VM662 content.js:29 RESET msgFlow
+18:21:30.262 VM700 helpers.js:16 content:my rocknroll is true
+18:21:30.283 VM700 helpers.js:19 theHypered will execute.
+18:21:30.287 VM700 helpers.js:32 checkMessageFlow
+18:21:30.297 VM700 helpers.js:33 ["doTwitterStuff"]
+18:21:30.300 VM700 helpers.js:35 msg:doTwitterStuff
+18:21:30.314 VM700 helpers.js:41 willGoTo:doTwitterStuff
+18:21:30.323 VM686 content.js:87 T_tweet
+18:21:30.335 /i/cards/tfw/v1/989900755556544515?cardname=summary_large_image&autoplay_disabled=true&forward=true&earned=true&edge=true&lang=ar&card_height=344&scribe_context=%7B%22client%22%3A%22web%22%2C%22page%22%3A%22home%22%2C%22section%22%3A%22home%22%2C%22component%22%3A%22tweet%22%7D&bearer_token=AAAAAAAAAAAAAAAAAAAAAPYXBAAAAAAACLXUNDekMxqa8h%252F40K4moUkGsoc%253DTYfbDKbT3jJPCEVnMYqilB28NHfOPqkca3qaAxGfsyKCs0wRbw#xdm_e=https%3A%2F%2Ftwitter.com&xdm_c=default2901&xdm_p=1:1 Error in response to storage.get: TypeError: Cannot read property 'click' of undefined
+    at T_tweet (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/content.js:89:5)
+    at checkMessageFlow (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/helpers.js:43:5)
+    at Object.callback (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/helpers.js:20:7)
+    at theHypered (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/helpers.js:15:24)
+    at chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/content.js:206:7
+18:21:30.395 VM716 helpers.js:16 content:my rocknroll is true
+18:21:30.410 VM716 helpers.js:19 theHypered will execute.
+18:21:30.420 VM716 helpers.js:32 checkMessageFlow
+18:21:30.425 VM716 helpers.js:33 ["doTwitterStuff"]
+18:21:30.435 VM716 helpers.js:35 msg:doTwitterStuff
+18:21:30.441 VM716 helpers.js:41 willGoTo:doTwitterStuff
+18:21:30.447 VM702 content.js:87 T_tweet
+18:21:30.456 /i/cards/tfw/v1/989901990015651840?cardname=summary_large_image&autoplay_disabled=true&forward=true&earned=true&edge=true&lang=ar&card_height=344&scribe_context=%7B%22client%22%3A%22web%22%2C%22page%22%3A%22home%22%2C%22section%22%3A%22home%22%2C%22component%22%3A%22tweet%22%7D&bearer_token=AAAAAAAAAAAAAAAAAAAAAPYXBAAAAAAACLXUNDekMxqa8h%252F40K4moUkGsoc%253DTYfbDKbT3jJPCEVnMYqilB28NHfOPqkca3qaAxGfsyKCs0wRbw#xdm_e=https%3A%2F%2Ftwitter.com&xdm_c=default2900&xdm_p=1:1 Error in response to storage.get: TypeError: Cannot read property 'click' of undefined
+    at T_tweet (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/content.js:89:5)
+    at checkMessageFlow (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/helpers.js:43:5)
+    at Object.callback (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/helpers.js:20:7)
+    at theHypered (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/helpers.js:15:24)
+    at chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/content.js:206:7
+18:21:30.860 vVbFjNAb:1 GET https://pbs.twimg.com/card_img/989902018603986944/vVbFjNAb?format=jpg&name=386x202 404 ()
+Image (async)
+_loadImagesAsync @ VM685 native_bundle_v1_e4606b6c8375fb1fb40799c7b20e023c21e2d677.js:39
+setTimeout (async)
+n.exports @ VM685 native_bundle_v1_e4606b6c8375fb1fb40799c7b20e023c21e2d677.js:39
+(anonymous) @ VM685 native_bundle_v1_e4606b6c8375fb1fb40799c7b20e023c21e2d677.js:39
+f @ VM685 native_bundle_v1_e4606b6c8375fb1fb40799c7b20e023c21e2d677.js:34
+(anonymous) @ VM685 native_bundle_v1_e4606b6c8375fb1fb40799c7b20e023c21e2d677.js:34
+setTimeout (async)
+_ @ VM685 native_bundle_v1_e4606b6c8375fb1fb40799c7b20e023c21e2d677.js:34
+(anonymous) @ VM685 native_bundle_v1_e4606b6c8375fb1fb40799c7b20e023c21e2d677.js:39
+(anonymous) @ VM685 native_bundle_v1_e4606b6c8375fb1fb40799c7b20e023c21e2d677.js:39
+18:21:32.636 VM662 content.js:103 TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+18:21:32.639 VM662 content.js:104 doTwitterStuff_DONE:CONFIRMED
+18:21:32.736 api.twitter.com/1.1/statuses/update.json:1 POST https://api.twitter.com/1.1/statuses/update.json 403 ()
+18:22:02.047 VM661 init.ar.5fd79e54a57c8838e11f.js:14 [Deprecation] Synchronous XMLHttpRequest on the main thread is deprecated because of its detrimental effects to the end user's experience. For more help, check https://xhr.spec.whatwg.org/.
+send @ VM661 init.ar.5fd79e54a57c8838e11f.js:14
+ajax @ VM661 init.ar.5fd79e54a57c8838e11f.js:16
+flush @ VM661 init.ar.5fd79e54a57c8838e11f.js:2
+(anonymous) @ VM661 init.ar.5fd79e54a57c8838e11f.js:2
+dispatch @ VM661 init.ar.5fd79e54a57c8838e11f.js:2
+S.handle @ VM661 init.ar.5fd79e54a57c8838e11f.js:2
+18:22:03.708 VM761 content.js:195 from the extension
+18:22:03.762 VM761 content.js:199 {data: "doTwitterStuff"}
+18:22:03.827 VM761 content.js:200 content.js:doTwitterStuff
+18:22:03.843 VM761 content.js:203 GO GO GO GO
+18:22:03.862 VM775 helpers.js:14 theHypered is checking...
+18:22:03.927 VM761 content.js:195 from the extension
+18:22:03.937 VM761 content.js:199 {data: "doTwitterStuff"}
+18:22:03.946 VM761 content.js:200 content.js:doTwitterStuff
+18:22:03.963 VM761 content.js:208 msgFlow IS NOT EMPTY!
+18:22:03.972 VM761 content.js:209 ["doTwitterStuff"]
+18:22:03.998 VM761 content.js:195 from the extension
+18:22:04.019 VM761 content.js:199 {data: "doTwitterStuff"}
+18:22:04.034 VM761 content.js:200 content.js:doTwitterStuff
+18:22:04.073 chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/content.js:208 msgFlow IS NOT EMPTY!
+18:22:04.107 chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/content.js:209 ["doTwitterStuff"]
+18:22:04.145 chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/content.js:195 from the extension
+18:22:04.166 chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/content.js:199 {data: "doTwitterStuff"}
+18:22:04.187 chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/content.js:200 content.js:doTwitterStuff
+18:22:04.208 chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/content.js:208 msgFlow IS NOT EMPTY!
+18:22:04.232 chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/content.js:209 ["doTwitterStuff"]
+18:22:04.544 Navigated to https://twitter.com/
+18:22:07.496 Navigated to https://twitter.com/
+18:22:17.230 content.js:195 from the extension
+18:22:17.284 content.js:199 {data: "doTwitterStuff"}
+18:22:17.347 content.js:200 content.js:doTwitterStuff
+18:22:17.355 content.js:203 GO GO GO GO
+18:22:17.372 helpers.js:14 theHypered is checking...
+18:22:17.481 content.js:195 from the extension
+18:22:17.492 content.js:199 {data: "doTwitterStuff"}
+18:22:17.507 content.js:200 content.js:doTwitterStuff
+18:22:17.516 content.js:208 msgFlow IS NOT EMPTY!
+18:22:17.528 content.js:209 ["doTwitterStuff"]
+18:22:17.561 content.js:195 from the extension
+18:22:17.577 content.js:199 {data: "doTwitterStuff"}
+18:22:17.589 content.js:200 content.js:doTwitterStuff
+18:22:17.600 content.js:208 msgFlow IS NOT EMPTY!
+18:22:17.617 content.js:209 ["doTwitterStuff"]
+18:22:17.665 content.js:195 from the extension
+18:22:17.675 content.js:199 {data: "doTwitterStuff"}
+18:22:17.688 content.js:200 content.js:doTwitterStuff
+18:22:17.707 content.js:208 msgFlow IS NOT EMPTY!
+18:22:17.709 content.js:209 ["doTwitterStuff"]
+18:22:19.265 helpers.js:16 content:my rocknroll is true
+18:22:19.294 helpers.js:19 theHypered will execute.
+18:22:19.312 helpers.js:32 checkMessageFlow
+18:22:19.328 helpers.js:33 ["doTwitterStuff"]
+18:22:19.343 helpers.js:35 msg:doTwitterStuff
+18:22:19.351 helpers.js:41 willGoTo:doTwitterStuff
+18:22:19.366 content.js:87 T_tweet
+18:22:19.381 content.js:53 I got a:[object HTMLButtonElement]
+18:22:21.302 content.js:90 button clicked
+18:22:21.315 content.js:63 I got b:[object HTMLDivElement]
+18:22:21.362 content.js:73 I got c:[object HTMLButtonElement]
+18:22:21.370 content.js:74 <button class=​"SendTweetsButton EdgeButton EdgeButton--primary EdgeButton--medium js-send-tweets" type=​"button">​…​</button>​
+18:22:21.377 content.js:98 tweeted!
+18:22:21.382 content.js:29 RESET msgFlow
+18:22:22.599 content.js:103 TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+18:22:22.601 content.js:104 doTwitterStuff_DONE:CONFIRMED
+18:22:22.619 init.ar.5fd79e54a57c8838e11f.js:14 GET https://t.tellapart.com/twitterinitmatch?tpm_cb=partnerIdSyncComplete&guest_id=152320778816833818&_=1524846131391 net::ERR_NAME_NOT_RESOLVED
+send @ init.ar.5fd79e54a57c8838e11f.js:14
+ajax @ init.ar.5fd79e54a57c8838e11f.js:16
+JSONRequest @ init.ar.5fd79e54a57c8838e11f.js:12
+get @ init.ar.5fd79e54a57c8838e11f.js:12
+syncWithPartner @ init.ar.5fd79e54a57c8838e11f.js:2
+(anonymous) @ init.ar.5fd79e54a57c8838e11f.js:2
+handlePartnerIdSyncResponse @ init.ar.5fd79e54a57c8838e11f.js:2
+callSuccessHandler @ init.ar.5fd79e54a57c8838e11f.js:12
+(anonymous) @ init.ar.5fd79e54a57c8838e11f.js:12
+(anonymous) @ init.ar.5fd79e54a57c8838e11f.js:12
+l @ init.ar.5fd79e54a57c8838e11f.js:2
+fireWith @ init.ar.5fd79e54a57c8838e11f.js:2
+g @ init.ar.5fd79e54a57c8838e11f.js:16
+(anonymous) @ init.ar.5fd79e54a57c8838e11f.js:14
+load (async)
+send @ init.ar.5fd79e54a57c8838e11f.js:14
+ajax @ init.ar.5fd79e54a57c8838e11f.js:16
+JSONRequest @ init.ar.5fd79e54a57c8838e11f.js:12
+get @ init.ar.5fd79e54a57c8838e11f.js:12
+doPartnerIdSync @ init.ar.5fd79e54a57c8838e11f.js:2
+(anonymous) @ init.ar.5fd79e54a57c8838e11f.js:2
+(anonymous) @ init.ar.5fd79e54a57c8838e11f.js:33
+(anonymous) @ init.ar.5fd79e54a57c8838e11f.js:33
+(anonymous) @ init.ar.5fd79e54a57c8838e11f.js:2
+each @ init.ar.5fd79e54a57c8838e11f.js:2
+each @ init.ar.5fd79e54a57c8838e11f.js:2
+c @ init.ar.5fd79e54a57c8838e11f.js:2
+a @ init.ar.5fd79e54a57c8838e11f.js:2
+s @ 0.commons.ar.eafcdde615f8c5d610ff.js:1
+e.default @ 8.pages_home.ar.e5388f036368fa95c48c.js:45
+(anonymous) @ init.ar.5fd79e54a57c8838e11f.js:14
+(anonymous) @ init.ar.5fd79e54a57c8838e11f.js:14
+r @ init.ar.5fd79e54a57c8838e11f.js:14
+r @ init.ar.5fd79e54a57c8838e11f.js:12
+(anonymous) @ init.ar.5fd79e54a57c8838e11f.js:12
+Promise.then (async)
+n @ init.ar.5fd79e54a57c8838e11f.js:12
+r @ init.ar.5fd79e54a57c8838e11f.js:12
+i @ init.ar.5fd79e54a57c8838e11f.js:14
+(anonymous) @ init.ar.5fd79e54a57c8838e11f.js:2
+d @ init.ar.5fd79e54a57c8838e11f.js:2
+h @ init.ar.5fd79e54a57c8838e11f.js:2
+setTimeout (async)
+(anonymous) @ init.ar.5fd79e54a57c8838e11f.js:2
+l @ init.ar.5fd79e54a57c8838e11f.js:2
+fireWith @ init.ar.5fd79e54a57c8838e11f.js:2
+fire @ init.ar.5fd79e54a57c8838e11f.js:2
+l @ init.ar.5fd79e54a57c8838e11f.js:2
+fireWith @ init.ar.5fd79e54a57c8838e11f.js:2
+ready @ init.ar.5fd79e54a57c8838e11f.js:12
+setTimeout (async)
+(anonymous) @ init.ar.5fd79e54a57c8838e11f.js:12
+Y2CE @ init.ar.5fd79e54a57c8838e11f.js:12
+e @ init.ar.5fd79e54a57c8838e11f.js:1
+4kSj @ init.ar.5fd79e54a57c8838e11f.js:2
+e @ init.ar.5fd79e54a57c8838e11f.js:1
+(anonymous) @ init.ar.5fd79e54a57c8838e11f.js:2
+RCB8 @ init.ar.5fd79e54a57c8838e11f.js:2
+e @ init.ar.5fd79e54a57c8838e11f.js:1
+WXBK @ init.ar.5fd79e54a57c8838e11f.js:12
+e @ init.ar.5fd79e54a57c8838e11f.js:1
+0 @ init.ar.5fd79e54a57c8838e11f.js:2
+e @ init.ar.5fd79e54a57c8838e11f.js:1
++/oQ @ init.ar.5fd79e54a57c8838e11f.js:1
+(anonymous) @ init.ar.5fd79e54a57c8838e11f.js:1
+18:22:25.240 content.js:195 from the extension
+18:22:25.293 content.js:199 {data: "doTwitterStuff"}
+18:22:25.331 content.js:200 content.js:doTwitterStuff
+18:22:25.342 content.js:203 GO GO GO GO
+18:22:25.354 helpers.js:14 theHypered is checking...
+18:22:25.448 content.js:195 from the extension
+18:22:25.483 content.js:199 {data: "doTwitterStuff"}
+18:22:25.519 content.js:200 content.js:doTwitterStuff
+18:22:25.535 content.js:203 GO GO GO GO
+18:22:25.551 helpers.js:14 theHypered is checking...
+18:22:25.608 content.js:195 from the extension
+18:22:25.618 content.js:199 {data: "doTwitterStuff"}
+18:22:25.630 content.js:200 content.js:doTwitterStuff
+18:22:25.641 content.js:203 GO GO GO GO
+18:22:25.654 helpers.js:14 theHypered is checking...
+18:22:25.698 content.js:195 from the extension
+18:22:25.709 content.js:199 {data: "doTwitterStuff"}
+18:22:25.720 content.js:200 content.js:doTwitterStuff
+18:22:25.730 content.js:208 msgFlow IS NOT EMPTY!
+18:22:25.740 content.js:209 ["doTwitterStuff"]
+18:22:25.752 content.js:195 from the extension
+18:22:25.764 content.js:199 {data: "doTwitterStuff"}
+18:22:25.775 content.js:200 content.js:doTwitterStuff
+18:22:25.786 content.js:208 msgFlow IS NOT EMPTY!
+18:22:25.806 content.js:209 ["doTwitterStuff"]
+18:22:25.820 content.js:195 from the extension
+18:22:25.831 content.js:199 {data: "doTwitterStuff"}
+18:22:25.843 content.js:200 content.js:doTwitterStuff
+18:22:25.845 content.js:208 msgFlow IS NOT EMPTY!
+18:22:25.863 content.js:209 ["doTwitterStuff", lengh: 0]
+18:22:25.890 content.js:195 from the extension
+18:22:25.900 content.js:199 {data: "doTwitterStuff"}
+18:22:25.906 content.js:200 content.js:doTwitterStuff
+18:22:25.921 content.js:208 msgFlow IS NOT EMPTY!
+18:22:25.932 content.js:209 ["doTwitterStuff"]
+18:22:25.960 content.js:195 from the extension
+18:22:25.973 content.js:199 {data: "doTwitterStuff"}
+18:22:25.987 content.js:200 content.js:doTwitterStuff
+18:22:25.995 content.js:208 msgFlow IS NOT EMPTY!
+18:22:26.003 content.js:209 ["doTwitterStuff"]
+18:22:26.013 content.js:195 from the extension
+18:22:26.027 content.js:199 {data: "doTwitterStuff"}
+18:22:26.035 content.js:200 content.js:doTwitterStuff
+18:22:26.044 content.js:208 msgFlow IS NOT EMPTY!
+18:22:26.068 content.js:209 ["doTwitterStuff", lengh: 0]
+18:22:26.117 content.js:195 from the extension
+18:22:26.127 content.js:199 {data: "doTwitterStuff"}
+18:22:26.138 content.js:200 content.js:doTwitterStuff
+18:22:26.153 content.js:208 msgFlow IS NOT EMPTY!
+18:22:26.162 content.js:209 ["doTwitterStuff"]
+18:22:26.176 content.js:195 from the extension
+18:22:26.191 content.js:199 {data: "doTwitterStuff"}
+18:22:26.211 content.js:200 content.js:doTwitterStuff
+18:22:26.219 content.js:208 msgFlow IS NOT EMPTY!
+18:22:26.226 content.js:209 ["doTwitterStuff"]
+18:22:26.243 content.js:195 from the extension
+18:22:26.256 content.js:199 {data: "doTwitterStuff"}
+18:22:26.269 content.js:200 content.js:doTwitterStuff
+18:22:26.278 content.js:208 msgFlow IS NOT EMPTY!
+18:22:26.292 content.js:209 ["doTwitterStuff", lengh: 0]
+18:22:26.816 helpers.js:16 content:my rocknroll is true
+18:22:26.822 helpers.js:19 theHypered will execute.
+18:22:26.827 helpers.js:32 checkMessageFlow
+18:22:26.835 helpers.js:33 ["doTwitterStuff"]
+18:22:26.851 helpers.js:35 msg:doTwitterStuff
+18:22:26.857 helpers.js:41 willGoTo:doTwitterStuff
+18:22:26.875 content.js:87 T_tweet
+18:22:26.886 /i/cards/tfw/v1/989900755556544515?cardname=summary_large_image&autoplay_disabled=true&forward=true&earned=true&edge=true&lang=ar&card_height=344&scribe_context=%7B%22client%22%3A%22web%22%2C%22page%22%3A%22home%22%2C%22section%22%3A%22home%22%2C%22component%22%3A%22tweet%22%7D&bearer_token=AAAAAAAAAAAAAAAAAAAAAPYXBAAAAAAACLXUNDekMxqa8h%252F40K4moUkGsoc%253DTYfbDKbT3jJPCEVnMYqilB28NHfOPqkca3qaAxGfsyKCs0wRbw#xdm_e=https%3A%2F%2Ftwitter.com&xdm_c=default6388&xdm_p=1:1 Error in response to storage.get: TypeError: Cannot read property 'click' of undefined
+    at T_tweet (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/content.js:89:5)
+    at checkMessageFlow (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/helpers.js:43:5)
+    at Object.callback (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/helpers.js:20:7)
+    at theHypered (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/helpers.js:15:24)
+    at chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/content.js:206:7
+18:22:26.913 helpers.js:16 content:my rocknroll is true
+18:22:26.940 helpers.js:19 theHypered will execute.
+18:22:26.947 helpers.js:32 checkMessageFlow
+18:22:26.956 helpers.js:33 ["doTwitterStuff"]
+18:22:26.964 helpers.js:35 msg:doTwitterStuff
+18:22:26.974 helpers.js:41 willGoTo:doTwitterStuff
+18:22:26.983 content.js:87 T_tweet
+18:22:26.989 /i/cards/tfw/v1/989901990015651840?cardname=summary_large_image&autoplay_disabled=true&forward=true&earned=true&edge=true&lang=ar&card_height=344&scribe_context=%7B%22client%22%3A%22web%22%2C%22page%22%3A%22home%22%2C%22section%22%3A%22home%22%2C%22component%22%3A%22tweet%22%7D&bearer_token=AAAAAAAAAAAAAAAAAAAAAPYXBAAAAAAACLXUNDekMxqa8h%252F40K4moUkGsoc%253DTYfbDKbT3jJPCEVnMYqilB28NHfOPqkca3qaAxGfsyKCs0wRbw#xdm_e=https%3A%2F%2Ftwitter.com&xdm_c=default6387&xdm_p=1:1 Error in response to storage.get: TypeError: Cannot read property 'click' of undefined
+    at T_tweet (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/content.js:89:5)
+    at checkMessageFlow (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/helpers.js:43:5)
+    at Object.callback (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/helpers.js:20:7)
+    at theHypered (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/helpers.js:15:24)
+    at chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/content.js:206:7
+18:22:26.996 helpers.js:16 content:my rocknroll is true
+18:22:27.005 helpers.js:19 theHypered will execute.
+18:22:27.009 helpers.js:32 checkMessageFlow
+18:22:27.017 helpers.js:33 ["doTwitterStuff", lengh: 0]
+18:22:27.022 helpers.js:35 msg:doTwitterStuff
+18:22:27.028 helpers.js:41 willGoTo:doTwitterStuff
+18:22:27.035 content.js:87 T_tweet
+18:22:27.043 content.js:53 I got a:[object HTMLButtonElement]
+18:22:27.768 content.js:90 button clicked
+18:22:27.795 content.js:63 I got b:[object HTMLDivElement]
+18:22:27.861 content.js:73 I got c:[object HTMLButtonElement]
+18:22:27.874 content.js:74 <button class=​"SendTweetsButton EdgeButton EdgeButton--primary EdgeButton--medium js-send-tweets" type=​"button">​…​</button>​
+18:22:27.885 content.js:98 tweeted!
+18:22:27.900 content.js:29 RESET msgFlow
+18:22:28.078 api.twitter.com/1.1/statuses/update.json:1 POST https://api.twitter.com/1.1/statuses/update.json 403 ()
+18:22:30.307 api.twitter.com/1.1/statuses/update.json:1 POST https://api.twitter.com/1.1/statuses/update.json 403 ()
+18:22:31.133 content.js:103 TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+18:22:31.135 content.js:104 doTwitterStuff_DONE:CONFIRMED
+18:22:56.757 Navigated to https://www.facebook.com/en7erafatamnaldawla
+18:23:06.903 Navigated to https://www.facebook.com/en7erafatamnaldawla
+18:23:53.373 _CQdR4pZvc7.js?_nc_eui2=v1%3AAeHG8XisJgVVXETeFp7HucJH9pKLcIPv2kfxOoqoPaD6wSI0kZBrLfqvj2cC_1vE6RTQJoApEXz_J0OKNsV60vbOAL1IiA27VEvFLtFdiZUIIA:203 
+انتبه!
+18:23:53.409 _CQdR4pZvc7.js?_nc_eui2=v1%3AAeHG8XisJgVVXETeFp7HucJH9pKLcIPv2kfxOoqoPaD6wSI0kZBrLfqvj2cC_1vE6RTQJoApEXz_J0OKNsV60vbOAL1IiA27VEvFLtFdiZUIIA:203 
+ميزة المتصفح هذه موجهة للمطورين. إذا طلب منك شخص ما نسخ ولصق أي شيء هنا لتمكين ميزة على فيسبوك أو "اختراق" حساب شخص آخر، فإن هذه محاولة احتيالية وستتيح له الوصول إلى حساب فيسبوك الخاص بك.
+18:23:53.414 _CQdR4pZvc7.js?_nc_eui2=v1%3AAeHG8XisJgVVXETeFp7HucJH9pKLcIPv2kfxOoqoPaD6wSI0kZBrLfqvj2cC_1vE6RTQJoApEXz_J0OKNsV60vbOAL1IiA27VEvFLtFdiZUIIA:203 
+راجع https://www.facebook.com/selfxss للحصول على مزيد من المعلومات
+18:23:53.417 _CQdR4pZvc7.js?_nc_eui2=v1%3AAeHG8XisJgVVXETeFp7HucJH9pKLcIPv2kfxOoqoPaD6wSI0kZBrLfqvj2cC_1vE6RTQJoApEXz_J0OKNsV60vbOAL1IiA27VEvFLtFdiZUIIA:203 
+
+18:24:15.261 content.js:195 from the extension
+18:24:15.390 content.js:199 {data: "doTwitterStuff"}
+18:24:15.547 content.js:200 content.js:doTwitterStuff
+18:24:15.555 content.js:203 GO GO GO GO
+18:24:15.579 helpers.js:14 theHypered is checking...
+18:24:15.697 content.js:195 from the extension
+18:24:15.715 content.js:199 {data: "doTwitterStuff"}
+18:24:15.727 content.js:200 content.js:doTwitterStuff
+18:24:15.749 content.js:208 msgFlow IS NOT EMPTY!
+18:24:15.763 content.js:209 ["doTwitterStuff"]
+18:24:15.800 content.js:195 from the extension
+18:24:15.817 content.js:199 {data: "doTwitterStuff"}
+18:24:15.843 content.js:200 content.js:doTwitterStuff
+18:24:15.859 content.js:208 msgFlow IS NOT EMPTY!
+18:24:15.866 content.js:209 ["doTwitterStuff"]
+18:24:15.942 content.js:195 from the extension
+18:24:15.964 content.js:199 {data: "doTwitterStuff"}
+18:24:15.971 content.js:200 content.js:doTwitterStuff
+18:24:15.982 content.js:208 msgFlow IS NOT EMPTY!
+18:24:15.997 content.js:209 ["doTwitterStuff"]
+18:24:16.082 content.js:195 from the extension
+18:24:16.108 content.js:199 {data: "doFacebookStuff"}
+18:24:16.124 content.js:200 content.js:doFacebookStuff
+18:24:16.144 content.js:208 msgFlow IS NOT EMPTY!
+18:24:16.164 content.js:209 ["doTwitterStuff"]
+18:24:16.207 content.js:195 from the extension
+18:24:16.219 content.js:199 {data: "doFacebookStuff"}
+18:24:16.245 content.js:200 content.js:doFacebookStuff
+18:24:16.268 content.js:208 msgFlow IS NOT EMPTY!
+18:24:16.279 content.js:209 ["doTwitterStuff"]
+18:24:16.394 helpers.js:16 content:my rocknroll is true
+18:24:16.403 helpers.js:19 theHypered will execute.
+18:24:16.408 helpers.js:32 checkMessageFlow
+18:24:16.419 helpers.js:33 ["doTwitterStuff"]
+18:24:16.431 helpers.js:35 msg:doTwitterStuff
+18:24:16.437 helpers.js:41 willGoTo:doTwitterStuff
+18:24:16.443 content.js:87 T_tweet
+18:24:16.455 en7erafatamnaldawla:1 Error in response to storage.get: TypeError: Cannot read property 'click' of undefined
+    at T_tweet (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/content.js:89:5)
+    at checkMessageFlow (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/helpers.js:43:5)
+    at Object.callback (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/helpers.js:20:7)
+    at theHypered (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/helpers.js:15:24)
+    at chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/content.js:206:7

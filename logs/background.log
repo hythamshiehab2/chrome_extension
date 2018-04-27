@@ -1,0 +1,562 @@
+18:14:29.272 background.js:241 background.js:[object Object]
+18:14:29.286 background.js:242 {data: "surfStartIgnition"}
+18:14:29.307 background.js:244 surfStartIgnition
+18:14:29.325 background.js:268 surfStartIgnition:CONFIRMED
+18:14:29.383 background.js:24 Dice:2
+18:14:29.387 background.js:111 Wordpress is callled 
+18:14:29.573 background.js:19 CHECK_MSG_FLOW_RESPONSE
+18:14:29.575 background.js:20 undefined
+18:14:31.387 background.js:279 listening...
+18:14:31.390 background.js:281 loading
+18:14:31.455 background.js:279 listening...
+18:14:31.457 background.js:281 undefined
+18:14:44.630 background.js:279 listening...
+18:14:44.656 background.js:281 complete
+18:14:44.666 background.js:283 status complete
+18:14:44.686 background.js:285 background.js:tabId:225
+18:14:44.705 background.js:289 setting tabId
+18:14:46.292 background.js:294 surf:Settings saved
+18:14:49.281 background.js:128 from Wordpress()
+18:14:49.286 background.js:129 undefined
+18:14:49.467 background.js:241 background.js:[object Object]
+18:14:49.470 background.js:242 {data: "doWordpressStuff_DONE"}
+18:14:49.484 background.js:244 doWordpressStuff_DONE
+18:14:49.498 background.js:261 Wordpress STUFF IS DONE!
+18:14:49.508 background.js:263 will rollTheDice in 30s
+18:14:49.551 background.js:241 background.js:[object Object]
+18:14:49.553 background.js:242 {data: "doWordpressStuff_DONE"}
+18:14:49.563 background.js:244 doWordpressStuff_DONE
+18:14:49.578 background.js:261 Wordpress STUFF IS DONE!
+18:14:49.583 background.js:263 will rollTheDice in 30s
+18:14:49.609 background.js:241 background.js:[object Object]
+18:14:49.611 background.js:242 {data: "doWordpressStuff_DONE"}
+18:14:49.623 background.js:244 doWordpressStuff_DONE
+18:14:49.628 background.js:261 Wordpress STUFF IS DONE!
+18:14:49.648 background.js:263 will rollTheDice in 30s
+18:14:50.126 background.js:241 background.js:[object Object]
+18:14:50.128 background.js:242 {data: "doWordpressStuff_DONE"}
+18:14:50.136 background.js:244 doWordpressStuff_DONE
+18:14:50.148 background.js:261 Wordpress STUFF IS DONE!
+18:14:50.182 background.js:263 will rollTheDice in 30s
+18:14:50.926 background.js:241 background.js:[object Object]
+18:14:50.929 background.js:242 {data: "doWordpressStuff_DONE"}
+18:14:50.970 background.js:244 doWordpressStuff_DONE
+18:14:50.980 background.js:261 Wordpress STUFF IS DONE!
+18:14:51.011 background.js:263 will rollTheDice in 30s
+18:14:51.314 background.js:241 background.js:[object Object]
+18:14:51.316 background.js:242 {data: "doWordpressStuff_DONE"}
+18:14:51.327 background.js:244 doWordpressStuff_DONE
+18:14:51.332 background.js:261 Wordpress STUFF IS DONE!
+18:14:51.342 background.js:263 will rollTheDice in 30s
+18:15:19.523 background.js:24 Dice:3
+18:15:19.531 background.js:140 Twitter is callled 
+18:15:19.536 background.js:19 CHECK_MSG_FLOW_RESPONSE
+18:15:19.540 background.js:20 undefined
+18:15:19.593 background.js:24 Dice:2
+18:15:19.595 background.js:111 Wordpress is callled 
+18:15:19.657 background.js:24 Dice:1
+18:15:19.658 background.js:81 surf:Facebook is called
+18:15:19.800 background.js:19 CHECK_MSG_FLOW_RESPONSE
+18:15:19.805 background.js:20 undefined
+18:15:20.202 background.js:24 Dice:1
+18:15:20.208 background.js:81 surf:Facebook is called
+18:15:21.028 background.js:24 Dice:2
+18:15:21.030 background.js:111 Wordpress is callled 
+18:15:21.076 background.js:19 CHECK_MSG_FLOW_RESPONSE
+18:15:21.087 background.js:20 undefined
+18:15:21.284 background.js:19 CHECK_MSG_FLOW_RESPONSE
+18:15:21.286 background.js:20 undefined
+18:15:21.322 background.js:19 CHECK_MSG_FLOW_RESPONSE
+18:15:21.324 background.js:20 undefined
+18:15:21.373 background.js:24 Dice:3
+18:15:21.374 background.js:140 Twitter is callled 
+18:15:21.782 background.js:19 CHECK_MSG_FLOW_RESPONSE
+18:15:21.783 background.js:20 undefined
+18:15:24.006 background.js:279 listening...
+18:15:24.009 background.js:281 loading
+18:15:24.069 background.js:279 listening...
+18:15:24.070 background.js:281 undefined
+18:15:24.201 background.js:279 listening...
+18:15:24.202 background.js:281 complete
+18:15:24.218 background.js:283 status complete
+18:15:24.224 background.js:285 background.js:tabId:225
+18:15:24.230 background.js:289 setting tabId
+18:15:24.278 background.js:95 surf.js:tabId:225
+18:15:24.294 background.js:95 surf.js:tabId:225
+18:15:24.352 background.js:279 listening...
+18:15:24.354 background.js:281 undefined
+18:15:24.908 background.js:294 surf:Settings saved
+18:15:25.381 background.js:128 from Wordpress()
+18:15:25.383 background.js:129 undefined
+18:15:25.454 background.js:157 from Twitter()
+18:15:25.456 background.js:158 undefined
+18:15:25.532 background.js:128 from Wordpress()
+18:15:25.534 background.js:129 undefined
+18:15:25.593 background.js:99 from Facebook()
+18:15:25.594 background.js:100 undefined
+18:15:25.656 background.js:99 from Facebook()
+18:15:25.658 background.js:100 undefined
+18:15:25.708 background.js:128 from Wordpress()
+18:15:25.710 background.js:129 undefined
+18:15:25.747 background.js:157 from Twitter()
+18:15:25.749 background.js:158 undefined
+18:15:26.030 background.js:279 listening...
+18:15:26.032 background.js:281 loading
+18:15:26.751 background.js:279 listening...
+18:15:26.752 background.js:281 undefined
+18:15:27.936 background.js:279 listening...
+18:15:27.938 background.js:281 undefined
+18:15:33.529 background.js:279 listening...
+18:15:33.530 background.js:281 complete
+18:15:33.542 background.js:283 status complete
+18:15:33.548 background.js:285 background.js:tabId:225
+18:15:33.552 background.js:289 setting tabId
+18:15:33.585 background.js:95 surf.js:tabId:225
+18:15:33.600 background.js:95 surf.js:tabId:225
+18:15:33.925 background.js:294 surf:Settings saved
+18:15:34.415 background.js:128 from Wordpress()
+18:15:34.417 background.js:129 undefined
+18:15:34.594 background.js:157 from Twitter()
+18:15:34.596 background.js:158 undefined
+18:15:34.860 background.js:128 from Wordpress()
+18:15:34.862 background.js:129 undefined
+18:15:35.029 background.js:99 from Facebook()
+18:15:35.031 background.js:100 undefined
+18:15:35.521 background.js:99 from Facebook()
+18:15:35.523 background.js:100 undefined
+18:15:39.107 Navigated to chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/_generated_background_page.html
+18:15:39.878 surf.js:36 document is loaded
+18:15:39.916 surf.js:37 surf:here
+18:15:39.997 surf.js:40 surf:started:true
+18:15:39.998 surf.js:42 Uncaught ReferenceError: $ is not defined
+    at register (surf.js:42)
+register @ surf.js:42
+load (async)
+(anonymous) @ surf.js:18
+18:15:41.700 background.js:279 listening...
+18:15:41.701 background.js:281 loading
+18:15:41.748 background.js:279 listening...
+18:15:41.749 background.js:281 undefined
+18:15:43.289 background.js:241 background.js:[object Object]
+18:15:43.316 background.js:242 {data: "doWordpressStuff_DONE"}
+18:15:43.335 background.js:244 doWordpressStuff_DONE
+18:15:43.373 background.js:261 Wordpress STUFF IS DONE!
+18:15:43.404 background.js:263 will rollTheDice in 30s
+18:15:46.429 background.js:279 listening...
+18:15:46.430 background.js:281 complete
+18:15:46.432 background.js:283 status complete
+18:15:46.433 background.js:285 background.js:tabId:225
+18:15:46.454 background.js:289 setting tabId
+18:15:46.789 background.js:294 surf:Settings saved
+18:16:13.420 background.js:24 Dice:1
+18:16:13.432 background.js:81 surf:Facebook is called
+18:16:13.466 background.js:19 CHECK_MSG_FLOW_RESPONSE
+18:16:13.484 background.js:20 undefined
+18:16:15.942 background.js:279 listening...
+18:16:15.943 background.js:281 loading
+18:16:15.962 background.js:279 listening...
+18:16:15.976 background.js:281 undefined
+18:16:16.010 background.js:279 listening...
+18:16:16.011 background.js:281 undefined
+18:16:35.549 background.js:279 listening...
+18:16:35.551 background.js:281 loading
+18:16:36.931 background.js:279 listening...
+18:16:36.934 background.js:281 complete
+18:16:36.947 background.js:283 status complete
+18:16:36.957 background.js:285 background.js:tabId:2
+18:16:36.967 background.js:289 setting tabId
+18:16:36.982 background.js:95 surf.js:tabId:2
+18:16:37.445 background.js:179 Storage key "tabId" in namespace "local" changed. Old value was "225", new value is "2".
+18:16:37.451 background.js:294 surf:Settings saved
+18:16:37.540 background.js:99 from Facebook()
+18:16:37.542 background.js:100 undefined
+18:16:40.551 Navigated to chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/_generated_background_page.html
+18:16:40.885 surf.js:36 document is loaded
+18:16:40.918 surf.js:37 surf:here
+18:16:40.986 surf.js:40 surf:started:false
+18:16:40.987 surf.js:45 Uncaught ReferenceError: $ is not defined
+    at register (surf.js:45)
+register @ surf.js:45
+load (async)
+(anonymous) @ surf.js:18
+18:16:48.415 background.js:241 background.js:[object Object]
+18:16:48.427 background.js:242 {data: "surfStartIgnition"}
+18:16:48.436 background.js:244 surfStartIgnition
+18:16:48.460 background.js:268 surfStartIgnition:CONFIRMED
+18:16:48.512 background.js:24 Dice:3
+18:16:48.525 background.js:140 Twitter is callled 
+18:16:48.778 background.js:19 CHECK_MSG_FLOW_RESPONSE
+18:16:48.780 background.js:20 undefined
+18:16:49.122 background.js:279 listening...
+18:16:49.135 background.js:281 loading
+18:16:49.227 background.js:279 listening...
+18:16:49.229 background.js:281 undefined
+18:16:51.011 background.js:279 listening...
+18:16:51.013 background.js:281 loading
+18:16:51.178 background.js:279 listening...
+18:16:51.188 background.js:281 complete
+18:16:51.195 background.js:283 status complete
+18:16:51.213 background.js:285 background.js:tabId:225
+18:16:51.225 background.js:289 setting tabId
+18:16:51.264 background.js:279 listening...
+18:16:51.271 background.js:281 undefined
+18:16:51.891 background.js:179 Storage key "tabId" in namespace "local" changed. Old value was "2", new value is "225".
+18:16:51.895 background.js:294 surf:Settings saved
+18:16:52.080 background.js:157 from Twitter()
+18:16:52.082 background.js:158 undefined
+18:16:52.675 background.js:279 listening...
+18:16:52.677 background.js:281 loading
+18:16:53.044 background.js:279 listening...
+18:16:53.045 background.js:281 undefined
+18:16:53.118 background.js:279 listening...
+18:16:53.120 background.js:281 undefined
+18:16:57.376 background.js:279 listening...
+18:16:57.377 background.js:281 complete
+18:16:57.378 background.js:283 status complete
+18:16:57.392 background.js:285 background.js:tabId:225
+18:16:57.403 background.js:289 setting tabId
+18:16:57.627 background.js:294 surf:Settings saved
+18:16:58.373 background.js:157 from Twitter()
+18:16:58.375 background.js:158 undefined
+18:17:01.494 background.js:279 listening...
+18:17:01.510 background.js:281 loading
+18:17:01.567 background.js:279 listening...
+18:17:01.572 background.js:281 undefined
+18:17:06.008 background.js:279 listening...
+18:17:06.011 background.js:281 complete
+18:17:06.012 background.js:283 status complete
+18:17:06.022 background.js:285 background.js:tabId:225
+18:17:06.030 background.js:289 setting tabId
+18:17:06.335 background.js:294 surf:Settings saved
+18:17:08.369 background.js:157 from Twitter()
+18:17:08.371 background.js:158 undefined
+18:17:09.593 background.js:241 background.js:[object Object]
+18:17:09.596 background.js:242 {data: "doTwitterStuff_DONE"}
+18:17:09.608 background.js:244 doTwitterStuff_DONE
+18:17:09.619 background.js:247 Twitter STUFF IS DONE!
+18:17:09.630 background.js:249 will rollTheDice in 30s
+18:17:39.646 background.js:24 Dice:2
+18:17:39.650 background.js:111 Wordpress is callled 
+18:17:39.660 background.js:19 CHECK_MSG_FLOW_RESPONSE
+18:17:39.669 background.js:20 undefined
+18:17:39.688 _generated_background_page.html:1 Error in response to tabs.query: TypeError: Cannot read property 'id' of undefined
+    at Object.callback (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/background.js:117:15)
+    at Wordpress (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/background.js:112:15)
+    at rollTheDice (chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/scripts/background.js:34:5)
+18:19:24.287 Navigated to chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/_generated_background_page.html
+18:19:24.407 surf.js:36 document is loaded
+18:19:24.452 surf.js:37 surf:here
+18:19:24.495 surf.js:40 surf:started:true
+18:19:24.496 surf.js:42 Uncaught ReferenceError: $ is not defined
+    at register (surf.js:42)
+register @ surf.js:42
+load (async)
+(anonymous) @ surf.js:18
+18:19:28.805 background.js:241 background.js:[object Object]
+18:19:28.819 background.js:242 {data: "surfStartIgnition"}
+18:19:28.843 background.js:244 surfStartIgnition
+18:19:28.862 background.js:268 surfStartIgnition:CONFIRMED
+18:19:28.913 background.js:24 Dice:3
+18:19:28.923 background.js:140 Twitter is callled 
+18:19:29.138 background.js:19 CHECK_MSG_FLOW_RESPONSE
+18:19:29.140 background.js:20 undefined
+18:19:29.386 background.js:279 listening...
+18:19:29.391 background.js:281 loading
+18:19:29.482 background.js:279 listening...
+18:19:29.484 background.js:281 undefined
+18:19:30.905 background.js:279 listening...
+18:19:30.906 background.js:281 loading
+18:19:31.004 background.js:279 listening...
+18:19:31.005 background.js:281 undefined
+18:19:31.442 background.js:279 listening...
+18:19:31.455 background.js:281 complete
+18:19:31.471 background.js:283 status complete
+18:19:31.475 background.js:285 background.js:tabId:225
+18:19:31.495 background.js:289 setting tabId
+18:19:32.117 background.js:294 surf:Settings saved
+18:19:32.675 background.js:157 from Twitter()
+18:19:32.678 background.js:158 undefined
+18:19:32.960 background.js:279 listening...
+18:19:32.961 background.js:281 loading
+18:19:33.245 background.js:279 listening...
+18:19:33.246 background.js:281 undefined
+18:19:33.262 background.js:279 listening...
+18:19:33.264 background.js:281 undefined
+18:19:38.754 background.js:279 listening...
+18:19:38.760 background.js:281 complete
+18:19:38.775 background.js:283 status complete
+18:19:38.784 background.js:285 background.js:tabId:225
+18:19:38.792 background.js:289 setting tabId
+18:19:39.045 background.js:294 surf:Settings saved
+18:19:39.331 background.js:157 from Twitter()
+18:19:39.333 background.js:158 undefined
+18:19:43.319 background.js:279 listening...
+18:19:43.321 background.js:281 loading
+18:19:43.369 background.js:279 listening...
+18:19:43.370 background.js:281 undefined
+18:19:47.458 background.js:279 listening...
+18:19:47.464 background.js:281 complete
+18:19:47.471 background.js:283 status complete
+18:19:47.478 background.js:285 background.js:tabId:225
+18:19:47.493 background.js:289 setting tabId
+18:19:47.735 background.js:294 surf:Settings saved
+18:19:49.838 background.js:157 from Twitter()
+18:19:49.840 background.js:158 undefined
+18:19:51.256 background.js:241 background.js:[object Object]
+18:19:51.258 background.js:242 {data: "doTwitterStuff_DONE"}
+18:19:51.272 background.js:244 doTwitterStuff_DONE
+18:19:51.286 background.js:247 Twitter STUFF IS DONE!
+18:19:51.299 background.js:249 will rollTheDice in 30s
+18:20:10.638 background.js:279 listening...
+18:20:10.644 background.js:281 undefined
+18:20:21.312 background.js:24 Dice:3
+18:20:21.313 background.js:140 Twitter is callled 
+18:20:21.321 background.js:19 CHECK_MSG_FLOW_RESPONSE
+18:20:21.325 background.js:20 undefined
+18:20:21.628 background.js:279 listening...
+18:20:21.629 background.js:281 loading
+18:20:21.697 background.js:279 listening...
+18:20:21.698 background.js:281 undefined
+18:20:22.985 background.js:279 listening...
+18:20:22.986 background.js:281 loading
+18:20:23.048 background.js:279 listening...
+18:20:23.078 background.js:281 undefined
+18:20:23.760 background.js:279 listening...
+18:20:23.763 background.js:281 undefined
+18:20:23.893 background.js:279 listening...
+18:20:23.894 background.js:281 complete
+18:20:23.896 background.js:283 status complete
+18:20:23.900 background.js:285 background.js:tabId:225
+18:20:23.924 background.js:289 setting tabId
+18:20:24.539 background.js:294 surf:Settings saved
+18:20:25.327 background.js:157 from Twitter()
+18:20:25.329 background.js:158 undefined
+18:20:25.397 background.js:157 from Twitter()
+18:20:25.398 background.js:158 undefined
+18:20:25.847 background.js:279 listening...
+18:20:25.849 background.js:281 loading
+18:20:26.021 background.js:279 listening...
+18:20:26.023 background.js:281 undefined
+18:20:26.727 background.js:279 listening...
+18:20:26.728 background.js:281 undefined
+18:20:30.995 background.js:279 listening...
+18:20:30.996 background.js:281 complete
+18:20:30.997 background.js:283 status complete
+18:20:30.998 background.js:285 background.js:tabId:225
+18:20:31.024 background.js:289 setting tabId
+18:20:31.365 background.js:294 surf:Settings saved
+18:20:31.851 background.js:157 from Twitter()
+18:20:31.854 background.js:158 undefined
+18:20:31.964 background.js:157 from Twitter()
+18:20:31.966 background.js:158 undefined
+18:20:36.315 background.js:279 listening...
+18:20:36.317 background.js:281 loading
+18:20:36.371 background.js:279 listening...
+18:20:36.373 background.js:281 undefined
+18:20:38.828 background.js:279 listening...
+18:20:38.829 background.js:281 complete
+18:20:38.830 background.js:283 status complete
+18:20:38.840 background.js:285 background.js:tabId:225
+18:20:38.846 background.js:289 setting tabId
+18:20:39.091 background.js:294 surf:Settings saved
+18:20:40.540 background.js:157 from Twitter()
+18:20:40.542 background.js:158 undefined
+18:20:40.764 background.js:157 from Twitter()
+18:20:40.766 background.js:158 undefined
+18:20:41.872 background.js:241 background.js:[object Object]
+18:20:41.875 background.js:242 {data: "doTwitterStuff_DONE"}
+18:20:41.886 background.js:244 doTwitterStuff_DONE
+18:20:41.899 background.js:247 Twitter STUFF IS DONE!
+18:20:41.907 background.js:249 will rollTheDice in 30s
+18:21:11.916 background.js:24 Dice:3
+18:21:11.917 background.js:140 Twitter is callled 
+18:21:11.933 background.js:19 CHECK_MSG_FLOW_RESPONSE
+18:21:11.949 background.js:20 undefined
+18:21:12.220 background.js:279 listening...
+18:21:12.221 background.js:281 loading
+18:21:12.272 background.js:279 listening...
+18:21:12.273 background.js:281 undefined
+18:21:13.748 background.js:279 listening...
+18:21:13.749 background.js:281 loading
+18:21:13.845 background.js:279 listening...
+18:21:13.847 background.js:281 complete
+18:21:13.854 background.js:283 status complete
+18:21:13.864 background.js:285 background.js:tabId:225
+18:21:13.871 background.js:289 setting tabId
+18:21:13.936 background.js:279 listening...
+18:21:13.960 background.js:281 undefined
+18:21:14.503 background.js:294 surf:Settings saved
+18:21:15.466 background.js:157 from Twitter()
+18:21:15.470 background.js:158 undefined
+18:21:15.546 background.js:157 from Twitter()
+18:21:15.549 background.js:158 undefined
+18:21:15.709 background.js:157 from Twitter()
+18:21:15.711 background.js:158 undefined
+18:21:16.441 background.js:279 listening...
+18:21:16.443 background.js:281 loading
+18:21:16.632 background.js:279 listening...
+18:21:16.633 background.js:281 undefined
+18:21:16.872 background.js:279 listening...
+18:21:16.873 background.js:281 undefined
+18:21:20.222 background.js:279 listening...
+18:21:20.227 background.js:281 complete
+18:21:20.232 background.js:283 status complete
+18:21:20.241 background.js:285 background.js:tabId:225
+18:21:20.251 background.js:289 setting tabId
+18:21:20.503 background.js:294 surf:Settings saved
+18:21:21.117 background.js:157 from Twitter()
+18:21:21.126 background.js:158 undefined
+18:21:21.276 background.js:157 from Twitter()
+18:21:21.278 background.js:158 undefined
+18:21:21.623 background.js:157 from Twitter()
+18:21:21.625 background.js:158 undefined
+18:21:24.900 background.js:279 listening...
+18:21:24.902 background.js:281 loading
+18:21:24.937 background.js:279 listening...
+18:21:24.938 background.js:281 undefined
+18:21:27.627 background.js:279 listening...
+18:21:27.628 background.js:281 complete
+18:21:27.638 background.js:283 status complete
+18:21:27.653 background.js:285 background.js:tabId:225
+18:21:27.655 background.js:289 setting tabId
+18:21:27.973 background.js:294 surf:Settings saved
+18:21:29.407 background.js:157 from Twitter()
+18:21:29.410 background.js:158 undefined
+18:21:29.884 background.js:157 from Twitter()
+18:21:29.886 background.js:158 undefined
+18:21:30.324 background.js:157 from Twitter()
+18:21:30.326 background.js:158 undefined
+18:21:31.172 background.js:241 background.js:[object Object]
+18:21:31.175 background.js:242 {data: "doTwitterStuff_DONE"}
+18:21:31.190 background.js:244 doTwitterStuff_DONE
+18:21:31.206 background.js:247 Twitter STUFF IS DONE!
+18:21:31.217 background.js:249 will rollTheDice in 30s
+18:22:01.236 background.js:24 Dice:3
+18:22:01.242 background.js:140 Twitter is callled 
+18:22:01.246 background.js:19 CHECK_MSG_FLOW_RESPONSE
+18:22:01.259 background.js:20 undefined
+18:22:01.607 background.js:279 listening...
+18:22:01.608 background.js:281 loading
+18:22:01.709 background.js:279 listening...
+18:22:01.711 background.js:281 undefined
+18:22:03.000 background.js:279 listening...
+18:22:03.001 background.js:281 loading
+18:22:03.265 background.js:279 listening...
+18:22:03.271 background.js:281 complete
+18:22:03.285 background.js:283 status complete
+18:22:03.297 background.js:285 background.js:tabId:225
+18:22:03.302 background.js:289 setting tabId
+18:22:03.344 background.js:279 listening...
+18:22:03.358 background.js:281 undefined
+18:22:03.797 background.js:294 surf:Settings saved
+18:22:04.234 background.js:157 from Twitter()
+18:22:04.236 background.js:158 undefined
+18:22:04.326 background.js:157 from Twitter()
+18:22:04.328 background.js:158 undefined
+18:22:04.583 background.js:157 from Twitter()
+18:22:04.585 background.js:158 undefined
+18:22:04.833 background.js:157 from Twitter()
+18:22:04.836 background.js:158 undefined
+18:22:05.236 background.js:279 listening...
+18:22:05.238 background.js:281 loading
+18:22:05.437 background.js:279 listening...
+18:22:05.439 background.js:281 undefined
+18:22:06.097 background.js:279 listening...
+18:22:06.099 background.js:281 undefined
+18:22:11.818 background.js:279 listening...
+18:22:11.820 background.js:281 complete
+18:22:11.830 background.js:283 status complete
+18:22:11.840 background.js:285 background.js:tabId:225
+18:22:11.847 background.js:289 setting tabId
+18:22:12.181 background.js:294 surf:Settings saved
+18:22:16.330 background.js:279 listening...
+18:22:16.332 background.js:281 loading
+18:22:16.356 background.js:279 listening...
+18:22:16.361 background.js:281 undefined
+18:22:17.550 background.js:157 from Twitter()
+18:22:17.552 background.js:158 undefined
+18:22:17.609 background.js:157 from Twitter()
+18:22:17.611 background.js:158 undefined
+18:22:18.008 background.js:157 from Twitter()
+18:22:18.009 background.js:158 undefined
+18:22:18.157 background.js:157 from Twitter()
+18:22:18.159 background.js:158 undefined
+18:22:21.476 background.js:241 background.js:[object Object]
+18:22:21.478 background.js:242 {data: "doTwitterStuff_DONE"}
+18:22:21.491 background.js:244 doTwitterStuff_DONE
+18:22:21.501 background.js:247 Twitter STUFF IS DONE!
+18:22:21.519 background.js:249 will rollTheDice in 30s
+18:22:23.566 background.js:279 listening...
+18:22:23.569 background.js:281 complete
+18:22:23.570 background.js:283 status complete
+18:22:23.586 background.js:285 background.js:tabId:225
+18:22:23.597 background.js:289 setting tabId
+18:22:23.947 background.js:294 surf:Settings saved
+18:22:25.797 background.js:157 from Twitter()
+18:22:25.799 background.js:158 undefined
+18:22:26.294 background.js:157 from Twitter()
+18:22:26.296 background.js:158 undefined
+18:22:26.704 background.js:157 from Twitter()
+18:22:26.706 background.js:158 undefined
+18:22:27.218 background.js:157 from Twitter()
+18:22:27.220 background.js:158 undefined
+18:22:30.265 background.js:241 background.js:[object Object]
+18:22:30.268 background.js:242 {data: "doTwitterStuff_DONE"}
+18:22:30.277 background.js:244 doTwitterStuff_DONE
+18:22:30.299 background.js:247 Twitter STUFF IS DONE!
+18:22:30.321 background.js:249 will rollTheDice in 30s
+18:22:51.543 background.js:24 Dice:1
+18:22:51.548 background.js:81 surf:Facebook is called
+18:22:51.570 background.js:19 CHECK_MSG_FLOW_RESPONSE
+18:22:51.593 background.js:20 undefined
+18:22:51.933 background.js:279 listening...
+18:22:51.934 background.js:281 loading
+18:22:52.227 background.js:279 listening...
+18:22:52.228 background.js:281 undefined
+18:22:56.201 background.js:279 listening...
+18:22:56.202 background.js:281 loading
+18:22:56.447 background.js:279 listening...
+18:22:56.448 background.js:281 undefined
+18:22:56.574 background.js:279 listening...
+18:22:56.596 background.js:281 undefined
+18:23:00.337 background.js:24 Dice:1
+18:23:00.338 background.js:81 surf:Facebook is called
+18:23:00.366 background.js:19 CHECK_MSG_FLOW_RESPONSE
+18:23:00.380 background.js:20 undefined
+18:23:05.703 background.js:279 listening...
+18:23:05.704 background.js:281 loading
+18:23:05.778 background.js:279 listening...
+18:23:05.779 background.js:281 undefined
+18:24:06.050 background.js:279 listening...
+18:24:06.059 background.js:281 loading
+18:24:06.108 background.js:279 listening...
+18:24:06.110 background.js:281 undefined
+18:24:14.644 background.js:279 listening...
+18:24:14.645 background.js:281 complete
+18:24:14.650 background.js:283 status complete
+18:24:14.657 background.js:285 background.js:tabId:225
+18:24:14.666 background.js:289 setting tabId
+18:24:14.707 background.js:95 surf.js:tabId:225
+18:24:14.715 background.js:95 surf.js:tabId:225
+18:24:15.108 background.js:294 surf:Settings saved
+18:24:15.824 background.js:157 from Twitter()
+18:24:15.825 background.js:158 undefined
+18:24:16.028 background.js:157 from Twitter()
+18:24:16.030 background.js:158 undefined
+18:24:16.180 background.js:157 from Twitter()
+18:24:16.182 background.js:158 undefined
+18:24:16.415 background.js:157 from Twitter()
+18:24:16.417 background.js:158 undefined
+18:24:16.876 background.js:99 from Facebook()
+18:24:16.878 background.js:100 undefined
+18:24:17.040 background.js:99 from Facebook()
+18:24:17.042 background.js:100 undefined
+18:29:01.314 surf.js:36 document is loaded
+18:29:01.351 surf.js:37 surf:here
+18:29:01.373 surf.js:40 surf:started:true
+18:29:01.378 surf.js:42 Uncaught ReferenceError: $ is not defined
+    at register (surf.js:42)
+register @ surf.js:42
+load (async)
+(anonymous) @ surf.js:18
+18:29:01.608 Navigated to chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/_generated_background_page.html
