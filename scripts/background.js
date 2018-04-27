@@ -13,7 +13,7 @@ chrome.runtime.onInstalled.addListener(function() {
 });
 
 function rollTheDice(t) {
-  msgFlow.length = 0;
+  //msgFlow.length = 0;
   var r = t || Math.floor(Math.random() * 3) + 1;
   console.log('Dice:' + r);
   //r = 3;
@@ -155,7 +155,8 @@ chrome.storage.onChanged.addListener(function(changes, namespace) {
     if (key == 'rocknroll') {
       if (storageChange.newValue == 'true') {
         console.log('background.js:will start rocknroll');
-        startIgnition();
+        //startIgnition();
+        //rollTheDice(1000);
       } else {
         console.log('background.js:will cut off rocknroll');
       }

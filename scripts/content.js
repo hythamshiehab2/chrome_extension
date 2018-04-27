@@ -1,15 +1,22 @@
-/*
-CREDITS:Hytham Shiehab <hytham.shiehab.2@gmail.com>, <https://twitter.com/hythamshiehab2>
+/* CREDITS:Hytham Shiehab <hytham.shiehab.2@gmail.com>, <https://twitter.com/hythamshiehab2>
 DISCLAIMER:
 THIS IS NOT TO BE USED BY ANY (KNWON BY *OTHERS* AS BAD) PARTIES TO HARM ANY GOOD PARTIES.
-BY *OTHERS* I MEAN ME, AND/OR ANY OTHER GOOD PARTIES
-*/
+BY *OTHERS* I MEAN ME, AND/OR ANY OTHER GOOD PARTIES */
+
+document.addEventListener('DOMContentLoaded', function(dcle) {
+  console.log('CONTENT:document is loaded');
+});
+
 function injectStuff() {
   var a = chrome.extension.getURL("css/myactivetab.css");
   $('<link rel="stylesheet" type="text/css" href="' + a + '" >').appendTo("head");
   $('<div id="elmotasha3eb"></div>').appendTo("body");
 }
 
+function resetState() {
+  msgFlow.lengh = 0;
+  console.log('RESET msgFlow');
+}
 // We should also check for any captcha!
 // keep an eye (counter) for captcha per session(s)
 // so we can mitigate the user account being locked up
@@ -23,6 +30,7 @@ function ShareSomething() {
   }, function(response) {
     console.log(response);
   });
+  resetState();
 }
 
 function get_Ta() {
@@ -76,6 +84,7 @@ function T_tweet() {
   var showdone = () => simulate(c, "click");
   prom.then(showdone);
   console.log('tweeted!');
+  resetState();
   chrome.runtime.sendMessage({
     data: "doTwitterStuff_DONE"
   }, function(response) {
@@ -89,9 +98,7 @@ function T_follow() {
   document.getElementsByClassName('user-actions-follow-button js-follow-btn follow-button')[0].click();
 }
 
-function T_moment() {
-
-}
+function T_moment() {}
 
 function postOnFB() {
   // on the user profile page
@@ -146,6 +153,7 @@ function checkFBPageIsLiked() {
   var prom = wait(2000); // prom, is a promise
   var showdone = () => console.log('facebook stuff is about to be finished');
   prom.then(showdone);
+  resetState();
   chrome.runtime.sendMessage({
     data: "doFacebookStuff_DONE"
   }, function(response) {
@@ -155,7 +163,15 @@ function checkFBPageIsLiked() {
 }
 
 function generateIdea() {
-  var ideas = ["idea1", "idea2", "idea3", "idea4", "idea5", "idea6", "idea7"];
+  var ideas = [
+    "idea1",
+    "idea2",
+    "idea3",
+    "idea4",
+    "idea5",
+    "idea6",
+    "idea7"
+  ];
   var randomArrayPosition = Math.floor(Math.random() * ideas.length);
   var idea = ideas[randomArrayPosition];
   return idea;
@@ -163,14 +179,13 @@ function generateIdea() {
 
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
   var data = request.data || {};
-  console.log(sender.tab ?
-    "from a content script:" + sender.tab.url :
-    "from the extension");
+  console.log(
+    sender.tab
+    ? "from a content script:" + sender.tab.url
+    : "from the extension");
   console.log(request);
   console.log('content.js:' + data);
-  if ((data === 'doTwitterStuff') ||
-    (data === 'doFacebookStuff') ||
-    (data === 'doWordpressStuff')) {
+  if ((data === 'doTwitterStuff') || (data === 'doFacebookStuff') || (data === 'doWordpressStuff')) {
     if (msgFlow.length === 0) {
       console.log('ZZZZZZZZZZZZZZZZZZZZZz');
       msgFlow.push(data);
