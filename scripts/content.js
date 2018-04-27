@@ -16,11 +16,12 @@ function injectStuff() {
 
 function sendMsgFlowResponse(t) {
   console.log('sendMsgFlowResponse:' + t);
+  var msg = "CHECK_MSG_FLOW_RESPONSE:" + t;
   chrome.runtime.sendMessage({
-    data: t
-  }, function(response) {
-    console.log(response);
-    console.log('#################3');
+    data: msg
+  // }, function(response) {
+  //   console.log(response);
+  //   console.log('#################3');
   });
 }
 
@@ -199,6 +200,12 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
   console.log(request);
   console.log('content.js:' + data);
 
+  if (data === 'CHECK_MSG_FLOW') {
+    console.log('RECIEVED:CHECK_MSG_FLOW')
+    var t = msgFlow.length;
+    sendMsgFlowResponse(t);
+  }
+
   if ((data === 'doTwitterStuff') || (data === 'doFacebookStuff') || (data === 'doWordpressStuff')) {
     if (msgFlow.length === 0) {
       console.log('GO GO GO GO');
@@ -211,11 +218,6 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     }
   }
 
-  if (data === 'CHECK_MSG_FLOW') {
-    console.log('RECIEVED:CHECK_MSG_FLOW')
-    var t = msgFlow.length;
-    sendMsgFlowResponse(t);
-  }
 
   /* THIS MESSAGE NEVER CATCHED HERE */
   // if(data === 'doTwitterStuff_DONE')

@@ -1,9 +1,7 @@
-/*
-CREDITS:Hytham Shiehab <hytham.shiehab.2@gmail.com>, <https://twitter.com/hythamshiehab2>
+/* CREDITS:Hytham Shiehab <hytham.shiehab.2@gmail.com>, <https://twitter.com/hythamshiehab2>
 DISCLAIMER:
 THIS IS NOT TO BE USED BY ANY (KNWON BY *OTHERS* AS BAD) PARTIES TO HARM ANY GOOD PARTIES.
-BY *OTHERS* I MEAN ME, AND/OR ANY OTHER GOOD PARTIES
-*/
+BY *OTHERS* I MEAN ME, AND/OR ANY OTHER GOOD PARTIES */
 chrome.runtime.onInstalled.addListener(function() {
   //Replace all rules
   localStorage.setItem('tabId', 0);
@@ -13,13 +11,28 @@ chrome.runtime.onInstalled.addListener(function() {
 });
 
 function rollTheDice(t) {
-  chrome.runtime.sendMessage({
-    data: "CHECK_MSG_FLOW"
-  }, function(response) {
-    console.log('CHECK_MSG_FLOW_RESPONSE');
-    console.log(response);
+  var l = 0;
+  // chrome.runtime.sendMessage({
+  //   data: "CHECK_MSG_FLOW"
+  // }, function(response) {
+  //   console.log('CHECK_MSG_FLOW_RESPONSE');
+  //   console.log(response);
+  // });
+
+  chrome.tabs.query({
+    active: true,
+    currentWindow: true
+  }, function(tabs) {
+    chrome.tabs.sendMessage(tabs[0].id, {
+      data: "CHECK_MSG_FLOW"
+    }, function(response) {
+      console.log('RESPONSE:CHECK_MSG_FLOW');
+      console.log(response);
+      l = response;
+    });
   });
 
+  console.log('l:' + l);
   var r = t || Math.floor(Math.random() * 3) + 1;
   console.log('Dice:' + r);
   //r = 3;
@@ -43,35 +56,33 @@ function startIgnition() {
     active: true,
     currentWindow: true
   }, function(tabs) {
-    chrome.tabs.update(
-      tabs[0].id, {
-        url: '/starter.html'
-      },
-      function(tab) {
-        chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
-          var a = chrome.extension.getURL("css/myactivetab.css");
-          if (tabId === tab.id && changeInfo.status == 'complete') {
-            chrome.tabs.insertCSS({
-              //file: a
-              code: "#elmotasha3eb {position: fixed;width: 100%;height: 100%;top: 0 !important;left: 0 !important;right: 0 !important;bottom: 0 !important;background-color: rgba(93, 51, 204, 0.29) !important;z-index: 10000000 !important;cursor: pointer !important;}"
-            });
-            var javascriptCode = "var divElement = document.createElement('div');";
-            javascriptCode += "divElement.id = 'elmotasha3eb';";
-            javascriptCode += "document.body.appendChild(divElement);";
-            chrome.tabs.executeScript({
-              //file: a
-              code: javascriptCode
-            });
-            // Now the tab is ready!
-            chrome.tabs.sendMessage(tabId, {
-              data: "startIgnition"
-            }, function(response) {
-              console.log('from startIgnition()');
-              console.log(response);
-            });
-          }
-        });
+    chrome.tabs.update(tabs[0].id, {
+      url: '/starter.html'
+    }, function(tab) {
+      chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
+        var a = chrome.extension.getURL("css/myactivetab.css");
+        if (tabId === tab.id && changeInfo.status == 'complete') {
+          chrome.tabs.insertCSS({
+            //file: a
+            code: "#elmotasha3eb {position: fixed;width: 100%;height: 100%;top: 0 !important;left: 0 !important;right: 0 !important;bottom: 0 !important;background-color: rgba(93, 51, 204, 0.29) !important;z-index: 10000000 !important;cursor: pointer !important;}"
+          });
+          var javascriptCode = "var divElement = document.createElement('div');";
+          javascriptCode += "divElement.id = 'elmotasha3eb';";
+          javascriptCode += "document.body.appendChild(divElement);";
+          chrome.tabs.executeScript({
+            //file: a
+            code: javascriptCode
+          });
+          // Now the tab is ready!
+          chrome.tabs.sendMessage(tabId, {
+            data: "startIgnition"
+          }, function(response) {
+            console.log('from startIgnition()');
+            console.log(response);
+          });
+        }
       });
+    });
   });
 }
 
@@ -83,25 +94,26 @@ function Facebook() {
     active: true,
     currentWindow: true
   }, function(tabs) {
+    myTabID = tab_id || tabs[0].id;
     chrome.tabs.update(
-      tabs[0].id, {
-      //tab_id, {
-        url: 'https://www.facebook.com/en7erafatamnaldawla'
-      },
-      function(tab) {
-        chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
-          if (tabId === tab.id && changeInfo.status == 'complete') {
-            // Now the tab is ready!
-            console.log('surf.js:tabId:' + tabId);
-            chrome.tabs.sendMessage(tabId, {
-              data: "doFacebookStuff"
-            }, function(response) {
-              console.log('from Facebook()');
-              console.log(response);
-            });
-          }
-        });
+    //tabs[0].id, {
+    //tab_id, {
+    myTabID, {
+      url : 'https://www.facebook.com/en7erafatamnaldawla'
+    }, function(tab) {
+      chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
+        if (tabId === tab.id && changeInfo.status == 'complete') {
+          // Now the tab is ready!
+          console.log('surf.js:tabId:' + tabId);
+          chrome.tabs.sendMessage(tabId, {
+            data: "doFacebookStuff"
+          }, function(response) {
+            console.log('from Facebook()');
+            console.log(response);
+          });
+        }
       });
+    });
   });
 }
 
@@ -113,24 +125,27 @@ function Wordpress() {
     active: true,
     currentWindow: true
   }, function(tabs) {
+    myTabID = tab_id || tabs[0].id;
     chrome.tabs.update(
-      tabs[0].id, {
+    //tabs[0].id, {
+    //tab_id, {
+    myTabID, {
+      //tabs[0].id, {
       //tab_id, {
-        url: 'https://amnaldawla.wordpress.com'
-      },
-      function(tab) {
-        chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
-          if (tabId === tab.id && changeInfo.status == 'complete') {
-            // Now the tab is ready!
-            chrome.tabs.sendMessage(tabId, {
-              data: "doWordpressStuff"
-            }, function(response) {
-              console.log('from Wordpress()');
-              console.log(response);
-            });
-          }
-        });
+      url : 'https://amnaldawla.wordpress.com'
+    }, function(tab) {
+      chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
+        if (tabId === tab.id && changeInfo.status == 'complete') {
+          // Now the tab is ready!
+          chrome.tabs.sendMessage(tabId, {
+            data: "doWordpressStuff"
+          }, function(response) {
+            console.log('from Wordpress()');
+            console.log(response);
+          });
+        }
       });
+    });
   });
 }
 
@@ -142,24 +157,26 @@ function Twitter() {
     active: true,
     currentWindow: true
   }, function(tabs) {
+    myTabID = tab_id || tabs[0].id;
     chrome.tabs.update(
-      tabs[0].id, {
+    //tabs[0].id, {
+    //tab_id, {
+    myTabID, {
       //tab_id, {
-        url: 'https://twitter.com/'
-      },
-      function(tab) {
-        chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
-          if (tabId === tab.id && changeInfo.status == 'complete') {
-            // Now the tab is ready!
-            chrome.tabs.sendMessage(tabId, {
-              data: "doTwitterStuff"
-            }, function(response) {
-              console.log('from Twitter()');
-              console.log(response);
-            });
-          }
-        });
+      url : 'https://twitter.com/'
+    }, function(tab) {
+      chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
+        if (tabId === tab.id && changeInfo.status == 'complete') {
+          // Now the tab is ready!
+          chrome.tabs.sendMessage(tabId, {
+            data: "doTwitterStuff"
+          }, function(response) {
+            console.log('from Twitter()');
+            console.log(response);
+          });
+        }
       });
+    });
   });
 }
 
@@ -176,18 +193,19 @@ chrome.storage.onChanged.addListener(function(changes, namespace) {
         console.log('background.js:will cut off rocknroll');
       }
     }
-    console.log('Storage key "%s" in namespace "%s" changed. ' +
-      'Old value was "%s", new value is "%s".',
-      key,
-      namespace,
-      storageChange.oldValue,
-      storageChange.newValue);
+    console.log('Storage key "%s" in namespace "%s" changed. ' + 'Old value was "%s", new value is "%s".', key, namespace, storageChange.oldValue, storageChange.newValue);
   }
 });
 
-var eventList = ['onBeforeNavigate', 'onCreatedNavigationTarget',
-  'onCommitted', 'onCompleted', 'onDOMContentLoaded',
-  'onErrorOccurred', 'onReferenceFragmentUpdated', 'onTabReplaced',
+var eventList = [
+  'onBeforeNavigate',
+  'onCreatedNavigationTarget',
+  'onCommitted',
+  'onCompleted',
+  'onDOMContentLoaded',
+  'onErrorOccurred',
+  'onReferenceFragmentUpdated',
+  'onTabReplaced',
   'onHistoryStateUpdated'
 ];
 
@@ -196,9 +214,10 @@ eventList.forEach(function(e) {
     if (typeof data)
       //console.log(chrome.i18n.getMessage('inHandler'), e, data);
       updateIcon(data);
-    //else
-    //console.error(chrome.i18n.getMessage('inHandlerError'), e);
-  });
+      //else
+      //console.error(chrome.i18n.getMessage('inHandlerError'), e);
+    }
+  );
 });
 
 function updateIcon(data) {
@@ -225,10 +244,7 @@ function updateIcon(data) {
         });
       }
     } else {
-      chrome.browserAction.setIcon({
-        path: "/icons/off.png",
-        tabId: data.tabId
-      });
+      chrome.browserAction.setIcon({path: "/icons/off.png", tabId: data.tabId});
     }
   }
 }
@@ -242,6 +258,11 @@ chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse) {
   console.log(msg);
   var data = msg.data || {};
   console.log(data);
+
+  // if data match CHECK_MSG_FLOW_RESPONSE:<NUMBER>
+  // get the <NUMBER> and evaluate rulling the dice OR should wait for the current process to finished
+  // ZOLTRIX
+  //if (data === )
   if (data === 'doTwitterStuff_DONE') {
     sendResponse('doTwitterStuff_DONE:CONFIRMED');
     console.log('Twitter STUFF IS DONE!');

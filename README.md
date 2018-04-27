@@ -1,4 +1,4 @@
-![alt text](https://raw.githubusercontent.com/username/projectname/branch/path/to/img.png)
+![!أنا](https://raw.githubusercontent.com/hythamshiehab2/chrome_extension/master/icons/icon-128.png)
 إضافة جووجل كروم لقيادة جووجل كروم، بيد واحده! (أو بدون!)
 =======
 باستخدام واجهات إضافات جووجل كروم البرمجيه (Chrome Extension API)، سوف يجول المتصفّح في الويب، بمسار محدّد (تقريبا!)*، وسوف يقوم ببعض الأشياء!
