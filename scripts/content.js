@@ -16,17 +16,6 @@ function injectStuff() {
   $('<div id="elmotasha3eb"></div>').appendTo("body");
 }
 
-function sendMsgFlowResponse(t) {
-  console.log('sendMsgFlowResponse:' + t);
-  var msg = "CHECK_MSG_FLOW_RESPONSE:" + t;
-  chrome.runtime.sendMessage(EXTENSION_ID,{
-    data: msg
-  }, function(response) {
-    console.log(response);
-    console.log('#################3');
-  });
-}
-
 function resetState() {
   msgFlow.lengh = 0;
   console.log('RESET msgFlow');
@@ -205,7 +194,15 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
   if (data === 'CHECK_MSG_FLOW') {
     console.log('RECIEVED:CHECK_MSG_FLOW')
     var t = msgFlow.length;
-    sendMsgFlowResponse(t);
+    console.log('sendMsgFlowResponse:' + t);
+    var msg = "CHECK_MSG_FLOW_RESPONSE:" + t;
+    //chrome.runtime.sendMessage(EXTENSION_ID,{
+    chrome.runtime.sendMessage({
+      data: msg
+    }, function(response) {
+      console.log(response);
+      console.log('#################3');
+    });
   }
 
   if ((data === 'doTwitterStuff') || (data === 'doFacebookStuff') || (data === 'doWordpressStuff')) {

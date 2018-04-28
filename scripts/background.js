@@ -13,16 +13,20 @@ chrome.runtime.onInstalled.addListener(function() {
   localStorage.setItem('liked', 'false');
 });
 
+
 function rollTheDice(t) {
   var l = 0;
-  //firstFunction( () => console.log('huzzah, I\'m done!') )
-  chrome.runtime.sendMessage(EXTENSION_ID,{
+  //var t = passMessageCheck();
+  var t = 0;
+  //chrome.runtime.sendMessage(EXTENSION_ID, {
+  chrome.runtime.sendMessage({
     data: "CHECK_MSG_FLOW"
   }, function(response) {
-    console.log('CHECK_MSG_FLOW_RESPONSE');
+    console.log('RESP:CHECK_MSG_FLOW');
     console.log(response);
+    t = 0 || response;
   });
-
+  //firstFunction( () => console.log('huzzah, I\'m done!') )
   // chrome.tabs.query({
   //   active: true,
   //   currentWindow: true
@@ -30,7 +34,7 @@ function rollTheDice(t) {
   //   chrome.tabs.sendMessage(tabs[0].id, {
   //     data: "CHECK_MSG_FLOW"
   //   }, function(response) {
-  //     console.log('RESPONSE:CHECK_MSG_FLOW');
+  //     console.log('RESP:CHECK_MSG_FLOW');
   //     console.log(response);
   //     l = response;
   //   });
@@ -103,7 +107,7 @@ function Facebook() {
     //tabs[0].id, {
     //tab_id, {
     myTabID, {
-      url : 'https://www.facebook.com/en7erafatamnaldawla'
+      url: 'https://www.facebook.com/en7erafatamnaldawla'
     }, function(tab) {
       chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
         if (tabId === tab.id && changeInfo.status == 'complete') {
@@ -136,7 +140,7 @@ function Wordpress() {
     myTabID, {
       //tabs[0].id, {
       //tab_id, {
-      url : 'https://amnaldawla.wordpress.com'
+      url: 'https://amnaldawla.wordpress.com'
     }, function(tab) {
       chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
         if (tabId === tab.id && changeInfo.status == 'complete') {
@@ -167,7 +171,7 @@ function Twitter() {
     //tab_id, {
     myTabID, {
       //tab_id, {
-      url : 'https://twitter.com/'
+      url: 'https://twitter.com/'
     }, function(tab) {
       chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
         if (tabId === tab.id && changeInfo.status == 'complete') {
