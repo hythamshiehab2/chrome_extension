@@ -9,7 +9,6 @@ BY *OTHERS* I MEAN ME, AND/OR ANY OTHER GOOD PARTIES */
 // });
 
 var EXTENSION_ID = 'mpnhfhekacdacnjkegjdmfgjfkckacea';
-var port = chrome.runtime.connect(EXTENSION_ID, {"name": "connection1"});
 
 function injectStuff() {
   var a = chrome.extension.getURL("css/myactivetab.css");
@@ -197,7 +196,7 @@ function generateIdea() {
 //     var t = msgFlow.length;
 //     console.log('sendMsgFlowResponse:' + t);
 //     var msg = "CHECK_MSG_FLOW_RESPONSE:" + t;
-//     //chrome.runtime.sendMessage(EXTENSION_ID,{
+//     chrome.runtime.sendMessage(EXTENSION_ID,{
 //     chrome.runtime.sendMessage({
 //       data: msg
 //     }, function(response) {
@@ -210,7 +209,7 @@ function generateIdea() {
 //     if (msgFlow.length === 0) {
 //       console.log('GO GO GO GO');
 //       msgFlow.push(data);
-//       //injectStuff();
+//       injectStuff();
 //       theHypered();
 //     } else {
 //       console.log('msgFlow IS NOT EMPTY!');
@@ -218,36 +217,16 @@ function generateIdea() {
 //     }
 //   }
 
-  /* THIS MESSAGE NEVER CATCHED HERE */
-  // if(data === 'doTwitterStuff_DONE')
-  // {
-  //     console.log('YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY');
-  // }
-  // console.log('waiting load to complete');
-});
+/* THIS MESSAGE NEVER CATCHED HERE */
+// if(data === 'doTwitterStuff_DONE')
+// {
+//     console.log('YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY');
+// }
+// console.log('waiting load to complete');
+//});
 
+var port = chrome.runtime.connect(EXTENSION_ID, {"name": "connection1"});
 port.onMessage.addListener(function(message) {
   console.log(message);
-  if (message === 'CHECK_MSG_FLOW') {
-    console.log('RECIEVED:CHECK_MSG_FLOW')
-    var t = msgFlow.length;
-    console.log('sendMsgFlowResponse:' + t);
-    var msg = "CHECK_MSG_FLOW_RESPONSE:" + t;
-    //chrome.runtime.sendMessage(EXTENSION_ID,{
-    port.postMessage(msg);
-  }
-
-  //if (message === '')
-
-  if ((message === 'doTwitterStuff') || (message === 'doFacebookStuff') || (message === 'doWordpressStuff')) {
-    if (msgFlow.length === 0) {
-      console.log('GO GO GO GO');
-      msgFlow.push(data);
-      //injectStuff();
-      theHypered();
-    } else {
-      console.log('msgFlow IS NOT EMPTY!');
-      console.log(msgFlow);
-    }
-  }
 });
+port.postMessage("Test message X");

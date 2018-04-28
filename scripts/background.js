@@ -4,7 +4,6 @@ THIS IS NOT TO BE USED BY ANY (KNWON BY *OTHERS* AS BAD) PARTIES TO HARM ANY GOO
 BY *OTHERS* I MEAN ME, AND/OR ANY OTHER GOOD PARTIES */
 
 var EXTENSION_ID = 'mpnhfhekacdacnjkegjdmfgjfkckacea';
-var port = chrome.runtime.connect(EXTENSION_ID, {"name": "connection1"});
 
 chrome.runtime.onInstalled.addListener(function() {
   //Replace all rules
@@ -261,46 +260,46 @@ function updateIcon(data) {
 //   console.log('checkForValidURL is called:' + tabId + ':' + info + ':' + tab);
 // }
 
-// chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse) {
-//   console.log('background.js:' + msg);
-//   console.log(msg);
-//   var data = msg.data || {};
-//   console.log(data);
+chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse) {
+  console.log('background.js:' + msg);
+  console.log(msg);
+  var data = msg.data || {};
+  console.log(data);
 
   // if data match CHECK_MSG_FLOW_RESPONSE:<NUMBER>
   // get the <NUMBER> and evaluate rulling the dice OR should wait for the current process to finished
   // ZOLTRIX
   //if (data === )
-  // if (data === 'doTwitterStuff_DONE') {
-  //   sendResponse('doTwitterStuff_DONE:CONFIRMED');
-  //   console.log('Twitter STUFF IS DONE!');
-  //   //rollTheDice();
-  //   console.log('will rollTheDice in 30s');
-  //   setTimeout(rollTheDice, 30000);
-  // }
-  // if (data === 'doFacebookStuff_DONE') {
-  //   sendResponse('doFacebookStuff_DONE:CONFIRMED');
-  //   console.log('Facebook STUFF IS DONE!');
-  //   //rollTheDice();
-  //   console.log('will rollTheDice in 30s');
-  //   setTimeout(rollTheDice, 30000);
-  // }
-  // if (data === 'doWordpressStuff_DONE') {
-  //   sendResponse('doWordpressStuff_DONE:CONFIRMED');
-  //   console.log('Wordpress STUFF IS DONE!');
-  //   //rollTheDice();
-  //   console.log('will rollTheDice in 30s');
-  //   setTimeout(rollTheDice, 30000);
-  // }
-  //
-  // if (data === 'surfStartIgnition') {
-  //   console.log('surfStartIgnition:CONFIRMED')
-  //   sendResponse('surfStartIgnition_DONE');
-  //   rollTheDice();
-  //   //console.log('Wordpress STUFF IS DONE!');
-  // }
+  if (data === 'doTwitterStuff_DONE') {
+    sendResponse('doTwitterStuff_DONE:CONFIRMED');
+    console.log('Twitter STUFF IS DONE!');
+    //rollTheDice();
+    console.log('will rollTheDice in 30s');
+    setTimeout(rollTheDice, 30000);
+  }
+  if (data === 'doFacebookStuff_DONE') {
+    sendResponse('doFacebookStuff_DONE:CONFIRMED');
+    console.log('Facebook STUFF IS DONE!');
+    //rollTheDice();
+    console.log('will rollTheDice in 30s');
+    setTimeout(rollTheDice, 30000);
+  }
+  if (data === 'doWordpressStuff_DONE') {
+    sendResponse('doWordpressStuff_DONE:CONFIRMED');
+    console.log('Wordpress STUFF IS DONE!');
+    //rollTheDice();
+    console.log('will rollTheDice in 30s');
+    setTimeout(rollTheDice, 30000);
+  }
 
-//});
+  if (data === 'surfStartIgnition') {
+    console.log('surfStartIgnition:CONFIRMED')
+    sendResponse('surfStartIgnition_DONE');
+    rollTheDice();
+    //console.log('Wordpress STUFF IS DONE!');
+  }
+
+});
 
 //chrome.tabs.onUpdated.addListener(function(msg, sender, sendResponse) {
 //chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
@@ -327,39 +326,8 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
 
 chrome.runtime.onConnect.addListener(function(port) {
   //if(port.name == "connection1")
-  console.log('connected');
   port.onMessage.addListener(function(message) {
     console.log(message); //Test message X
-    if (message === 'doTwitterStuff_DONE') {
-      //sendResponse('doTwitterStuff_DONE:CONFIRMED');
-      port.postMessage("doTwitterStuff_DONE:CONFIRMED");
-      console.log('Twitter STUFF IS DONE!');
-      //rollTheDice();
-      console.log('will rollTheDice in 30s');
-      setTimeout(rollTheDice, 30000);
-    }
-    if (message === 'doFacebookStuff_DONE') {
-      //sendResponse('doFacebookStuff_DONE:CONFIRMED');
-      port.postMessage("doFacebookStuff_DONE:CONFIRMED");
-      console.log('Facebook STUFF IS DONE!');
-      //rollTheDice();
-      console.log('will rollTheDice in 30s');
-      setTimeout(rollTheDice, 30000);
-    }
-    if (message === 'doWordpressStuff_DONE') {
-      //sendResponse('doWordpressStuff_DONE:CONFIRMED');
-      port.postMessage("doWordpressStuff_DONE:CONFIRMED");
-      console.log('Wordpress STUFF IS DONE!');
-      //rollTheDice();
-      console.log('will rollTheDice in 30s');
-      setTimeout(rollTheDice, 30000);
-    }
-    if (message === 'surfStartIgnition') {
-      console.log('surfStartIgnition:CONFIRMED')
-      //sendResponse('surfStartIgnition_DONE');
-      port.postMessage("surfStartIgnition_DONE");
-      rollTheDice();
-      //console.log('Wordpress STUFF IS DONE!');
-    }
+    port.postMessage("Test message Y");
   });
 });
