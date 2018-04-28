@@ -9,6 +9,7 @@ BY *OTHERS* I MEAN ME, AND/OR ANY OTHER GOOD PARTIES */
 // });
 
 var EXTENSION_ID = 'mpnhfhekacdacnjkegjdmfgjfkckacea';
+var port = chrome.runtime.connect(EXTENSION_ID, {"name": "connection1"});
 
 function injectStuff() {
   var a = chrome.extension.getURL("css/myactivetab.css");
@@ -182,30 +183,63 @@ function generateIdea() {
   return idea;
 }
 
-chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
-  var data = request.data || {};
-  console.log(
-    sender.tab
-    ? "from a content script:" + sender.tab.url
-    : "from the extension");
-  console.log(request);
-  console.log('content.js:' + data);
+// chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+//   var data = request.data || {};
+//   console.log(
+//     sender.tab
+//     ? "from a content script:" + sender.tab.url
+//     : "from the extension");
+//   console.log(request);
+//   console.log('content.js:' + data);
+//
+//   if (data === 'CHECK_MSG_FLOW') {
+//     console.log('RECIEVED:CHECK_MSG_FLOW')
+//     var t = msgFlow.length;
+//     console.log('sendMsgFlowResponse:' + t);
+//     var msg = "CHECK_MSG_FLOW_RESPONSE:" + t;
+//     //chrome.runtime.sendMessage(EXTENSION_ID,{
+//     chrome.runtime.sendMessage({
+//       data: msg
+//     }, function(response) {
+//       console.log(response);
+//       console.log('#################3');
+//     });
+//   }
+//
+//   if ((data === 'doTwitterStuff') || (data === 'doFacebookStuff') || (data === 'doWordpressStuff')) {
+//     if (msgFlow.length === 0) {
+//       console.log('GO GO GO GO');
+//       msgFlow.push(data);
+//       //injectStuff();
+//       theHypered();
+//     } else {
+//       console.log('msgFlow IS NOT EMPTY!');
+//       console.log(msgFlow);
+//     }
+//   }
 
-  if (data === 'CHECK_MSG_FLOW') {
+  /* THIS MESSAGE NEVER CATCHED HERE */
+  // if(data === 'doTwitterStuff_DONE')
+  // {
+  //     console.log('YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY');
+  // }
+  // console.log('waiting load to complete');
+});
+
+port.onMessage.addListener(function(message) {
+  console.log(message);
+  if (message === 'CHECK_MSG_FLOW') {
     console.log('RECIEVED:CHECK_MSG_FLOW')
     var t = msgFlow.length;
     console.log('sendMsgFlowResponse:' + t);
     var msg = "CHECK_MSG_FLOW_RESPONSE:" + t;
     //chrome.runtime.sendMessage(EXTENSION_ID,{
-    chrome.runtime.sendMessage({
-      data: msg
-    }, function(response) {
-      console.log(response);
-      console.log('#################3');
-    });
+    port.postMessage(msg);
   }
 
-  if ((data === 'doTwitterStuff') || (data === 'doFacebookStuff') || (data === 'doWordpressStuff')) {
+  //if (message === '')
+
+  if ((message === 'doTwitterStuff') || (message === 'doFacebookStuff') || (message === 'doWordpressStuff')) {
     if (msgFlow.length === 0) {
       console.log('GO GO GO GO');
       msgFlow.push(data);
@@ -216,12 +250,4 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
       console.log(msgFlow);
     }
   }
-
-
-  /* THIS MESSAGE NEVER CATCHED HERE */
-  // if(data === 'doTwitterStuff_DONE')
-  // {
-  //     console.log('YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY');
-  // }
-  // console.log('waiting load to complete');
 });
