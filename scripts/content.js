@@ -8,6 +8,8 @@ BY *OTHERS* I MEAN ME, AND/OR ANY OTHER GOOD PARTIES */
 //   console.log('CONTENT:document is loaded');
 // });
 
+var EXTENSION_ID = 'mpnhfhekacdacnjkegjdmfgjfkckacea';
+
 function injectStuff() {
   var a = chrome.extension.getURL("css/myactivetab.css");
   $('<link rel="stylesheet" type="text/css" href="' + a + '" >').appendTo("head");
@@ -17,11 +19,11 @@ function injectStuff() {
 function sendMsgFlowResponse(t) {
   console.log('sendMsgFlowResponse:' + t);
   var msg = "CHECK_MSG_FLOW_RESPONSE:" + t;
-  chrome.runtime.sendMessage({
+  chrome.runtime.sendMessage(EXTENSION_ID,{
     data: msg
-  // }, function(response) {
-  //   console.log(response);
-  //   console.log('#################3');
+  }, function(response) {
+    console.log(response);
+    console.log('#################3');
   });
 }
 
@@ -37,10 +39,10 @@ function resetState() {
 
 function ShareSomething() {
   console.log('will share something');
-  resetState();
   chrome.runtime.sendMessage({
     data: "doWordpressStuff_DONE"
   }, function(response) {
+    resetState();
     console.log(response);
     console.log('WWWWWWWWWWWWWWWWWWWWWWWW');
   });
@@ -97,12 +99,12 @@ function T_tweet() {
   var showdone = () => simulate(c, "click");
   prom.then(showdone);
   console.log('tweeted!');
-  resetState();
   chrome.runtime.sendMessage({
     data: "doTwitterStuff_DONE"
   }, function(response) {
     console.log('TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT');
     console.log(response);
+    resetState();
   });
 }
 
@@ -166,12 +168,12 @@ function checkFBPageIsLiked() {
   var prom = wait(2000); // prom, is a promise
   var showdone = () => console.log('facebook stuff is about to be finished');
   prom.then(showdone);
-  resetState();
   chrome.runtime.sendMessage({
     data: "doFacebookStuff_DONE"
   }, function(response) {
     console.log(response);
     console.log('FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF');
+    resetState();
   });
 
 }

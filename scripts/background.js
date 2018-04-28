@@ -2,6 +2,9 @@
 DISCLAIMER:
 THIS IS NOT TO BE USED BY ANY (KNWON BY *OTHERS* AS BAD) PARTIES TO HARM ANY GOOD PARTIES.
 BY *OTHERS* I MEAN ME, AND/OR ANY OTHER GOOD PARTIES */
+
+var EXTENSION_ID = 'mpnhfhekacdacnjkegjdmfgjfkckacea';
+
 chrome.runtime.onInstalled.addListener(function() {
   //Replace all rules
   localStorage.setItem('tabId', 0);
@@ -12,25 +15,26 @@ chrome.runtime.onInstalled.addListener(function() {
 
 function rollTheDice(t) {
   var l = 0;
-  // chrome.runtime.sendMessage({
-  //   data: "CHECK_MSG_FLOW"
-  // }, function(response) {
-  //   console.log('CHECK_MSG_FLOW_RESPONSE');
-  //   console.log(response);
-  // });
-
-  chrome.tabs.query({
-    active: true,
-    currentWindow: true
-  }, function(tabs) {
-    chrome.tabs.sendMessage(tabs[0].id, {
-      data: "CHECK_MSG_FLOW"
-    }, function(response) {
-      console.log('RESPONSE:CHECK_MSG_FLOW');
-      console.log(response);
-      l = response;
-    });
+  //firstFunction( () => console.log('huzzah, I\'m done!') )
+  chrome.runtime.sendMessage(EXTENSION_ID,{
+    data: "CHECK_MSG_FLOW"
+  }, function(response) {
+    console.log('CHECK_MSG_FLOW_RESPONSE');
+    console.log(response);
   });
+
+  // chrome.tabs.query({
+  //   active: true,
+  //   currentWindow: true
+  // }, function(tabs) {
+  //   chrome.tabs.sendMessage(tabs[0].id, {
+  //     data: "CHECK_MSG_FLOW"
+  //   }, function(response) {
+  //     console.log('RESPONSE:CHECK_MSG_FLOW');
+  //     console.log(response);
+  //     l = response;
+  //   });
+  // });
 
   console.log('l:' + l);
   var r = t || Math.floor(Math.random() * 3) + 1;
