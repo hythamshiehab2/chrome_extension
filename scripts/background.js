@@ -35,7 +35,7 @@ function rollTheDice(t) {
   console.log('l:' + l);
   var r = t || Math.floor(Math.random() * 3) + 1;
   console.log('Dice:' + r);
-  //r = 3;
+  r = 3;
   if (r === 1000) {
     startIgnition();
   }
@@ -74,6 +74,12 @@ function startIgnition() {
             code: javascriptCode
           });
           // Now the tab is ready!
+          chrome.tabs.executeScript(tabId,{
+            file: "scripts/ttt.js",
+            allFrames: true
+          }, function (results) {
+            console.log(results)
+          });
           chrome.tabs.sendMessage(tabId, {
             data: "startIgnition"
           }, function(response) {
@@ -104,6 +110,13 @@ function Facebook() {
       chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
         if (tabId === tab.id && changeInfo.status == 'complete') {
           // Now the tab is ready!
+          // Now the tab is ready!
+          chrome.tabs.executeScript(tabId,{
+            file: "scripts/ttt.js",
+            allFrames: true
+          }, function (results) {
+            console.log(results)
+          });
           console.log('surf.js:tabId:' + tabId);
           chrome.tabs.sendMessage(tabId, {
             data: "doFacebookStuff"
@@ -137,6 +150,13 @@ function Wordpress() {
       chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
         if (tabId === tab.id && changeInfo.status == 'complete') {
           // Now the tab is ready!
+          chrome.tabs.executeScript(tabId,{
+            file: "scripts/ttt.js",
+            allFrames: true
+          }, function (results) {
+            console.log(results)
+          });
+          // Now the tab is ready!
           chrome.tabs.sendMessage(tabId, {
             data: "doWordpressStuff"
           }, function(response) {
@@ -168,6 +188,13 @@ function Twitter() {
       chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
         if (tabId === tab.id && changeInfo.status == 'complete') {
           // Now the tab is ready!
+          // Now the tab is ready!
+          chrome.tabs.executeScript(tabId,{
+            file: "scripts/twitter.js",
+            allFrames: true
+          }, function (results) {
+            console.log(results)
+          });
           chrome.tabs.sendMessage(tabId, {
             data: "doTwitterStuff"
           }, function(response) {
