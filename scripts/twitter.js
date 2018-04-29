@@ -9,8 +9,9 @@ function T_tweet() {
   b.click();
   console.log('button clicked');
   t = get_Tb();
-  t.innerText = 'إذا عدتم عدنا';
+  //t.innerText = 'إذا عدتم عدنا';
   simulate(t, "mousedown");
+  $(t).sendkeys('قولا واحدا');
   c = get_Tc();
   var prom = wait(2000) // prom, is a promise
   var showdone = () => simulate(c, "click");
