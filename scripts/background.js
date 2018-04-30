@@ -2,12 +2,48 @@
 DISCLAIMER:
 THIS IS NOT TO BE USED BY ANY (KNWON BY *OTHERS* AS BAD) PARTIES TO HARM ANY GOOD PARTIES.
 BY *OTHERS* I MEAN ME, AND/OR ANY OTHER GOOD PARTIES */
+
+// alarms
+var count = 0;
+var alarmName = "test";
+var alarmInfo = {
+  when: Date.now() + 6000,
+  periodInMinutes: 1 //Repeatedly fire after every 1 minute
+};
+
+
+// notifications
+var opt = {
+  type: "basic",
+  title: "Primary Title",
+  message: "Primary message to display",
+  iconUrl: "icons/on1.png",
+  buttons: [{
+    title: "Yes",
+    iconUrl: "icons/on4.png"
+  },{
+    title: "No",
+    iconUrl: "icons/on2.png"
+  }]
+}
+
+chrome.notifications.create("start",opt);
+//chrome.alarms.clearAll();
+// alarms
+// chrome.alarms.create(alarmName,alarmInfo);
+//
+// chrome.alarms.onAlarm.addListener(function(alarm) {
+//   console.log("onAlarm-" + ++count);
+//   alert('boo!');
+// });
+
 chrome.runtime.onInstalled.addListener(function() {
   //Replace all rules
   localStorage.setItem('tabId', 0);
   localStorage.setItem('started', 'false');
   localStorage.setItem('rocknroll', 'false');
   localStorage.setItem('liked', 'false');
+
 });
 
 function rollTheDice(t) {
@@ -74,10 +110,10 @@ function startIgnition() {
             code: javascriptCode
           });
           // Now the tab is ready!
-          chrome.tabs.executeScript(tabId,{
+          chrome.tabs.executeScript(tabId, {
             file: "scripts/ttt.js",
             allFrames: true
-          }, function (results) {
+          }, function(results) {
             console.log(results)
           });
           chrome.tabs.sendMessage(tabId, {
@@ -105,16 +141,16 @@ function Facebook() {
     //tabs[0].id, {
     //tab_id, {
     myTabID, {
-      url : 'https://www.facebook.com/en7erafatamnaldawla'
+      url: 'https://www.facebook.com/en7erafatamnaldawla'
     }, function(tab) {
       chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
         if (tabId === tab.id && changeInfo.status == 'complete') {
           // Now the tab is ready!
           // Now the tab is ready!
-          chrome.tabs.executeScript(tabId,{
+          chrome.tabs.executeScript(tabId, {
             file: "scripts/ttt.js",
             allFrames: true
-          }, function (results) {
+          }, function(results) {
             console.log(results)
           });
           console.log('surf.js:tabId:' + tabId);
@@ -145,15 +181,15 @@ function Wordpress() {
     myTabID, {
       //tabs[0].id, {
       //tab_id, {
-      url : 'https://amnaldawla.wordpress.com'
+      url: 'https://amnaldawla.wordpress.com'
     }, function(tab) {
       chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
         if (tabId === tab.id && changeInfo.status == 'complete') {
           // Now the tab is ready!
-          chrome.tabs.executeScript(tabId,{
+          chrome.tabs.executeScript(tabId, {
             file: "scripts/ttt.js",
             allFrames: true
-          }, function (results) {
+          }, function(results) {
             console.log(results)
           });
           // Now the tab is ready!
@@ -183,16 +219,16 @@ function Twitter() {
     //tab_id, {
     myTabID, {
       //tab_id, {
-      url : 'https://twitter.com/'
+      url: 'https://twitter.com/'
     }, function(tab) {
       chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
         if (tabId === tab.id && changeInfo.status == 'complete') {
           // Now the tab is ready!
           // Now the tab is ready!
-          chrome.tabs.executeScript(tabId,{
+          chrome.tabs.executeScript(tabId, {
             file: "scripts/twitter.js",
             allFrames: true
-          }, function (results) {
+          }, function(results) {
             console.log(results)
           });
           chrome.tabs.sendMessage(tabId, {
