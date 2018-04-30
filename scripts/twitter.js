@@ -5,9 +5,10 @@ window.onload = function() {
 
 function T_tweet() {
   // first check if we are logged in
+  console.log('T_tweet');
   var k = isLoggedIn();
   if (k) {
-    console.log('T_tweet');
+    console.log('k:' + k);
     b = get_Ta();
     b.click();
     console.log('button clicked');
@@ -31,22 +32,51 @@ function T_tweet() {
       console.log('TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT');
       console.log(response);
     });
-  }
-  else
-  {
-    chrome.runtime.sendMessage({
-      data: "alarmTwitterNotLoggedIn"
-    })
+  } else {
+    console.log('NOT LOGGED IN!?');
+    chrome.runtime.sendMessage({data: "alarmTwitterNotLoggedIn"})
   }
 }
 
 function isLoggedIn() {
-  var l = document.getElementsByClassName('dropdown-signin');
-  if (l.length) {
-    return false
-  } else {
-    return true;
-  }
+  // const promise = new Promise((resolve, reject) => {
+  //   asynchronous code goes here
+  //   var l = document.getElementsByClassName('dropdown-signin');
+  //   if (l.length) {
+  //     return false
+  //     resolve(l);
+  //   } else {
+  //     return true;
+  //     reject(l = 0);
+  //   }
+  // });
+  // promise.then((l) => {
+  //   console.log('PROMISE SUCCESSED:' + l);
+  //   return l;
+  // }, (error) => {
+  //   console.log('PROMISE FAILED:' + l);
+  //   return 0;
+  // });
+
+  var l = null;
+  const promise = new Promise((resolve, reject) => {
+    var x = document.getElementById('global-new-tweet-button');
+    console.log(x);
+    if(x) {
+      l = x;
+      resolve(l);
+    } else {
+      reject(x = null);
+    }
+  });
+  promise.then((l) => {
+    console.log('PROMISE SUCCESSED:' + l);
+    //return l;
+  }, (error) => {
+    console.log('PROMISE FAILED:' + l);
+    //return 0;
+  });
+  return l;
 }
 
 function T_follow() {
