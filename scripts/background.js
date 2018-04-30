@@ -11,23 +11,30 @@ var alarmInfo = {
   periodInMinutes: 1 //Repeatedly fire after every 1 minute
 };
 
-
 // notifications
+var myNotificationId = null;
 var opt = {
+  //type: "basic",
+  //notificationId: "start",
   type: "basic",
-  title: "Primary Title",
-  message: "Primary message to display",
+  title: "تنبيه",
+  message: "لم تقم بتسجيل الدّخول على تويتر",
   iconUrl: "icons/on1.png",
   buttons: [{
-    title: "Yes",
+    title: "نعم",
     iconUrl: "icons/on4.png"
   },{
-    title: "No",
+    title: "لا",
     iconUrl: "icons/on2.png"
   }]
 }
 
-chrome.notifications.create("start",opt);
+chrome.notifications.create("",opt, function (id){
+  myNotificationId = id;
+});
+chrome.notifications.onButtonClicked.addListener(function (nId, btnIdx) {
+  alert('yes!' + nId + ":" + btnIdx);
+});
 //chrome.alarms.clearAll();
 // alarms
 // chrome.alarms.create(alarmName,alarmInfo);

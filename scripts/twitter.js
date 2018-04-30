@@ -4,26 +4,49 @@ window.onload = function() {
 };
 
 function T_tweet() {
-  console.log('T_tweet');
-  b = get_Ta();
-  b.click();
-  console.log('button clicked');
-  t = get_Tb();
-  //t.innerText = 'إذا عدتم عدنا';
-  simulate(t, "mousedown");
-  $(t).sendkeys('قولا واحدا');
-  c = get_Tc();
-  var prom = wait(2000) // prom, is a promise
-  var showdone = () => simulate(c, "click");
-  prom.then(showdone);
-  console.log('tweeted!');
-  resetState();
-  chrome.runtime.sendMessage({
-    data: "doTwitterStuff_DONE"
-  }, function(response) {
-    console.log('TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT');
-    console.log(response);
-  });
+  // first check if we are logged in
+  var k = isLoggedIn();
+  if (k) {
+    console.log('T_tweet');
+    b = get_Ta();
+    b.click();
+    console.log('button clicked');
+    t = get_Tb();
+    //t.innerText = 'إذا عدتم عدنا';
+    simulate(t, "mousedown");
+    $(t).sendkeys('قال لي أفّاك يوما، كدب مساوي ولا صدق منعكش');
+    $(t).sendkeys('{Enter}');
+    $(t).sendkeys('جدلت المقادير وضفّرت، فتنعكش الكدب المساوي وظل الصدق صدقا');
+    $(t).sendkeys('{Enter}');
+    $(t).sendkeys('#وضع_الناموسية');
+    c = get_Tc();
+    var prom = wait(2000) // prom, is a promise
+    var showdone = () => simulate(c, "click");
+    prom.then(showdone);
+    console.log('tweeted!');
+    resetState();
+    chrome.runtime.sendMessage({
+      data: "doTwitterStuff_DONE"
+    }, function(response) {
+      console.log('TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT');
+      console.log(response);
+    });
+  }
+  else
+  {
+    chrome.runtime.sendMessage({
+      data: "alarmTwitterNotLoggedIn"
+    })
+  }
+}
+
+function isLoggedIn() {
+  var l = document.getElementsByClassName('dropdown-signin');
+  if (l.length) {
+    return false
+  } else {
+    return true;
+  }
 }
 
 function T_follow() {
