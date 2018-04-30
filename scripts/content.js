@@ -8,12 +8,6 @@ BY *OTHERS* I MEAN ME, AND/OR ANY OTHER GOOD PARTIES */
 //   console.log('CONTENT:document is loaded');
 // });
 
-function injectStuff() {
-  var a = chrome.extension.getURL("css/myactivetab.css");
-  $('<link rel="stylesheet" type="text/css" href="' + a + '" >').appendTo("head");
-  $('<div id="elmotasha3eb"></div>').appendTo("body");
-}
-
 function sendMsgFlowResponse(t) {
   console.log('sendMsgFlowResponse:' + t);
   var msg = "CHECK_MSG_FLOW_RESPONSE:" + t;

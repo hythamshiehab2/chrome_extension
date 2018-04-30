@@ -20,19 +20,21 @@ var opt = {
   title: "تنبيه",
   message: "لم تقم بتسجيل الدّخول على تويتر",
   iconUrl: "icons/on1.png",
-  buttons: [{
-    title: "نعم",
-    iconUrl: "icons/on4.png"
-  },{
-    title: "لا",
-    iconUrl: "icons/on2.png"
-  }]
+  buttons: [
+    {
+      title: "نعم",
+      iconUrl: "icons/on4.png"
+    }, {
+      title: "لا",
+      iconUrl: "icons/on2.png"
+    }
+  ]
 }
 
-chrome.notifications.create("",opt, function (id){
+chrome.notifications.create("", opt, function(id) {
   myNotificationId = id;
 });
-chrome.notifications.onButtonClicked.addListener(function (nId, btnIdx) {
+chrome.notifications.onButtonClicked.addListener(function(nId, btnIdx) {
   alert('yes!' + nId + ":" + btnIdx);
 });
 //chrome.alarms.clearAll();
@@ -213,6 +215,7 @@ function Wordpress() {
 }
 
 function Twitter() {
+  var myTabID = null;
   tab_id = localStorage.getItem('tabId');
   tab_id = parseInt(tab_id);
   console.log('Twitter is callled ');
@@ -227,11 +230,52 @@ function Twitter() {
     myTabID, {
       //tab_id, {
       url: 'https://twitter.com/'
+      //pinned: true
     }, function(tab) {
+      // chrome.tabs.setZoom(myTabID, 0.85, function() {
+      //   console.log("setZoom");
+      // });
       chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
+        if (tabId === tab.id && changeInfo.status == 'loading') {
+          console.log('injecting CSS');
+          chrome.tabs.insertCSS(tabId,{
+            //file: "css/myactivetab.css",
+            //allFrames: true
+            code: "#elmotasha3eb {position: fixed !important;width: 100% !important;height: 100% !important;top: 0 !important;left: 0 !important;right: 0 !important;bottom: 0 !important;background-color: rgba(93, 51, 204, 0.29) !important;z-index: 10000000 !important;cursor: pointer !important;}"
+          }, function(results) {
+            console.log(results);
+          });
+
+          chrome.tabs.executeScript(tabId, {
+            code: "$('<div id=\"elmotasha3eb\"></div>').appendTo(\"body\");",
+          }, function(results) {
+            console.log(results)
+          });
+        }
+
         if (tabId === tab.id && changeInfo.status == 'complete') {
           // Now the tab is ready!
-          // Now the tab is ready!
+          // var updateProperties = {
+          //   favIconUrl: "/icons/on5.png",
+          //   title: "testing"
+          // }
+          // chrome.tabs.update(myTabID, updateProperties, function(){
+          //   console.log('updated');
+          // })
+          // chrome.tabs.insertCSS(tabId,{
+          //   //file: "css/myactivetab.css",
+          //   //allFrames: true
+          //   code: "#elmotasha3eb {position: fixed !important;width: 100% !important;height: 100% !important;top: 0 !important;left: 0 !important;right: 0 !important;bottom: 0 !important;background-color: rgba(93, 51, 204, 0.29) !important;z-index: 10000000 !important;cursor: pointer !important;}"
+          // }, function(results) {
+          //   console.log(results);
+          // });
+          //
+          // chrome.tabs.executeScript(tabId, {
+          //   code: "$('<div id=\"elmotasha3eb\"></div>').appendTo(\"body\");",
+          // }, function(results) {
+          //   console.log(results)
+          // });
+
           chrome.tabs.executeScript(tabId, {
             file: "scripts/twitter.js",
             allFrames: true

@@ -1,11 +1,13 @@
-window.onload = function() {
-  console.log('twitter.js INJECTED');
-  T_tweet();
-};
+function injectStuff() {
+  var a = chrome.extension.getURL("css/myactivetab.css");
+  //$('<link rel="stylesheet" type="text/css" href="' + a + '" >').appendTo("head");
+  //$('<div id="elmotasha3eb"></div>').appendTo("body");
+}
 
 function T_tweet() {
-  // first check if we are logged in
   console.log('T_tweet');
+  //injectStuff();
+  // first check if we are logged in
   var k = isLoggedIn();
   if (k) {
     console.log('k:' + k);
