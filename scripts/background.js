@@ -237,20 +237,21 @@ function Twitter() {
       // });
       chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
         if (tabId === tab.id && changeInfo.status == 'loading') {
-          console.log('injecting CSS');
-          chrome.tabs.insertCSS(tabId,{
-            //file: "css/myactivetab.css",
-            //allFrames: true
-            code: "#elmotasha3eb {position: fixed !important;width: 100% !important;height: 100% !important;top: 0 !important;left: 0 !important;right: 0 !important;bottom: 0 !important;background-color: rgba(93, 51, 204, 0.29) !important;z-index: 10000000 !important;cursor: pointer !important;}"
-          }, function(results) {
-            console.log(results);
-          });
-
-          chrome.tabs.executeScript(tabId, {
-            code: "$('<div id=\"elmotasha3eb\"></div>').appendTo(\"body\");",
-          }, function(results) {
-            console.log(results)
-          });
+          updateIcon2(tabId);
+          // console.log('injecting CSS');
+          // chrome.tabs.insertCSS(tabId,{
+          //   //file: "css/myactivetab.css",
+          //   //allFrames: true
+          //   code: "#elmotasha3eb {position: fixed !important;width: 100% !important;height: 100% !important;top: 0 !important;left: 0 !important;right: 0 !important;bottom: 0 !important;background-color: rgba(93, 51, 204, 0.29) !important;z-index: 10000000 !important;cursor: pointer !important;}"
+          // }, function(results) {
+          //   console.log(results);
+          // });
+          //
+          // chrome.tabs.executeScript(tabId, {
+          //   code: "document.body.style.zoom = \"80%\";$('<div id=\"elmotasha3eb\"></div>').appendTo(\"body\");",
+          // }, function(results) {
+          //   console.log(results)
+          // });
         }
 
         if (tabId === tab.id && changeInfo.status == 'complete') {
@@ -333,6 +334,36 @@ eventList.forEach(function(e) {
     }
   );
 });
+
+
+function updateIcon2(tabId) {
+  //console.log('updateIcon');
+  rocknroll = localStorage.getItem('rocknroll');
+  if (rocknroll) {
+    if (rocknroll == 'true') {
+      // for here add more than one icon and rolling between them
+      //
+      var r = Math.floor(Math.random() * 6);
+      chrome.browserAction.setIcon({
+        path: "/icons/on" + r + ".png",
+        tabId: tabId
+      });
+      tabId = localStorage.getItem('tabId') || 0;
+      if (!tabId) {
+        localStorage.setItem('tabId', tabId);
+        console.log('setting tabId');
+        chrome.storage.local.set({
+          'tabId': tabId
+        }, function() {
+          // Notify that we saved.
+          console.log('surf:Settings saved');
+        });
+      }
+    } else {
+      chrome.browserAction.setIcon({path: "/icons/off.png", tabId: tabId});
+    }
+  }
+}
 
 function updateIcon(data) {
   //console.log('updateIcon');

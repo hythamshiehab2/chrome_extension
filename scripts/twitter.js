@@ -1,10 +1,19 @@
+var T_tweetCalled = 0;
 function injectStuff() {
   var a = chrome.extension.getURL("css/myactivetab.css");
   //$('<link rel="stylesheet" type="text/css" href="' + a + '" >').appendTo("head");
   //$('<div id="elmotasha3eb"></div>').appendTo("body");
 }
 
+function typeAsHuman(elem, ch) {
+  $(elem).sendkeys(ch);
+}
+
 function T_tweet() {
+  if (T_tweetCalled)
+    return;
+  T_tweetCalled++;
+  var typed = false;
   console.log('T_tweet');
   //injectStuff();
   // first check if we are logged in
@@ -17,27 +26,67 @@ function T_tweet() {
     t = get_Tb();
     //t.innerText = 'إذا عدتم عدنا';
     simulate(t, "mousedown");
-    $(t).sendkeys('قال لي أفّاك يوما، كدب مساوي ولا صدق منعكش');
-    $(t).sendkeys('{Enter}');
-    $(t).sendkeys('جدلت المقادير وضفّرت، فتنعكش الكدب المساوي وظل الصدق صدقا');
-    $(t).sendkeys('{Enter}');
-    $(t).sendkeys('#وضع_الناموسية');
-    c = get_Tc();
-    var prom = wait(2000) // prom, is a promise
-    var showdone = () => simulate(c, "click");
-    prom.then(showdone);
-    console.log('tweeted!');
-    resetState();
-    chrome.runtime.sendMessage({
-      data: "doTwitterStuff_DONE"
-    }, function(response) {
-      console.log('TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT');
-      console.log(response);
-    });
-  } else {
-    console.log('NOT LOGGED IN!?');
-    chrome.runtime.sendMessage({data: "alarmTwitterNotLoggedIn"})
+    typed = typeText(t);
+    // for (var i = 0; i < txt.length; i++) {
+    //   alert(str.charAt(i));
+    //   setTimeout(typeAsHuman(t,txt.charAt(i)),200);
+    // }
+    // $(t).sendkeys('قال لي أفّاك يوما، كدب مساوي ولا صدق منعكش');
+    // $(t).sendkeys('{Enter}');
+    // $(t).sendkeys('جدلت المقادير وضفّرت، فتنعكش الكدب المساوي وظل الصدق صدقا');
+    // $(t).sendkeys('{Enter}');
+    // $(t).sendkeys('#وضع_الناموسية');
+    if (typed) {
+      c = get_Tc();
+      var prom = wait(2000) // prom, is a promise
+      var showdone = () => simulate(c, "click");
+      prom.then(showdone);
+      console.log('tweeted!');
+      resetState();
+      chrome.runtime.sendMessage({
+        data: "doTwitterStuff_DONE"
+      }, function(response) {
+        console.log('TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT');
+        console.log(response);
+      });
+    } else {
+      console.log('NOT LOGGED IN!?');
+      chrome.runtime.sendMessage({data: "alarmTwitterNotLoggedIn"})
+    }
   }
+}
+
+function typeText(t)
+{
+  var typed = false;
+  var txt = 'قال لي أفّاك يوما، كدب مساوي ولا صدق منعكش\nجدلت المقادير وضفرت، فتنعكش الكدب المساوي وبقي الصدق صدقا\n#وضع_الناموسيه';
+  const promise = new Promise((resolve, reject) => {
+    $(t).typetype(txt, {
+      e: 0.04, // error rate. (use e=0 for perfect typing)
+      t: 100, // interval between keypresses
+      keypress: function() {
+        // called after every keypress (this may be an erroneous keypress!)
+      },
+      callback: function() {
+        // the `this` keyword is bound to the particular element.
+        typed = true;
+        console.log('TYPETYPE!');
+      }
+    });
+    if (typed) {
+      resolve(typed);
+    } else {
+      reject(typed = false);
+    }
+  });
+  promise.then((typed) => {
+    console.log('PROMISE SUCCESSED:' + typed);
+    //return l;
+  }, (error) => {
+    console.log('PROMISE FAILED:' + typed);
+    //return 0;
+  });
+  return typed;
 }
 
 function isLoggedIn() {
@@ -64,7 +113,7 @@ function isLoggedIn() {
   const promise = new Promise((resolve, reject) => {
     var x = document.getElementById('global-new-tweet-button');
     console.log(x);
-    if(x) {
+    if (x) {
       l = x;
       resolve(l);
     } else {
