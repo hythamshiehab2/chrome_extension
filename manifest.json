@@ -1,31 +1,31 @@
 {
-  "manifest_version": 2,
-  "name": "المتشعّب",
-  "description": "!قيادة جووجل كروم بيد واحدة أو بدون",
-  "version": "0.2",
-  "homepage_url": "https://github.com/hythamshiehab2/chrome_extension",
-  "browser_action": {
-    "default_icon": "icons/off.png",
-    "default_popup": "popup.html",
-    "default_title": "المتشعّب"
-  },
-  "icons": {
-    "48": "icons/icon-48.png",
-    "128": "icons/icon-128.png"
-  },
-  "background": {
-    "scripts": ["scripts/background.js", "scripts/surf.js", "scripts/starter.js"]
-  },
-  "content_scripts": [{
-    "matches": ["<all_urls>"],
-    "all_frames": true,
-    "js": ["scripts/content.js", "scripts/jquery.min.js", "scripts/helpers.js", "scripts/bililiteRange.js", "scripts/jquery.sendkeys.js","scripts/jquery.typetype.js"],
-    "css": ["css/myactivetab.css"]
+    "manifest_version": 2,
+    "name": "المتشعّب",
+    "description": "!قيادة جووجل كروم بيد واحدة أو بدون",
+    "version": "0.2",
+    "homepage_url": "https://github.com/hythamshiehab2/chrome_extension",
+    "browser_action": {
+        "default_icon": "icons/off.png",
+        "default_popup": "popup.html",
+        "default_title": "المتشعّب"
+    },
+    "icons": {
+        "48": "icons/icon-48.png",
+        "128": "icons/icon-128.png"
+    },
+    "background": {
+        "scripts": ["scripts/background.js", "scripts/surf.js", "scripts/starter.js"]
+    },
+    "content_scripts": [{
+        "matches": ["<all_urls>"],
+        "all_frames": true,
+        "js": ["scripts/content.js", "scripts/jquery.min.js", "scripts/helpers.js", "scripts/bililiteRange.js", "scripts/jquery.sendkeys.js", "scripts/jquery.typetype.js"],
+        "css": ["css/myactivetab.css"]
   }],
-  "web_accessible_resources": [
+    "web_accessible_resources": [
     "css/myactivetab.css"
   ],
-  "permissions": [
+    "permissions": [
     "activeTab",
     "alarms",
     "notifications",
