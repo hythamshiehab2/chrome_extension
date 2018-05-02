@@ -1,9 +1,64 @@
-var T_tweetCalled = 0;
-var isLoggedIn = false;
-
+//var T_tweetCalled = 0;
+//var isLoggedIn = false;
 $(document).ready(function () {
-    T_tweet();
+    //T_tweet();
+    askMom();
 });
+
+const typeText = function (tweetBox) {
+    var typed = false;
+    var txt = generateIdea();
+    var t = tweetBox;
+    $(t).typetype(txt, {
+        e: 0.04, // error rate. (use e=0 for perfect typing)
+        t: 100, // interval between keypresses
+        keypress: function () {
+            // called after every keypress (this may be an erroneous keypress!)
+            console.log('typeing...')
+            return Promise.pending();
+        },
+        callback: function () {
+            // the `this` keyword is bound to the particular element.
+            console.log('TYPETYPE!');
+            return Promise.resolve('done!');
+        }
+    });
+};
+
+const tweetButtonFound = new Promise((resolve, reject) => {
+    var b = document.getElementById('global-new-tweet-button');
+    var l = b;
+    if (b) {
+        resolve(l);
+    } else {
+        reject(null);
+    }
+});
+
+const tweetButtonClicked = function (tweetButton) {
+    simulate(tweetButton, "click");
+    return Promise.resolve('clicked');
+};
+
+const textBoxShown = function () {
+    var b = document.getElementsByClassName('tweet-box rich-editor is-showPlaceholder')[1];
+    return Promise.resolve(b);
+};
+
+const textBoxClicked = function (textBox) {
+    simulate(textBox, "mousedown");
+};
+// call our promise
+const askMom = function () {
+    tweetButtonFound
+        .then(tweetButtonClicked)
+        .then(textBoxShown)
+        .then(textBoxClicked)
+        .then(typeText)
+        //.then(fulfilled => console.log(fulfilled)) // fat arrow
+        .catch(error => console.log('xxxxxxxxxxxxx')); // fat arrow
+};
+
 
 function injectStuff() {
     var a = chrome.extension.getURL("css/myactivetab.css");
@@ -27,6 +82,7 @@ function typeAsHuman(elem, ch) {
     $(elem).sendkeys(ch);
 }
 
+/*
 function T_tweet() {
     if (T_tweetCalled)
         return;
@@ -87,7 +143,8 @@ function T_tweet() {
         })
     }
 }
-
+*/
+/*
 function typeText(t) {
     var typed = false;
     var txt = generateIdea();
@@ -119,7 +176,7 @@ function typeText(t) {
     });
     return typed;
 }
-
+*/
 function isLoggedInCheck() {
     var l = null;
     const promise = new Promise((resolve, reject) => {
@@ -128,11 +185,12 @@ function isLoggedInCheck() {
             console.log(x);
             l = x;
             isLoggedIn = true;
-            resolve(l);
+            resolve(x);
         } else {
+            x = null;
             console.log('not found');
             isLoggedIn = false;
-            reject(x = null);
+            reject(x);
         }
     });
     //    promise.then((l) => {
