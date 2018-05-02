@@ -2,7 +2,8 @@
 //var isLoggedIn = false;
 $(document).ready(function () {
     //T_tweet();
-    askMom();
+    console.log('will call askMom in 20s');
+    setTimeout(askMom, 20000);
 });
 
 const typeText = function (tweetBox) {
