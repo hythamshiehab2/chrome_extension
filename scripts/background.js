@@ -59,6 +59,7 @@ chrome.runtime.onInstalled.addListener(function () {
 });
 
 var localhost = 0;
+var twitter = 0;
 
 function rollTheDice(t) {
     var l = 0;
@@ -85,11 +86,11 @@ function rollTheDice(t) {
     console.log('l:' + l);
     var r = t || Math.floor(Math.random() * 3) + 1;
     console.log('Dice:' + r);
-    r = 4;
+    r = 3;
 
     // reset the global counters
     localhost = 0;
-
+    twitter = 0;
     if (r === 1000) {
         startIgnition();
     }
@@ -269,7 +270,8 @@ function Twitter() {
                         // });
                     }
 
-                    if (tabId === tab.id && changeInfo.status == 'complete') {
+                    if (tabId === tab.id && changeInfo.status == 'complete' && !twitter) {
+                        twitter++;
                         // Now the tab is ready!
                         // var updateProperties = {
                         //   favIconUrl: "/icons/on5.png",

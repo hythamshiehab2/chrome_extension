@@ -1,9 +1,48 @@
 //var T_tweetCalled = 0;
 //var isLoggedIn = false;
-$(document).ready(function () {
-    //T_tweet();
-    console.log('will call askMom in 20s');
-    setTimeout(askMom, 20000);
+//$(document).ready(function () {
+//    //T_tweet();
+//    //console.log('will call askQ in 20s');
+//    //setTimeout(askQ, 20000);
+//    begin();
+//});
+
+window.addEventListener("load", begin);
+
+function begin() {
+    console.log('begin');
+    var b = document.getElementById('global-new-tweet-button') || false;
+    if (!b) {
+        console.log('not ready!');
+        setTimeout(begin, 10000);
+    } else {
+        console.log('rr');
+        askQ();
+    }
+}
+
+const askQ = function () {
+    console.log('asknig Q..');
+    tweetButtonFound
+        .then(tweetButtonClicked)
+        .then(textBoxShown)
+        .then(textBoxClicked)
+        .then(typeText)
+        .then(tweetButtonSend)
+        //.then(fulfilled => console.log(fulfilled)) // fat arrow
+        .catch(error => console.log('xxxxxxxxxxxxx')); // fat arrow
+};
+
+//document.onload = setTimeout(askQ, 30000);
+const tweetButtonFound = new Promise((resolve, reject) => {
+    var b = document.getElementById('global-new-tweet-button');
+    var l = b;
+    if (b) {
+        console.log(b);
+        resolve(l);
+    } else {
+        reject(null);
+    }
 });
 
 const typeText = function (tweetBox) {
@@ -17,29 +56,21 @@ const typeText = function (tweetBox) {
         keypress: function () {
             // called after every keypress (this may be an erroneous keypress!)
             console.log('typeing...')
-            return Promise.pending();
         },
         callback: function () {
             // the `this` keyword is bound to the particular element.
             console.log('TYPETYPE!');
-            return Promise.resolve('done!');
+            //return Promise.resolve('done!');
+            setTimeout(tweetButtonSend, 2000);
         }
     });
 };
 
-const tweetButtonFound = new Promise((resolve, reject) => {
-    var b = document.getElementById('global-new-tweet-button');
-    var l = b;
-    if (b) {
-        resolve(l);
-    } else {
-        reject(null);
-    }
-});
-
 const tweetButtonClicked = function (tweetButton) {
-    simulate(tweetButton, "click");
-    return Promise.resolve('clicked');
+    console.log('I got tweetButton!');
+    console.log(tweetButton);
+    var c = simulate(tweetButton, "click");
+    return Promise.resolve(c);
 };
 
 const textBoxShown = function () {
@@ -49,18 +80,19 @@ const textBoxShown = function () {
 
 const textBoxClicked = function (textBox) {
     simulate(textBox, "mousedown");
+    return Promise.resolve(textBox);
+};
+
+const tweetButtonSend = function (msg) {
+    console.log(msg);
+    console.log(msg);
+    console.log(msg);
+    console.log(msg);
+    var c = document.getElementsByClassName('SendTweetsButton')[0];
+    simulate(c, "click");
+    return Promise.resolve("clicked!");
 };
 // call our promise
-const askMom = function () {
-    console.log('asknig Mom..');
-    tweetButtonFound
-        .then(tweetButtonClicked)
-        .then(textBoxShown)
-        .then(textBoxClicked)
-        .then(typeText)
-        //.then(fulfilled => console.log(fulfilled)) // fat arrow
-        .catch(error => console.log('xxxxxxxxxxxxx')); // fat arrow
-};
 
 
 function injectStuff() {
@@ -81,9 +113,6 @@ function generateIdea() {
     return idea;
 }
 
-function typeAsHuman(elem, ch) {
-    $(elem).sendkeys(ch);
-}
 
 /*
 function T_tweet() {
