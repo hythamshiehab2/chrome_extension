@@ -1,15 +1,16 @@
-//var T_tweetCalled = 0;
-//var isLoggedIn = false;
-//$(document).ready(function () {
-//    //T_tweet();
-//    //console.log('will call askQ in 20s');
-//    //setTimeout(askQ, 20000);
-//    begin();
-//});
+$(document).ready(function () {
+    //jQuery(document).ready(function () {
+    console.log('read');
+    setTimeout(function () {
+        begin();
+    }, 20000);
+});
 
-window.addEventListener("load", begin);
+//window.addEventListener("load", begin);
+
 
 function begin() {
+    debugger;
     console.log('begin');
     var b = document.getElementById('global-new-tweet-button') || false;
     if (!b) {
@@ -17,25 +18,27 @@ function begin() {
         setTimeout(begin, 10000);
     } else {
         console.log('rr');
-        askQ();
+        askHytham();
     }
 }
 
-const askQ = function () {
-    console.log('asknig Q..');
+const askHytham = function () {
+    console.log('askHytham ..');
     tweetButtonFound
-        .then(tweetButtonClicked)
+        .then(tweetButtonClicked, errorHandler)
         .then(textBoxShown)
         .then(textBoxClicked)
         .then(typeText)
         .then(tweetButtonSend)
         //.then(fulfilled => console.log(fulfilled)) // fat arrow
-        .catch(error => console.log('xxxxxxxxxxxxx')); // fat arrow
+        //.catch(error => console.log('xxxxxxxxxxxxx')); // fat arrow
+        .catch(errorHandler => console.log(errorHandler));
 };
 
 //document.onload = setTimeout(askQ, 30000);
 const tweetButtonFound = new Promise((resolve, reject) => {
     var b = document.getElementById('global-new-tweet-button');
+    console.log(b);
     var l = b;
     if (b) {
         console.log(b);
