@@ -1,16 +1,16 @@
-$(document).ready(function () {
-    //jQuery(document).ready(function () {
-    console.log('read');
-    setTimeout(function () {
-        begin();
-    }, 20000);
-});
+//$(document).ready(function () {
+//    //jQuery(document).ready(function () {
+//    console.log('read');
+//    setTimeout(function () {
+//        begin();
+//    }, 20000);
+//});
 
 //window.addEventListener("load", begin);
 
 
 function begin() {
-    debugger;
+    //debugger;
     console.log('begin');
     var b = document.getElementById('global-new-tweet-button') || false;
     if (!b) {
@@ -18,7 +18,7 @@ function begin() {
         setTimeout(begin, 10000);
     } else {
         console.log('rr');
-        askHytham();
+        askHytham;
     }
 }
 

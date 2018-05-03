@@ -41,12 +41,19 @@ function checkMessageFlow() {
     console.log('willGoTo:' + willGoTo);
     if (willGoTo === 'doTwitterStuff') {
         //T_tweet();
+        begin();
+        console.log('will call askHytham');
     }
     if (willGoTo === 'doFacebookStuff') {
         //FB_share_like();
     }
     if (willGoTo === 'doWordpressStuff') {
         //ShareSomething();
+    }
+    if (willGoTo === 'doLocalhostStuff') {
+        //T_tweet();
+        begin();
+        console.log('will call askHytham');
     }
 }
 
