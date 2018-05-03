@@ -41,8 +41,9 @@ function checkMessageFlow() {
     console.log('willGoTo:' + willGoTo);
     if (willGoTo === 'doTwitterStuff') {
         //T_tweet();
+        //setTimeout(begin, 20000);
         begin();
-        console.log('will call askHytham');
+        //console.log('will call askHytham');
     }
     if (willGoTo === 'doFacebookStuff') {
         //FB_share_like();

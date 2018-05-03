@@ -1,3 +1,42 @@
+new Promise(function (resolve, reject) {
+    //setTimeout(() => resolve(1), 1000);
+    console.log('here');
+    var gotIt = false;
+    var b = document.getElementById('global-new-tweet-button');
+    if (!b) {
+        console.log('not found yet!');
+        gotIt = false;
+        setTimeout(function () {
+            console.log('timing...');
+            b = document.getElementById('global-new-tweet-button');
+            if (b) {
+                resolve(b);
+            }
+        }, 1000);
+    } else {
+        gotIt = true;
+        resolve(b);
+    }
+}).then(function (result) {
+    console.log(result);
+    //return result * 2; // <-- (1)
+});
+
+//const askHytham = function () {
+//    console.log('askHytham ..');
+//    tweetButtonFound
+//        //.then(tweetButtonClicked, (error) => errorHandler(error))
+//        .then(tweetButtonClicked)
+//        .catch(error => errorHandler(error));
+//    //.then(textBoxShown)
+//    //.then(textBoxClicked)
+//    //.then(typeText)
+//    //.then(tweetButtonSend)
+//    //.then(fulfilled => console.log(fulfilled)) // fat arrow
+//    //.catch(error => console.log('xxxxxxxxxxxxx')); // fat arrow
+//    //.catch(error => errorHandler(error));
+//};
+
 //$(document).ready(function () {
 //    //jQuery(document).ready(function () {
 //    console.log('read');
@@ -9,44 +48,43 @@
 //window.addEventListener("load", begin);
 
 
+//$(document).ready(function () {
+//    //T_tweet();
+//    console.log('will call begin in 15s');
+//    //setTimeout(begin, 15000);
+//    //begin();
+//});
 function begin() {
-    //debugger;
-    console.log('begin');
-    var b = document.getElementById('global-new-tweet-button') || false;
-    if (!b) {
-        console.log('not ready!');
-        setTimeout(begin, 10000);
-    } else {
-        console.log('rr');
-        askHytham;
-    }
+    console.log('will begin');
+    //goodToGo();
 }
 
-const askHytham = function () {
-    console.log('askHytham ..');
-    tweetButtonFound
-        .then(tweetButtonClicked, errorHandler)
-        .then(textBoxShown)
-        .then(textBoxClicked)
-        .then(typeText)
-        .then(tweetButtonSend)
-        //.then(fulfilled => console.log(fulfilled)) // fat arrow
-        //.catch(error => console.log('xxxxxxxxxxxxx')); // fat arrow
-        .catch(errorHandler => console.log(errorHandler));
-};
+function errorHandler(error) {
+    console.log('ERROR' + error);
+}
 
-//document.onload = setTimeout(askQ, 30000);
-const tweetButtonFound = new Promise((resolve, reject) => {
-    var b = document.getElementById('global-new-tweet-button');
-    console.log(b);
-    var l = b;
-    if (b) {
-        console.log(b);
-        resolve(l);
+function goodToGo() {
+    var btxyz = document.getElementById('global-new-tweet-button');
+    if (!btxyz) {
+        console.log('not to go yet');
+        setTimeout(goodToGo, 1000);
     } else {
-        reject(null);
+        consoel.log('goot 2 go');
+        askHytham();
     }
-});
+}
+//const tweetButtonFound = new Promise((resolve, reject) => {
+//    var b = document.getElementById('global-new-tweet-button');
+//    console.log(b);
+//    var l = b;
+//    if (b) {
+//        console.log(b);
+//        resolve(l);
+//    } else {
+//        //reject(null);
+//        reject(Error('NOT_FOUND'));
+//    }
+//});
 
 const typeText = function (tweetBox) {
     var typed = false;
@@ -116,163 +154,9 @@ function generateIdea() {
     return idea;
 }
 
-
-/*
-function T_tweet() {
-    if (T_tweetCalled)
-        return;
-    T_tweetCalled++;
-    var typed = false;
-    console.log('T_tweet');
-    //    const promise = getPromise('some url here');
-    //
-    //    promise.then((result) => {
-    //        //we have our result here
-    //        return getPromise(result); //return a promise here again
-    //    }).then((result) => {
-    //        //handle the final result
-    //    });
-    const isLoggedInChecked = isLoggedInCheck();
-
-    isLoggedInChecked.then((result) => {
-        console.log('result' + result);
-        //we have our result here
-        //return getPromise(result); //return a promise here again
-        //    }).then((result) => {
-        //        //handle the final result
-    });
-    //injectStuff();
-    // first check if we are logged in
-    //var pS = wait(10000);
-    //var kS = () => console.log('will wait 10s');
-    //pS.then(kS);
-    console.log(isLoggedIn);
-    if (isLoggedIn) {
-        b = get_Ta();
-        b.click();
-        console.log('button clicked');
-        t = get_Tb();
-        //t.innerText = 'إذا عدتم عدنا';
-        simulate(t, "mousedown");
-        var pT = wait(100) // prom, is a promise
-        var sT = () => typeText(t);
-        //typed = typeText(t);
-        pT.then(sT);
-
-        c = get_Tc();
-        var prom = wait(2000) // prom, is a promise
-        var showdone = () => simulate(c, "click");
-        prom.then(showdone);
-        console.log('tweeted!');
-        resetState();
-        chrome.runtime.sendMessage({
-            data: "doTwitterStuff_DONE"
-        }, function (response) {
-            console.log('TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT');
-            console.log(response);
-        });
-    } else {
-        console.log('NOT LOGGED IN!?');
-        chrome.runtime.sendMessage({
-            data: "alarmTwitterNotLoggedIn"
-        })
-    }
-}
-*/
-/*
-function typeText(t) {
-    var typed = false;
-    var txt = generateIdea();
-    const promise = new Promise((resolve, reject) => {
-        $(t).typetype(txt, {
-            e: 0.04, // error rate. (use e=0 for perfect typing)
-            t: 100, // interval between keypresses
-            keypress: function () {
-                // called after every keypress (this may be an erroneous keypress!)
-            },
-            callback: function () {
-                // the `this` keyword is bound to the particular element.
-                typed = true;
-                console.log('TYPETYPE!');
-            }
-        });
-        if (typed) {
-            resolve(typed);
-        } else {
-            reject(typed = false);
-        }
-    });
-    promise.then((typed) => {
-        console.log('PROMISE SUCCESSED:' + typed);
-        //return l;
-    }, (error) => {
-        console.log('PROMISE FAILED:' + typed);
-        //return 0;
-    });
-    return typed;
-}
-*/
-function isLoggedInCheck() {
-    var l = null;
-    const promise = new Promise((resolve, reject) => {
-        var x = document.getElementById('global-new-tweet-button');
-        if (x) {
-            console.log(x);
-            l = x;
-            isLoggedIn = true;
-            resolve(x);
-        } else {
-            x = null;
-            console.log('not found');
-            isLoggedIn = false;
-            reject(x);
-        }
-    });
-    //    promise.then((l) => {
-    //        console.log('PROMISE SUCCESSED:' + l);
-    //        isLoggedIn = true;
-    //        //return l;
-    //    }, (error) => {
-    //        console.log('PROMISE FAILED:' + l);
-    //        isLoggedIn = false;
-    //    });
-    //return l;
-}
-
 function T_follow() {
     //    document.getElementsByClassName('user-actions-follow-button')[0].click();
     document.getElementsByClassName('user-actions-follow-button js-follow-btn follow-button')[0].click();
 }
 
 function T_moment() {}
-
-function get_Ta() {
-    var b = document.getElementById('global-new-tweet-button') || false;
-    if (!b) {
-        setTimeout(get_Ta, 2000);
-    } else {
-        console.log('I got a:' + b);
-        return b;
-    }
-}
-
-function get_Tb() {
-    var b = document.getElementsByClassName('tweet-box rich-editor is-showPlaceholder')[1];
-    if (!b) {
-        setTimeout(get_Tb, 2000);
-    } else {
-        console.log('I got b:' + b);
-        return b;
-    }
-}
-
-function get_Tc() {
-    var c = document.getElementsByClassName('SendTweetsButton')[0];
-    if (!c) {
-        setTimeout(get_Tc, 2000);
-    } else {
-        console.log('I got c:' + c);
-        console.log(c);
-        return c;
-    }
-}

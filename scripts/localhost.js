@@ -15,8 +15,13 @@ const askQ = function () {
 $(document).ready(function () {
     //T_tweet();
     console.log('will call askMom in 5s');
-    setTimeout(askQ, 5000);
+    setTimeout(begin, 5000);
 });
+
+function begin() {
+    console.log('will begin');
+    askQ();
+}
 
 const typeText = function (tweetBox) {
     var typed = false;
@@ -41,6 +46,7 @@ const typeText = function (tweetBox) {
 };
 
 const tweetButtonFound = new Promise((resolve, reject) => {
+    console.log('tweetButtonFound...');
     var b = document.getElementById('comment');
     var l = b;
     if (b) {
