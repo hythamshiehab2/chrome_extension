@@ -9,6 +9,11 @@
         "default_popup": "popup.html",
         "default_title": "المتشعّب"
     },
+    "options_ui": {
+        "page": "popup.html",
+        /*Use Chrome stylesheet*/
+        "chrome_style": true
+    },
     "icons": {
         "48": "icons/icon-48.png",
         "128": "icons/icon-128.png"
