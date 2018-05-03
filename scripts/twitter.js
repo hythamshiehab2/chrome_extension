@@ -1,6 +1,19 @@
 isMomHappy = false;
 var wait = ms => new Promise((r, j) => setTimeout(r, ms));
 
+function getData() {
+    return new Promise((resolve, reject) => {
+        var b = document.getElementById('x');
+        if (b) {
+            consoel.log('i got it');
+            resolve(b);
+        } else {
+            console.log('missed');
+            reject(b);
+        }
+    });
+}
+
 function test() {
     var b = null;
     //var willIGetNewPhone = new Promise(
@@ -44,11 +57,12 @@ function test() {
 
 $(document).ready(function () {
     //setTimeout(begin, 30000);
-    begin();
+    //begin();
+    //getData();
 });
 
 function begin() {
-    console.log('will wait 10s');
-    wait(30000);
-    test();
+    console.log('at begin');
+    //wait(30000);
+    //test();
 }
