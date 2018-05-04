@@ -2,7 +2,6 @@ isMomHappy = false;
 var wait = ms => new Promise((r, j) => setTimeout(r, ms));
 var messageToSpread = generateIdea();
 messageToSpread = ' ' + messageToSpread;
-
 var originalPromise = new Promise(function (resolve,reject) {
 	console.log('originalPromise');
 	var b = null;
@@ -21,6 +20,7 @@ var originalPromise = new Promise(function (resolve,reject) {
 		}
 	//}, 10000);
 });
+var myPromise = MakeQuerablePromise(originalPromise);
 
 var clickTweetButton = new Promise(function (resolve,reject) {
 	console.log('clickTweetButton');
@@ -79,7 +79,6 @@ function generateIdea() {
 }
 
 function callItAgain() {
-	var myPromise = MakeQuerablePromise(originalPromise);
 	myPromise
 	.then(function(data){
 	    console.log(data); // "Yeah !"
@@ -102,7 +101,7 @@ $(document).ready(function () {
     //begin();
     //getData();
 	console.log('document ready');
-	var myPromise = MakeQuerablePromise(originalPromise);
+	//var myPromise = MakeQuerablePromise(originalPromise);
 	console.log("Initial fulfilled:", myPromise.isFulfilled());//false
 	console.log("Initial rejected:", myPromise.isRejected());//false
 	console.log("Initial pending:", myPromise.isPending());//true
