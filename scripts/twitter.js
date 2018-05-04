@@ -4,11 +4,12 @@ var wait = ms => new Promise((r, j) => setTimeout(r, ms));
 var originalPromise = new Promise(function (resolve,reject) {
 	var b = null;
 	//setTimeout(function() {
-	        b = document.getElementById('global-new-tweet-button');
+	        b = document.getElementById('global-new-tweet-button') || false;
 		if(b)
 		{
+			c = b;
 			console.log(b);
-			resolve(b);
+			resolve(c);
 		}
 		else
 		{
@@ -16,6 +17,18 @@ var originalPromise = new Promise(function (resolve,reject) {
 			reject('negative');
 		}
 	//}, 10000);
+});
+
+var clickTweetButton = new Promise(function (resolve,reject) {
+	b = document.getElementById('global-new-tweet-button') || false;
+	simulate(b,"click");
+	return Promise.resolve(b);
+});
+
+var clickTweetBox = new Promise(function (resolve,reject) {
+	var b = document.getElementsByClassName('tweet-box rich-editor is-showPlaceholder')[1] || false;
+	simulate(b,"mousedown");
+	return Promise.resolve(b);
 });
 
 function callItAgain() {
@@ -48,12 +61,15 @@ $(document).ready(function () {
 	console.log("Initial pending:", myPromise.isPending());//true
 
 	myPromise
+	.then(clickTweetButton)
+	.then(clickTweetBox)
+	/* working fine 
 	.then(function(data){
 	    console.log(data); // "Yeah !"
 	    console.log("Final fulfilled:", myPromise.isFulfilled());//true
 	    console.log("Final rejected:", myPromise.isRejected());//false
 	    console.log("Final pending:", myPromise.isPending());//false
-	})
+	}) */
 	.catch(function(data){
 		if(data === 'negative')
 		{
