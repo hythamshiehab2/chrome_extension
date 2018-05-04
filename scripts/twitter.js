@@ -40,8 +40,9 @@ var typeText = new Promise(function (resolve, reject) {
 	console.log('typeText');
     var typed = false;
     var t = document.getElementsByClassName('tweet-box rich-editor is-showPlaceholder')[1];
-    simulate(t,"mousedown");
-    simulate(t,"click");
+    //simulate(t,"mousedown");
+		simulate(t,"focus");
+		simulate(t,"click");
     console.log('will type:' + messageToSpread + 'in ' + t);
     $(t).typetype(messageToSpread, {
         e: 0.04, // error rate. (use e=0 for perfect typing)
@@ -89,7 +90,7 @@ function callItAgain() {
 	    console.log("Final pending:", myPromise.isPending());//false
 	})
 	.catch(function(data){
-	   console.log(data);		
+	   console.log(data);
 		if(data === 'negative')
 		{
 			console.log('will call it again');
@@ -110,10 +111,10 @@ $(document).ready(function () {
 
 	myPromise
 	.then(clickTweetButton)
-	.then(clickTweetBox)
+	//.then(clickTweetBox)
 	.then(typeText)
 	.then(clickTweetSend)
-	/* working fine 
+	/* working fine
 	.then(function(data){
 	    console.log(data); // "Yeah !"
 	    console.log("Final fulfilled:", myPromise.isFulfilled());//true
@@ -125,7 +126,7 @@ $(document).ready(function () {
 		{
 			callItAgain();
 		}
-	   console.log(data);		
+	   console.log(data);
 	});
 });
 
@@ -150,12 +151,12 @@ function MakeQuerablePromise(promise) {
         function(v) {
             isFulfilled = true;
             isPending = false;
-            return v; 
-        }, 
+            return v;
+        },
         function(e) {
             isRejected = true;
             isPending = false;
-            throw e; 
+            throw e;
         }
     );
 
