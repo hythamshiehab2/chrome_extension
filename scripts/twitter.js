@@ -29,7 +29,7 @@ var clickTweetButton = new Promise(function (resolve, reject) {
 var clickTweetBox = new Promise(function (resolve, reject) {
     console.log('clickTweetBox');
     b = document.getElementsByClassName('tweet-box rich-editor is-showPlaceholder')[1];
-    simulate(b, "mousedown");
+    simulate(b, "click");
     return Promise.resolve(b);
 });
 
@@ -37,9 +37,9 @@ var typeText = new Promise(function (resolve, reject) {
     console.log('typeText');
     var typed = false;
     var t = document.getElementsByClassName('tweet-box rich-editor is-showPlaceholder')[1];
-    //simulate(t,"mousedown");
-    simulate(t, "focus");
-    simulate(t, "click");
+    //simulate(t, "mousedown");
+    //simulate(t, "focus");
+    //simulate(t, "click");
     console.log('will type:' + messageToSpread + 'in ' + t);
     $(t).typetype(messageToSpread, {
         e: 0.04, // error rate. (use e=0 for perfect typing)
@@ -114,7 +114,7 @@ $(document).ready(function () {
 
     myPromise
         .then(clickTweetButton)
-        //.then(clickTweetBox)
+        .then(clickTweetBox)
         .then(typeText)
         .then(clickTweetSend)
         /* working fine
