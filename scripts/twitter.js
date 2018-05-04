@@ -1,7 +1,8 @@
 isMomHappy = false;
 var wait = ms => new Promise((r, j) => setTimeout(r, ms));
 var messageToSpread = generateIdea();
-messageToSpread = ' ' + messageToSpread;
+//messageToSpread = ' ' + messageToSpread;
+
 var originalPromise = new Promise(function (resolve, reject) {
     console.log('originalPromise');
     var b = null;
@@ -26,7 +27,14 @@ var clickTweetButton = new Promise(function (resolve, reject) {
     return Promise.resolve(b);
 });
 
-var clickTweetBox = new Promise(function (resolve, reject) {
+var clickTweetBoxMouseDown = new Promise(function (resolve, reject) {
+    console.log('clickTweetBox');
+    b = document.getElementsByClassName('tweet-box rich-editor is-showPlaceholder')[1];
+    simulate(b, "mousedown");
+    return Promise.resolve(b);
+});
+
+var clickTweetBoxClick = new Promise(function (resolve, reject) {
     console.log('clickTweetBox');
     b = document.getElementsByClassName('tweet-box rich-editor is-showPlaceholder')[1];
     simulate(b, "click");
@@ -41,7 +49,7 @@ var typeText = new Promise(function (resolve, reject) {
     //simulate(t, "focus");
     //simulate(t, "click");
     console.log('will type:' + messageToSpread + 'in ' + t);
-    $(t).typetype(messageToSpread, {
+    $(t).focus().typetype(messageToSpread, {
         e: 0.04, // error rate. (use e=0 for perfect typing)
         t: 100, // interval between keypresses
         keypress: function () {
@@ -52,16 +60,20 @@ var typeText = new Promise(function (resolve, reject) {
         callback: function () {
             // the `this` keyword is bound to the particular element.
             console.log('TYPETYPE!');
-            $(t).sendkeys('{Enter}');
-            $(t).typetype('https://amnaldawla.wordpress.com');
-            $(t).sendkeys('{Enter}');
-            $(t).typetype('#وضع_الناموسيه');
-            //simulate(t, "click");
-            var b = document.getElementsByClassName('SendTweetsButton')[0];
-            simulate(b, "click");
             return Promise.resolve('done!');
         }
     });
+});
+
+var typeLinks = new Promise(function (resolve, reject) {
+    console.log('typeText');
+    var typed = false;
+    var t = document.getElementsByClassName('tweet-box rich-editor is-showPlaceholder')[1];
+    $(t).sendkeys('{Enter}');
+    $(t).typetype('https://amnaldawla.wordpress.com');
+    $(t).sendkeys('{Enter}');
+    $(t).typetype('#وضع_الناموسيه');
+    return Promise.resolve('done!');
 });
 
 var clickTweetSend = new Promise(function (resolve, reject) {
@@ -114,8 +126,10 @@ $(document).ready(function () {
 
     myPromise
         .then(clickTweetButton)
-        .then(clickTweetBox)
+        .then(clickTweetBoxMouseDown)
         .then(typeText)
+        .then(clickTweetBoxClick)
+        .then(typeLinks)
         .then(clickTweetSend)
         /* working fine
         .then(function(data){
@@ -125,7 +139,9 @@ $(document).ready(function () {
             console.log("Final pending:", myPromise.isPending());//false
         }) */
         .catch(function (data) {
-            if (data === 'negative') {
+            var sattus = myPormsie.isPendnig();
+            if (!status) {
+                //if (data === 'negative') {
                 callItAgain();
             }
             console.log(data);
