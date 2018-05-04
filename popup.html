@@ -12,9 +12,20 @@
 
 <body>
     <style>
+        #byMe {
+            font-size: 120%;
+            font-weight: bold;
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            color: white;
+            padding-right:10px;
+            padding-bottom:10px;
+        }
         .container {
-            max-height: 600px;
-            min-height: 300px;
+            max-height: 700px;
+            min-height: 350px;
             width: 450px;
             border: 2px solid rgba(0, 0, 0, 0.3);
             border-radius: 2px;
@@ -35,7 +46,7 @@
         }
 
         .patient-list {
-            max-height: 250px;
+            max-height: 350px;
             overflow-y: scroll;
             overflow-x: hidden;
             max-width: 100%;
@@ -44,9 +55,10 @@
     </style>
     <div class="container">
         <div class="page-header">
-            <h3>المتشعّب</h3>
+            <h3>الناموسيه</h3>
             <h6>إضافة لنشر التّعليقات آليّا</h6>
             <p id="status"></p>
+            <h4><a href="options.html">لوحة التحكم</a></h4>
         </div>
         <!--
         <div class="form-group">
@@ -60,6 +72,7 @@
             <hr>
             <input id="toggleStartNow" type="checkbox" data-toggle="toggle" data-on="فعّل" data-off="عطّل" data-onstyle="success" data-offstyle="danger">
         </div>
+    <div id="byMe"><a href="https://twitter.com/hythamshiehab2">هيثم شهاب</a></div>
     </div>
 </body>
 </html>
