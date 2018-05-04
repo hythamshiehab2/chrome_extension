@@ -1,6 +1,7 @@
+"use strict";
 var wait = ms => new Promise((r, j) => setTimeout(r, ms));
 var messageToSpread = generateIdea();
-//messageToSpread = ' ' + messageToSpread;
+messageToSpread = ' ' + messageToSpread;
 var myCachedObject = null;
 
 var originalPromise = new Promise(function (resolve, reject) {
@@ -25,26 +26,26 @@ var myPromise = MakeQuerablePromise(originalPromise);
 var clickTweetButton = new Promise(function (resolve, reject) {
     console.log('clickTweetButton');
     //b = document.getElementById('global-new-tweet-button') || false;
-    b = myCachedObject;
+    var b = myCachedObject;
     simulate(b,"click");
     return Promise.resolve(b);
 });
 
 var clickTweetBoxMouseDown = new Promise(function (resolve, reject) {
     console.log('clickTweetBox');
-    b = document.getElementsByClassName('tweet-box rich-editor is-showPlaceholder')[1] || false;
+    var b = document.getElementsByClassName('tweet-box rich-editor is-showPlaceholder')[1] || false;
     if(b)
     {   
         console.log('tweet box found'); 
         myCachedObject = b;
         simulate(b, "mousedown");
+        return Promise.resolve(b);
     }
-    return Promise.resolve(b);
 });
 
 var clickTweetBoxClick = new Promise(function (resolve, reject) {
     console.log('clickTweetBox');
-    b = myCachedObject;
+    var b = myCachedObject;
     simulate(b, "click");
     return Promise.resolve(b);
 });
@@ -69,6 +70,13 @@ var typeText = new Promise(function (resolve, reject) {
         callback: function () {
             // the `this` keyword is bound to the particular element.
             console.log('TYPETYPE!');
+            $(t).sendkeys('x');
+            $(t).sendkeys('{Enter}');
+            var c = document.getElementsByClassName('SendTweetsButton')[0];
+            console.log(c);
+            setTimeout(function() {
+                simulate(c, "click");
+            }, 2000);
             return Promise.resolve('done!');
         }
     });
@@ -110,6 +118,7 @@ function generateIdea() {
 }
 
 function callItAgain() {
+    console.log('callItAgain');
     myPromise
         .then(function (data) {
             console.log(data); // "Yeah !"
@@ -140,20 +149,23 @@ $(document).ready(function () {
         .then(clickTweetButton)
         .then(clickTweetBoxMouseDown)
         .then(typeText)
-        .then(clickTweetBoxClick)
-        .then(typeLinks)
-        .then(clickTweetSend)
-        /* working fine
+        //.then(clickTweetBoxClick)
+        //.then(typeLinks)
+        //.then(clickTweetSend)
+        /*
         .then(function(data){
             console.log(data); // "Yeah !"
             console.log("Final fulfilled:", myPromise.isFulfilled());//true
             console.log("Final rejected:", myPromise.isRejected());//false
             console.log("Final pending:", myPromise.isPending());//false
-        }) */
+        })
+        */
         .catch(function (data) {
-            var sattus = myPormsie.isPendnig();
+            var status = myPromise.isPendnig();
             if (!status) {
-                //if (data === 'negative') {
+                //callItAgain();
+            }
+            if (data === 'negative') {
                 callItAgain();
             }
             console.log(data);
