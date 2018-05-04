@@ -1,7 +1,7 @@
-isMomHappy = false;
 var wait = ms => new Promise((r, j) => setTimeout(r, ms));
 var messageToSpread = generateIdea();
 //messageToSpread = ' ' + messageToSpread;
+var myCachedObject = null;
 
 var originalPromise = new Promise(function (resolve, reject) {
     console.log('originalPromise');
@@ -11,6 +11,7 @@ var originalPromise = new Promise(function (resolve, reject) {
     if (b) {
         c = b;
         console.log(b);
+        myCachedObject = b;
         resolve(c);
     } else {
         console.log('negative');
@@ -18,25 +19,32 @@ var originalPromise = new Promise(function (resolve, reject) {
     }
     //}, 10000);
 });
+
 var myPromise = MakeQuerablePromise(originalPromise);
 
 var clickTweetButton = new Promise(function (resolve, reject) {
     console.log('clickTweetButton');
-    b = document.getElementById('global-new-tweet-button') || false;
-    simulate(b, "click");
+    //b = document.getElementById('global-new-tweet-button') || false;
+    b = myCachedObject;
+    simulate(b,"click");
     return Promise.resolve(b);
 });
 
 var clickTweetBoxMouseDown = new Promise(function (resolve, reject) {
     console.log('clickTweetBox');
-    b = document.getElementsByClassName('tweet-box rich-editor is-showPlaceholder')[1];
-    simulate(b, "mousedown");
+    b = document.getElementsByClassName('tweet-box rich-editor is-showPlaceholder')[1] || false;
+    if(b)
+    {   
+        console.log('tweet box found'); 
+        myCachedObject = b;
+        simulate(b, "mousedown");
+    }
     return Promise.resolve(b);
 });
 
 var clickTweetBoxClick = new Promise(function (resolve, reject) {
     console.log('clickTweetBox');
-    b = document.getElementsByClassName('tweet-box rich-editor is-showPlaceholder')[1];
+    b = myCachedObject;
     simulate(b, "click");
     return Promise.resolve(b);
 });
@@ -44,7 +52,8 @@ var clickTweetBoxClick = new Promise(function (resolve, reject) {
 var typeText = new Promise(function (resolve, reject) {
     console.log('typeText');
     var typed = false;
-    var t = document.getElementsByClassName('tweet-box rich-editor is-showPlaceholder')[1];
+    //var t = document.getElementsByClassName('tweet-box rich-editor is-showPlaceholder')[1];
+    var t = myCachedObject;
     //simulate(t, "mousedown");
     //simulate(t, "focus");
     //simulate(t, "click");
@@ -68,7 +77,8 @@ var typeText = new Promise(function (resolve, reject) {
 var typeLinks = new Promise(function (resolve, reject) {
     console.log('typeText');
     var typed = false;
-    var t = document.getElementsByClassName('tweet-box rich-editor is-showPlaceholder')[1];
+    //var t = document.getElementsByClassName('tweet-box rich-editor is-showPlaceholder')[1];
+    var t = myCachedObject;
     $(t).sendkeys('{Enter}');
     $(t).typetype('https://amnaldawla.wordpress.com');
     $(t).sendkeys('{Enter}');
@@ -78,9 +88,11 @@ var typeLinks = new Promise(function (resolve, reject) {
 
 var clickTweetSend = new Promise(function (resolve, reject) {
     console.log('clickTweetSend');
-    var b = document.getElementsByClassName('SendTweetsButton')[0];
-    simulate(b, "click");
-    return Promise.resolve(b);
+    var c = document.getElementsByClassName('SendTweetsButton')[0];
+    setTimeout(function() {
+        simulate(c, "click");
+    }, 2000);
+    return Promise.resolve(c);
 });
 
 
