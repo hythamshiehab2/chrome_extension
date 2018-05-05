@@ -59,6 +59,8 @@ $(document).ready(function () {
     //setTimeout(begin, 30000);
     //begin();
     //getData();
+    console.log('document ready');
+    getData();
 });
 
 function begin() {
