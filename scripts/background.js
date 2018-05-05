@@ -271,7 +271,7 @@ function Twitter() {
                     }
 
                     if (tabId === tab.id && changeInfo.status == 'complete' && !twitter) {
-                        twitter++;
+                        //twitter++;
                         // Now the tab is ready!
                         // var updateProperties = {
                         //   favIconUrl: "/icons/on5.png",

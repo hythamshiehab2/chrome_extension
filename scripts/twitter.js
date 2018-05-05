@@ -3,8 +3,10 @@ var wait = ms => new Promise((r, j) => setTimeout(r, ms));
 var messageToSpread = generateIdea();
 messageToSpread = ' ' + messageToSpread;
 var myCachedObject = null;
+var promiseCalled = 0;
 
 var originalPromise = new Promise(function (resolve, reject) {
+    promiseCalled++;
     console.log('originalPromise');
     var b = null;
     //setTimeout(function() {
@@ -23,8 +25,15 @@ var originalPromise = new Promise(function (resolve, reject) {
 
 var myPromise = MakeQuerablePromise(originalPromise);
 
+var dummy = new Promise(function (resolve, reject) {
+    console.log('dummy step');
+    console.log('promiseCalled:' + promiseCalled);
+    return Promise.resolve('dummy step called');
+});
+
 var clickTweetButton = new Promise(function (resolve, reject) {
     console.log('clickTweetButton');
+    console.log('promiseCalled:' + promiseCalled);    
     //b = document.getElementById('global-new-tweet-button') || false;
     var b = myCachedObject;
     b = simulate(b,"click");
@@ -33,6 +42,7 @@ var clickTweetButton = new Promise(function (resolve, reject) {
 
 var clickTweetBoxMouseDown = new Promise(function (resolve, reject) {
     console.log('clickTweetBox');
+    console.log('promiseCalled:' + promiseCalled);    
     var b = document.getElementsByClassName('tweet-box rich-editor is-showPlaceholder')[1] || false;
     if(b)
     {   
@@ -51,6 +61,7 @@ var clickTweetBoxMouseDown = new Promise(function (resolve, reject) {
 
 var clickTweetBoxClick = new Promise(function (resolve, reject) {
     console.log('clickTweetBox');
+    console.log('promiseCalled:' + promiseCalled);    
     var b = document.getElementsByClassName('tweet-box rich-editor is-showPlaceholder')[1] || false;    
     if(b)
     {
@@ -63,6 +74,7 @@ var clickTweetBoxClick = new Promise(function (resolve, reject) {
 
 var typeText = new Promise(function (resolve, reject) {
     console.log('typeText');
+    console.log('promiseCalled:' + promiseCalled);    
     var typed = false;
     //var t = document.getElementsByClassName('tweet-box rich-editor is-showPlaceholder')[1];
     var t = myCachedObject;
@@ -94,6 +106,7 @@ var typeText = new Promise(function (resolve, reject) {
 
 var typeLinks = new Promise(function (resolve, reject) {
     console.log('typeText');
+    console.log('promiseCalled:' + promiseCalled);    
     var typed = false;
     //var t = document.getElementsByClassName('tweet-box rich-editor is-showPlaceholder')[1];
     var t = myCachedObject;
@@ -106,6 +119,7 @@ var typeLinks = new Promise(function (resolve, reject) {
 
 var clickTweetSend = new Promise(function (resolve, reject) {
     console.log('clickTweetSend');
+    console.log('promiseCalled:' + promiseCalled);    
     var c = document.getElementsByClassName('SendTweetsButton')[0];
     setTimeout(function() {
         simulate(c, "click");
@@ -156,9 +170,10 @@ $(document).ready(function () {
     console.log("Initial pending:", myPromise.isPending()); //true
 
     myPromise
-        .then(clickTweetButton)
-        .then(clickTweetBoxMouseDown)
-        .then(typeText)
+        .then(dummy)
+        //.then(clickTweetButton)
+        //.then(clickTweetBoxMouseDown)
+        //.then(typeText)
         //.then(clickTweetBoxClick)
         //.then(typeLinks)
         //.then(clickTweetSend)
@@ -177,10 +192,10 @@ $(document).ready(function () {
                 //callItAgain();
             }
             */
-            if (data === 'negative') {
-                callItAgain();
-            }
             console.log(data);
+            if (data === 'negative') {
+                //callItAgain();
+            }
         });
 });
 
