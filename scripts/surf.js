@@ -65,6 +65,12 @@ function register() {
             });
             $('#console-event').html('will r&r!');
             $('#theContract').css('display', 'block');
+            chrome.runtime.sendMessage({
+                data: "startEngine"
+            }, function (response) {
+                console.log("from background:" + response);
+                console.log(response);
+            });
         } else {
             localStorage.setItem('started', 'false');
             localStorage.setItem('rocknroll', 'false');
