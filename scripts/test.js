@@ -4,7 +4,7 @@ var messageToSpread = generateIdea();
 messageToSpread = ' ' + messageToSpread;
 var myCachedObject = null;
 var promiseCalled = 0;
-var tweetBoxVisible = false;
+var tries = 60; //60s should be enough to the tweet box dialog to show!
 
 function getData() {
     return new Promise((resolve, reject) => {
@@ -35,32 +35,28 @@ function clickTweetButton() {
     });
 }
 
-
-function tweetBoxVisible() {
-    return new Promise(function cb(resolve, reject) {
-        console.log('tweetBoxVisible');
-        //console.log(tries + ' remaining');
-        var b = document.getElementsByClassName('ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-dialog-buttons ui-draggable ui-resizable')[0];      
-        if ($(b).is(':visible'))
-        {   
-            myCachedObject = b;
-            console.log('TX_VISIBLE');
-            //resolve('TX_VISIBLE');
-            resolve('TX_VISIBLE');
-        }
-        else
-        {
-            console.log('TX_HIDDEN');
-            //reject('TX_HIDDEN');
-            setTimeout(function() {
-                cb(resolve, reject);
-            }, 500);
-            //return Promise.reject('TX_HIDDEN');
-        }
-    });
+function tweetBoxVisible() {    
+  return new Promise(function cb(resolve, reject) {
+        var c = document.getElementsByClassName('ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-dialog-buttons ui-draggable ui-resizable')[0];      
+    console.log(tries + ' remaining');
+    if ( (--tries > 0) && (!$(c).is(':visible')) ) {
+      setTimeout(function() {
+        cb(resolve, reject);
+      }, 5000);
+    } else {
+      if (!$(c).is(':visible')) {
+        console.log('hidden');
+        reject('TX_HIDDEN');
+      } else {
+        console.log('visible');      
+        resolve('TX_VISIBLE');
+      }
+    }
+  });
 }
 
 function clickTweetBox() {
+    console.log('clickTweetBox');
     return new Promise((resolve, reject) => {
         var b = document.getElementById('comment');
         myCachedObject = simulate(b, "mousedown");
@@ -80,22 +76,32 @@ function typeTweetBox() {
             keypress: function () {
                 // called after every keypress (this may be an erroneous keypress!)
                 console.log('typeing...')
-                //return Promise.pending();
             },
             callback: function () {
                 // the `this` keyword is bound to the particular element.
-                console.log('TYPETYPE!');
-                $(t).sendkeys('{Enter}');
-                /*
-                var c = document.getElementsByClassName('SendTweetsButton')[0];
-                console.log(c);
-                setTimeout(function() {
-                    simulate(c, "click");
-                }, 2000);
-                */
                 resolve('TX_TYPED');
             }
         });
+    });
+}
+
+function addLinks() {
+    console.log('addLinks');
+    return new Promise((resolve, reject) => {
+        var b = document.getElementById('comment');
+        $(b).focus().sendkeys('{Enter}');
+        //$(b).sendkeys('{Enter}');
+        $(b).focus().typetype('https://amnaldawla.wordpress.com');
+        resolve('TX_LINKS');
+    });
+}
+
+function clickTweetSend() {
+    console.log('clickTweetSend');
+    return new Promise((resolve, reject) => {
+        var c = document.getElementsByClassName('ui-button ui-corner-all ui-widget')[2];
+        myCachedObject = simulate(c, "click");
+        resolve('TX_SEND');
     });
 }
 
@@ -116,245 +122,17 @@ $(document).ready(function () {
     getData()
     .then(clickTweetButton)
     .then(tweetBoxVisible)
-    /*
-    .then(function(data) {
-        console.log(data);
-        setTimeout(tweetBoxVisible,1000);
-    })
-    */    
-    //.then(typeTweetBox)
+    .then(clickTweetBox)
+    .then(typeTweetBox)
+    .then(addLinks)
+    .then(clickTweetSend)
     .catch(function (data) {
         console.log('CATCH:' + data);
-        /*
-        if(data === 'TX_HIDDEN')
-        {
-            tweetBoxVisibile()
-            .then(function() {
-                var p = null;
-                setTimeout(function () { 
-                    p = tweetBoxVisible();
-                    console.log(p); 
-                },1000);
-            })
-        }
-        */
     });
-/*
-var originalPromise = new Promise(function (resolve, reject) {
-    promiseCalled++;
-    console.log('originalPromise');
-    var b = null;
-    //setTimeout(function() {
-    b = document.getElementById('create-user') || false;
-    if (b) {
-        var c = b;
-        console.log(b);
-        myCachedObject = b;
-        resolve(c);
-    } else {
-        console.log('negative');
-        reject('TWEET_BUTTON');
-    }
-    //}, 10000);
-});
-
-var myPromise = MakeQuerablePromise(originalPromise);
-
-var dummy = new Promise(function (resolve, reject) {
-    console.log('dummy step');
-    console.log('promiseCalled:' + promiseCalled);
-    return Promise.resolve('dummy step called');
-});
-
-var clickTweetButton = new Promise(function (resolve, reject) {
-    console.log('clickTweetButton');
-    console.log('promiseCalled:' + promiseCalled);    
-    //b = document.getElementById('global-new-tweet-button') || false;
-    var b = myCachedObject;
-    b = simulate(b,"click");
-    return Promise.resolve(b);
-});
-
-var clickTweetBoxMouseDown = new Promise(function (resolve, reject) {
-    console.log('clickTweetBox');
-    console.log('promiseCalled:' + promiseCalled);  
-    var b = document.getElementsByClassName('ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-dialog-buttons ui-draggable ui-resizable')[0];      
-    setTimeout(function() {
-        if ($(b).is(':visible'))
-        {   
-            console.log('tweet box found'); 
-            tweetBoxVisible = true;
-            myCachedObject = b;
-            console.log(b);
-            simulate(b, "mousedown");
-            return Promise.resolve(b);
-        }
-        else
-        {
-            console.log('NOT FOUND YET!');
-            tweetBoxVisible = false;
-            return Promise.reject('NOT_VISIBLE');
-        }
-        else
-        {
-            console.log('TWEET_BOX');
-            return Promise.reject('TWEET_BOX');
-        }
-    }, 1000);
-});
-clickTweetBoxMouseDown
-.then(dummy)
-.catch(function (data) {
-    console.log('CATCHED_');
-});
-var clickTweetBoxClick = new Promise(function (resolve, reject) {
-    if(!tweetBoxVisible)
-        return;
-    console.log('clickTweetBox');
-    console.log('promiseCalled:' + promiseCalled);    
-    var b = document.getElementById('comment');
-    if(b)
-    {
-        console.log(b);
-        myCachedObject = b;
-        simulate(b, "click");
-        return Promise.resolve(b);
-    }
-});
-
-var typeText = new Promise(function (resolve, reject) {
-    if(!tweetBoxVisible)
-        return;
-    console.log('typeText');
-    console.log('promiseCalled:' + promiseCalled);    
-    var typed = false;
-    var t = myCachedObject;
-    console.log('will type:' + messageToSpread + 'in ' + t);
-    $(t).focus().typetype(messageToSpread, {
-        e: 0.04, // error rate. (use e=0 for perfect typing)
-        t: 100, // interval between keypresses
-        keypress: function () {
-            // called after every keypress (this may be an erroneous keypress!)
-            console.log('typeing...')
-            //return Promise.pending();
-        },
-        callback: function () {
-            // the `this` keyword is bound to the particular element.
-            console.log('TYPETYPE!');
-            $(t).sendkeys('{Enter}');
-            /*
-            var c = document.getElementsByClassName('SendTweetsButton')[0];
-            console.log(c);
-            setTimeout(function() {
-                simulate(c, "click");
-            }, 2000);
-            return Promise.resolve('done!');
-        }
-    });
-});
-
-var typeLinks = new Promise(function (resolve, reject) {
-    if(!tweetBoxVisible)
-        return;
-    console.log('typeText');
-    console.log('promiseCalled:' + promiseCalled);    
-    var typed = false;
-    //var t = document.getElementsByClassName('tweet-box rich-editor is-showPlaceholder')[1];
-    var t = myCachedObject;
-    $(t).sendkeys('{Enter}');
-    $(t).typetype('https://amnaldawla.wordpress.com');
-    $(t).sendkeys('{Enter}');
-    $(t).typetype('#وضع_الناموسيه');
-    return Promise.resolve('done!');
-});
-
-var clickTweetSend = new Promise(function (resolve, reject) {
-    if(!tweetBoxVisible)
-        return;
-    console.log('clickTweetSend');
-    console.log('promiseCalled:' + promiseCalled);    
-    var c = document.getElementsByClassName('ui-button ui-corner-all ui-widget')[2];
-    setTimeout(function() {
-        simulate(c, "click");
-    }, 2000);
-    return Promise.resolve(c);
-});
-
-    //setTimeout(begin, 30000);
-    //begin();
-    //getData();
-    console.log('document ready');
-    //var myPromise = MakeQuerablePromise(originalPromise);
-    console.log("Initial fulfilled:", myPromise.isFulfilled()); //false
-    console.log("Initial rejected:", myPromise.isRejected()); //false
-    console.log("Initial pending:", myPromise.isPending()); //true
-    myPromise
-        .then(dummy)
-        //.then(clickTweetButton)
-        //.then(clickTweetBoxMouseDown)
-        //.then(typeText)
-        //.then(clickTweetBoxClick)
-        //.then(typeLinks)
-        //.then(clickTweetSend)
-        .then(function(data){
-            console.log(data); // "Yeah !"
-            console.log("Final fulfilled:", myPromise.isFulfilled());//true
-            console.log("Final rejected:", myPromise.isRejected());//false
-            console.log("Final pending:", myPromise.isPending());//false
-        })
-        .catch(function (data) {
-            var status = myPromise.isPendnig();
-            if (!status) {
-                //callItAgain();
-            }
-            console.log(data);
-            if (data === 'negative') {
-                //callItAgain();
-            }
-        });
-    */
 });
 
 function begin() {
     console.log('at begin');
-    //wait(30000);
-    //test();
-    //var x = getData();
-}
-
-function MakeQuerablePromise(promise) {
-    // Don't modify any promise that has been already modified.
-    if (promise.isResolved) return promise;
-
-    // Set initial state
-    var isPending = true;
-    var isRejected = false;
-    var isFulfilled = false;
-
-    // Observe the promise, saving the fulfillment in a closure scope.
-    var result = promise.then(
-        function (v) {
-            isFulfilled = true;
-            isPending = false;
-            return v;
-        },
-        function (e) {
-            isRejected = true;
-            isPending = false;
-            throw e;
-        }
-    );
-
-    result.isFulfilled = function () {
-        return isFulfilled;
-    };
-    result.isPending = function () {
-        return isPending;
-    };
-    result.isRejected = function () {
-        return isRejected;
-    };
-    return result;
 }
 
 function simulate(element, eventName) {
