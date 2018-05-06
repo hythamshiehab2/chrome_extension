@@ -4,8 +4,36 @@ var messageToSpread = generateIdea();
 messageToSpread = ' ' + messageToSpread;
 var myCachedObject = null;
 var promiseCalled = 0;
+var tweetBoxVisible = false;
 
+function getData() {
+    return new Promise((resolve, reject) => {
+    var b = document.getElementById('create-user') || false;
+    if (b) {
+            console.log('TBTN_SUCCESS');
+            myCachedObject = b;
+            resolve('TBTN_SUCCESS');
+        } else {
+            console.log('TBTN_FAILED');
+            reject('TBTN_FAILED');
+        }
+    });
+}
 
+function clickTweetButton() {
+    return new Promise((resolve, reject) => {
+    var b = myCachedObject;
+    b = simulate(b,"click");
+    if (b) {
+            console.log('TBTN_CLICK_SUCCESS');
+            myCachedObject = b;
+            resolve('TBTN_CLICK_SUCCESS');
+        } else {
+            console.log('TBTN_CLICK_FAILED');
+            reject('TBTN_CLICK_FAILED');
+        }
+    });
+}
 
 function generateIdea() {
     var ideas = [
@@ -39,6 +67,12 @@ function callItAgain() {
 }
 
 $(document).ready(function () {
+    getData()
+    .then(clickTweetButton)
+    .catch(function (data) {
+        console.log('CATCH:' + data);
+    });
+/*
 var originalPromise = new Promise(function (resolve, reject) {
     promiseCalled++;
     console.log('originalPromise');
@@ -82,6 +116,7 @@ var clickTweetBoxMouseDown = new Promise(function (resolve, reject) {
         if ($(b).is(':visible'))
         {   
             console.log('tweet box found'); 
+            tweetBoxVisible = true;
             myCachedObject = b;
             console.log(b);
             simulate(b, "mousedown");
@@ -90,15 +125,14 @@ var clickTweetBoxMouseDown = new Promise(function (resolve, reject) {
         else
         {
             console.log('NOT FOUND YET!');
+            tweetBoxVisible = false;
             return Promise.reject('NOT_VISIBLE');
         }
-        /*
         else
         {
             console.log('TWEET_BOX');
             return Promise.reject('TWEET_BOX');
         }
-        */
     }, 1000);
 });
 clickTweetBoxMouseDown
@@ -106,8 +140,9 @@ clickTweetBoxMouseDown
 .catch(function (data) {
     console.log('CATCHED_');
 });
-
 var clickTweetBoxClick = new Promise(function (resolve, reject) {
+    if(!tweetBoxVisible)
+        return;
     console.log('clickTweetBox');
     console.log('promiseCalled:' + promiseCalled);    
     var b = document.getElementById('comment');
@@ -121,6 +156,8 @@ var clickTweetBoxClick = new Promise(function (resolve, reject) {
 });
 
 var typeText = new Promise(function (resolve, reject) {
+    if(!tweetBoxVisible)
+        return;
     console.log('typeText');
     console.log('promiseCalled:' + promiseCalled);    
     var typed = false;
@@ -144,13 +181,14 @@ var typeText = new Promise(function (resolve, reject) {
             setTimeout(function() {
                 simulate(c, "click");
             }, 2000);
-            */
             return Promise.resolve('done!');
         }
     });
 });
 
 var typeLinks = new Promise(function (resolve, reject) {
+    if(!tweetBoxVisible)
+        return;
     console.log('typeText');
     console.log('promiseCalled:' + promiseCalled);    
     var typed = false;
@@ -164,6 +202,8 @@ var typeLinks = new Promise(function (resolve, reject) {
 });
 
 var clickTweetSend = new Promise(function (resolve, reject) {
+    if(!tweetBoxVisible)
+        return;
     console.log('clickTweetSend');
     console.log('promiseCalled:' + promiseCalled);    
     var c = document.getElementsByClassName('ui-button ui-corner-all ui-widget')[2];
@@ -181,7 +221,6 @@ var clickTweetSend = new Promise(function (resolve, reject) {
     console.log("Initial fulfilled:", myPromise.isFulfilled()); //false
     console.log("Initial rejected:", myPromise.isRejected()); //false
     console.log("Initial pending:", myPromise.isPending()); //true
-    /*
     myPromise
         .then(dummy)
         //.then(clickTweetButton)
@@ -190,7 +229,6 @@ var clickTweetSend = new Promise(function (resolve, reject) {
         //.then(clickTweetBoxClick)
         //.then(typeLinks)
         //.then(clickTweetSend)
-        /*
         .then(function(data){
             console.log(data); // "Yeah !"
             console.log("Final fulfilled:", myPromise.isFulfilled());//true
