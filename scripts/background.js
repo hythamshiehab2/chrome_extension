@@ -466,6 +466,7 @@ function Localhost() {
 
 chrome.storage.onChanged.addListener(function (changes, namespace) {
     //updateIcon();
+    var key = null;
     for (key in changes) {
         var storageChange = changes[key];
         if (key == 'rocknroll') {
