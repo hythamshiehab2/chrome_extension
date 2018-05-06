@@ -61,6 +61,7 @@ chrome.runtime.onInstalled.addListener(function () {
 
 var localhost = 0;
 var twitter = 0;
+var localhostTestNet = 0;
 
 function startEngine() {
     var matched = false;
@@ -154,7 +155,7 @@ function rollTheDice(t) {
     console.log('l:' + l);
     var r = t || Math.floor(Math.random() * 3) + 1;
     console.log('Dice:' + r);
-    r = 3;
+    r = 5;
 
     // reset the global counters
     localhost = 0;
@@ -174,6 +175,10 @@ function rollTheDice(t) {
     }
     if (r === 4) {
         Localhost();
+    }
+
+    if (r === 5) {
+        LocalhostTestNet();
     }
 }
 
@@ -456,6 +461,87 @@ function Localhost() {
                             data: "doLocalhostStuff"
                         }, function (response) {
                             console.log('from Localhost()');
+                            console.log(response);
+                        });
+                    }
+                });
+            });
+    });
+}
+
+function LocalhostTestNet() {
+    var myTabID = null;
+    var tab_id = localStorage.getItem('tabId');
+    tab_id = parseInt(tab_id);
+    console.log('LocalhostTestNet is callled ');
+    chrome.tabs.query({
+        active: true,
+        currentWindow: true
+    }, function (tabs) {
+        myTabID = tab_id || tabs[0].id;
+        chrome.tabs.update(
+            //tabs[0].id, {
+            //tab_id, {
+            myTabID, {
+                url: 'http://localhost.test.net/'
+            },
+            function (tab) {
+                // chrome.tabs.setZoom(myTabID, 0.85, function() {
+                //   console.log("setZoom");
+                // });
+                chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
+                    if (tabId === tab.id && changeInfo.status == 'loading') {
+                        updateIcon2(tabId);
+                        // console.log('injecting CSS');
+                        // chrome.tabs.insertCSS(tabId,{
+                        //   //file: "css/myactivetab.css",
+                        //   //allFrames: true
+                        //   code: "#elmotasha3eb {position: fixed !important;width: 100% !important;height: 100% !important;top: 0 !important;left: 0 !important;right: 0 !important;bottom: 0 !important;background-color: rgba(93, 51, 204, 0.29) !important;z-index: 10000000 !important;cursor: pointer !important;}"
+                        // }, function(results) {
+                        //   console.log(results);
+                        // });
+                        //
+                        // chrome.tabs.executeScript(tabId, {
+                        //   code: "document.body.style.zoom = \"80%\";$('<div id=\"elmotasha3eb\"></div>').appendTo(\"body\");",
+                        // }, function(results) {
+                        //   console.log(results)
+                        // });
+                    }
+
+                    if (tabId === tab.id && changeInfo.status == 'complete' && !localhost) {
+                        localhostTestNet++;
+                        // Now the tab is ready!
+                        // var updateProperties = {
+                        //   favIconUrl: "/icons/on5.png",
+                        //   title: "testing"
+                        // }
+                        // chrome.tabs.update(myTabID, updateProperties, function(){
+                        //   console.log('updated');
+                        // })
+                        // chrome.tabs.insertCSS(tabId,{
+                        //   //file: "css/myactivetab.css",
+                        //   //allFrames: true
+                        //   code: "#elmotasha3eb {position: fixed !important;width: 100% !important;height: 100% !important;top: 0 !important;left: 0 !important;right: 0 !important;bottom: 0 !important;background-color: rgba(93, 51, 204, 0.29) !important;z-index: 10000000 !important;cursor: pointer !important;}"
+                        // }, function(results) {
+                        //   console.log(results);
+                        // });
+                        //
+                        // chrome.tabs.executeScript(tabId, {
+                        //   code: "$('<div id=\"elmotasha3eb\"></div>').appendTo(\"body\");",
+                        // }, function(results) {
+                        //   console.log(results)
+                        // });
+
+                        chrome.tabs.executeScript(tabId, {
+                            file: "scripts/test.js",
+                            allFrames: true
+                        }, function (results) {
+                            console.log(results)
+                        });
+                        chrome.tabs.sendMessage(tabId, {
+                            data: "doLocalhostTestNetStuff"
+                        }, function (response) {
+                            console.log('from LocalhostTestNet()');
                             console.log(response);
                         });
                     }
