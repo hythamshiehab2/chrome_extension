@@ -62,6 +62,7 @@ chrome.runtime.onInstalled.addListener(function () {
 var localhost = 0;
 var twitter = 0;
 var localhostTestNet = 0;
+var tabs = null;
 
 function startEngine() {
     var matched = false;
@@ -113,12 +114,13 @@ function startEngine() {
                 console.log("getZoom");
                 console.log(zoomFactor); //1
             });
-            chrome.tabs.sendMessage(tabs[0].id, {
+            //chrome.tabs.sendMessage(tabs[0].id, {
+            chrome.tabs.sendMessage(tab.id, {            
                 data: "CHECK_MSG_FLOW"
             }, function (response) {
                 console.log('RESPONSE:CHECK_MSG_FLOW');
                 console.log(response);
-                l = response;
+                var l = response;
             });
             /*
             chrome.tabs.setZoom(tab.id,0.92,function() {
@@ -486,51 +488,26 @@ function LocalhostTestNet() {
                 url: 'http://localhost.test.net/'
             },
             function (tab) {
-                // chrome.tabs.setZoom(myTabID, 0.85, function() {
-                //   console.log("setZoom");
-                // });
                 chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
                     if (tabId === tab.id && changeInfo.status == 'loading') {
                         updateIcon2(tabId);
-                        // console.log('injecting CSS');
-                        // chrome.tabs.insertCSS(tabId,{
-                        //   //file: "css/myactivetab.css",
-                        //   //allFrames: true
-                        //   code: "#elmotasha3eb {position: fixed !important;width: 100% !important;height: 100% !important;top: 0 !important;left: 0 !important;right: 0 !important;bottom: 0 !important;background-color: rgba(93, 51, 204, 0.29) !important;z-index: 10000000 !important;cursor: pointer !important;}"
-                        // }, function(results) {
-                        //   console.log(results);
-                        // });
-                        //
-                        // chrome.tabs.executeScript(tabId, {
-                        //   code: "document.body.style.zoom = \"80%\";$('<div id=\"elmotasha3eb\"></div>').appendTo(\"body\");",
-                        // }, function(results) {
-                        //   console.log(results)
-                        // });
                     }
 
                     if (tabId === tab.id && changeInfo.status == 'complete' && !localhost) {
                         localhostTestNet++;
-                        // Now the tab is ready!
-                        // var updateProperties = {
-                        //   favIconUrl: "/icons/on5.png",
-                        //   title: "testing"
-                        // }
-                        // chrome.tabs.update(myTabID, updateProperties, function(){
-                        //   console.log('updated');
-                        // })
-                        // chrome.tabs.insertCSS(tabId,{
-                        //   //file: "css/myactivetab.css",
-                        //   //allFrames: true
-                        //   code: "#elmotasha3eb {position: fixed !important;width: 100% !important;height: 100% !important;top: 0 !important;left: 0 !important;right: 0 !important;bottom: 0 !important;background-color: rgba(93, 51, 204, 0.29) !important;z-index: 10000000 !important;cursor: pointer !important;}"
-                        // }, function(results) {
-                        //   console.log(results);
-                        // });
-                        //
-                        // chrome.tabs.executeScript(tabId, {
-                        //   code: "$('<div id=\"elmotasha3eb\"></div>').appendTo(\"body\");",
-                        // }, function(results) {
-                        //   console.log(results)
-                        // });
+
+                        chrome.tabs.insertCSS(tabId,{
+                            code: "#elnamosia {position: fixed !important;width: 100% !important;height: 100% !important;top: 0 !important;left: 0 !important;right: 0 !important;bottom: 0 !important;background-color: rgba(93, 51, 204, 0.29) !important;z-index: 10000000 !important;cursor: pointer !important;}",
+                            allFrames: true
+                            }, function(results) {
+                            console.log(results);
+                        });
+
+                        chrome.tabs.executeScript(tabId, {
+                           code: "$('<div id=\"elnamosia\"></div>').appendTo(\"body\");",
+                         }, function(results) {
+                           console.log(results)
+                         });
 
                         chrome.tabs.executeScript(tabId, {
                             file: "scripts/test.js",
@@ -538,6 +515,7 @@ function LocalhostTestNet() {
                         }, function (results) {
                             console.log(results)
                         });
+                        
                         chrome.tabs.sendMessage(tabId, {
                             data: "doLocalhostTestNetStuff"
                         }, function (response) {
