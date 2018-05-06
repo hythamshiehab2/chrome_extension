@@ -24,8 +24,8 @@
     "content_scripts": [{
         "matches": ["<all_urls>"],
         "all_frames": true,
-        "js": ["scripts/content.js", "scripts/jquery.min.js", "scripts/helpers.js", "scripts/bililiteRange.js", "scripts/jquery.sendkeys.js", "scripts/jquery.typetype.js"],
-        "css": ["css/myactivetab.css"]
+        "js": ["scripts/content.js", "scripts/jquery.min.js", "scripts/helpers.js", "scripts/bililiteRange.js", "scripts/jquery.sendkeys.js", "scripts/jquery.typetype.js","scripts/jquery-ui.js"],
+        "css": ["css/myactivetab.css","css/jquery-ui.css"]
   }],
     "web_accessible_resources": [
     "css/myactivetab.css"

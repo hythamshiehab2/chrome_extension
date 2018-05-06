@@ -8,12 +8,13 @@ var tries = 60; //60s should be enough to the tweet box dialog to show!
 
 function getData() {
     return new Promise((resolve, reject) => {
-    var b = document.getElementById('create-user') || false;
-    if (b) {
+        var b = document.getElementById('create-user') || false;
+        if (b) {
             console.log('TBTN_SUCCESS');
             myCachedObject = b;
             resolve('TBTN_SUCCESS');
-        } else {
+        } 
+        else {
             console.log('TBTN_FAILED');
             reject('TBTN_FAILED');
         }
@@ -23,6 +24,8 @@ function getData() {
 function clickTweetButton() {
     return new Promise((resolve, reject) => {
     var b = myCachedObject;
+    $(b).toggle("highlight", {color: "green"}, 1000);
+    $(b).toggle("highlight", {color: "green"}, 1000);
     b = simulate(b,"click");
     if (b) {
             console.log('TBTN_CLICK_SUCCESS');
@@ -48,6 +51,8 @@ function tweetBoxVisible() {
         console.log('hidden');
         reject('TX_HIDDEN');
       } else {
+        $(c).toggle("highlight", {color: "green"});
+        $(c).toggle("highlight", {color: "green"});
         console.log('visible');      
         resolve('TX_VISIBLE');
       }
@@ -59,6 +64,8 @@ function clickTweetBox() {
     console.log('clickTweetBox');
     return new Promise((resolve, reject) => {
         var b = document.getElementById('comment');
+        $(b).toggle("highlight", {color: "green"});
+        $(b).toggle("highlight", {color: "green"});
         myCachedObject = simulate(b, "mousedown");
         resolve('TX_CLICKED');
     });
@@ -111,6 +118,12 @@ function elapseSomeTime() {
   return new Promise(function cb(resolve, reject) {
     console.log(tries + ' remaining');
     if(--tries > 0) {
+      if(tries == 2)
+      {
+        var c = document.getElementsByClassName('ui-button ui-corner-all ui-widget')[2];    
+        $(c).toggle("highlight", {color: "green"});
+        $(c).toggle("highlight", {color: "green"});    
+      }
       setTimeout(function() {
         cb(resolve, reject);
       }, 1000);
