@@ -4,7 +4,7 @@ var messageToSpread = generateIdea();
 messageToSpread = ' ' + messageToSpread;
 var myCachedObject = null;
 var promiseCalled = 0;
-var tweetBoxVisible = false;
+var tries = 60; //60s should be enough to the tweet box dialog to show!
 
 function getData() {
     return new Promise((resolve, reject) => {
@@ -35,32 +35,30 @@ function clickTweetButton() {
     });
 }
 
-
 function tweetBoxVisible() {
-    return new Promise(function cb(resolve, reject) {
-        console.log('tweetBoxVisible');
-        //console.log(tries + ' remaining');
-        var b = document.getElementsByClassName('ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-dialog-buttons ui-draggable ui-resizable')[0];      
-        if ($(b).is(':visible'))
-        {   
-            myCachedObject = b;
-            console.log('TX_VISIBLE');
-            //resolve('TX_VISIBLE');
-            resolve('TX_VISIBLE');
-        }
-        else
-        {
-            console.log('TX_HIDDEN');
-            //reject('TX_HIDDEN');
-            setTimeout(function() {
-                cb(resolve, reject);
-            }, 500);
-            //return Promise.reject('TX_HIDDEN');
-        }
-    });
+  return new Promise(function cb(resolve, reject) {
+    console.log(tries + ' remaining');
+    if (--tries > 0) {
+      setTimeout(function() {
+        cb(resolve, reject);
+      }, 1000);
+    } else {
+        var c = document.getElementsByClassName('ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-dialog-buttons ui-draggable ui-resizable')[0];      
+      if (!$(c).is(':visible')) {
+        console.log('hidden');
+        reject('TX_HIDDEN');
+        //return Promise.reject('TX_HIDDEN');
+      } else {
+        console.log('visible');      
+        resolve('TX_VISIBLE');
+        //return Promise.resolve('TX_VISIBLE');
+      }
+    }
+  });
 }
 
 function clickTweetBox() {
+    console.log('clickTweetBox');
     return new Promise((resolve, reject) => {
         var b = document.getElementById('comment');
         myCachedObject = simulate(b, "mousedown");
@@ -84,18 +82,29 @@ function typeTweetBox() {
             },
             callback: function () {
                 // the `this` keyword is bound to the particular element.
-                console.log('TYPETYPE!');
-                $(t).sendkeys('{Enter}');
-                /*
-                var c = document.getElementsByClassName('SendTweetsButton')[0];
-                console.log(c);
-                setTimeout(function() {
-                    simulate(c, "click");
-                }, 2000);
-                */
                 resolve('TX_TYPED');
             }
         });
+    });
+}
+
+function addLinks() {
+    console.log('addLinks');
+    return new Promise((resolve, reject) => {
+        var b = document.getElementById('comment');
+        $(b).focus().sendkeys('{Enter}');
+        //$(b).sendkeys('{Enter}');
+        $(b).focus().typetype('https://amnaldawla.wordpress.com');
+        resolve('TX_LINKS');
+    });
+}
+
+function clickTweetSend() {
+    console.log('clickTweetSend');
+    return new Promise((resolve, reject) => {
+        var c = document.getElementsByClassName('ui-button ui-corner-all ui-widget')[2];
+        myCachedObject = simulate(c, "click");
+        resolve('TX_SEND');
     });
 }
 
@@ -116,28 +125,12 @@ $(document).ready(function () {
     getData()
     .then(clickTweetButton)
     .then(tweetBoxVisible)
-    /*
-    .then(function(data) {
-        console.log(data);
-        setTimeout(tweetBoxVisible,1000);
-    })
-    */    
-    //.then(typeTweetBox)
+    .then(clickTweetBox)
+    .then(typeTweetBox)
+    .then(addLinks)
+    .then(clickTweetSend)
     .catch(function (data) {
         console.log('CATCH:' + data);
-        /*
-        if(data === 'TX_HIDDEN')
-        {
-            tweetBoxVisibile()
-            .then(function() {
-                var p = null;
-                setTimeout(function () { 
-                    p = tweetBoxVisible();
-                    console.log(p); 
-                },1000);
-            })
-        }
-        */
     });
 /*
 var originalPromise = new Promise(function (resolve, reject) {
