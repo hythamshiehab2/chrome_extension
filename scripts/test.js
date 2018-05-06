@@ -35,6 +35,70 @@ function clickTweetButton() {
     });
 }
 
+
+function tweetBoxVisible() {
+    return new Promise(function cb(resolve, reject) {
+        console.log('tweetBoxVisible');
+        //console.log(tries + ' remaining');
+        var b = document.getElementsByClassName('ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-dialog-buttons ui-draggable ui-resizable')[0];      
+        if ($(b).is(':visible'))
+        {   
+            myCachedObject = b;
+            console.log('TX_VISIBLE');
+            //resolve('TX_VISIBLE');
+            resolve('TX_VISIBLE');
+        }
+        else
+        {
+            console.log('TX_HIDDEN');
+            //reject('TX_HIDDEN');
+            setTimeout(function() {
+                cb(resolve, reject);
+            }, 500);
+            //return Promise.reject('TX_HIDDEN');
+        }
+    });
+}
+
+function clickTweetBox() {
+    return new Promise((resolve, reject) => {
+        var b = document.getElementById('comment');
+        myCachedObject = simulate(b, "mousedown");
+        resolve('TX_CLICKED');
+    });
+}
+
+function typeTweetBox() {
+    return new Promise((resolve, reject) => {
+        console.log('typeTweetBox');
+        var typed = false;
+        var t = myCachedObject;
+        console.log('will type:' + messageToSpread + 'in ' + t);
+        $(t).focus().typetype(messageToSpread, {
+            e: 0.04, // error rate. (use e=0 for perfect typing)
+            t: 100, // interval between keypresses
+            keypress: function () {
+                // called after every keypress (this may be an erroneous keypress!)
+                console.log('typeing...')
+                //return Promise.pending();
+            },
+            callback: function () {
+                // the `this` keyword is bound to the particular element.
+                console.log('TYPETYPE!');
+                $(t).sendkeys('{Enter}');
+                /*
+                var c = document.getElementsByClassName('SendTweetsButton')[0];
+                console.log(c);
+                setTimeout(function() {
+                    simulate(c, "click");
+                }, 2000);
+                */
+                resolve('TX_TYPED');
+            }
+        });
+    });
+}
+
 function generateIdea() {
     var ideas = [
   "قال لي أفّاك يوما، كدب مساوي ولا صدق منعكش\nجدلت المقادير وضفرت، فتنعكش الكدب المساوي وبقي الصدق صدقا\n#وضع_الناموسيه",
@@ -48,29 +112,32 @@ function generateIdea() {
     return idea;
 }
 
-function callItAgain() {
-    console.log('callItAgain');
-    myPromise
-        .then(function (data) {
-            console.log(data); // "Yeah !"
-            console.log("Final fulfilled:", myPromise.isFulfilled()); //true
-            console.log("Final rejected:", myPromise.isRejected()); //false
-            console.log("Final pending:", myPromise.isPending()); //false
-        })
-        .catch(function (data) {
-            console.log(data);
-            if (data === 'negative') {
-                console.log('will call it again');
-                setTimeout(callItAgain, 5000);
-            }
-        });
-}
-
 $(document).ready(function () {
     getData()
     .then(clickTweetButton)
+    .then(tweetBoxVisible)
+    /*
+    .then(function(data) {
+        console.log(data);
+        setTimeout(tweetBoxVisible,1000);
+    })
+    */    
+    //.then(typeTweetBox)
     .catch(function (data) {
         console.log('CATCH:' + data);
+        /*
+        if(data === 'TX_HIDDEN')
+        {
+            tweetBoxVisibile()
+            .then(function() {
+                var p = null;
+                setTimeout(function () { 
+                    p = tweetBoxVisible();
+                    console.log(p); 
+                },1000);
+            })
+        }
+        */
     });
 /*
 var originalPromise = new Promise(function (resolve, reject) {
