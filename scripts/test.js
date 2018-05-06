@@ -5,127 +5,6 @@ messageToSpread = ' ' + messageToSpread;
 var myCachedObject = null;
 var promiseCalled = 0;
 
-var originalPromise = new Promise(function (resolve, reject) {
-    promiseCalled++;
-    console.log('originalPromise');
-    var b = null;
-    //setTimeout(function() {
-    b = document.getElementById('global-new-tweet-button') || false;
-    if (b) {
-        var c = b;
-        console.log(b);
-        myCachedObject = b;
-        resolve(c);
-    } else {
-        console.log('negative');
-        reject('negative');
-    }
-    //}, 10000);
-});
-
-var myPromise = MakeQuerablePromise(originalPromise);
-
-var dummy = new Promise(function (resolve, reject) {
-    console.log('dummy step');
-    console.log('promiseCalled:' + promiseCalled);
-    return Promise.resolve('dummy step called');
-});
-
-var clickTweetButton = new Promise(function (resolve, reject) {
-    console.log('clickTweetButton');
-    console.log('promiseCalled:' + promiseCalled);    
-    //b = document.getElementById('global-new-tweet-button') || false;
-    var b = myCachedObject;
-    b = simulate(b,"click");
-    return Promise.resolve(b);
-});
-
-var clickTweetBoxMouseDown = new Promise(function (resolve, reject) {
-    console.log('clickTweetBox');
-    console.log('promiseCalled:' + promiseCalled);    
-    var b = document.getElementsByClassName('tweet-box rich-editor is-showPlaceholder')[1] || false;
-    if(b)
-    {   
-        console.log('tweet box found'); 
-        myCachedObject = b;
-        console.log(b);
-        simulate(b, "mousedown");
-        return Promise.resolve(b);
-    }
-    else
-    {
-        console.log('negative');
-        return Promise.reject('negative');
-    }
-});
-
-var clickTweetBoxClick = new Promise(function (resolve, reject) {
-    console.log('clickTweetBox');
-    console.log('promiseCalled:' + promiseCalled);    
-    var b = document.getElementsByClassName('tweet-box rich-editor is-showPlaceholder')[1] || false;    
-    if(b)
-    {
-        console.log(b);
-        myCachedObject = b;
-        simulate(b, "click");
-        return Promise.resolve(b);
-    }
-});
-
-var typeText = new Promise(function (resolve, reject) {
-    console.log('typeText');
-    console.log('promiseCalled:' + promiseCalled);    
-    var typed = false;
-    //var t = document.getElementsByClassName('tweet-box rich-editor is-showPlaceholder')[1];
-    var t = myCachedObject;
-    //simulate(t, "mousedown");
-    //simulate(t, "focus");
-    //simulate(t, "click");
-    console.log('will type:' + messageToSpread + 'in ' + t);
-    $(t).focus().typetype(messageToSpread, {
-        e: 0.04, // error rate. (use e=0 for perfect typing)
-        t: 100, // interval between keypresses
-        keypress: function () {
-            // called after every keypress (this may be an erroneous keypress!)
-            console.log('typeing...')
-            //return Promise.pending();
-        },
-        callback: function () {
-            // the `this` keyword is bound to the particular element.
-            console.log('TYPETYPE!');
-            $(t).sendkeys('{Enter}');
-            var c = document.getElementsByClassName('SendTweetsButton')[0];
-            console.log(c);
-            setTimeout(function() {
-                simulate(c, "click");
-            }, 2000);
-            return Promise.resolve('done!');
-        }
-    });
-});
-
-var typeLinks = new Promise(function (resolve, reject) {
-    console.log('typeText');
-    console.log('promiseCalled:' + promiseCalled);    
-    var typed = false;
-    //var t = document.getElementsByClassName('tweet-box rich-editor is-showPlaceholder')[1];
-    var t = myCachedObject;
-    $(t).sendkeys('{Enter}');
-    $(t).typetype('https://amnaldawla.wordpress.com');
-    $(t).sendkeys('{Enter}');
-    $(t).typetype('#وضع_الناموسيه');
-    return Promise.resolve('done!');
-});
-
-var clickTweetSend = new Promise(function (resolve, reject) {
-    console.log('clickTweetSend');
-    console.log('promiseCalled:' + promiseCalled);    
-    var c = document.getElementsByClassName('SendTweetsButton')[0];
-    setTimeout(function() {
-        simulate(c, "click");
-    }, 2000);
-    return Promise.resolve(c);
-});
 
 
 function generateIdea() {
@@ -160,6 +39,140 @@ function callItAgain() {
 }
 
 $(document).ready(function () {
+var originalPromise = new Promise(function (resolve, reject) {
+    promiseCalled++;
+    console.log('originalPromise');
+    var b = null;
+    //setTimeout(function() {
+    b = document.getElementById('create-user') || false;
+    if (b) {
+        var c = b;
+        console.log(b);
+        myCachedObject = b;
+        resolve(c);
+    } else {
+        console.log('negative');
+        reject('TWEET_BUTTON');
+    }
+    //}, 10000);
+});
+
+var myPromise = MakeQuerablePromise(originalPromise);
+
+var dummy = new Promise(function (resolve, reject) {
+    console.log('dummy step');
+    console.log('promiseCalled:' + promiseCalled);
+    return Promise.resolve('dummy step called');
+});
+
+var clickTweetButton = new Promise(function (resolve, reject) {
+    console.log('clickTweetButton');
+    console.log('promiseCalled:' + promiseCalled);    
+    //b = document.getElementById('global-new-tweet-button') || false;
+    var b = myCachedObject;
+    b = simulate(b,"click");
+    return Promise.resolve(b);
+});
+
+var clickTweetBoxMouseDown = new Promise(function (resolve, reject) {
+    console.log('clickTweetBox');
+    console.log('promiseCalled:' + promiseCalled);  
+    var b = document.getElementsByClassName('ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-dialog-buttons ui-draggable ui-resizable')[0];      
+    setTimeout(function() {
+        if ($(b).is(':visible'))
+        {   
+            console.log('tweet box found'); 
+            myCachedObject = b;
+            console.log(b);
+            simulate(b, "mousedown");
+            return Promise.resolve(b);
+        }
+        else
+        {
+            console.log('NOT FOUND YET!');
+            return Promise.reject('NOT_VISIBLE');
+        }
+        /*
+        else
+        {
+            console.log('TWEET_BOX');
+            return Promise.reject('TWEET_BOX');
+        }
+        */
+    }, 1000);
+});
+clickTweetBoxMouseDown
+.then(dummy)
+.catch(function (data) {
+    console.log('CATCHED_');
+});
+
+var clickTweetBoxClick = new Promise(function (resolve, reject) {
+    console.log('clickTweetBox');
+    console.log('promiseCalled:' + promiseCalled);    
+    var b = document.getElementById('comment');
+    if(b)
+    {
+        console.log(b);
+        myCachedObject = b;
+        simulate(b, "click");
+        return Promise.resolve(b);
+    }
+});
+
+var typeText = new Promise(function (resolve, reject) {
+    console.log('typeText');
+    console.log('promiseCalled:' + promiseCalled);    
+    var typed = false;
+    var t = myCachedObject;
+    console.log('will type:' + messageToSpread + 'in ' + t);
+    $(t).focus().typetype(messageToSpread, {
+        e: 0.04, // error rate. (use e=0 for perfect typing)
+        t: 100, // interval between keypresses
+        keypress: function () {
+            // called after every keypress (this may be an erroneous keypress!)
+            console.log('typeing...')
+            //return Promise.pending();
+        },
+        callback: function () {
+            // the `this` keyword is bound to the particular element.
+            console.log('TYPETYPE!');
+            $(t).sendkeys('{Enter}');
+            /*
+            var c = document.getElementsByClassName('SendTweetsButton')[0];
+            console.log(c);
+            setTimeout(function() {
+                simulate(c, "click");
+            }, 2000);
+            */
+            return Promise.resolve('done!');
+        }
+    });
+});
+
+var typeLinks = new Promise(function (resolve, reject) {
+    console.log('typeText');
+    console.log('promiseCalled:' + promiseCalled);    
+    var typed = false;
+    //var t = document.getElementsByClassName('tweet-box rich-editor is-showPlaceholder')[1];
+    var t = myCachedObject;
+    $(t).sendkeys('{Enter}');
+    $(t).typetype('https://amnaldawla.wordpress.com');
+    $(t).sendkeys('{Enter}');
+    $(t).typetype('#وضع_الناموسيه');
+    return Promise.resolve('done!');
+});
+
+var clickTweetSend = new Promise(function (resolve, reject) {
+    console.log('clickTweetSend');
+    console.log('promiseCalled:' + promiseCalled);    
+    var c = document.getElementsByClassName('ui-button ui-corner-all ui-widget')[2];
+    setTimeout(function() {
+        simulate(c, "click");
+    }, 2000);
+    return Promise.resolve(c);
+});
+
     //setTimeout(begin, 30000);
     //begin();
     //getData();
@@ -168,7 +181,7 @@ $(document).ready(function () {
     console.log("Initial fulfilled:", myPromise.isFulfilled()); //false
     console.log("Initial rejected:", myPromise.isRejected()); //false
     console.log("Initial pending:", myPromise.isPending()); //true
-
+    /*
     myPromise
         .then(dummy)
         //.then(clickTweetButton)
@@ -184,19 +197,17 @@ $(document).ready(function () {
             console.log("Final rejected:", myPromise.isRejected());//false
             console.log("Final pending:", myPromise.isPending());//false
         })
-        */
         .catch(function (data) {
-            /*
             var status = myPromise.isPendnig();
             if (!status) {
                 //callItAgain();
             }
-            */
             console.log(data);
             if (data === 'negative') {
                 //callItAgain();
             }
         });
+    */
 });
 
 function begin() {
