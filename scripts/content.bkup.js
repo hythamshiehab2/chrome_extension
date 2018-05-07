@@ -8,6 +8,7 @@ BY *OTHERS* I MEAN ME, AND/OR ANY OTHER GOOD PARTIES */
 //   console.log('CONTENT:document is loaded');
 // });
 
+/*
 function sendMsgFlowResponse(t) {
     console.log('sendMsgFlowResponse:' + t);
     var msg = "CHECK_MSG_FLOW_RESPONSE:" + t;
@@ -23,13 +24,13 @@ function resetState() {
     msgFlow.lengh = 0;
     console.log('RESET msgFlow');
 }
-
+*/
 // We should also check for any captcha!
 // keep an eye (counter) for captcha per session(s)
 // so we can mitigate the user account being locked up
 //
 // <img class="img" src="https://www.facebook.com/captcha/tfbimage.php?captcha_challenge_code=1523901580-89a13273a09b7f35e763c3ca40ae8408&amp;captcha_challenge_hash=AZmRaKxJX7tUo4zsn6ANaEDoCoZXYa0lf1wrhX6GJOXS4PdiTrbBwESIDVl5j1P3pL4vWA_otf_1bl-GM6knG-LZ2fOaiQZY9qIZkeknVJj_VIxk4V3MPu4bhNlpQtIAy7GFRciON_OIXca03F53lv4fPSORBSZuNQlu_aiWtl5mvbL504bd31gmZXK1USWPVb8" alt="Hit reload on your browser to refresh this page if this image doesn't load.">
-
+/*
 function ShareSomething() {
     console.log('will share something');
     resetState();
@@ -127,9 +128,9 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     }
 
     /*
-    if ((data === 'doTwitterStuff') || 
-        (data === 'doFacebookStuff') || 
-        (data === 'doLocalhostNetStuff') || 
+    if ((data === 'doTwitterStuff') ||
+        (data === 'doFacebookStuff') ||
+        (data === 'doLocalhostNetStuff') ||
         (data === 'doWordpressStuff')) {
         if (msgFlow.length === 0) {
             console.log('GO GO GO GO');
@@ -143,10 +144,10 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     }
     */
 
-    /* THIS MESSAGE NEVER CATCHED HERE */
-    // if(data === 'doTwitterStuff_DONE')
-    // {
-    //     console.log('YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY');
-    // }
-    // console.log('waiting load to complete');
-});
+/* THIS MESSAGE NEVER CATCHED HERE */
+// if(data === 'doTwitterStuff_DONE')
+// {
+//     console.log('YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY');
+// }
+// console.log('waiting load to complete');
+//});

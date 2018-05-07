@@ -117,7 +117,8 @@ function clickTweetSend() {
 
 
 function elapseSomeTime() {    
-    tries = Math.floor(Math.random() * 20) + 10;
+    //tries = Math.floor(Math.random() * 20) + 10;
+    tries = 10;
   return new Promise(function cb(resolve, reject) {
     console.log(tries + ' remaining');
     if(--tries > 0) {

@@ -519,10 +519,10 @@ function LocalhostTestNet() {
 
                         chrome.tabs.sendMessage(tabId, {
                             data: "doLocalhostTestNetStuff"
-                        }, function (response) {
-                            console.log('from LocalhostTestNet()');
+                        });//, function (response) {
+                            //console.log('from LocalhostTestNet()');
                             //console.log(response);
-                        });
+                        //});
                     }
                 });
             });
