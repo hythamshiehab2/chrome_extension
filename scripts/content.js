@@ -126,7 +126,10 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     }
 
 
-    if ((data === 'doTwitterStuff') || (data === 'doFacebookStuff') || (data === 'doWordpressStuff')) {
+    if ((data === 'doTwitterStuff') || 
+        (data === 'doFacebookStuff') || 
+        (data === 'doLocalhostNetStuff') || 
+        (data === 'doWordpressStuff')) {
         if (msgFlow.length === 0) {
             console.log('GO GO GO GO');
             msgFlow.push(data);

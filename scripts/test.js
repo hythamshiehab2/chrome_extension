@@ -5,8 +5,11 @@ messageToSpread = ' ' + messageToSpread;
 var myCachedObject = null;
 var promiseCalled = 0;
 var tries = 60; //60s should be enough to the tweet box dialog to show!
+var stArtEd = 0;
 
-function getData() {
+function stArt() {
+    console.log('stArtEd:' + stArtEd);
+    stArtEd++;
     return new Promise((resolve, reject) => {
         var b = document.getElementById('create-user') || false;
         if (b) {
@@ -147,17 +150,28 @@ function generateIdea() {
 }
 
 $(document).ready(function () {
-    getData()
-    .then(clickTweetButton)
-    .then(tweetBoxVisible)
-    .then(clickTweetBox)
-    .then(typeTweetBox)
-    .then(addLinks)
-    .then(elapseSomeTime)
-    .then(clickTweetSend)
-    .catch(function (data) {
-        console.log('CATCH:' + data);
-    });
+    if(!stArtEd)
+    {
+        stArt()
+        .then(clickTweetButton)
+        .then(tweetBoxVisible)
+        .then(clickTweetBox)
+        .then(typeTweetBox)
+        .then(addLinks)
+        .then(elapseSomeTime)
+        .then(clickTweetSend)
+        .then(function() {
+            chrome.runtime.sendMessage({
+                data: "doLocalhostNet_DONE"
+                }, function (response) {
+                    console.log("from test.js:" + response);
+                    console.log(response);
+                });
+            })
+        .catch(function (data) {
+            console.log('CATCH:' + data);
+        });
+    }
 });
 
 function begin() {

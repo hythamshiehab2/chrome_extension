@@ -133,6 +133,9 @@ function startEngine() {
 
 
 function rollTheDice(t) {
+    twitter = 0;
+    localhost = 0;
+    localhostTestNet = 0;
     var l = 0;
     // chrome.runtime.sendMessage({
     //   data: "CHECK_MSG_FLOW"
@@ -504,7 +507,7 @@ function LocalhostTestNet() {
                         });
 
                         chrome.tabs.executeScript(tabId, {
-                           code: "$('<div id=\"elnamosia\"></div>').appendTo(\"body\");",
+                           code: "if($(\"#elnamosia\").length==0) $('<div id=\"elnamosia\"></div>').appendTo(\"body\")",
                          }, function(results) {
                            console.log(results)
                          });
@@ -667,6 +670,14 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
         //rollTheDice();
         console.log('will rollTheDice in 30s');
         setTimeout(rollTheDice, 30000);
+    }
+
+    if (data === 'doLocalhostNet_DONE') {
+        sendResponse('doLocalhostNet_DONE:CONFIRMED');
+        console.log('LocalhostNet STUFF IS DONE!');
+        //rollTheDice();
+        console.log('will rollTheDice in 5s');
+        setTimeout(rollTheDice, 5000);
     }
 
     if (data === 'surfStartIgnition') {
