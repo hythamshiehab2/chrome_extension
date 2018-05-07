@@ -23,6 +23,7 @@ function resetState() {
     msgFlow.lengh = 0;
     console.log('RESET msgFlow');
 }
+
 // We should also check for any captcha!
 // keep an eye (counter) for captcha per session(s)
 // so we can mitigate the user account being locked up
@@ -121,26 +122,26 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 
     if (data === 'CHECK_MSG_FLOW') {
         console.log('RECIEVED:CHECK_MSG_FLOW')
-        var t = msgFlow.length;
-        sendMsgFlowResponse(t);
+        //var t = msgFlow.length;
+        //sendMsgFlowResponse(t);
     }
 
-
+    /*
     if ((data === 'doTwitterStuff') || 
         (data === 'doFacebookStuff') || 
         (data === 'doLocalhostNetStuff') || 
         (data === 'doWordpressStuff')) {
         if (msgFlow.length === 0) {
             console.log('GO GO GO GO');
-            msgFlow.push(data);
+            //msgFlow.push(data);
             //injectStuff();
-            theHypered();
+            //theHypered();
         } else {
             console.log('msgFlow IS NOT EMPTY!');
             console.log(msgFlow);
         }
     }
-
+    */
 
     /* THIS MESSAGE NEVER CATCHED HERE */
     // if(data === 'doTwitterStuff_DONE')

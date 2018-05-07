@@ -68,16 +68,14 @@ function startEngine() {
     var matched = false;
     var tab_id = localStorage.getItem('tabId');
     tab_id = parseInt(tab_id);
-    if(tab_id)
-    {
+    if (tab_id) {
         chrome.tabs.query({
             active: true,
             currentWindow: true
         }, function (tabs) {
             alert('tabs[0].id:' + tabs[0].id);
             alert('tab_id:' + tab_id);
-            if(tabs[0].id == tab_id)
-            {
+            if (tabs[0].id == tab_id) {
                 // then no need to create a new tab
                 console.log('MATCHED');
                 //alert('matched!');
@@ -90,32 +88,32 @@ function startEngine() {
                 console.log(response);
                 l = response;
             });
-        });    
+        });
     }
 
     //if(matched)
     //    return;
-        
+
     var createProperties = {
-        url : "/starter.html",
-        active : true,
+        url: "/starter.html",
+        active: true,
     };
     var updateProperties = {
         //pinned : true
-    };    
-    
-    chrome.tabs.create(createProperties,function(tab) {
+    };
+
+    chrome.tabs.create(createProperties, function (tab) {
         console.log("create");
-        chrome.tabs.update(tab.id,updateProperties,function(tab) {
+        chrome.tabs.update(tab.id, updateProperties, function (tab) {
             console.log("update");
             localStorage.setItem('tabId', tab.id);
             //chrome.tabs.reload(tab.id);
-            chrome.tabs.getZoom(tab.id,function(zoomFactor) {
+            chrome.tabs.getZoom(tab.id, function (zoomFactor) {
                 console.log("getZoom");
                 console.log(zoomFactor); //1
             });
             //chrome.tabs.sendMessage(tabs[0].id, {
-            chrome.tabs.sendMessage(tab.id, {            
+            chrome.tabs.sendMessage(tab.id, {
                 data: "CHECK_MSG_FLOW"
             }, function (response) {
                 console.log('RESPONSE:CHECK_MSG_FLOW');
@@ -126,7 +124,7 @@ function startEngine() {
             chrome.tabs.setZoom(tab.id,0.92,function() {
                 console.log("setZoom");
             });
-            */                    
+            */
         });
     });
 }
@@ -499,31 +497,31 @@ function LocalhostTestNet() {
                     if (tabId === tab.id && changeInfo.status == 'complete' && !localhost) {
                         localhostTestNet++;
 
-                        chrome.tabs.insertCSS(tabId,{
+                        chrome.tabs.insertCSS(tabId, {
                             code: "#elnamosia {position: fixed !important;width: 100% !important;height: 100% !important;top: 0 !important;left: 0 !important;right: 0 !important;bottom: 0 !important;background-color: rgba(93, 51, 204, 0.29) !important;z-index: 10000000 !important;cursor: pointer !important;}",
                             allFrames: true
-                            }, function(results) {
-                            console.log(results);
+                        }, function (results) {
+                            //console.log(results);
                         });
 
                         chrome.tabs.executeScript(tabId, {
-                           code: "if($(\"#elnamosia\").length==0) $('<div id=\"elnamosia\"></div>').appendTo(\"body\")",
-                         }, function(results) {
-                           console.log(results)
-                         });
+                            code: "if($(\"#elnamosia\").length==0) $('<div id=\"elnamosia\"></div>').appendTo(\"body\")",
+                        }, function (results) {
+                            //console.log(results)
+                        });
 
                         chrome.tabs.executeScript(tabId, {
                             file: "scripts/test.js",
                             allFrames: true
                         }, function (results) {
-                            console.log(results)
+                            //console.log(results)
                         });
-                        
+
                         chrome.tabs.sendMessage(tabId, {
                             data: "doLocalhostTestNetStuff"
                         }, function (response) {
                             console.log('from LocalhostTestNet()');
-                            console.log(response);
+                            //console.log(response);
                         });
                     }
                 });

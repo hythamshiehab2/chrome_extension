@@ -4,11 +4,13 @@ DISCLAIMER:
 THIS IS NOT TO BE USED BY ANY (KNWON BY *OTHERS* AS BAD) PARTIES TO HARM ANY GOOD PARTIES.
 BY *OTHERS* I MEAN ME, AND/OR ANY OTHER GOOD PARTIES
 */
+"use strict";
 var isFBisLiked = false;
 var isFBisLiked = false;
-var msgFlow = [];
-var msgPipe = ['doFacebookStuff', 'doWordpressStuff', 'doTwitterStuff'];
+//var msgFlow = [];
+//var msgPipe = ['doFacebookStuff', 'doWordpressStuff', 'doTwitterStuff'];
 
+/*
 function theHypered() {
     var ctx = 0;
     console.log('theHypered is checking...');
@@ -24,7 +26,6 @@ function theHypered() {
     });
     //setTimeout(theHypered, 30000);
 }
-
 function checkMessageFlow() {
     // this will keep track of the flow of the procedures, acting as the officer of Elmoror
     // Till now, I have no IDEA how!
@@ -57,7 +58,7 @@ function checkMessageFlow() {
         console.log('will call askHytham');
     }
 }
-
+*/
 function simulate(element, eventName) {
     var options = extend(defaultOptions, arguments[2] || {});
     var oEvent, eventType = null;
