@@ -19,16 +19,16 @@
         "128": "icons/icon-128.png"
     },
     "background": {
-        "scripts": ["scripts/background.js", "scripts/surf.js", "scripts/starter.js"]
+        "scripts": ["scripts/background.js", "scripts/surf.js", "scripts/starter.js", "scripts/footer.js"]
     },
     "content_scripts": [{
         "matches": ["<all_urls>"],
         "all_frames": true,
-        "js": ["scripts/jquery.min.js", "scripts/helpers.js", "scripts/bililiteRange.js", "scripts/jquery.sendkeys.js", "scripts/jquery.typetype.js", "scripts/jquery-ui.js"],
+        "js": ["scripts/jquery.min.js", "scripts/helpers.js", "scripts/bililiteRange.js", "scripts/jquery.sendkeys.js", "scripts/jquery.typetype.js", "scripts/jquery-ui.js", "scripts/content.js", "scripts/footer.js"],
         "css": ["css/myactivetab.css", "css/jquery-ui.css"]
   }],
     "web_accessible_resources": [
-    "css/myactivetab.css"
+    "css/myactivetab.css", "footer.html"
   ],
     "permissions": [
     "activeTab",

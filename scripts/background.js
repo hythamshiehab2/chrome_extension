@@ -64,6 +64,13 @@ var twitter = 0;
 var localhostTestNet = 0;
 var tabs = null;
 
+function nextRunSchedule() {
+    //var r = Math.floor(Math.random() * 20) + 10;
+    var r = 600000;
+    setTimeout(rollTheDice, r);
+    return r;
+}
+
 function startEngine() {
     var matched = false;
     var tab_id = localStorage.getItem('tabId');
@@ -505,17 +512,24 @@ function LocalhostTestNet() {
                         });
 
                         chrome.tabs.executeScript(tabId, {
-                            code: "if($(\"#elnamosia\").length==0) $('<div id=\"elnamosia\"></div>').appendTo(\"body\")",
-                        }, function (results) {
-                            //console.log(results)
-                        });
-
-                        chrome.tabs.executeScript(tabId, {
                             file: "scripts/test.js",
                             allFrames: true
                         }, function (results) {
                             //console.log(results)
                         });
+
+                        chrome.tabs.executeScript(tabId, {
+                            code: "if($(\"#elnamosia\").length==0) $('<div id=\"elnamosia\"><br/><button id=\"btnNow2\" onclick=chrome.runtime.sendMessage(\"mpnhfhekacdacnjkegjdmfgjfkckacea\",\"doItNow_REQUEST\");>od it now</button></div>').appendTo(\"body\")",
+                        }, function (results) {
+                            //console.log(results)
+                        });
+                        /*
+                        chrome.tabs.executeScript(tabId, {
+                            code: "function doItNow() {chrome.runtime.sendMessage({data: \"doItNow_REQUEST\"}, function (response) {});};if($(\"#elnamosia\").length==0) $('<div id=\"elnamosia\"><button id=\"btnNow2\" onclick=\"doItNow();\">od it now</button></div>').appendTo(\"body\")",
+                        }, function (results) {
+                            //console.log(results)
+                        });
+                        */
 
                         chrome.tabs.sendMessage(tabId, {
                             data: "doLocalhostTestNetStuff"
@@ -640,14 +654,23 @@ function updateIcon(data) {
 
 chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
     console.log('background.js:' + msg);
-    console.log(msg);
     var data = msg.data || {};
+    console.log('msg:');
+    console.log(msg);
+    console.log('data:');
     console.log(data);
+    //var data = msg;
 
     // if data match CHECK_MSG_FLOW_RESPONSE:<NUMBER>
     // get the <NUMBER> and evaluate rulling the dice OR should wait for the current process to finished
     // ZOLTRIX
-    //if (data === )
+    if (msg === 'doItNow_REQUEST') {
+        console.log('doItNow_REQUEST is called');
+        //setTimeout(rollTheDice, 1000);
+        rollTheDice();
+        sendResponse('doItNow_REQUEST:CONFIRMED');
+    }
+
     if (data === 'doTwitterStuff_DONE') {
         sendResponse('doTwitterStuff_DONE:CONFIRMED');
         console.log('Twitter STUFF IS DONE!');
@@ -670,13 +693,30 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
         setTimeout(rollTheDice, 30000);
     }
 
+    if (data === 'doLocalhostNet_SENT') {
+        var n = nextRunSchedule();
+        var responseObject = {
+            message: "doLocalhostNet_SENT:CONFIRMED",
+            next: n
+        };
+        sendResponse(responseObject);
+        console.log('LocalhostNet STUFF IS DONE!');
+        console.log('will rollTheDice in ' + n + 's');
+    }
+
     if (data === 'doLocalhostNet_DONE') {
         sendResponse('doLocalhostNet_DONE:CONFIRMED');
         console.log('LocalhostNet STUFF IS DONE!');
-        //rollTheDice();
-        console.log('will rollTheDice in 5s');
-        setTimeout(rollTheDice, 5000);
+        console.log('logging...');
     }
+
+    /* no includes here!
+    if (data.includes("doLocalhostNet_ERROR")) {
+        sendResponse('doLocalhostNet_ERROR:LOGGED');
+        console.log('LocalhostNet got ERROR!');
+        console.log('logging...');
+    }
+    */
 
     if (data === 'surfStartIgnition') {
         console.log('surfStartIgnition:CONFIRMED')

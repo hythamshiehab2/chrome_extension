@@ -6,6 +6,27 @@ var promiseCalled = 0;
 var tries = 60; //60s should be enough to the tweet box dialog to show!
 var stArtEd = 0;
 
+function doItNow() {
+    chrome.runtime.sendMessage({
+        data: "doItNow_REQUEST"
+    }, function (response) {});
+}
+
+function nextStep(t) {
+    var s = t / 1000;
+    var e = document.getElementById('elnamosia');
+    // Set the date we're counting down to
+    var timeleft = s;
+    var downloadTimer = setInterval(function () {
+        timeleft--;
+        //e.innerHTML = '<button id="btnNow" onclick=chrome.runtime.sendMessage("mpnhfhekacdacnjkegjdmfgjfkckacea","doItNow_REQUEST");>دلوقتي</button><br/><b>ابقى صحيني كمان ' + timeleft + ' ثانيه</b>';
+        e.innerHTML = '<button id="btnNow">دلوقتي</button><br/><b>ابقى صحيني كمان ' + timeleft + ' ثانيه</b>';
+        e.innerHTML += '<iframe src="chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/footer.html"></iframe>';
+        if (timeleft <= 0)
+            clearInterval(downloadTimer);
+    }, 1000);
+}
+
 function superVisor() {
     var myTries = 1000;
     return new Promise(function cb(resolve, reject) {
@@ -175,6 +196,7 @@ function generateIdea() {
 
 $(document).ready(function () {
     console.log('Am I ready!?');
+
     if (!stArtEd) {
         superVisor()
             .then(function (data) {
@@ -187,6 +209,15 @@ $(document).ready(function () {
                         console.log(response);
                     });
                 }
+            })
+            .catch(function (data) {
+                var error = "doLocalhostNet_ERROR:" + data;
+                chrome.runtime.sendMessage({
+                    data: error
+                }, function (response) {
+                    console.log("from test.js:" + response);
+                    console.log(response);
+                });
             });
 
         stArt()
@@ -201,8 +232,11 @@ $(document).ready(function () {
                 chrome.runtime.sendMessage({
                     data: "doLocalhostNet_SENT"
                 }, function (response) {
-                    console.log("from test.js:" + response);
                     console.log(response);
+                    console.log("from test.js:" + response);
+                    console.log(response.message);
+                    console.log(response.next);
+                    nextStep(response.next);
                 });
             })
             .catch(function (data) {
