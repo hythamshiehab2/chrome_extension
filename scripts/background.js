@@ -494,7 +494,7 @@ function LocalhostTestNet() {
                         updateIcon2(tabId);
                     }
 
-                    if (tabId === tab.id && changeInfo.status == 'complete' && !localhost) {
+                    if (tabId === tab.id && changeInfo.status == 'complete' && !localhostTestNet) {
                         localhostTestNet++;
 
                         chrome.tabs.insertCSS(tabId, {
@@ -519,9 +519,9 @@ function LocalhostTestNet() {
 
                         chrome.tabs.sendMessage(tabId, {
                             data: "doLocalhostTestNetStuff"
-                        });//, function (response) {
-                            //console.log('from LocalhostTestNet()');
-                            //console.log(response);
+                        }); //, function (response) {
+                        //console.log('from LocalhostTestNet()');
+                        //console.log(response);
                         //});
                     }
                 });

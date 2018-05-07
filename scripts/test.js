@@ -1,11 +1,32 @@
 "use strict";
-var wait = ms => new Promise((r, j) => setTimeout(r, ms));
 var messageToSpread = generateIdea();
 messageToSpread = ' ' + messageToSpread;
 var myCachedObject = null;
 var promiseCalled = 0;
 var tries = 60; //60s should be enough to the tweet box dialog to show!
 var stArtEd = 0;
+
+function superVisor() {
+    var myTries = 1000;
+    return new Promise(function cb(resolve, reject) {
+        var c = document.getElementsByClassName('ui-dialog-title')[0];
+        console.log(myTries + ' remaining');
+        if ((--myTries > 0) && (!$(c).is(':visible'))) {
+            setTimeout(function () {
+                cb(resolve, reject);
+            }, 500);
+        } else {
+            if (!$(c).is(':visible')) {
+                //console.log('hidden');
+                reject('CONF_HIDDEN');
+            } else {
+                //highlightObject(c);
+                console.log('visible');
+                resolve('CONF_VISIBLE');
+            }
+        }
+    });
+}
 
 function stArt() {
     console.log('stArtEd:' + stArtEd);
@@ -16,21 +37,28 @@ function stArt() {
             console.log('TBTN_SUCCESS');
             myCachedObject = b;
             resolve('TBTN_SUCCESS');
-        } 
-        else {
+        } else {
             console.log('TBTN_FAILED');
             reject('TBTN_FAILED');
         }
     });
 }
 
+function highlightObject(elem) {
+    $(elem).toggle("highlight", {
+        color: "green"
+    }, 1000);
+    $(elem).toggle("highlight", {
+        color: "green"
+    }, 1000);
+}
+
 function clickTweetButton() {
     return new Promise((resolve, reject) => {
-    var b = myCachedObject;
-    $(b).toggle("highlight", {color: "green"}, 1000);
-    $(b).toggle("highlight", {color: "green"}, 1000);
-    b = simulate(b,"click");
-    if (b) {
+        var b = myCachedObject;
+        //highlightObject(b);
+        b = simulate(b, "click");
+        if (b) {
             console.log('TBTN_CLICK_SUCCESS');
             myCachedObject = b;
             resolve('TBTN_CLICK_SUCCESS');
@@ -41,34 +69,32 @@ function clickTweetButton() {
     });
 }
 
-function tweetBoxVisible() {    
-  return new Promise(function cb(resolve, reject) {
-        var c = document.getElementsByClassName('ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-dialog-buttons ui-draggable ui-resizable')[0];      
-    console.log(tries + ' remaining');
-    if ( (--tries > 0) && (!$(c).is(':visible')) ) {
-      setTimeout(function() {
-        cb(resolve, reject);
-      }, 5000);
-    } else {
-      if (!$(c).is(':visible')) {
-        console.log('hidden');
-        reject('TX_HIDDEN');
-      } else {
-        $(c).toggle("highlight", {color: "green"});
-        $(c).toggle("highlight", {color: "green"});
-        console.log('visible');      
-        resolve('TX_VISIBLE');
-      }
-    }
-  });
+function tweetBoxVisible() {
+    return new Promise(function cb(resolve, reject) {
+        var c = document.getElementsByClassName('ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-dialog-buttons ui-draggable ui-resizable')[0];
+        console.log(tries + ' remaining');
+        if ((--tries > 0) && (!$(c).is(':visible'))) {
+            setTimeout(function () {
+                cb(resolve, reject);
+            }, 5000);
+        } else {
+            if (!$(c).is(':visible')) {
+                console.log('hidden');
+                reject('TX_HIDDEN');
+            } else {
+                //highlightObject(c);
+                console.log('visible');
+                resolve('TX_VISIBLE');
+            }
+        }
+    });
 }
 
 function clickTweetBox() {
     console.log('clickTweetBox');
     return new Promise((resolve, reject) => {
         var b = document.getElementById('comment');
-        $(b).toggle("highlight", {color: "green"});
-        $(b).toggle("highlight", {color: "green"});
+        //highlightObject(b);
         myCachedObject = simulate(b, "mousedown");
         resolve('TX_CLICKED');
     });
@@ -109,32 +135,29 @@ function addLinks() {
 function clickTweetSend() {
     console.log('clickTweetSend');
     return new Promise((resolve, reject) => {
-        var c = document.getElementsByClassName('ui-button ui-corner-all ui-widget')[2];
+        var c = document.getElementsByClassName('ui-button ui-corner-all ui-widget')[3];
         myCachedObject = simulate(c, "click");
         resolve('TX_SEND');
     });
 }
 
-
-function elapseSomeTime() {    
+function elapseSomeTime() {
     //tries = Math.floor(Math.random() * 20) + 10;
     tries = 10;
-  return new Promise(function cb(resolve, reject) {
-    console.log(tries + ' remaining');
-    if(--tries > 0) {
-      if(tries == 2)
-      {
-        var c = document.getElementsByClassName('ui-button ui-corner-all ui-widget')[2];    
-        $(c).toggle("highlight", {color: "green"});
-        $(c).toggle("highlight", {color: "green"});    
-      }
-      setTimeout(function() {
-        cb(resolve, reject);
-      }, 1000);
-    } else {
-        resolve('TIME_ELAPSED');
-    }
-  });
+    return new Promise(function cb(resolve, reject) {
+        console.log(tries + ' remaining');
+        if (--tries > 0) {
+            if (tries == 2) {
+                var c = document.getElementsByClassName('ui-button ui-corner-all ui-widget')[3];
+                //highlightObject(c);
+            }
+            setTimeout(function () {
+                cb(resolve, reject);
+            }, 1000);
+        } else {
+            resolve('TIME_ELAPSED');
+        }
+    });
 }
 
 function generateIdea() {
@@ -151,32 +174,43 @@ function generateIdea() {
 }
 
 $(document).ready(function () {
-    if(!stArtEd)
-    {
+    console.log('Am I ready!?');
+    if (!stArtEd) {
+        superVisor()
+            .then(function (data) {
+                console.log(data);
+                if (data == 'CONF_VISIBLE') {
+                    chrome.runtime.sendMessage({
+                        data: "doLocalhostNet_DONE"
+                    }, function (response) {
+                        console.log("from test.js:" + response);
+                        console.log(response);
+                    });
+                }
+            });
+
         stArt()
-        .then(clickTweetButton)
-        .then(tweetBoxVisible)
-        .then(clickTweetBox)
-        .then(typeTweetBox)
-        .then(addLinks)
-        .then(elapseSomeTime)
-        .then(clickTweetSend)
-        .then(function() {
-            chrome.runtime.sendMessage({
-                data: "doLocalhostNet_DONE"
+            .then(clickTweetButton)
+            .then(tweetBoxVisible)
+            .then(clickTweetBox)
+            .then(typeTweetBox)
+            .then(addLinks)
+            .then(elapseSomeTime)
+            .then(clickTweetSend)
+            .then(function () {
+                chrome.runtime.sendMessage({
+                    data: "doLocalhostNet_SENT"
                 }, function (response) {
                     console.log("from test.js:" + response);
                     console.log(response);
                 });
             })
-        .catch(function (data) {
-            console.log('CATCH:' + data);
-        });
+            .catch(function (data) {
+                console.log('CATCH:' + data);
+            });
     }
 });
 
 function begin() {
     console.log('at begin');
 }
-
-
