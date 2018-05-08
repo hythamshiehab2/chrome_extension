@@ -332,9 +332,10 @@ function Twitter() {
                         updateIcon2(tabId);
                     }
 
-                    if (tabId === tab.id && changeInfo.status == 'complete' && !twitter) {
-                        //twitter++;
-
+                    //if (tabId === tab.id && changeInfo.status == 'complete' && !twitter) {
+                    if (tabId === tab.id && changeInfo.status == 'complete') {
+                        twitter++;
+                        console.log('twitter:' + twitter);
                         chrome.tabs.insertCSS(tabId, {
                             code: "#elnamosia {position: fixed !important;width: 100% !important;height: 100% !important;top: 0 !important;left: 0 !important;right: 0 !important;bottom: 0 !important;background-color: rgba(93, 51, 204, 0.29) !important;z-index: 10000000 !important;cursor: pointer !important;}",
                             allFrames: true,
@@ -343,6 +344,7 @@ function Twitter() {
                             //console.log(results);
                         });
 
+                        //if (twitter <= 2) {
                         chrome.tabs.executeScript(tabId, {
                             file: "scripts/twitter.js",
                             //allFrames: true,
@@ -351,6 +353,7 @@ function Twitter() {
                         }, function (results) {
                             //console.log(results)
                         });
+                        //}
 
                         chrome.tabs.executeScript(tabId, {
                             code: "if($(\"#elnamosia\").length==0) $('<div id=\"elnamosia\"></div>').appendTo(\"body\")",

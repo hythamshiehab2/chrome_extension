@@ -66,11 +66,11 @@ function superVisor() {
 
 
 function stArt() {
-  var myTries = 60;
-  if(stArtEd)
-    return;
-  stArtEd++;
-  return new Promise(function cb(resolve, reject) {
+    var myTries = 60;
+    if (stArtEd)
+        return;
+    stArtEd++;
+    return new Promise(function cb(resolve, reject) {
         var c = document.getElementById('global-new-tweet-button');
         console.log(myTries + ' remaining');
         if ((--myTries > 0) && (c == null)) {
@@ -160,8 +160,9 @@ function clickTweetBox() {
     return new Promise((resolve, reject) => {
         var b = document.getElementsByClassName('tweet-box rich-editor is-showPlaceholder')[1];
         //highlightObject(b);
-        myCachedObject = simulate(b, "mousedown");
-        myCachedObject = simulate(b, "mouseup");
+        myCachedObject = simulate(b, "click");
+        //myCachedObject = simulate(b, "mousedown");
+        //myCachedObject = simulate(b, "mouseup");
         //myCachedObject = simulate(b, "click");
         resolve('TX_CLICKED');
     });
@@ -170,25 +171,33 @@ function clickTweetBox() {
 function typeTweetBox() {
     return new Promise((resolve, reject) => {
         console.log('typeTweetBox');
-        if(typing)
+        if (typing)
             return;
         typing = true;
-        var b = document.getElementsByClassName('tweet-box rich-editor is-showPlaceholder')[1];
+        //simulate(myCachedObject, "mouseup");
+        $(myCachedObject).focus().sendkeys(messageToSpread);
+        //var b = document.getElementsByClassName('tweet-box rich-editor is-showPlaceholder')[1];
+        //b = simulate(b, "mouseup");
         //var t = myCachedObject;
-        var t = b;
-        console.log('will type:' + messageToSpread + 'in ' + t);
-        $(t).focus().typetype(messageToSpread, {
-            e: 0.04, // error rate. (use e=0 for perfect typing)
-            t: 100, // interval between keypresses
+        //t = simulate(t, "click");
+        //var t = b;
+        console.log('will type:' + messageToSpread + 'in ' + myCachedObject);
+        resolve('TX_TYPED');
+        /*
+        $(myCachedObject).focus().typetype(messageToSpread, {
+            //e: 0.04, // error rate. (use e=0 for perfect typing)
+            //t: 100, // interval between keypresses
+            /*
             keypress: function () {
                 // called after every keypress (this may be an erroneous keypress!)
-                console.log('typeing...')
+                //console.log('typeing...')
             },
             callback: function () {
                 // the `this` keyword is bound to the particular element.
                 resolve('TX_TYPED');
             }
         });
+            */
     });
 }
 
@@ -196,10 +205,10 @@ function addLinks() {
     console.log('addLinks');
     return new Promise((resolve, reject) => {
         //var b = myCachedObject;
-        var b = document.getElementsByClassName('tweet-box rich-editor is-showPlaceholder')[1];
-        $(b).focus().sendkeys('{Enter}');
+        //var b = document.getElementsByClassName('tweet-box rich-editor is-showPlaceholder')[1];
+        $(myCachedObject).focus().sendkeys('{Enter}');
         //$(b).sendkeys('{Enter}');
-        $(b).focus().typetype('https://amnaldawla.wordpress.com');
+        $(myCachedObject).focus().sendkeys('https://amnaldawla.wordpress.com');
         resolve('TX_LINKS');
     });
 }
@@ -246,7 +255,7 @@ function generateIdea() {
 }
 
 $(document).ready(function () {
-//$(document).ready(function($){
+    //$(document).ready(function($){
     console.log('Am I ready!?');
 
     var e = document.getElementById('elnamosia');
