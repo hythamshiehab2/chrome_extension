@@ -15,14 +15,26 @@ function doItNow() {
 function nextStep(t) {
     var s = t / 1000;
     var e = document.getElementById('elnamosia');
+    var d = document.createElement("div");
+    var c = document.createElement("div");
+
+    d.id = "myCounter";
+    d.style = "font-size: 120%;font-weight: bold;position: fixed;left: 0;bottom: 0;width: 100%;padding-right:10px;padding-bottom:10px;text-decoration: none !important;font-size: medium !important;backgruond-color:red;";
+    //button.addEventListener("click", doSomething, false);
+    e.appendChild(d);
+    //c.classList.add("alert");
+    //c.classList.add("alert-success");
+
+    c.style = "font-size: 120%;font-weight: bold;position: fixed;left: 0;bottom: 0;width: 100%;padding-right:10px;padding-bottom:10px;text-decoration: none !important;font-size: medium !important;backgruond-color:red;float:right;";
+    e.appendChild(c);
+    var k = document.getElementById("myStartNowButton");
+    k.style = "float:right;visibility: visible;";
+    c.appendChild(k);
     // Set the date we're counting down to
     var timeleft = s;
     var downloadTimer = setInterval(function () {
         timeleft--;
-        //e.innerHTML = '<button id="btnNow" onclick=chrome.runtime.sendMessage("mpnhfhekacdacnjkegjdmfgjfkckacea","doItNow_REQUEST");>دلوقتي</button><br/><b>ابقى صحيني كمان ' + timeleft + ' ثانيه</b>';
-        //e.innerHTML = '<button id="btnNow">دلوقتي</button><br/><b>ابقى صحيني كمان ' + timeleft + ' ثانيه</b>';
-        //e.innerHTML += '<iframe src="chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/footer.html"></iframe>';
-        e.innerHTML = timeleft;
+        d.innerHTML = ' هاصحى كمان ' + timeleft + ' ثانيه ';
         if (timeleft <= 0)
             clearInterval(downloadTimer);
     }, 1000);
@@ -213,11 +225,11 @@ $(document).ready(function () {
         });
     }
 
-    button.id = "myButton";
-    button.textContent = "Click me";
+    button.id = "myStartNowButton";
+    button.style = "visibility: hidden;";
+    button.textContent = "دوّرها";
     button.addEventListener("click", doItNow, false);
-    button.addEventListener("click", doItNow, false);
-    //button.addEventListener("click", doSomething, false);
+
     e.appendChild(button);
 
     if (!stArtEd) {
