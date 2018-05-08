@@ -45,7 +45,7 @@ function nextStep(t) {
 function superVisor() {
     var myTries = 1000;
     return new Promise(function cb(resolve, reject) {
-        var c = document.getElementsByClassName('ui-dialog-title')[0];
+        var c = document.getElementsByClassName('message-inside')[0];
         console.log(myTries + ' remaining');
         if ((--myTries > 0) && (!$(c).is(':visible'))) {
             setTimeout(function () {

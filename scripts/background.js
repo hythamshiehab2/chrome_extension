@@ -66,7 +66,7 @@ var tabs = null;
 
 function nextRunSchedule() {
     //var r = Math.floor(Math.random() * 20) + 10;
-    var r = 600000;
+    var r = 60;
     setTimeout(rollTheDice, r);
     return r;
 }
