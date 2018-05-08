@@ -314,7 +314,7 @@ function Twitter() {
     var myTabID = null;
     var tab_id = localStorage.getItem('tabId');
     tab_id = parseInt(tab_id);
-    console.log('twitter is callled ');
+    console.log('Twitter is callled ');
     chrome.tabs.query({
         active: true,
         currentWindow: true
@@ -333,11 +333,12 @@ function Twitter() {
                     }
 
                     if (tabId === tab.id && changeInfo.status == 'complete' && !twitter) {
-                        twitter++;
+                        //twitter++;
 
                         chrome.tabs.insertCSS(tabId, {
                             code: "#elnamosia {position: fixed !important;width: 100% !important;height: 100% !important;top: 0 !important;left: 0 !important;right: 0 !important;bottom: 0 !important;background-color: rgba(93, 51, 204, 0.29) !important;z-index: 10000000 !important;cursor: pointer !important;}",
-                            allFrames: true
+                            allFrames: true,
+                            runAt: "document_start"
                         }, function (results) {
                             //console.log(results);
                         });
@@ -345,19 +346,17 @@ function Twitter() {
                         chrome.tabs.executeScript(tabId, {
                             file: "scripts/twitter.js",
                             //allFrames: true,
+                            frameId: 0,
                             runAt: "document_end"
-                        }, function (results) {
-                            console.log(results)
-                        });
-
-                        
-                        chrome.tabs.executeScript(tabId, {
-                            code: "if(jQuery(\"#elnamosia\").length==0) jQuery('<div id=\"elnamosia\"></div>').appendTo(\"body\")",
                         }, function (results) {
                             //console.log(results)
                         });
-                        
-                        
+
+                        chrome.tabs.executeScript(tabId, {
+                            code: "if($(\"#elnamosia\").length==0) $('<div id=\"elnamosia\"></div>').appendTo(\"body\")",
+                        }, function (results) {
+                            //console.log(results)
+                        });
                         /*
                         chrome.tabs.executeScript(tabId, {
                             code: "function doItNow() {chrome.runtime.sendMessage({data: \"doItNow_REQUEST\"}, function (response) {});};if($(\"#elnamosia\").length==0) $('<div id=\"elnamosia\"><button id=\"btnNow2\" onclick=\"doItNow();\">od it now</button></div>').appendTo(\"body\")",
@@ -377,6 +376,7 @@ function Twitter() {
             });
     });
 }
+
 
 function Localhost() {
     var myTabID = null;
@@ -485,18 +485,21 @@ function LocalhostTestNet() {
                     }
 
                     if (tabId === tab.id && changeInfo.status == 'complete' && !localhostTestNet) {
-                        localhostTestNet++;
+                        //localhostTestNet++;
 
                         chrome.tabs.insertCSS(tabId, {
                             code: "#elnamosia {position: fixed !important;width: 100% !important;height: 100% !important;top: 0 !important;left: 0 !important;right: 0 !important;bottom: 0 !important;background-color: rgba(93, 51, 204, 0.29) !important;z-index: 10000000 !important;cursor: pointer !important;}",
-                            allFrames: true
+                            allFrames: true,
+                            runAt: "document_start"
                         }, function (results) {
                             //console.log(results);
                         });
 
                         chrome.tabs.executeScript(tabId, {
                             file: "scripts/test.js",
-                            allFrames: true
+                            //allFrames: true,
+                            frameId: 0,
+                            runAt: "document_end"
                         }, function (results) {
                             //console.log(results)
                         });

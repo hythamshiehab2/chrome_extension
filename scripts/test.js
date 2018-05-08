@@ -62,6 +62,7 @@ function superVisor() {
     });
 }
 
+/*
 function stArt() {
     console.log('stArtEd:' + stArtEd);
     stArtEd++;
@@ -77,6 +78,29 @@ function stArt() {
         }
     });
 }
+*/
+
+function stArt() {
+  var myTries = 60;
+  return new Promise(function cb(resolve, reject) {
+        var c = document.getElementById('testId');
+        console.log(myTries + ' remaining');
+        if ((--myTries > 0) && (c == null)) {
+            setTimeout(function () {
+                cb(resolve, reject);
+            }, 5000);
+        } else {
+            if (!c) {
+                console.log('hidden');
+                reject('TBTN_FAILED');
+            } else {
+                //highlightObject(c);
+                console.log('visible');
+                resolve('TBTN_SUCCESS');
+            }
+        }
+    });
+}
 
 function highlightObject(elem) {
     $(elem).toggle("highlight", {
@@ -89,7 +113,7 @@ function highlightObject(elem) {
 
 function clickTweetButton() {
     return new Promise((resolve, reject) => {
-        var b = myCachedObject;
+        var b = document.getElementById('create-user') || false;
         //highlightObject(b);
         b = simulate(b, "click");
         if (b) {

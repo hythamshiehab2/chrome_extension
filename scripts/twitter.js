@@ -70,7 +70,7 @@ function stArt() {
   return new Promise(function cb(resolve, reject) {
         var c = document.getElementById('global-new-tweet-button');
         console.log(myTries + ' remaining');
-        if ((--myTries > 0) && (c != null)) {
+        if ((--myTries > 0) && (c == null)) {
             setTimeout(function () {
                 cb(resolve, reject);
             }, 5000);
