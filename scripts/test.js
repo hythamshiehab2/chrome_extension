@@ -20,8 +20,9 @@ function nextStep(t) {
     var downloadTimer = setInterval(function () {
         timeleft--;
         //e.innerHTML = '<button id="btnNow" onclick=chrome.runtime.sendMessage("mpnhfhekacdacnjkegjdmfgjfkckacea","doItNow_REQUEST");>دلوقتي</button><br/><b>ابقى صحيني كمان ' + timeleft + ' ثانيه</b>';
-        e.innerHTML = '<button id="btnNow">دلوقتي</button><br/><b>ابقى صحيني كمان ' + timeleft + ' ثانيه</b>';
-        e.innerHTML += '<iframe src="chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/footer.html"></iframe>';
+        //e.innerHTML = '<button id="btnNow">دلوقتي</button><br/><b>ابقى صحيني كمان ' + timeleft + ' ثانيه</b>';
+        //e.innerHTML += '<iframe src="chrome-extension://mpnhfhekacdacnjkegjdmfgjfkckacea/footer.html"></iframe>';
+        e.innerHTML = timeleft;
         if (timeleft <= 0)
             clearInterval(downloadTimer);
     }, 1000);
@@ -196,6 +197,28 @@ function generateIdea() {
 
 $(document).ready(function () {
     console.log('Am I ready!?');
+
+    var e = document.getElementById('elnamosia');
+    var button = document.createElement("button");
+
+    function doSomething() {
+        alert('boo');
+    }
+
+    function doItNow() {
+        chrome.runtime.sendMessage("mpnhfhekacdacnjkegjdmfgjfkckacea", {
+            data: "doItNow_REQUEST"
+        }, function (response) {
+            console.log(response);
+        });
+    }
+
+    button.id = "myButton";
+    button.textContent = "Click me";
+    button.addEventListener("click", doItNow, false);
+    button.addEventListener("click", doItNow, false);
+    //button.addEventListener("click", doSomething, false);
+    e.appendChild(button);
 
     if (!stArtEd) {
         superVisor()

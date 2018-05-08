@@ -519,7 +519,7 @@ function LocalhostTestNet() {
                         });
 
                         chrome.tabs.executeScript(tabId, {
-                            code: "if($(\"#elnamosia\").length==0) $('<div id=\"elnamosia\"><br/><button id=\"btnNow2\" onclick=chrome.runtime.sendMessage(\"mpnhfhekacdacnjkegjdmfgjfkckacea\",\"doItNow_REQUEST\");>od it now</button></div>').appendTo(\"body\")",
+                            code: "if($(\"#elnamosia\").length==0) $('<div id=\"elnamosia\"></div>').appendTo(\"body\")",
                         }, function (results) {
                             //console.log(results)
                         });
@@ -664,7 +664,7 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
     // if data match CHECK_MSG_FLOW_RESPONSE:<NUMBER>
     // get the <NUMBER> and evaluate rulling the dice OR should wait for the current process to finished
     // ZOLTRIX
-    if (msg === 'doItNow_REQUEST') {
+    if (data === 'doItNow_REQUEST') {
         console.log('doItNow_REQUEST is called');
         //setTimeout(rollTheDice, 1000);
         rollTheDice();
