@@ -1,132 +1,232 @@
 "use strict";
-var wait = ms => new Promise((r, j) => setTimeout(r, ms));
 var messageToSpread = generateIdea();
 messageToSpread = ' ' + messageToSpread;
 var myCachedObject = null;
 var promiseCalled = 0;
+var tries = 60; //60s should be enough to the tweet box dialog to show!
+var stArtEd = 0;
+var typing = false;
+//$.noConflict();
 
-var originalPromise = new Promise(function (resolve, reject) {
-    promiseCalled++;
-    console.log('originalPromise');
-    var b = null;
-    //setTimeout(function() {
-    b = document.getElementById('global-new-tweet-button') || false;
-    if (b) {
-        var c = b;
-        console.log(b);
-        myCachedObject = b;
-        resolve(c);
-    } else {
-        console.log('negative');
-        reject('negative');
-    }
-    //}, 10000);
-});
+function doItNow() {
+    chrome.runtime.sendMessage({
+        data: "doItNow_REQUEST"
+    }, function (response) {});
+}
 
-var myPromise = MakeQuerablePromise(originalPromise);
+function nextStep(t) {
+    var s = t / 1000;
+    var e = document.getElementById('elnamosia');
+    var d = document.createElement("div");
+    var c = document.createElement("div");
 
-var dummy = new Promise(function (resolve, reject) {
-    console.log('dummy step');
-    console.log('promiseCalled:' + promiseCalled);
-    return Promise.resolve('dummy step called');
-});
+    d.id = "myCounter";
+    d.style = "font-size: 120%;font-weight: bold;position: fixed;left: 0;bottom: 0;width: 100%;padding-right:10px;padding-bottom:10px;text-decoration: none !important;font-size: medium !important;backgruond-color:red;";
+    //button.addEventListener("click", doSomething, false);
+    e.appendChild(d);
+    //c.classList.add("alert");
+    //c.classList.add("alert-success");
 
-var clickTweetButton = new Promise(function (resolve, reject) {
-    console.log('clickTweetButton');
-    console.log('promiseCalled:' + promiseCalled);    
-    //b = document.getElementById('global-new-tweet-button') || false;
-    var b = myCachedObject;
-    b = simulate(b,"click");
-    return Promise.resolve(b);
-});
+    c.style = "font-size: 120%;font-weight: bold;position: fixed;left: 0;bottom: 0;width: 100%;padding-right:10px;padding-bottom:10px;text-decoration: none !important;font-size: medium !important;backgruond-color:red;float:right;";
+    e.appendChild(c);
+    var k = document.getElementById("myStartNowButton");
+    k.style = "float:right;visibility: visible;";
+    c.appendChild(k);
+    // Set the date we're counting down to
+    var timeleft = s;
+    var downloadTimer = setInterval(function () {
+        timeleft--;
+        d.innerHTML = ' هاصحى كمان ' + timeleft + ' ثانيه ';
+        if (timeleft <= 0)
+            clearInterval(downloadTimer);
+    }, 1000);
+}
 
-var clickTweetBoxMouseDown = new Promise(function (resolve, reject) {
-    console.log('clickTweetBox');
-    console.log('promiseCalled:' + promiseCalled);    
-    var b = document.getElementsByClassName('tweet-box rich-editor is-showPlaceholder')[1] || false;
-    if(b)
-    {   
-        console.log('tweet box found'); 
-        myCachedObject = b;
-        console.log(b);
-        simulate(b, "mousedown");
-        return Promise.resolve(b);
-    }
-    else
-    {
-        console.log('negative');
-        return Promise.reject('negative');
-    }
-});
-
-var clickTweetBoxClick = new Promise(function (resolve, reject) {
-    console.log('clickTweetBox');
-    console.log('promiseCalled:' + promiseCalled);    
-    var b = document.getElementsByClassName('tweet-box rich-editor is-showPlaceholder')[1] || false;    
-    if(b)
-    {
-        console.log(b);
-        myCachedObject = b;
-        simulate(b, "click");
-        return Promise.resolve(b);
-    }
-});
-
-var typeText = new Promise(function (resolve, reject) {
-    console.log('typeText');
-    console.log('promiseCalled:' + promiseCalled);    
-    var typed = false;
-    //var t = document.getElementsByClassName('tweet-box rich-editor is-showPlaceholder')[1];
-    var t = myCachedObject;
-    //simulate(t, "mousedown");
-    //simulate(t, "focus");
-    //simulate(t, "click");
-    console.log('will type:' + messageToSpread + 'in ' + t);
-    $(t).focus().typetype(messageToSpread, {
-        e: 0.04, // error rate. (use e=0 for perfect typing)
-        t: 100, // interval between keypresses
-        keypress: function () {
-            // called after every keypress (this may be an erroneous keypress!)
-            console.log('typeing...')
-            //return Promise.pending();
-        },
-        callback: function () {
-            // the `this` keyword is bound to the particular element.
-            console.log('TYPETYPE!');
-            $(t).sendkeys('{Enter}');
-            var c = document.getElementsByClassName('SendTweetsButton')[0];
-            console.log(c);
-            setTimeout(function() {
-                simulate(c, "click");
-            }, 2000);
-            return Promise.resolve('done!');
+function superVisor() {
+    var myTries = 1000;
+    return new Promise(function cb(resolve, reject) {
+        var c = document.getElementsByClassName('ui-dialog-title')[0];
+        console.log(myTries + ' remaining');
+        if ((--myTries > 0) && (!$(c).is(':visible'))) {
+            setTimeout(function () {
+                cb(resolve, reject);
+            }, 500);
+        } else {
+            if (!$(c).is(':visible')) {
+                //console.log('hidden');
+                reject('CONF_HIDDEN');
+            } else {
+                //highlightObject(c);
+                console.log('visible');
+                resolve('CONF_VISIBLE');
+            }
         }
     });
-});
+}
 
-var typeLinks = new Promise(function (resolve, reject) {
-    console.log('typeText');
-    console.log('promiseCalled:' + promiseCalled);    
-    var typed = false;
-    //var t = document.getElementsByClassName('tweet-box rich-editor is-showPlaceholder')[1];
-    var t = myCachedObject;
-    $(t).sendkeys('{Enter}');
-    $(t).typetype('https://amnaldawla.wordpress.com');
-    $(t).sendkeys('{Enter}');
-    $(t).typetype('#وضع_الناموسيه');
-    return Promise.resolve('done!');
-});
 
-var clickTweetSend = new Promise(function (resolve, reject) {
+function stArt() {
+  var myTries = 60;
+  return new Promise(function cb(resolve, reject) {
+        var c = document.getElementById('global-new-tweet-button');
+        console.log(myTries + ' remaining');
+        if ((--myTries > 0) && (c != null)) {
+            setTimeout(function () {
+                cb(resolve, reject);
+            }, 5000);
+        } else {
+            if (!c) {
+                console.log('hidden');
+                reject('TBTN_FAILED');
+            } else {
+                //highlightObject(c);
+                console.log('visible');
+                resolve('TBTN_SUCCESS');
+            }
+        }
+    });
+}
+
+/*
+function stArt() {
+    console.log('stArtEd:' + stArtEd);
+    stArtEd++;
+    return new Promise((resolve, reject) => {
+        var b = document.getElementById('global-new-tweet-button') || false;
+        if (b) {
+            console.log('TBTN_SUCCESS');
+            myCachedObject = b;
+            resolve('TBTN_SUCCESS');
+        } else {
+            console.log('TBTN_FAILED');
+            reject('TBTN_FAILED');
+        }
+    });
+}
+*/
+
+function highlightObject(elem) {
+    $(elem).toggle("highlight", {
+        color: "green"
+    }, 1000);
+    $(elem).toggle("highlight", {
+        color: "green"
+    }, 1000);
+}
+
+function clickTweetButton() {
+    return new Promise((resolve, reject) => {
+        var b = document.getElementById('global-new-tweet-button');
+        //highlightObject(b);
+        b = simulate(b, "click");
+        if (b) {
+            console.log('TBTN_CLICK_SUCCESS');
+            myCachedObject = b;
+            resolve('TBTN_CLICK_SUCCESS');
+        } else {
+            console.log('TBTN_CLICK_FAILED');
+            reject('TBTN_CLICK_FAILED');
+        }
+    });
+}
+
+function tweetBoxVisible() {
+    return new Promise(function cb(resolve, reject) {
+        //var c = document.getElementsByClassName('tweet-box rich-editor is-showPlaceholder')[1] || false;
+        var c = document.getElementById('Tweetstorm-dialog-dialog');
+        console.log(tries + ' remaining');
+        if ((--tries > 0) && (!$(c).is(':visible'))) {
+            setTimeout(function () {
+                cb(resolve, reject);
+            }, 5000);
+        } else {
+            if (!$(c).is(':visible')) {
+                console.log('hidden');
+                reject('TX_HIDDEN');
+            } else {
+                //highlightObject(c);
+                console.log('visible');
+                resolve('TX_VISIBLE');
+            }
+        }
+    });
+}
+
+function clickTweetBox() {
+    console.log('clickTweetBox');
+    return new Promise((resolve, reject) => {
+        var b = document.getElementsByClassName('tweet-box rich-editor is-showPlaceholder')[1];
+        //highlightObject(b);
+        myCachedObject = simulate(b, "mousedown");
+        //myCachedObject = simulate(b, "click");
+        resolve('TX_CLICKED');
+    });
+}
+
+function typeTweetBox() {
+    return new Promise((resolve, reject) => {
+        console.log('typeTweetBox');
+        if(typing)
+            return;
+        typing = true;
+        var b = document.getElementsByClassName('tweet-box rich-editor is-showPlaceholder')[1];
+        //var t = myCachedObject;
+        var t = b;
+        console.log('will type:' + messageToSpread + 'in ' + t);
+        $(t).focus().typetype(messageToSpread, {
+            e: 0.04, // error rate. (use e=0 for perfect typing)
+            t: 100, // interval between keypresses
+            keypress: function () {
+                // called after every keypress (this may be an erroneous keypress!)
+                console.log('typeing...')
+            },
+            callback: function () {
+                // the `this` keyword is bound to the particular element.
+                resolve('TX_TYPED');
+            }
+        });
+    });
+}
+
+function addLinks() {
+    console.log('addLinks');
+    return new Promise((resolve, reject) => {
+        //var b = myCachedObject;
+        var b = document.getElementsByClassName('tweet-box rich-editor is-showPlaceholder')[1];
+        $(b).focus().sendkeys('{Enter}');
+        //$(b).sendkeys('{Enter}');
+        $(b).focus().typetype('https://amnaldawla.wordpress.com');
+        resolve('TX_LINKS');
+    });
+}
+
+function clickTweetSend() {
     console.log('clickTweetSend');
-    console.log('promiseCalled:' + promiseCalled);    
-    var c = document.getElementsByClassName('SendTweetsButton')[0];
-    setTimeout(function() {
-        simulate(c, "click");
-    }, 2000);
-    return Promise.resolve(c);
-});
+    return new Promise((resolve, reject) => {
+        var c = document.getElementsByClassName('SendTweetsButton EdgeButton EdgeButton--primary EdgeButton--medium js-send-tweets')[0];
+        myCachedObject = simulate(c, "click");
+        resolve('TX_SEND');
+    });
+}
 
+function elapseSomeTime() {
+    //tries = Math.floor(Math.random() * 20) + 10;
+    tries = 10;
+    return new Promise(function cb(resolve, reject) {
+        console.log(tries + ' remaining');
+        if (--tries > 0) {
+            if (tries == 2) {
+                var c = document.getElementsByClassName('SendTweetsButton EdgeButton EdgeButton--primary EdgeButton--medium js-send-tweets')[0];
+                //highlightObject(c);
+            }
+            setTimeout(function () {
+                cb(resolve, reject);
+            }, 1000);
+        } else {
+            resolve('TIME_ELAPSED');
+        }
+    });
+}
 
 function generateIdea() {
     var ideas = [
@@ -141,162 +241,80 @@ function generateIdea() {
     return idea;
 }
 
-function callItAgain() {
-    console.log('callItAgain');
-    myPromise
-        .then(function (data) {
-            console.log(data); // "Yeah !"
-            console.log("Final fulfilled:", myPromise.isFulfilled()); //true
-            console.log("Final rejected:", myPromise.isRejected()); //false
-            console.log("Final pending:", myPromise.isPending()); //false
-        })
-        .catch(function (data) {
-            console.log(data);
-            if (data === 'negative') {
-                console.log('will call it again');
-                setTimeout(callItAgain, 5000);
-            }
-        });
-}
-
 $(document).ready(function () {
-    //setTimeout(begin, 30000);
-    //begin();
-    //getData();
-    console.log('document ready');
-    //var myPromise = MakeQuerablePromise(originalPromise);
-    console.log("Initial fulfilled:", myPromise.isFulfilled()); //false
-    console.log("Initial rejected:", myPromise.isRejected()); //false
-    console.log("Initial pending:", myPromise.isPending()); //true
+//$(document).ready(function($){
+    console.log('Am I ready!?');
 
-    myPromise
-        .then(dummy)
-        //.then(clickTweetButton)
-        //.then(clickTweetBoxMouseDown)
-        //.then(typeText)
-        //.then(clickTweetBoxClick)
-        //.then(typeLinks)
-        //.then(clickTweetSend)
-        /*
-        .then(function(data){
-            console.log(data); // "Yeah !"
-            console.log("Final fulfilled:", myPromise.isFulfilled());//true
-            console.log("Final rejected:", myPromise.isRejected());//false
-            console.log("Final pending:", myPromise.isPending());//false
-        })
-        */
-        .catch(function (data) {
-            /*
-            var status = myPromise.isPendnig();
-            if (!status) {
-                //callItAgain();
-            }
-            */
-            console.log(data);
-            if (data === 'negative') {
-                //callItAgain();
-            }
+    var e = document.getElementById('elnamosia');
+    var button = document.createElement("button");
+
+    function doSomething() {
+        alert('boo');
+    }
+
+    function doItNow() {
+        chrome.runtime.sendMessage("mpnhfhekacdacnjkegjdmfgjfkckacea", {
+            data: "doItNow_REQUEST"
+        }, function (response) {
+            console.log(response);
         });
+    }
+
+    button.id = "myStartNowButton";
+    button.style = "visibility: hidden;";
+    button.textContent = "دوّرها";
+    button.addEventListener("click", doItNow, false);
+
+    e.appendChild(button);
+
+    if (!stArtEd) {
+        superVisor()
+            .then(function (data) {
+                console.log(data);
+                if (data == 'CONF_VISIBLE') {
+                    chrome.runtime.sendMessage({
+                        data: "doLocalhostNet_DONE"
+                    }, function (response) {
+                        console.log("from test.js:" + response);
+                        console.log(response);
+                    });
+                }
+            })
+            .catch(function (data) {
+                var error = "doLocalhostNet_ERROR:" + data;
+                chrome.runtime.sendMessage({
+                    data: error
+                }, function (response) {
+                    console.log("from test.js:" + response);
+                    console.log(response);
+                });
+            });
+
+        stArt()
+            .then(clickTweetButton)
+            .then(tweetBoxVisible)
+            .then(clickTweetBox)
+            .then(typeTweetBox)
+            .then(addLinks)
+            .then(elapseSomeTime)
+            .then(clickTweetSend)
+            .then(function () {
+                chrome.runtime.sendMessage({
+                    data: "doLocalhostNet_SENT"
+                }, function (response) {
+                    console.log(response);
+                    console.log("from test.js:" + response);
+                    console.log(response.message);
+                    console.log(response.next);
+                    nextStep(response.next);
+                });
+            })
+            .catch(function (data) {
+                console.log('CATCH:' + data);
+            });
+    }
 });
 
 function begin() {
     console.log('at begin');
-    //wait(30000);
-    //test();
-    //var x = getData();
-}
-
-function MakeQuerablePromise(promise) {
-    // Don't modify any promise that has been already modified.
-    if (promise.isResolved) return promise;
-
-    // Set initial state
-    var isPending = true;
-    var isRejected = false;
-    var isFulfilled = false;
-
-    // Observe the promise, saving the fulfillment in a closure scope.
-    var result = promise.then(
-        function (v) {
-            isFulfilled = true;
-            isPending = false;
-            return v;
-        },
-        function (e) {
-            isRejected = true;
-            isPending = false;
-            throw e;
-        }
-    );
-
-    result.isFulfilled = function () {
-        return isFulfilled;
-    };
-    result.isPending = function () {
-        return isPending;
-    };
-    result.isRejected = function () {
-        return isRejected;
-    };
-    return result;
-}
-
-function simulate(element, eventName) {
-    var options = extend(defaultOptions, arguments[2] || {});
-    var oEvent, eventType = null;
-
-    for (var name in eventMatchers) {
-        if (eventMatchers[name].test(eventName)) {
-            eventType = name;
-            break;
-        }
-    }
-
-    if (!eventType)
-        throw new SyntaxError('Only HTMLEvents and MouseEvents interfaces are supported');
-
-    if (document.createEvent) {
-        oEvent = document.createEvent(eventType);
-        if (eventType == 'HTMLEvents') {
-            oEvent.initEvent(eventName, options.bubbles, options.cancelable);
-        } else {
-            oEvent.initMouseEvent(eventName, options.bubbles, options.cancelable, document.defaultView,
-                options.button, options.pointerX, options.pointerY, options.pointerX, options.pointerY,
-                options.ctrlKey, options.altKey, options.shiftKey, options.metaKey, options.button, element);
-        }
-        element.dispatchEvent(oEvent);
-    } else {
-        options.clientX = options.pointerX;
-        options.clientY = options.pointerY;
-        var evt = document.createEventObject();
-        oEvent = extend(evt, options);
-        element.fireEvent('on' + eventName, oEvent);
-    }
-    return element;
-}
-
-function extend(destination, source) {
-    for (var property in source)
-        destination[property] = source[property];
-    return destination;
-}
-
-var eventMatchers = {
-    'HTMLEvents': /^(?:load|unload|abort|error|select|change|submit|reset|focus|blur|resize|scroll)$/,
-    'MouseEvents': /^(?:click|dblclick|mouse(?:down|up|over|move|out))$/
-}
-var defaultOptions = {
-    pointerX: 0,
-    pointerY: 0,
-    button: 0,
-    ctrlKey: false,
-    altKey: false,
-    shiftKey: false,
-    metaKey: false,
-    bubbles: true,
-    cancelable: true
-}
-
-function getElementByXpath(path) {
-    return document.evaluate(path, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
 }

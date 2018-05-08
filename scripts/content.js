@@ -1,3 +1,4 @@
+/*
 function doItNow() {
     chrome.runtime.sendMessage({
         data: "doItNow_REQUEST"
@@ -13,3 +14,4 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     console.log(request);
     console.log('content.js:' + data);
 });
+*/
