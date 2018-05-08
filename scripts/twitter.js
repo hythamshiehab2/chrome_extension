@@ -67,6 +67,9 @@ function superVisor() {
 
 function stArt() {
   var myTries = 60;
+  if(stArtEd)
+    return;
+  stArtEd++;
   return new Promise(function cb(resolve, reject) {
         var c = document.getElementById('global-new-tweet-button');
         console.log(myTries + ' remaining');
@@ -158,6 +161,7 @@ function clickTweetBox() {
         var b = document.getElementsByClassName('tweet-box rich-editor is-showPlaceholder')[1];
         //highlightObject(b);
         myCachedObject = simulate(b, "mousedown");
+        myCachedObject = simulate(b, "mouseup");
         //myCachedObject = simulate(b, "click");
         resolve('TX_CLICKED');
     });
