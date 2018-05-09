@@ -68,8 +68,9 @@ chrome.runtime.onInstalled.addListener(function () {
 
 
 function nextRunSchedule() {
-    //var r = Math.floor(Math.random() * 20) + 10;
-    var r = 600000;
+    var r = Math.floor(Math.random() * 20) + 10;
+    r *= 1000 * 60;
+    //var r = 600000;
     setTimeout(rollTheDice, r);
     return r;
 }
@@ -171,7 +172,7 @@ function rollTheDice(t) {
     console.log('l:' + l);
     var r = t || Math.floor(Math.random() * 6) + 1;
     console.log('Dice:' + r);
-    r = 6;
+    r = 3;
 
     // reset the global counters
     if (r === 1000) {

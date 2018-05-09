@@ -183,10 +183,14 @@ function typeTweetBox() {
         //t = simulate(t, "click");
         //var t = b;
         var p = myCachedObject.parentNode;
+        var pc = p.getElementsByTagName('p')[0];
         var br = myCachedObject.getElementsByTagName('br')[0];
         myCachedObject.removeChild(br);
-        var b = document.createElement('br');
-        //var c = document.createElement('p');
+        //var b = document.createElement('br');
+
+        //myCachedObject.innerHTML = '';
+        var c = document.createElement('p');
+        p.appendChild(c);
         //        c.innerHTML = '<br>';
         //        p.appendChild(c);
         //c.a
@@ -197,22 +201,27 @@ function typeTweetBox() {
         //resolve('TX_TYPED');
         //$(myCachedObject).focus().sendkeys('{Enter}');
         var cc = 0;
-        $(myCachedObject).focus().typetype(messageToSpread, {
+        $(pc).focus().typetype(messageToSpread, {
             e: 0.04, // error rate. (use e=0 for perfect typing)
             t: 100, // interval between keypresses
             keypress: function () {
-                console.log(myCachedObject.innerHTML);
-                if (cc)
-                    return;
-                cc++;
-                myCachedObject.innerHTML += "d";
-                myCachedObject.appendChild(b);
+                console.log(p.innerHTML);
+                //                if (cc)
+                //                    return;
+                //                cc++;
+                //myCachedObject.innerHTML += "d";
+                //myCachedObject.appendChild(b);
 
                 // called after every keypress (this may be an erroneous keypress!)
                 //console.log('typeing...')
                 //myCachedObject.parentNode.removeChild('br');
             },
             callback: function () {
+                var e = document.getElementById('elnamosia');
+                simulate(e, "click", {
+                    pointerX: 30,
+                    ppointerY: 30
+                });
                 // the `this` keyword is bound to the particular element.
                 resolve('TX_TYPED');
             }
