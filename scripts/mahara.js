@@ -16,27 +16,24 @@ function doItNow() {
 
 function nextStep(t) {
     var s = t / 1000;
+    var m = s / 60;
     var e = document.getElementById('elnamosia');
     var d = document.createElement("div");
     var c = document.createElement("div");
 
     d.id = "myCounter";
     d.style = "font-size: 120%;font-weight: bold;position: fixed;left: 0;bottom: 0;width: 100%;padding-right:10px;padding-bottom:10px;text-decoration: none !important;font-size: medium !important;backgruond-color:red;";
-    //button.addEventListener("click", doSomething, false);
     e.appendChild(d);
-    //c.classList.add("alert");
-    //c.classList.add("alert-success");
-
     c.style = "font-size: 120%;font-weight: bold;position: fixed;left: 0;bottom: 0;width: 100%;padding-right:10px;padding-bottom:10px;text-decoration: none !important;font-size: medium !important;backgruond-color:red;float:right;";
     e.appendChild(c);
     var k = document.getElementById("myStartNowButton");
     k.style = "float:right;visibility: visible;";
     c.appendChild(k);
-    // Set the date we're counting down to
     var timeleft = s;
     var downloadTimer = setInterval(function () {
         timeleft--;
-        d.innerHTML = ' هاصحى كمان ' + timeleft + ' ثانيه ';
+        m = Math.floor(timeleft / 60);
+        d.innerHTML = ' هاصحى كمان ' + timeleft + ' ثانيه ' + ' بالدقائق: ' + m + ' دقيقه ';
         if (timeleft <= 0)
             clearInterval(downloadTimer);
     }, 1000);
@@ -205,7 +202,7 @@ function typeTweetBox() {
             e: 0.04, // error rate. (use e=0 for perfect typing)
             t: 100, // interval between keypresses
             keypress: function () {
-                console.log(p.innerHTML);
+                //console.log(p.innerHTML);
                 //                if (cc)
                 //                    return;
                 //                cc++;
@@ -248,21 +245,21 @@ function addLinks() {
 function clickTweetSend() {
     console.log('clickTweetSend');
     return new Promise((resolve, reject) => {
-        var c = document.getElementsByClassName('SendTweetsButton EdgeButton EdgeButton--primary EdgeButton--medium js-send-tweets')[0];
+        var c = document.getElementsByName('submit')[1];
         myCachedObject = simulate(c, "click");
+        //var t = c.getClientRects()[0]
         resolve('TX_SEND');
     });
 }
 
 function elapseSomeTime() {
     //tries = Math.floor(Math.random() * 20) + 10;
-    tries = 10;
+    tries = 5;
     return new Promise(function cb(resolve, reject) {
         console.log(tries + ' remaining');
         if (--tries > 0) {
             if (tries == 2) {
-                var c = document.getElementsByClassName('SendTweetsButton EdgeButton EdgeButton--primary EdgeButton--medium js-send-tweets')[0];
-                //highlightObject(c);
+                console.log('lagging...');
             }
             setTimeout(function () {
                 cb(resolve, reject);
@@ -318,19 +315,19 @@ $(document).ready(function () {
                 console.log(data);
                 if (data == 'CONF_VISIBLE') {
                     chrome.runtime.sendMessage({
-                        data: "doLocalhostNet_DONE"
+                        data: "doMaharaStuff_DONE"
                     }, function (response) {
-                        console.log("from test.js:" + response);
+                        console.log("from mahara.js:" + response);
                         console.log(response);
                     });
                 }
             })
             .catch(function (data) {
-                var error = "doLocalhostNet_ERROR:" + data;
+                var error = "doMaharaStuff_ERROR:" + data;
                 chrome.runtime.sendMessage({
                     data: error
                 }, function (response) {
-                    console.log("from test.js:" + response);
+                    console.log("from mahara.js:" + response);
                     console.log(response);
                 });
             });
@@ -339,16 +336,17 @@ $(document).ready(function () {
             //.then(clickTweetButton)
             //.then(tweetBoxVisible)
             .then(clickTweetBox)
+            .then(elapseSomeTime)
             .then(typeTweetBox)
             .then(addLinks)
             .then(elapseSomeTime)
-            //.then(clickTweetSend)
+            .then(clickTweetSend)
             .then(function () {
                 chrome.runtime.sendMessage({
-                    data: "doLocalhostNet_SENT"
+                    data: "doMahara_SENT"
                 }, function (response) {
                     console.log(response);
-                    console.log("from test.js:" + response);
+                    console.log("from mahara.js:" + response);
                     console.log(response.message);
                     console.log(response.next);
                     nextStep(response.next);
