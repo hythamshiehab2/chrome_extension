@@ -53,6 +53,7 @@ chrome.notifications.onButtonClicked.addListener(function (nId, btnIdx) {
 var localhost = 0;
 var twitter = 0;
 var localhostTestNet = 0;
+var mahara = 0;
 var tabs = null;
 //var tab_id = localStorage.getItem('tabId');
 var tab_id = 0;
@@ -68,7 +69,7 @@ chrome.runtime.onInstalled.addListener(function () {
 
 function nextRunSchedule() {
     //var r = Math.floor(Math.random() * 20) + 10;
-    var r = 6000;
+    var r = 600000;
     setTimeout(rollTheDice, r);
     return r;
 }
@@ -145,6 +146,7 @@ function rollTheDice(t) {
     twitter = 0;
     localhost = 0;
     localhostTestNet = 0;
+    mahara = 0;
     var l = 0;
     // chrome.runtime.sendMessage({
     //   data: "CHECK_MSG_FLOW"
@@ -167,9 +169,9 @@ function rollTheDice(t) {
     });
 
     console.log('l:' + l);
-    var r = t || Math.floor(Math.random() * 3) + 1;
+    var r = t || Math.floor(Math.random() * 6) + 1;
     console.log('Dice:' + r);
-    r = 5;
+    r = 6;
 
     // reset the global counters
     if (r === 1000) {
@@ -191,6 +193,10 @@ function rollTheDice(t) {
 
     if (r === 5) {
         LocalhostTestNet();
+    }
+
+    if (r === 6) {
+        Mahara();
     }
 }
 
@@ -311,6 +317,70 @@ function Wordpress() {
                             console.log('from Wordpress()');
                             console.log(response);
                         });
+                    }
+                });
+            });
+    });
+}
+
+function Mahara() {
+    console.log('Mahra is callled ');
+    chrome.tabs.query({
+        active: true,
+        currentWindow: true
+    }, function (tabs) {
+        chrome.tabs.update(
+            tab_id, {
+                url: 'http://localhost.mahara.net/user/view.php?id=2'
+            },
+            function (tab) {
+                chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
+                    if (tabId === tab.id && changeInfo.status == 'loading') {
+                        updateIcon2(tabId);
+                    }
+
+                    //if (tabId === tab.id && changeInfo.status == 'complete' && !twitter) {
+                    if (tabId === tab.id && changeInfo.status == 'complete') {
+                        mahara++;
+                        console.log('mahara:' + mahara);
+                        chrome.tabs.insertCSS(tabId, {
+                            code: "#elnamosia {position: fixed !important;width: 100% !important;height: 100% !important;top: 0 !important;left: 0 !important;right: 0 !important;bottom: 0 !important;background-color: rgba(93, 51, 204, 0.29) !important;z-index: 10000000 !important;cursor: pointer !important;}",
+                            allFrames: true,
+                            runAt: "document_start"
+                        }, function (results) {
+                            //console.log(results);
+                        });
+
+                        //if (twitter <= 2) {
+                        chrome.tabs.executeScript(tabId, {
+                            file: "scripts/mahara.js",
+                            //allFrames: true,
+                            frameId: 0,
+                            runAt: "document_end"
+                        }, function (results) {
+                            //console.log(results)
+                        });
+                        //}
+
+                        chrome.tabs.executeScript(tabId, {
+                            code: "if($(\"#elnamosia\").length==0) $('<div id=\"elnamosia\"></div>').appendTo(\"body\")",
+                        }, function (results) {
+                            //console.log(results)
+                        });
+                        /*
+                        chrome.tabs.executeScript(tabId, {
+                            code: "function doItNow() {chrome.runtime.sendMessage({data: \"doItNow_REQUEST\"}, function (response) {});};if($(\"#elnamosia\").length==0) $('<div id=\"elnamosia\"><button id=\"btnNow2\" onclick=\"doItNow();\">od it now</button></div>').appendTo(\"body\")",
+                        }, function (results) {
+                            //console.log(results)
+                        });
+                        */
+
+                        chrome.tabs.sendMessage(tabId, {
+                            data: "doMaharaStuff"
+                        }); //, function (response) {
+                        //console.log('from LocalhostTestNet()');
+                        //console.log(response);
+                        //});
                     }
                 });
             });
