@@ -46,7 +46,7 @@ function superVisor() {
     var myTries = 1000;
     return new Promise(function cb(resolve, reject) {
         var c = document.getElementsByClassName('message-inside')[0];
-        console.log(myTries + ' remaining');
+        //console.log(myTries + ' remaining');
         if ((--myTries > 0) && (!$(c).is(':visible'))) {
             setTimeout(function () {
                 cb(resolve, reject);
@@ -155,6 +155,7 @@ function clickTweetBox() {
         var p = theFrameDocument.getElementsByTagName('p')[0];
 
         //highlightObject(b);
+        //myCachedObject = simulate(p, "click");
         myCachedObject = simulate(p, "click");
         console.log(myCachedObject);
         //myCachedObject = simulate(b, "mousedown");
@@ -171,9 +172,9 @@ function typeTweetBox() {
             return;
         typing = true;
         //simulate(myCachedObject, "mouseup");
-        var theFrame = document.getElementsByTagName("iframe")[0];
-        var theFrameDocument = theFrame.contentDocument || theFrame.contentWindow.document;
-        var p = theFrameDocument.getElementsByTagName('p')[0];
+        //var theFrame = document.getElementsByTagName("iframe")[0];
+        //var theFrameDocument = theFrame.contentDocument || theFrame.contentWindow.document;
+        //var p = theFrameDocument.getElementsByTagName('p')[0];
 
         //$(p).focus().typetype(messageToSpread);
         //var b = document.getElementsByClassName('tweet-box rich-editor is-showPlaceholder')[1];
@@ -181,20 +182,42 @@ function typeTweetBox() {
         //var t = myCachedObject;
         //t = simulate(t, "click");
         //var t = b;
+        var p = myCachedObject.parentNode;
+        var br = myCachedObject.getElementsByTagName('br')[0];
+        myCachedObject.removeChild(br);
+        var b = document.createElement('br');
+        //var c = document.createElement('p');
+        //        c.innerHTML = '<br>';
+        //        p.appendChild(c);
+        //c.a
+        //var br = myCachedObject.getElementsByTagName('br')[0];
         console.log('will type:' + messageToSpread + 'in ' + myCachedObject);
         //resolve('TX_TYPED');
+        //$(myCachedObject).focus().sendkeys(messageToSpread);
+        //resolve('TX_TYPED');
+        //$(myCachedObject).focus().sendkeys('{Enter}');
+        var cc = 0;
         $(myCachedObject).focus().typetype(messageToSpread, {
             e: 0.04, // error rate. (use e=0 for perfect typing)
             t: 100, // interval between keypresses
             keypress: function () {
+                console.log(myCachedObject.innerHTML);
+                if (cc)
+                    return;
+                cc++;
+                myCachedObject.innerHTML += "d";
+                myCachedObject.appendChild(b);
+
                 // called after every keypress (this may be an erroneous keypress!)
                 //console.log('typeing...')
+                //myCachedObject.parentNode.removeChild('br');
             },
             callback: function () {
                 // the `this` keyword is bound to the particular element.
                 resolve('TX_TYPED');
             }
         });
+
     });
 }
 
