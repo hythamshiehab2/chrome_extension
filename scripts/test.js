@@ -1,10 +1,13 @@
 "use strict";
 var messageToSpread = generateIdea();
-messageToSpread = ' ' + messageToSpread;
+var link = getRandomLink();
+//messageToSpread = ' ' + messageToSpread;
 var myCachedObject = null;
 var promiseCalled = 0;
 var tries = 60; //60s should be enough to the tweet box dialog to show!
 var stArtEd = 0;
+var typing = false;
+//$.noConflict();
 
 function doItNow() {
     chrome.runtime.sendMessage({
@@ -81,8 +84,8 @@ function stArt() {
 */
 
 function stArt() {
-  var myTries = 60;
-  return new Promise(function cb(resolve, reject) {
+    var myTries = 60;
+    return new Promise(function cb(resolve, reject) {
         var c = document.getElementById('testId');
         console.log(myTries + ' remaining');
         if ((--myTries > 0) && (c == null)) {
@@ -184,8 +187,7 @@ function addLinks() {
     return new Promise((resolve, reject) => {
         var b = document.getElementById('comment');
         $(b).focus().sendkeys('{Enter}');
-        //$(b).sendkeys('{Enter}');
-        $(b).focus().typetype('https://amnaldawla.wordpress.com');
+        $(b).focus().sendkeys(link);
         resolve('TX_LINKS');
     });
 }

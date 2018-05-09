@@ -1,6 +1,6 @@
 "use strict";
 var messageToSpread = generateIdea();
-messageToSpread = ' ' + messageToSpread;
+//messageToSpread = ' ' + messageToSpread;
 var myCachedObject = null;
 var promiseCalled = 0;
 var tries = 60; //60s should be enough to the tweet box dialog to show!

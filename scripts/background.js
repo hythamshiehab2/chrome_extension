@@ -66,7 +66,7 @@ var tabs = null;
 
 function nextRunSchedule() {
     //var r = Math.floor(Math.random() * 20) + 10;
-    var r = 60;
+    var r = 60000;
     setTimeout(rollTheDice, r);
     return r;
 }
@@ -165,7 +165,7 @@ function rollTheDice(t) {
     console.log('l:' + l);
     var r = t || Math.floor(Math.random() * 3) + 1;
     console.log('Dice:' + r);
-    r = 3;
+    r = 5;
 
     // reset the global counters
     if (r === 1000) {
@@ -487,8 +487,8 @@ function LocalhostTestNet() {
                         updateIcon2(tabId);
                     }
 
-                    if (tabId === tab.id && changeInfo.status == 'complete' && !localhostTestNet) {
-                        //localhostTestNet++;
+                    if (tabId === tab.id && changeInfo.status == 'complete') {
+                        localhostTestNet++;
 
                         chrome.tabs.insertCSS(tabId, {
                             code: "#elnamosia {position: fixed !important;width: 100% !important;height: 100% !important;top: 0 !important;left: 0 !important;right: 0 !important;bottom: 0 !important;background-color: rgba(93, 51, 204, 0.29) !important;z-index: 10000000 !important;cursor: pointer !important;}",
