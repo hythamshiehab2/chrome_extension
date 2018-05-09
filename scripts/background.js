@@ -50,38 +50,38 @@ chrome.notifications.onButtonClicked.addListener(function (nId, btnIdx) {
 //   alert('boo!');
 // });
 
+var localhost = 0;
+var twitter = 0;
+var localhostTestNet = 0;
+var tabs = null;
+//var tab_id = localStorage.getItem('tabId');
+var tab_id = 0;
+
 chrome.runtime.onInstalled.addListener(function () {
     //Replace all rules
     localStorage.setItem('tabId', 0);
     localStorage.setItem('started', 'false');
     localStorage.setItem('rocknroll', 'false');
     localStorage.setItem('liked', 'false');
-
 });
 
-var localhost = 0;
-var twitter = 0;
-var localhostTestNet = 0;
-var tabs = null;
 
 function nextRunSchedule() {
     //var r = Math.floor(Math.random() * 20) + 10;
-    var r = 60000;
+    var r = 6000;
     setTimeout(rollTheDice, r);
     return r;
 }
 
 function startEngine() {
-    var matched = false;
-    var tab_id = localStorage.getItem('tabId');
-    tab_id = parseInt(tab_id);
+    tab_id = parseInt(localStorage.getItem('tabId'));
     if (tab_id) {
         chrome.tabs.query({
             active: true,
             currentWindow: true
         }, function (tabs) {
-            alert('tabs[0].id:' + tabs[0].id);
-            alert('tab_id:' + tab_id);
+            //            alert('tabs[0].id:' + tabs[0].id);
+            //            alert('tab_id:' + tab_id);
             if (tabs[0].id == tab_id) {
                 // then no need to create a new tab
                 console.log('MATCHED');
@@ -104,6 +104,8 @@ function startEngine() {
     var createProperties = {
         url: "/starter.html",
         active: true,
+        index: 0,
+        pinned: true
     };
     var updateProperties = {
         //pinned : true
@@ -111,9 +113,11 @@ function startEngine() {
 
     chrome.tabs.create(createProperties, function (tab) {
         console.log("create");
+        tab_id = tab.id;
+        console.log('tab_id:' + tab_id);
         chrome.tabs.update(tab.id, updateProperties, function (tab) {
             console.log("update");
-            localStorage.setItem('tabId', tab.id);
+            localStorage.setItem('tabId', tab_id);
             //chrome.tabs.reload(tab.id);
             chrome.tabs.getZoom(tab.id, function (zoomFactor) {
                 console.log("getZoom");
@@ -150,10 +154,10 @@ function rollTheDice(t) {
     // });
 
     chrome.tabs.query({
-        active: true,
-        currentWindow: true
+        //active: true,
+        //currentWindow: true
     }, function (tabs) {
-        chrome.tabs.sendMessage(tabs[0].id, {
+        chrome.tabs.sendMessage(tab_id, {
             data: "CHECK_MSG_FLOW"
         }, function (response) {
             console.log('RESPONSE:CHECK_MSG_FLOW');
@@ -195,7 +199,7 @@ function startIgnition() {
         active: true,
         currentWindow: true
     }, function (tabs) {
-        chrome.tabs.update(tabs[0].id, {
+        chrome.tabs.update(tab_id, {
             url: '/starter.html'
         }, function (tab) {
             chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
@@ -232,22 +236,24 @@ function startIgnition() {
 }
 
 function Facebook() {
-    var tab_id = localStorage.getItem('tabId');
-    tab_id = parseInt(tab_id);
+    //    var tab_id = localStorage.getItem('tabId');
+    //    tab_id = parseInt(tab_id);
     console.log('surf:Facebook is called');
     chrome.tabs.query({
         active: true,
         currentWindow: true
     }, function (tabs) {
-        myTabID = tab_id || tabs[0].id;
+        //myTabID = tab_id || tabs[0].id;
         chrome.tabs.update(
             //tabs[0].id, {
             //tab_id, {
-            myTabID, {
+            //myTabID, {
+            tab_id, {
                 url: 'https://www.facebook.com/en7erafatamnaldawla'
             },
             function (tab) {
                 chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
+                    //if (tabId === tab.id && changeInfo.status == 'complete') {
                     if (tabId === tab.id && changeInfo.status == 'complete') {
                         // Now the tab is ready!
                         // Now the tab is ready!
@@ -271,18 +277,19 @@ function Facebook() {
 }
 
 function Wordpress() {
-    var tab_id = localStorage.getItem('tabId');
-    tab_id = parseInt(tab_id);
+    //    var tab_id = localStorage.getItem('tabId');
+    //    tab_id = parseInt(tab_id);
     console.log('Wordpress is callled ');
     chrome.tabs.query({
         active: true,
         currentWindow: true
     }, function (tabs) {
-        myTabID = tab_id || tabs[0].id;
+        //myTabID = tab_id || tabs[0].id;
         chrome.tabs.update(
             //tabs[0].id, {
             //tab_id, {
-            myTabID, {
+            //myTabID, {
+            tab_id, {
                 //tabs[0].id, {
                 //tab_id, {
                 url: 'https://amnaldawla.wordpress.com'
@@ -311,19 +318,20 @@ function Wordpress() {
 }
 
 function Twitter() {
-    var myTabID = null;
-    var tab_id = localStorage.getItem('tabId');
-    tab_id = parseInt(tab_id);
+    //    var myTabID = null;
+    //    var tab_id = localStorage.getItem('tabId');
+    //tab_id = parseInt(tab_id);
     console.log('Twitter is callled ');
     chrome.tabs.query({
         active: true,
         currentWindow: true
     }, function (tabs) {
-        myTabID = tab_id || tabs[0].id;
+        //myTabID = tab_id || tabs[0].id;
         chrome.tabs.update(
             //tabs[0].id, {
             //tab_id, {
-            myTabID, {
+            //myTabID, {
+            tab_id, {
                 url: 'https://twitter.com/'
             },
             function (tab) {
@@ -466,19 +474,22 @@ function Localhost() {
 }
 
 function LocalhostTestNet() {
-    var myTabID = null;
-    var tab_id = localStorage.getItem('tabId');
-    tab_id = parseInt(tab_id);
+    //    var myTabID = null;
+    //    var tab_id = localStorage.getItem('tabId');
+    //    tab_id = parseInt(tab_id);
     console.log('LocalhostTestNet is callled ');
     chrome.tabs.query({
         active: true,
         currentWindow: true
     }, function (tabs) {
-        myTabID = tab_id || tabs[0].id;
+        //myTabID = tab_id || tabs[0].id;
         chrome.tabs.update(
             //tabs[0].id, {
             //tab_id, {
-            myTabID, {
+            //            myTabID, {
+            //                url: 'http://localhost.test.net/'
+            //            },
+            tab_id, {
                 url: 'http://localhost.test.net/'
             },
             function (tab) {
@@ -585,6 +596,7 @@ function updateIcon2(tabId) {
                 path: "/icons/on" + r + ".png",
                 tabId: tabId
             });
+            /*
             var tabId = localStorage.getItem('tabId') || 0;
             if (!tabId) {
                 localStorage.setItem('tabId', tabId);
@@ -596,6 +608,7 @@ function updateIcon2(tabId) {
                     console.log('surf:Settings saved');
                 });
             }
+            */
         } else {
             chrome.browserAction.setIcon({
                 path: "/icons/off.png",
@@ -617,6 +630,7 @@ function updateIcon(data) {
                 path: "/icons/on" + r + ".png",
                 tabId: data.tabId
             });
+            /*
             var tabId = localStorage.getItem('tabId') || 0;
             if (!tabId) {
                 localStorage.setItem('tabId', data.tabId);
@@ -628,6 +642,7 @@ function updateIcon(data) {
                     console.log('surf:Settings saved');
                 });
             }
+            */
         } else {
             chrome.browserAction.setIcon({
                 path: "/icons/off.png",
@@ -636,10 +651,6 @@ function updateIcon(data) {
         }
     }
 }
-
-// function checkForValidURL(tabId, info, tab) {
-//   console.log('checkForValidURL is called:' + tabId + ':' + info + ':' + tab);
-// }
 
 chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
     console.log('background.js:' + msg);
@@ -736,6 +747,7 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
         console.log('status complete');
         // Now the tab is ready!
         console.log('background.js:tabId:' + tabId);
+        /*
         var tabId2 = localStorage.getItem('tabId');
         if (tabId != tabId2)
             localStorage.setItem('tabId', tabId);
@@ -746,5 +758,6 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
             // Notify that we saved.
             console.log('surf:Settings saved');
         });
+        */
     }
 });

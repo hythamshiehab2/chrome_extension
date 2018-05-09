@@ -124,20 +124,4 @@ function register() {
             console.log('surf:Settings saved');
         });
     });
-    //});
-
 }
-
-// (function () {
-// })();
-
-// window.onload = function () {
-//     console.log('surf:window is loaded');
-//     var rr = 0;
-//     rr = localStorage.getItem('rocknroll');
-//     console.log('rr:' + rr);
-//     chrome.storage.onChanged.addListener(function (changes, areaName) {
-//         console.log('storage changed');
-//         console.log(changes + ':' + areaName);
-//     });
-// }
