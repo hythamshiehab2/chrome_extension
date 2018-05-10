@@ -180,14 +180,14 @@ function typeTweetBox() {
         //t = simulate(t, "click");
         //var t = b;
         var p = myCachedObject.parentNode;
-        var pc = p.getElementsByTagName('p')[0];
+        //var pc = p.getElementsByTagName('p')[0];
         var br = myCachedObject.getElementsByTagName('br')[0];
         myCachedObject.removeChild(br);
         //var b = document.createElement('br');
 
         //myCachedObject.innerHTML = '';
-        var c = document.createElement('p');
-        p.appendChild(c);
+        //var c = document.createElement('p');
+        //p.appendChild(c);
         //        c.innerHTML = '<br>';
         //        p.appendChild(c);
         //c.a
@@ -198,7 +198,7 @@ function typeTweetBox() {
         //resolve('TX_TYPED');
         //$(myCachedObject).focus().sendkeys('{Enter}');
         var cc = 0;
-        $(pc).focus().typetype(messageToSpread, {
+        $(myCachedObject).focus().typetype(messageToSpread, {
             e: 0.04, // error rate. (use e=0 for perfect typing)
             t: 100, // interval between keypresses
             keypress: function () {
@@ -336,7 +336,7 @@ $(document).ready(function () {
             //.then(clickTweetButton)
             //.then(tweetBoxVisible)
             .then(clickTweetBox)
-            .then(elapseSomeTime)
+            //.then(elapseSomeTime)
             .then(typeTweetBox)
             .then(addLinks)
             .then(elapseSomeTime)

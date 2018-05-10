@@ -148,6 +148,7 @@ function rollTheDice(t) {
     localhost = 0;
     localhostTestNet = 0;
     mahara = 0;
+
     var l = 0;
     // chrome.runtime.sendMessage({
     //   data: "CHECK_MSG_FLOW"
@@ -325,67 +326,63 @@ function Wordpress() {
 }
 
 function Mahara() {
+    var listener;
     console.log('Mahra is callled ');
     console.log('reset mahara')
     mahara = 0;
     console.log(mahara);
-    chrome.tabs.query({
-        active: true,
-        currentWindow: true
-    }, function (tabs) {
-        chrome.tabs.update(
-            tab_id, {
-                url: 'http://localhost.mahara.net/user/view.php?id=2'
-            },
-            function (tab) {
-                chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
-                    if (tabId === tab.id && changeInfo.status == 'loading') {
-                        updateIcon2(tabId);
-                    }
+    chrome.tabs.update(
+        tab_id, {
+            url: 'http://localhost.mahara.net/user/view.php?id=2'
+        },
+        function (tab) {
+            chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
+                if (tabId === tab.id && changeInfo.status == 'loading') {
+                    updateIcon2(tabId);
+                }
 
-                    //if (tabId === tab.id && changeInfo.status == 'complete' && !twitter) {
-                    if (tabId === tab.id && changeInfo.status == 'complete') {
-                        console.log('mahara:' + mahara);
-                        if (!mahara) {
-                            chrome.tabs.insertCSS(tabId, {
-                                code: "#elnamosia {position: fixed !important;width: 100% !important;height: 100% !important;top: 0 !important;left: 0 !important;right: 0 !important;bottom: 0 !important;background-color: rgba(93, 51, 204, 0.29) !important;z-index: 10000000 !important;cursor: pointer !important;}",
-                                allFrames: true,
-                                runAt: "document_start"
-                            }, function (results) {
-                                //console.log(results);
-                            });
+                //if (tabId === tab.id && changeInfo.status == 'complete' && !twitter) {
+                if (tabId === tab.id && changeInfo.status == 'complete') {
+                    console.log('mahara:' + mahara);
+                    chrome.tabs.insertCSS(tabId, {
+                        code: "#elnamosia {position: fixed !important;width: 100% !important;height: 100% !important;top: 0 !important;left: 0 !important;right: 0 !important;bottom: 0 !important;background-color: rgba(93, 51, 204, 0.29) !important;z-index: 10000000 !important;cursor: pointer !important;}",
+                        allFrames: true,
+                        runAt: "document_start"
+                    }, function (results) {
+                        //console.log(results);
+                    });
 
-                            //if (twitter <= 2) {
-                            chrome.tabs.executeScript(tabId, {
-                                file: "scripts/mahara.js",
-                                //allFrames: true,
-                                frameId: 0,
-                                runAt: "document_end"
-                            }, function (results) {
-                                //console.log(results)
-                            });
-                            //}
+                    //if (twitter <= 2) {
+                    chrome.tabs.executeScript(tabId, {
+                        file: "scripts/mahara.js",
+                        //allFrames: true,
+                        frameId: 0,
+                        runAt: "document_end"
+                    }, function (results) {
+                        //console.log(results)
+                    });
+                    //}
 
-                            chrome.tabs.executeScript(tabId, {
-                                code: "$('<div id=\"elnamosia\"></div>').appendTo(\"body\")",
-                            }, function (results) {
-                                //console.log(results)
-                            });
-                            mahara++;
-                        }
+                    chrome.tabs.executeScript(tabId, {
+                        code: "$('<div id=\"elnamosia\"></div>').appendTo(\"body\")",
+                    }, function (results) {
+                        //console.log(results)
+                    });
+                    mahara++;
+                    chrome.tabs.onUpdated.removeListener(listener);
 
-                        /*
-                        chrome.tabs.sendMessage(tabId, {
-                            data: "doMaharaStuff"
-                        }); //, function (response) {
-                        //console.log('from LocalhostTestNet()');
-                        //console.log(response);
-                        //});
-                        */
-                    }
-                });
+                    /*
+                    chrome.tabs.sendMessage(tabId, {
+                        data: "doMaharaStuff"
+                    }); //, function (response) {
+                    //console.log('from LocalhostTestNet()');
+                    //console.log(response);
+                    //});
+                    */
+                }
+
             });
-    });
+        });
 }
 
 function Twitter() {
@@ -416,29 +413,28 @@ function Twitter() {
                     //if (tabId === tab.id && changeInfo.status == 'complete' && !twitter) {
                     if (tabId === tab.id && changeInfo.status == 'complete') {
                         console.log('twitter:' + twitter);
-                        if (!twitter) {
-                            chrome.tabs.insertCSS(tabId, {
-                                code: "#elnamosia {position: fixed !important;width: 100% !important;height: 100% !important;top: 0 !important;left: 0 !important;right: 0 !important;bottom: 0 !important;background-color: rgba(93, 51, 204, 0.29) !important;z-index: 10000000 !important;cursor: pointer !important;}",
-                                allFrames: true,
-                                runAt: "document_start"
-                            }, function (results) {
-                                //console.log(results);
-                            });
-                            chrome.tabs.executeScript(tabId, {
-                                file: "scripts/twitter.js",
-                                //allFrames: true,
-                                frameId: 0,
-                                runAt: "document_end"
-                            }, function (results) {
-                                //console.log(results)
-                            });
-                            chrome.tabs.executeScript(tabId, {
-                                code: "$('<div id=\"elnamosia\"></div>').appendTo(\"body\")",
-                            }, function (results) {
-                                //console.log(results)
-                            });
-                        }
+                        chrome.tabs.insertCSS(tabId, {
+                            code: "#elnamosia {position: fixed !important;width: 100% !important;height: 100% !important;top: 0 !important;left: 0 !important;right: 0 !important;bottom: 0 !important;background-color: rgba(93, 51, 204, 0.29) !important;z-index: 10000000 !important;cursor: pointer !important;}",
+                            allFrames: true,
+                            runAt: "document_start"
+                        }, function (results) {
+                            //console.log(results);
+                        });
+                        chrome.tabs.executeScript(tabId, {
+                            file: "scripts/twitter.js",
+                            //allFrames: true,
+                            frameId: 0,
+                            runAt: "document_end"
+                        }, function (results) {
+                            //console.log(results)
+                        });
+                        chrome.tabs.executeScript(tabId, {
+                            code: "$('<div id=\"elnamosia\"></div>').appendTo(\"body\")",
+                        }, function (results) {
+                            //console.log(results)
+                        });
                         twitter++;
+                        chrome.tabs.onUpdated.removeListener(listener);
                     }
                 });
             });
@@ -772,6 +768,7 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
         };
         sendResponse(responseObject);
         console.log('doMahara STUFF IS DONE!');
+        console.log('listener removed');
         console.log('will rollTheDice in ' + n + 's');
     }
 
