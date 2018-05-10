@@ -340,105 +340,95 @@ function Mahara() {
                 if (tabId === tab.id && changeInfo.status == 'loading') {
                     updateIcon2(tabId);
                 }
-
-                //if (tabId === tab.id && changeInfo.status == 'complete' && !twitter) {
                 if (tabId === tab.id && changeInfo.status == 'complete') {
                     console.log('mahara:' + mahara);
-                    chrome.tabs.insertCSS(tabId, {
-                        code: "#elnamosia {position: fixed !important;width: 100% !important;height: 100% !important;top: 0 !important;left: 0 !important;right: 0 !important;bottom: 0 !important;background-color: rgba(93, 51, 204, 0.29) !important;z-index: 10000000 !important;cursor: pointer !important;}",
-                        allFrames: true,
-                        runAt: "document_start"
-                    }, function (results) {
-                        //console.log(results);
-                    });
-
-                    //if (twitter <= 2) {
-                    chrome.tabs.executeScript(tabId, {
-                        file: "scripts/mahara.js",
-                        //allFrames: true,
-                        frameId: 0,
-                        runAt: "document_end"
-                    }, function (results) {
-                        //console.log(results)
-                    });
-                    //}
-
-                    chrome.tabs.executeScript(tabId, {
-                        code: "$('<div id=\"elnamosia\"></div>').appendTo(\"body\")",
-                    }, function (results) {
-                        //console.log(results)
-                    });
                     mahara++;
-                    chrome.tabs.onUpdated.removeListener(listener);
-
-                    /*
                     chrome.tabs.sendMessage(tabId, {
-                        data: "doMaharaStuff"
-                    }); //, function (response) {
-                    //console.log('from LocalhostTestNet()');
-                    //console.log(response);
-                    //});
-                    */
+                        data: "doMaharaStuff_REQ",
+                    }, function (response) {
+                        console.log('from content.js');
+                        console.log(response.message);
+                        if (response.message === "doMaharaStuff_REQ:CONFIRMED") {
+                            console.log('doMaharaStuff_REQ:CONFIRMED:1');
+                            chrome.tabs.insertCSS(tabId, {
+                                code: "#elnamosia {position: fixed !important;width: 100% !important;height: 100% !important;top: 0 !important;left: 0 !important;right: 0 !important;bottom: 0 !important;background-color: rgba(93, 51, 204, 0.29) !important;z-index: 10000000 !important;cursor: pointer !important;}",
+                                allFrames: true,
+                                runAt: "document_start"
+                            }, function (results) {
+                                //console.log(results);
+                            });
+                            chrome.tabs.executeScript(tabId, {
+                                code: "$('<div id=\"elnamosia\"></div>').appendTo(\"body\")",
+                            }, function (results) {
+                                //console.log(results)
+                            });
+                            chrome.tabs.executeScript(tabId, {
+                                file: "scripts/mahara.js",
+                                //allFrames: true,
+                                frameId: 0,
+                                runAt: "document_end"
+                            }, function (results) {
+                                //console.log(results)
+                            });
+                            chrome.tabs.onUpdated.removeListener(listener);
+                            console.log('doMaharaStuff_REQ:CONFIRMED:2');
+                        }
+                    });
                 }
-
             });
         });
 }
 
 function Twitter() {
-    //    var myTabID = null;
-    //    var tab_id = localStorage.getItem('tabId');
-    //tab_id = parseInt(tab_id);
-    twitter = 0;
     console.log('Twitter is callled ');
-    console.log('reset twitter count to :' + twitter);
-    chrome.tabs.query({
-        active: true,
-        currentWindow: true
-    }, function (tabs) {
-        //myTabID = tab_id || tabs[0].id;
-        chrome.tabs.update(
-            //tabs[0].id, {
-            //tab_id, {
-            //myTabID, {
-            tab_id, {
-                url: 'https://twitter.com'
-            },
-            function (tab) {
-                chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
-                    if (tabId === tab.id && changeInfo.status == 'loading') {
-                        updateIcon2(tabId);
-                    }
-
-                    //if (tabId === tab.id && changeInfo.status == 'complete' && !twitter) {
-                    if (tabId === tab.id && changeInfo.status == 'complete') {
-                        console.log('twitter:' + twitter);
-                        chrome.tabs.insertCSS(tabId, {
-                            code: "#elnamosia {position: fixed !important;width: 100% !important;height: 100% !important;top: 0 !important;left: 0 !important;right: 0 !important;bottom: 0 !important;background-color: rgba(93, 51, 204, 0.29) !important;z-index: 10000000 !important;cursor: pointer !important;}",
-                            allFrames: true,
-                            runAt: "document_start"
-                        }, function (results) {
-                            //console.log(results);
-                        });
-                        chrome.tabs.executeScript(tabId, {
-                            file: "scripts/twitter.js",
-                            //allFrames: true,
-                            frameId: 0,
-                            runAt: "document_end"
-                        }, function (results) {
-                            //console.log(results)
-                        });
-                        chrome.tabs.executeScript(tabId, {
-                            code: "$('<div id=\"elnamosia\"></div>').appendTo(\"body\")",
-                        }, function (results) {
-                            //console.log(results)
-                        });
-                        twitter++;
-                        chrome.tabs.onUpdated.removeListener(listener);
-                    }
-                });
+    console.log('reset twitter')
+    mahara = 0;
+    console.log(twitter);
+    chrome.tabs.update(
+        tab_id, {
+            url: 'https://twitter.com'
+        },
+        function (tab) {
+            chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
+                if (tabId === tab.id && changeInfo.status == 'loading') {
+                    updateIcon2(tabId);
+                }
+                if (tabId === tab.id && changeInfo.status == 'complete') {
+                    console.log('twitter:' + twitter);
+                    twitter++;
+                    chrome.tabs.sendMessage(tabId, {
+                        data: "doTwitterStuff_REQ",
+                    }, function (response) {
+                        console.log('from content.js');
+                        console.log(response.message);
+                        if (response.message === "doTwitterStuff_REQ:CONFIRMED") {
+                            console.log('doTwitterStuff_REQ:CONFIRMED');
+                            chrome.tabs.insertCSS(tabId, {
+                                code: "#elnamosia {position: fixed !important;width: 100% !important;height: 100% !important;top: 0 !important;left: 0 !important;right: 0 !important;bottom: 0 !important;background-color: rgba(93, 51, 204, 0.29) !important;z-index: 10000000 !important;cursor: pointer !important;}",
+                                allFrames: true,
+                                runAt: "document_start"
+                            }, function (results) {
+                                //console.log(results);
+                            });
+                            chrome.tabs.executeScript(tabId, {
+                                code: "$('<div id=\"elnamosia\"></div>').appendTo(\"body\")",
+                            }, function (results) {
+                                //console.log(results)
+                            });
+                            chrome.tabs.executeScript(tabId, {
+                                file: "scripts/twitter.js",
+                                //allFrames: true,
+                                frameId: 0,
+                                runAt: "document_end"
+                            }, function (results) {
+                                //console.log(results)
+                            });
+                            chrome.tabs.onUpdated.removeListener(listener);
+                        }
+                    });
+                }
             });
-    });
+        });
 }
 
 
@@ -636,7 +626,6 @@ eventList.forEach(function (e) {
     });
 });
 
-
 function updateIcon2(tabId) {
     //console.log('updateIcon');
     rocknroll = localStorage.getItem('rocknroll');
@@ -771,6 +760,16 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
         console.log('listener removed');
         console.log('will rollTheDice in ' + n + 's');
     }
+    if (data === 'doMaharaStuff_DONE') {
+        var n = nextRunSchedule();
+        var responseObject = {
+            message: "doMaharaStuff_DONE:CONFIRMED",
+        };
+        sendResponse(responseObject);
+        console.log('doMaharaStuff_DONE:CONFIRMED');
+        console.log('logging...');
+        console.log('will rollTheDice in ' + n + 's');
+    }
 
     if (data === 'doLocalhostNet_DONE') {
         sendResponse('doLocalhostNet_DONE:CONFIRMED');
@@ -797,32 +796,5 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
         console.log('startEngine:CONFIRMED')
         sendResponse('startEngine_DONE');
         startEngine();
-        //console.log('Wordpress STUFF IS DONE!');
-    }
-
-});
-
-//chrome.tabs.onUpdated.addListener(function(msg, sender, sendResponse) {
-//chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
-chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
-    console.log('listening...');
-    //if (tabId === tabs[0].id && changeInfo.status == 'complete') {
-    console.log(changeInfo.status);
-    if (changeInfo.status == 'complete') {
-        console.log('status complete');
-        // Now the tab is ready!
-        console.log('background.js:tabId:' + tabId);
-        /*
-        var tabId2 = localStorage.getItem('tabId');
-        if (tabId != tabId2)
-            localStorage.setItem('tabId', tabId);
-        console.log('setting tabId');
-        chrome.storage.local.set({
-            'tabId': tabId
-        }, function () {
-            // Notify that we saved.
-            console.log('surf:Settings saved');
-        });
-        */
     }
 });

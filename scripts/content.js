@@ -1,4 +1,3 @@
-/*
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     var data = request.data || {};
     console.log(
@@ -7,5 +6,16 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         "from the extension");
     console.log(request);
     console.log('content.js:' + data);
+    if (data === 'doMaharaStuff_REQ') {
+        var responseObject = {
+            message: "doMaharaStuff_REQ:CONFIRMED",
+        };
+        sendResponse(responseObject);
+    }
+    if (data === 'doTwitterStuff_REQ') {
+        var responseObject = {
+            message: "doTwitterStuff_REQ:CONFIRMED",
+        };
+        sendResponse(responseObject);
+    }
 });
-*/

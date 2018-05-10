@@ -42,7 +42,7 @@ function nextStep(t) {
 function superVisor() {
     var myTries = 1000;
     return new Promise(function cb(resolve, reject) {
-        var c = document.getElementsByClassName('message-inside')[0];
+        var c = document.getElementsByClassName('alert alert-success')[0];
         //console.log(myTries + ' remaining');
         if ((--myTries > 0) && (!$(c).is(':visible'))) {
             setTimeout(function () {
@@ -106,6 +106,7 @@ function highlightObject(elem) {
     }, 1000);
 }
 
+/*
 function clickTweetButton() {
     return new Promise((resolve, reject) => {
         var b = document.getElementById('global-new-tweet-button');
@@ -121,6 +122,7 @@ function clickTweetButton() {
         }
     });
 }
+*/
 
 function tweetBoxVisible() {
     return new Promise(function cb(resolve, reject) {
@@ -144,19 +146,41 @@ function tweetBoxVisible() {
     });
 }
 
+function sendKeyStrokes() {
+    console.log('sendKeyStrokes..');
+    return new Promise((resolve, reject) => {
+        //var b = myCachedObject;
+        //var b = document.getElementsByClassName('tweet-box rich-editor is-showPlaceholder')[1];
+        var theFrame = document.getElementsByTagName("iframe")[0];
+        var theFrameDocument = theFrame.contentDocument || theFrame.contentWindow.document;
+        var p = theFrameDocument.getElementsByTagName('p')[0];
+        $(p).focus().sendkeys('"');
+        $(p).sendkeys('{enter}');
+        $(p).focus().sendkeys('{backspace}');
+        $(p).sendkeys('{backspace}');
+        $(p).sendkeys('x');
+        $(p).sendkeys('{enter}');
+        $(p).sendkeys('y');
+        $(p).sendkeys('{enter}');
+        $(p).sendkeys('z');
+        $(p).sendkeys('{enter}');
+        $(p).sendkeys('{selectall}');
+        $(p).focus().sendkeys('{del}');
+        //$(b).sendkeys('{Enter}');
+        resolve('TX_KEYSTROKES');
+    });
+}
+
 function clickTweetBox() {
-    console.log('clickTweetBox');
+    console.log('clickTweetBox:mousedown');
     return new Promise((resolve, reject) => {
         var theFrame = document.getElementsByTagName("iframe")[0];
         var theFrameDocument = theFrame.contentDocument || theFrame.contentWindow.document;
         var p = theFrameDocument.getElementsByTagName('p')[0];
-
-        //highlightObject(b);
-        //myCachedObject = simulate(p, "click");
+        myCachedObject = simulate(p, "mousedown");
         myCachedObject = simulate(p, "click");
         console.log(myCachedObject);
-        //myCachedObject = simulate(b, "mousedown");
-        //myCachedObject = simulate(b, "mouseup");
+        myCachedObject = simulate(p, "mouseup");
         //myCachedObject = simulate(b, "click");
         resolve('TX_CLICKED');
     });
@@ -182,7 +206,7 @@ function typeTweetBox() {
         var p = myCachedObject.parentNode;
         //var pc = p.getElementsByTagName('p')[0];
         var br = myCachedObject.getElementsByTagName('br')[0];
-        myCachedObject.removeChild(br);
+        //myCachedObject.removeChild(br);
         //var b = document.createElement('br');
 
         //myCachedObject.innerHTML = '';
@@ -202,7 +226,7 @@ function typeTweetBox() {
             e: 0.04, // error rate. (use e=0 for perfect typing)
             t: 100, // interval between keypresses
             keypress: function () {
-                //console.log(p.innerHTML);
+                console.log(p.innerHTML);
                 //                if (cc)
                 //                    return;
                 //                cc++;
@@ -235,7 +259,7 @@ function addLinks() {
         var theFrame = document.getElementsByTagName("iframe")[0];
         var theFrameDocument = theFrame.contentDocument || theFrame.contentWindow.document;
         var p = theFrameDocument.getElementsByTagName('p')[0];
-        $(p).focus().sendkeys('{Enter}');
+        $(p).focus().sendkeys('{enter}');
         //$(b).sendkeys('{Enter}');
         $(p).focus().sendkeys(link);
         resolve('TX_LINKS');
@@ -303,6 +327,8 @@ $(document).ready(function () {
     }
 
     button.id = "myStartNowButton";
+    //button.disabled = true;
+    //button.style = "color:gray;"
     button.style = "visibility: hidden;";
     button.textContent = "دوّرها";
     button.addEventListener("click", doItNow, false);
@@ -336,7 +362,9 @@ $(document).ready(function () {
             //.then(clickTweetButton)
             //.then(tweetBoxVisible)
             .then(clickTweetBox)
-            //.then(elapseSomeTime)
+            .then(elapseSomeTime)
+            .then(sendKeyStrokes)
+            .then(elapseSomeTime)
             .then(typeTweetBox)
             .then(addLinks)
             .then(elapseSomeTime)
