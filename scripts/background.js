@@ -405,15 +405,19 @@ function Twitter() {
                         console.log(response.message);
                         if (response.message === "doTwitterStuff_REQ:CONFIRMED") {
                             console.log('doTwitterStuff_REQ:CONFIRMED:1');
-                            chrome.tabs.insertCSS(tabId, {
-                                code: "#elnamosia {position: fixed !important;width: 100% !important;height: 100% !important;top: 0 !important;left: 0 !important;right: 0 !important;bottom: 0 !important;background-color: rgba(93, 51, 204, 0.29) !important;z-index: 10000000 !important;cursor: pointer !important;}",
-                                allFrames: true,
-                                runAt: "document_start"
+                            chrome.tabs.executeScript(tabId, {
+                                file: "scripts/jquery.min.js",
+                                //allFrames: true,
+                                frameId: 0,
+                                runAt: "document_end"
                             }, function (results) {
-                                //console.log(results);
+                                //console.log(results)
                             });
                             chrome.tabs.executeScript(tabId, {
-                                code: "$('<div id=\"elnamosia\"></div>').appendTo(\"body\")",
+                                file: "scripts/helpers.js",
+                                //allFrames: true,
+                                frameId: 0,
+                                runAt: "document_end"
                             }, function (results) {
                                 //console.log(results)
                             });
@@ -425,8 +429,12 @@ function Twitter() {
                             }, function (results) {
                                 //console.log(results)
                             });
+                            console.log('will send confirmation');
+                            chrome.tabs.sendMessage(tabId, {
+                                data: "doTwitterStuff_RES"
+                            });
                             chrome.tabs.onUpdated.removeListener(listener);
-                            console.log('doTwitterStuff_REQ:CONFIRMED:2');
+                            console.log('LISTENER REMOVED');
                         }
                     });
                 }
@@ -700,11 +708,12 @@ function updateIcon(data) {
 
 chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
     console.log('background.js:' + msg);
-    var data = msg.data || {};
+    var data = msg.data || msg.message || {};
     console.log('msg:');
     console.log(msg);
     console.log('data:');
     console.log(data);
+
     //var data = msg;
 
     // if data match CHECK_MSG_FLOW_RESPONSE:<NUMBER>
@@ -713,31 +722,43 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
     if (data === 'doItNow_REQUEST') {
         console.log('doItNow_REQUEST is called');
         //setTimeout(rollTheDice, 1000);
-        rollTheDice();
         sendResponse('doItNow_REQUEST:CONFIRMED');
+        rollTheDice();
+    }
+
+    if (data === 'TRYAGAIN') {
+        console.log('TRYAGAIN is sent');
+        //setTimeout(rollTheDice, 1000);
+        rollTheDice();
+    }
+
+    if (data === 'doTwitterStuff_ERROR:CONF_HIDDEN') {
+        var responseObject = {
+            message: "doTwitterStuff_ERROR:CONF_HIDDEN:CONFIRMED",
+        };
+        console.log('doTwitterStuff_ERROR');
+        console.log('WILL Try Again');
+        sendResponse(responseObject);
+        rollTheDice();
     }
 
     if (data === 'doTwitterStuff_DONE') {
-        var n = nextRunSchedule();
         var responseObject = {
             message: "doTwitterStuff_DONE:CONFIRMED",
-            next: n
         };
         sendResponse(responseObject);
         console.log('Twitter STUFF IS DONE!');
-        console.log('will rollTheDice in ' + n + 's');
     }
 
-    if (data === 'doTwitter_SENT') {
+    if (data === 'doTwitterStuff_SENT') {
+        console.log('doTwitterStuff SENT');
         var n = nextRunSchedule();
         var responseObject = {
             message: "doTwitter_SENT:CONFIRMED",
             next: n
         };
-        sendResponse(responseObject);
-        console.log('doMahara STUFF IS DONE!');
-        console.log('listener removed');
         console.log('will rollTheDice in ' + n + 's');
+        sendResponse(responseObject);
     }
 
     if (data === 'doFacebookStuff_DONE') {

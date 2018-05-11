@@ -2,8 +2,8 @@
 var messageToSpread = generateIdea();
 //var messageToSpread = getRandomTweet();
 //messageToSpread = messageToSpread.substr(0, 200);
-//var link = getRandomLink();
-var link = 'https://amnaldawla.wordperss.com';
+var link = getRandomLink();
+//var link = 'https://amnaldawla.wordperss.com';
 
 //messageToSpread = ' ' + messageToSpread;
 var myCachedObject = null;
@@ -27,7 +27,7 @@ function nextStep(t) {
     var c = document.createElement("div");
 
     d.id = "myCounter";
-    d.style = "font-size: 120%;font-weight: bold;position: fixed;left: 0;bottom: 0;width: 100%;padding-right:10px;padding-bottom:10px;text-decoration: none !important;font-size: medium !important;backgruond-color:red;";
+    d.style = "font-size: 120%;font-weight: bold;position: fixed;left: 0;bottom: 0;width: 100%;padding-right:10px;padding-bottom:10px;text-decoration: none !important;font-size: medium !important;backgruond-color:red;text-align:left;padding-top: 20px;background-color:rgba(22, 182, 22, 0.71);";
     e.appendChild(d);
     c.style = "font-size: 120%;font-weight: bold;position: fixed;left: 0;bottom: 0;width: 100%;padding-right:10px;padding-bottom:10px;text-decoration: none !important;font-size: medium !important;backgruond-color:red;float:right;";
     e.appendChild(c);
@@ -45,14 +45,14 @@ function nextStep(t) {
 }
 
 function superVisor() {
-    var myTries = 1000;
+    var myTries = 180;
     return new Promise(function cb(resolve, reject) {
         var c = document.getElementsByClassName('message-inside')[0];
         console.log(myTries + ' remaining');
         if ((--myTries > 0) && (!$(c).is(':visible'))) {
             setTimeout(function () {
                 cb(resolve, reject);
-            }, 500);
+            }, 1000);
         } else {
             if (!$(c).is(':visible')) {
                 //console.log('hidden');
@@ -261,15 +261,17 @@ function generateIdea() {
 }
 
 $(document).ready(function () {
+    //document.addEventListener("DOMContentLoaded", function (event) {
+
+    console.log("DOM fully loaded and parsed");
     //$(document).ready(function($){
     console.log('Am I ready!?');
 
-    var e = document.getElementById('elnamosia');
-    var button = document.createElement("button");
+    var e = document.createElement("div");
+    e.id = "elnamosia";
+    e.style = "position: fixed !important;width: 100% !important;height: 100% !important;top: 0 !important;left: 0 !important;right: 0 !important;bottom: 0 !important;background-color: rgba(93, 51, 204, 0.29) !important;z-index: 10000000 !important;cursor: pointer !important;";
 
-    function doSomething() {
-        alert('boo');
-    }
+    var button = document.createElement("button");
 
     function doItNow() {
         chrome.runtime.sendMessage("mpnhfhekacdacnjkegjdmfgjfkckacea", {
@@ -285,6 +287,7 @@ $(document).ready(function () {
     button.addEventListener("click", doItNow, false);
 
     e.appendChild(button);
+    document.body.appendChild(e);
 
     if (!stArtEd) {
         superVisor()
@@ -298,9 +301,14 @@ $(document).ready(function () {
                         console.log(response);
                     });
                 }
+                if (data == 'CONF_HIDDEN') {
+                    chrome.runtime.sendMessage({
+                        data: "TRYAGAIN"
+                    });
+                }
             })
             .catch(function (data) {
-                var error = "doLocalhostNet_ERROR:" + data;
+                var error = "doTwitterStuff_ERROR:" + data;
                 chrome.runtime.sendMessage({
                     data: error
                 }, function (response) {
@@ -319,7 +327,7 @@ $(document).ready(function () {
             .then(clickTweetSend)
             .then(function () {
                 chrome.runtime.sendMessage({
-                    data: "doLocalhostNet_SENT"
+                    data: "doTwitterStuff_SENT"
                 }, function (response) {
                     console.log(response);
                     console.log("from test.js:" + response);

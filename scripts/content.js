@@ -21,7 +21,8 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     }
 
     if (data === 'doTwitterStuff_REQ') {
-        console.log('doTwitterStuff_REQ');
+        console.log('doTwitterStuff_REQ RECIEVED');
+        console.log('SENDING CONFIRMATION')
         var responseObject = {
             message: "doTwitterStuff_REQ:CONFIRMED",
         };

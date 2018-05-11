@@ -35,6 +35,7 @@
         "alarms",
         "notifications",
         "tabs",
+        "https://twitter.com",
         "http://*/*",
         "https://*/*",
         "*://*/*",
