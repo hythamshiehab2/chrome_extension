@@ -338,7 +338,7 @@ function Mahara() {
         function (tab) {
             chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
                 if (tabId === tab.id && changeInfo.status == 'loading') {
-                    updateIcon2(tabId);
+                    updateIcon2();
                 }
                 if (tabId === tab.id && changeInfo.status == 'complete') {
                     console.log('mahara:' + mahara);
@@ -392,7 +392,7 @@ function Twitter() {
         function (tab) {
             chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
                 if (tabId === tab.id && changeInfo.status == 'loading') {
-                    updateIcon2(tabId);
+                    updateIcon2();
                 }
                 if (tabId === tab.id && changeInfo.status == 'complete') {
                     console.log('twitter:' + twitter);
@@ -429,10 +429,16 @@ function Twitter() {
                             }, function (results) {
                                 //console.log(results)
                             });
+
                             console.log('will send confirmation');
-                            chrome.tabs.sendMessage(tabId, {
-                                data: "doTwitterStuff_RES"
-                            });
+                            var n = nextRunSchedule();
+                            var responseObject = {
+                                data: "doTwitterStuff_RES",
+                                next: n
+                            };
+                            console.log('will rollTheDice in ' + n + 's');
+
+                            chrome.tabs.sendMessage(tabId, responseObject);
                             chrome.tabs.onUpdated.removeListener(listener);
                             console.log('LISTENER REMOVED');
                         }
@@ -469,7 +475,7 @@ function Localhost() {
                 // });
                 chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
                     if (tabId === tab.id && changeInfo.status == 'loading') {
-                        updateIcon2(tabId);
+                        updateIcon2();
                         // console.log('injecting CSS');
                         // chrome.tabs.insertCSS(tabId,{
                         //   //file: "css/myactivetab.css",
@@ -550,7 +556,7 @@ function LocalhostTestNet() {
             function (tab) {
                 chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
                     if (tabId === tab.id && changeInfo.status == 'loading') {
-                        updateIcon2(tabId);
+                        updateIcon2();
                     }
 
                     if (tabId === tab.id && changeInfo.status == 'complete') {
@@ -599,7 +605,6 @@ function LocalhostTestNet() {
 }
 
 chrome.storage.onChanged.addListener(function (changes, namespace) {
-    //updateIcon();
     var key = null;
     for (key in changes) {
         var storageChange = changes[key];
@@ -632,13 +637,13 @@ eventList.forEach(function (e) {
     chrome.webNavigation[e].addListener(function (data) {
         if (typeof data)
             //console.log(chrome.i18n.getMessage('inHandler'), e, data);
-            updateIcon(data);
+            updateIcon(tab_id);
         //else
         //console.error(chrome.i18n.getMessage('inHandlerError'), e);
     });
 });
 
-function updateIcon2(tabId) {
+function updateIcon2() {
     //console.log('updateIcon');
     rocknroll = localStorage.getItem('rocknroll');
     if (rocknroll) {
@@ -648,7 +653,7 @@ function updateIcon2(tabId) {
             var r = Math.floor(Math.random() * 6);
             chrome.browserAction.setIcon({
                 path: "/icons/on" + r + ".png",
-                tabId: tabId
+                tabId: tab_id
             });
             /*
             var tabId = localStorage.getItem('tabId') || 0;
@@ -682,7 +687,7 @@ function updateIcon(data) {
             var r = Math.floor(Math.random() * 6);
             chrome.browserAction.setIcon({
                 path: "/icons/on" + r + ".png",
-                tabId: data.tabId
+                tabId: tab_id
             });
             /*
             var tabId = localStorage.getItem('tabId') || 0;

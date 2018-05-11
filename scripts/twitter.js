@@ -32,7 +32,7 @@ function nextStep(t) {
     c.style = "font-size: 120%;font-weight: bold;position: fixed;left: 0;bottom: 0;width: 100%;padding-right:10px;padding-bottom:10px;text-decoration: none !important;font-size: medium !important;backgruond-color:red;float:right;";
     e.appendChild(c);
     var k = document.getElementById("myStartNowButton");
-    k.style = "float:right;visibility: visible;";
+    k.style = "box-shadow: 1px 1px 3px 3px black;float: right;background-color: greenyellow;visibility: visible;border: 2px !important;border-color: red !important;border-style: dashed;padding-right: 10px;padding-left: 10px;padding-top: 2px;padding-bottom: 2px;margin-right:20px !important;";
     c.appendChild(k);
     var timeleft = s;
     var downloadTimer = setInterval(function () {
