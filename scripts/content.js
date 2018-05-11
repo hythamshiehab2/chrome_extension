@@ -1,9 +1,3 @@
-/*
-chrome.devtools.network.onNavigated.addListener(function (url) {
-    console.log('Navigation to ' + url + ' completed');
-});
-*/
-
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     var data = request.data || {};
     console.log(

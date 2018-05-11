@@ -391,6 +391,9 @@ function Twitter() {
         },
         function (tab) {
             chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
+                if (chrome.tabs.onUpdated.hasListener(listener)) {
+                    console.log('listening..');
+                }
                 if (tabId === tab.id && changeInfo.status == 'loading') {
                     updateIcon2();
                 }
