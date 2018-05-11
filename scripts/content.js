@@ -1,3 +1,9 @@
+if (navigator.onLine) {
+    console.log('ONLINE!');
+} else {
+    console.log('Connection flaky');
+}
+
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     var data = request.data || {};
     console.log(

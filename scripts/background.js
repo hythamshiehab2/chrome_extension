@@ -38,6 +38,27 @@ chrome.notifications.create("", opt, function (id) {
 });
 */
 
+
+var ports = [];
+chrome.runtime.onConnect.addListener(function (port) {
+    if (port.name !== "devtools") return;
+    ports.push(port);
+    // Remove port when destroyed (eg when devtools instance is closed)
+    port.onDisconnect.addListener(function () {
+        var i = ports.indexOf(port);
+        if (i !== -1) ports.splice(i, 1);
+    });
+    port.onMessage.addListener(function (msg) {
+        // Received message from devtools. Do something:
+        console.log('Received message from devtools page', msg);
+    });
+});
+// Function to send a message to all devtools.html views:
+function notifyDevtools(msg) {
+    ports.forEach(function (port) {
+        port.postMessage(msg);
+    });
+}
 chrome.notifications.onButtonClicked.addListener(function (nId, btnIdx) {
     alert('yes!' + nId + ":" + btnIdx);
 });
@@ -418,6 +439,30 @@ function Twitter() {
                             });
                             chrome.tabs.executeScript(tabId, {
                                 file: "scripts/helpers.js",
+                                //allFrames: true,
+                                frameId: 0,
+                                runAt: "document_end"
+                            }, function (results) {
+                                //console.log(results)
+                            });
+                            chrome.tabs.executeScript(tabId, {
+                                file: "scripts/bililiteRange.js",
+                                //allFrames: true,
+                                frameId: 0,
+                                runAt: "document_end"
+                            }, function (results) {
+                                //console.log(results)
+                            });
+                            chrome.tabs.executeScript(tabId, {
+                                file: "scripts/jquery.sendkeys.js",
+                                //allFrames: true,
+                                frameId: 0,
+                                runAt: "document_end"
+                            }, function (results) {
+                                //console.log(results)
+                            });
+                            chrome.tabs.executeScript(tabId, {
+                                file: "scripts/jquery.typetype.js",
                                 //allFrames: true,
                                 frameId: 0,
                                 runAt: "document_end"

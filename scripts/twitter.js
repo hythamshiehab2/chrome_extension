@@ -13,6 +13,14 @@ var stArtEd = 0;
 var typing = false;
 //$.noConflict();
 
+window.addEventListener('online', function (e) {
+    console.log('LISTENER:ONLINE!')
+}, false);
+
+window.addEventListener('offline', function (e) {
+    console.log('LISTENER:OFFLINE!')
+}, false);
+
 function doItNow() {
     chrome.runtime.sendMessage({
         data: "doItNow_REQUEST"
