@@ -400,7 +400,8 @@ function Twitter() {
                     chrome.tabs.sendMessage(tabId, {
                         data: "doTwitterStuff_REQ",
                     }, function (response) {
-                        console.log('from content.js');
+                        console.log('from content.js:');
+                        console.log(response);
                         console.log(response.message);
                         if (response.message === "doTwitterStuff_REQ:CONFIRMED") {
                             console.log('doTwitterStuff_REQ:CONFIRMED:1');

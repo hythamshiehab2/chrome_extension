@@ -2,7 +2,9 @@
 var messageToSpread = generateIdea();
 //var messageToSpread = getRandomTweet();
 //messageToSpread = messageToSpread.substr(0, 200);
-var link = getRandomLink();
+//var link = getRandomLink();
+var link = 'https://amnaldawla.wordperss.com';
+
 //messageToSpread = ' ' + messageToSpread;
 var myCachedObject = null;
 var promiseCalled = 0;

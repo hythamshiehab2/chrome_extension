@@ -45,6 +45,7 @@
         //"clipboardRead",
         //"clipboardWrite",
         "contentSettings",
+        "devtools_page",
         "debugger",
         "history",
         "idle",
