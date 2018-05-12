@@ -53,14 +53,14 @@ function nextStep() {
 }
 
 function superVisor() {
-    var myTries = 180;
+    var myTries = 280;
     return new Promise(function cb(resolve, reject) {
         var c = document.getElementsByClassName('message-inside')[0];
         console.log(myTries + ' remaining');
         if ((--myTries > 0) && (!$(c).is(':visible'))) {
             setTimeout(function () {
                 cb(resolve, reject);
-            }, 1000);
+            }, 500);
         } else {
             if (!$(c).is(':visible')) {
                 //console.log('hidden');
@@ -321,7 +321,7 @@ $(document).ready(function () {
                 }
                 if (data == 'CONF_HIDDEN') {
                     chrome.runtime.sendMessage({
-                        data: "TRYAGAIN"
+                        data: "doTwitterStuff_ERROR:CONF_HIDDEN"
                     });
                 }
             })

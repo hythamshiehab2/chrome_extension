@@ -31,7 +31,7 @@ var opt = {
     }
   ]
 }
-
+var nextRunTimer = null;
 /* for the moment
 chrome.notifications.create("", opt, function (id) {
     myNotificationId = id;
@@ -102,7 +102,7 @@ function nextRunSchedule() {
     var r = Math.floor(Math.random() * 20) + 10;
     r *= 1000 * 60;
     //var r = 600000;
-    setTimeout(rollTheDice, r);
+    nextRunTimer = setTimeout(rollTheDice, r);
     return r;
 }
 
@@ -821,8 +821,9 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
         };
         console.log('doTwitterStuff_ERROR');
         console.log('WILL Try Again');
+        console.log('Or just logging..');
         sendResponse(responseObject);
-        rollTheDice();
+        //rollTheDice();
     }
 
     if (data === 'doTwitterStuff_DONE') {
@@ -926,4 +927,36 @@ function incrementBadge() {
         "text": rounds.toString()
     });
 
+}
+
+function timer(callback, delay) {
+    var id, started, remaining = delay,
+        running
+
+    this.start = function () {
+        running = true
+        started = new Date()
+        id = setTimeout(callback, remaining)
+    }
+
+    this.pause = function () {
+        running = false
+        clearTimeout(id)
+        remaining -= new Date() - started
+    }
+
+    this.getTimeLeft = function () {
+        if (running) {
+            this.pause()
+            this.start()
+        }
+
+        return remaining
+    }
+
+    this.getStateRunning = function () {
+        return running
+    }
+
+    this.start()
 }
