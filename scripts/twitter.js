@@ -74,12 +74,97 @@ function superVisor() {
     });
 }
 
+function Clapping1() {
+    var myTries = 60;
+    console.log('Clapping1');
+    return new Promise(function cb(resolve, reject) {
+        // gif button
+        myCachedObject = document.getElementsByClassName('btn js-found-media-search-trigger js-dropdown-toggle icon-btn js-tooltip')[0];
+        simulate(myCachedObject, "click");
+        console.log(myCachedObject);
+
+        // list of gifs
+        //document.getElementsByClassName('FoundMediaSearch-category')
+
+        // list of clapping images
+        //document.getElementsByClassName('FoundMediaSearch-item FoundMediaSearch-item--visible'); 
+
+        //gif is loading div
+
+        console.log(myTries + ' remaining');
+        if ((--myTries > 0) && (myCachedObject == null)) {
+            setTimeout(function () {
+                cb(resolve, reject);
+            }, 5000);
+        } else {
+            if (!myCachedObject) {
+                console.log('hidden');
+                reject('CLPN_HIDDEN');
+            } else {
+                console.log('visible');
+                resolve('CLPN_SUCCESS');
+            }
+        }
+    });
+}
+
+function Clapping2() {
+    return new Promise((resolve, reject) => {
+        //highlightObject(b);
+        console.log('Clapping2');
+
+        myCachedObject = simulate(myCachedObject, "click");
+        myCachedObject = simulate(myCachedObject, "mousedown");
+        console.log(myCachedObject);
+        if (myCachedObject) {
+            console.log('CLPN_CLICK_SUCCESS');
+            resolve('CLPN_CLICK_SUCCESS');
+        } else {
+            console.log('CLPN_CLICK_FAILED');
+            reject('CLPN_CLICK_FAILED');
+        }
+    });
+}
+
+function Clapping3() {
+    return new Promise(function cb(resolve, reject) {
+        //var c = document.getElementsByClassName('tweet-box rich-editor is-showPlaceholder')[1] || false;
+        var c = document.getElementsByClassName('FoundMediaSearch-dropdownMenu dropdown-menu')[0];
+        console.log(tries + ' remaining');
+        if ((--tries > 0) && (!$(c).is(':visible'))) {
+            setTimeout(function () {
+                cb(resolve, reject);
+            }, 5000);
+        } else {
+            if (!$(c).is(':visible')) {
+                console.log('hidden');
+                reject('CLPN_HIDDEN');
+            } else {
+                //highlightObject(c);
+                myCachedObject = c;
+                console.log('visible');
+                resolve('CLPN_VISIBLE');
+            }
+        }
+    });
+}
+
+//document.getElementsByClassName('FoundMediaSearch-category')
+function Clapping4() {
+    return new Promise(function cb(resolve, reject) {
+        //var c = document.getElementsByClassName('tweet-box rich-editor is-showPlaceholder')[1] || false;
+        var c = document.getElementsByClassName('FoundMediaSearch-category');
+        var t = Math.floor(Math.random() * c.length);
+        simulate(t, "click");
+        resolve("CLPN_CAT_CLICK");
+    });
+}
 
 function stArt() {
     var myTries = 60;
-    if (stArtEd)
-        return;
-    stArtEd++;
+    //    if (stArtEd)
+    //        return;
+    //    stArtEd++;    
     return new Promise(function cb(resolve, reject) {
         var c = document.getElementById('global-new-tweet-button');
         console.log(myTries + ' remaining');
@@ -325,56 +410,71 @@ $(document).ready(function () {
     e.appendChild(button);
     document.body.appendChild(e);
 
-    if (!stArtEd) {
-        superVisor()
-            .then(function (data) {
-                console.log(data);
-                if (data == 'CONF_VISIBLE') {
+    var whatToDo = Math.floor(Math.random() * 2);
+    whatToDo = 0;
+    if (whatToDo) {
+        if (!stArtEd) {
+            superVisor()
+                .then(function (data) {
+                    console.log(data);
+                    if (data == 'CONF_VISIBLE') {
+                        chrome.runtime.sendMessage({
+                            data: "doTwitterStuff_DONE"
+                        }, function (response) {
+                            console.log("from test.js:" + response);
+                            console.log(response);
+                        });
+                    }
+                    if (data == 'CONF_HIDDEN') {
+                        chrome.runtime.sendMessage({
+                            data: "doTwitterStuff_ERROR:CONF_HIDDEN"
+                        });
+                    }
+                })
+                .catch(function (data) {
+                    var error = "doTwitterStuff_ERROR:" + data;
                     chrome.runtime.sendMessage({
-                        data: "doTwitterStuff_DONE"
+                        data: error
                     }, function (response) {
                         console.log("from test.js:" + response);
                         console.log(response);
                     });
-                }
-                if (data == 'CONF_HIDDEN') {
-                    chrome.runtime.sendMessage({
-                        data: "doTwitterStuff_ERROR:CONF_HIDDEN"
-                    });
-                }
-            })
-            .catch(function (data) {
-                var error = "doTwitterStuff_ERROR:" + data;
-                chrome.runtime.sendMessage({
-                    data: error
-                }, function (response) {
-                    console.log("from test.js:" + response);
-                    console.log(response);
                 });
-            });
 
+            stArt()
+                .then(clickTweetButton)
+                .then(tweetBoxVisible)
+                .then(clickTweetBox)
+                .then(typeTweetBox1)
+                //.then(typeTweetBox2)
+                .then(addLinks)
+                .then(elapseSomeTime)
+                //.then(clickTweetSend)
+                .then(function () {
+                    chrome.runtime.sendMessage({
+                        data: "doTwitterStuff_SENT"
+                    }, function (response) {
+                        console.log(response);
+                        console.log("from test.js:" + response);
+                        console.log(response.message);
+                        console.log(response.next);
+                        nextStep();
+                    });
+                })
+                .catch(function (data) {
+                    console.log('CATCH:' + data);
+                });
+        }
+    } else {
+        console.log('start clapping');
         stArt()
             .then(clickTweetButton)
-            .then(tweetBoxVisible)
-            .then(clickTweetBox)
-            .then(typeTweetBox1)
-            //.then(typeTweetBox2)
-            .then(addLinks)
-            .then(elapseSomeTime)
-            //.then(clickTweetSend)
-            .then(function () {
-                chrome.runtime.sendMessage({
-                    data: "doTwitterStuff_SENT"
-                }, function (response) {
-                    console.log(response);
-                    console.log("from test.js:" + response);
-                    console.log(response.message);
-                    console.log(response.next);
-                    nextStep();
-                });
-            })
+            .then(Clapping1)
+            .then(Clapping2)
+            .then(Clapping3)
+            .then(Clapping4)
             .catch(function (data) {
-                console.log('CATCH:' + data);
+                console.log(data);
             });
     }
 });
