@@ -178,36 +178,54 @@ function clickTweetBox() {
     });
 }
 
-function typeTweetBox() {
+function typeTweetBox1() {
     return new Promise((resolve, reject) => {
-        console.log('typeTweetBox');
+        console.log('typeTweetBox1');
         if (typing)
             return;
         typing = true;
-        //simulate(myCachedObject, "mouseup");
         $(myCachedObject).focus().sendkeys(messageToSpread);
+        //$(myCachedObject).focus().sendkeys('{selectall}');
+        //$(myCachedObject).focus().sendkeys('{del}');
+        console.log('will type:' + messageToSpread + 'in ' + myCachedObject);
+        resolve('TX_TYPED');
+    });
+}
+
+function typeTweetBox2() {
+    return new Promise((resolve, reject) => {
+        console.log('typeTweetBox2');
+        //simulate(myCachedObject, "mouseup");
+        //$(myCachedObject).focus().sendkeys(messageToSpread);
         //var b = document.getElementsByClassName('tweet-box rich-editor is-showPlaceholder')[1];
         //b = simulate(b, "mouseup");
         //var t = myCachedObject;
         //t = simulate(t, "click");
         //var t = b;
         console.log('will type:' + messageToSpread + 'in ' + myCachedObject);
-        resolve('TX_TYPED');
-        /*
+        //resolve('TX_TYPED');
+        var elem = myCachedObject;
         $(myCachedObject).focus().typetype(messageToSpread, {
             //e: 0.04, // error rate. (use e=0 for perfect typing)
             //t: 100, // interval between keypresses
-            /*
-            keypress: function () {
+            keypress: function (data) {
                 // called after every keypress (this may be an erroneous keypress!)
                 //console.log('typeing...')
+                //console.log(data);
+                //console.log(this);
+                //$(myCachedObject).focus().sendkeys('{ArrowLeft}');
+                //$(myCachedObject).focus().sendkeys('{ArrowRight}');
+                //$(myCachedObject).focus().sendkeys('{mark}');
+                var e = myCachedObject.innerText.substr(myCachedObject.innerText.length - 1, 1);
+                console.log(e);
+                //$(myCachedObject).focus().sendkeys('{backspace}');
+                //$(myCachedObject).focus().sendkeys(e);
             },
             callback: function () {
                 // the `this` keyword is bound to the particular element.
                 resolve('TX_TYPED');
             }
         });
-            */
     });
 }
 
@@ -339,7 +357,8 @@ $(document).ready(function () {
             .then(clickTweetButton)
             .then(tweetBoxVisible)
             .then(clickTweetBox)
-            .then(typeTweetBox)
+            .then(typeTweetBox1)
+            //.then(typeTweetBox2)
             .then(addLinks)
             .then(elapseSomeTime)
             //.then(clickTweetSend)
