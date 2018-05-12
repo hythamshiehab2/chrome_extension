@@ -90,9 +90,6 @@ function register() {
     $('#toggleStartNow').change(function () {
         status = $(this).prop('checked');
         if (status == 'true') {
-            chrome.browserAction.setBadgeText({
-                "text": localStorage.length.toString()
-            });
             localStorage.setItem('rocknroll', 'true');
             chrome.storage.local.set({
                 'rocknroll': 'true'

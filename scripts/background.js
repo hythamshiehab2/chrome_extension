@@ -85,6 +85,7 @@ chrome.runtime.onInstalled.addListener(function () {
     localStorage.setItem('started', 'false');
     localStorage.setItem('rocknroll', 'false');
     localStorage.setItem('liked', 'false');
+    localStorage.setItem('sessionRounds', '0');
 });
 
 
@@ -811,6 +812,7 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
             next: n
         };
         console.log('will rollTheDice in ' + n + 's');
+        incrementBadge();
         sendResponse(responseObject);
     }
 
@@ -889,3 +891,20 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
         startEngine();
     }
 });
+
+function incrementBadge() {
+    var rounds = localStorage.getItem('sessionRounds') || 0;
+    rounds++;
+    localStorage.setItem('sessionRounds', rounds);
+    chrome.storage.local.set({
+        'sessionRounds': rounds
+    }, function () {
+        // Notify that we saved.
+        console.log('BADGE updated');
+    });
+
+    chrome.browserAction.setBadgeText({
+        "text": rounds.toString()
+    });
+
+}
