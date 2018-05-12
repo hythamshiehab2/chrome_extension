@@ -71,6 +71,15 @@ chrome.notifications.onButtonClicked.addListener(function (nId, btnIdx) {
 //   alert('boo!');
 // });
 
+chrome.runtime.onStartup.addListener(function () {
+    // Tell your app what to launch and how.
+    localStorage.setItem('tabId', 0);
+    localStorage.setItem('started', 'false');
+    localStorage.setItem('rocknroll', 'false');
+    localStorage.setItem('liked', 'false');
+    localStorage.setItem('sessionRounds', 0);
+});
+
 var localhost = 0;
 var twitter = 0;
 var localhostTestNet = 0;
@@ -117,7 +126,6 @@ function startEngine() {
             }, function (response) {
                 console.log('RESPONSE:CHECK_MSG_FLOW');
                 console.log(response);
-                l = response;
             });
         });
     }
@@ -480,14 +488,14 @@ function Twitter() {
                             });
 
                             console.log('will send confirmation');
-                            var n = nextRunSchedule();
                             var responseObject = {
                                 data: "doTwitterStuff_RES",
-                                next: n
                             };
-                            console.log('will rollTheDice in ' + n + 's');
-
-                            chrome.tabs.sendMessage(tabId, responseObject);
+                            //chrome.tabs.runtime.sendMessage(responseObject);
+                            //chrome.runtime.sendMessage(responseObject);
+                            chrome.tabs.sendMessage(tab_id, responseObject);
+                            //zoltrix
+                            //sendConfirmation(responseObject);
                             chrome.tabs.onUpdated.removeListener(listener);
                             console.log('LISTENER REMOVED');
                         }
@@ -696,6 +704,8 @@ function updateIcon2() {
     //console.log('updateIcon');
     rocknroll = localStorage.getItem('rocknroll');
     if (rocknroll) {
+        if (!tab_id)
+            return;
         if (rocknroll == 'true') {
             // for here add more than one icon and rolling between them
             //
@@ -730,6 +740,9 @@ function updateIcon(data) {
     //console.log('updateIcon');
     rocknroll = localStorage.getItem('rocknroll');
     if (rocknroll) {
+        if (!tab_id)
+            return;
+
         if (rocknroll == 'true') {
             // for here add more than one icon and rolling between them
             //
@@ -760,6 +773,11 @@ function updateIcon(data) {
     }
 }
 
+function sendConfirmation(object) {
+    //chrome.runtime.sendMessage(object);
+    chrome.tabs.sendMessage(tab_id, object);
+}
+
 chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
     console.log('background.js:' + msg);
     var data = msg.data || msg.message || {};
@@ -773,6 +791,17 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
     // if data match CHECK_MSG_FLOW_RESPONSE:<NUMBER>
     // get the <NUMBER> and evaluate rulling the dice OR should wait for the current process to finished
     // ZOLTRIX
+
+    if (data === 'nextRun_REQ') {
+        var n = nextRunSchedule();
+        var responseObject = {
+            message: "nextRun_RES",
+            nextRun: n
+        };
+        console.log('will rollTheDice in ' + n + 's');
+        sendResponse(responseObject);
+    }
+
     if (data === 'doItNow_REQUEST') {
         console.log('doItNow_REQUEST is called');
         //setTimeout(rollTheDice, 1000);
@@ -806,12 +835,9 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
 
     if (data === 'doTwitterStuff_SENT') {
         console.log('doTwitterStuff SENT');
-        var n = nextRunSchedule();
         var responseObject = {
-            message: "doTwitter_SENT:CONFIRMED",
-            next: n
+            message: "doTwitter_SENT:CONFIRMED"
         };
-        console.log('will rollTheDice in ' + n + 's');
         incrementBadge();
         sendResponse(responseObject);
     }
@@ -832,36 +858,29 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
     }
 
     if (data === 'doLocalhostNet_SENT') {
-        var n = nextRunSchedule();
         var responseObject = {
-            message: "doLocalhostNet_SENT:CONFIRMED",
-            next: n
+            message: "doLocalhostNet_SENT:CONFIRMED"
         };
         sendResponse(responseObject);
         console.log('LocalhostNet STUFF IS DONE!');
-        console.log('will rollTheDice in ' + n + 's');
     }
 
     if (data === 'doMahara_SENT') {
-        var n = nextRunSchedule();
         var responseObject = {
-            message: "doMahara_SENT:CONFIRMED",
-            next: n
+            message: "doMahara_SENT:CONFIRMED"
         };
         sendResponse(responseObject);
         console.log('doMahara STUFF IS DONE!');
         console.log('listener removed');
-        console.log('will rollTheDice in ' + n + 's');
+        //console.log('will rollTheDice in ' + n + 's');
     }
     if (data === 'doMaharaStuff_DONE') {
-        var n = nextRunSchedule();
         var responseObject = {
             message: "doMaharaStuff_DONE:CONFIRMED",
         };
         sendResponse(responseObject);
         console.log('doMaharaStuff_DONE:CONFIRMED');
         console.log('logging...');
-        console.log('will rollTheDice in ' + n + 's');
     }
 
     if (data === 'doLocalhostNet_DONE') {

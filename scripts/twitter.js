@@ -4,7 +4,7 @@ var messageToSpread = generateIdea();
 //messageToSpread = messageToSpread.substr(0, 200);
 var link = getRandomLink();
 //var link = 'https://amnaldawla.wordperss.com';
-
+var nextRun = 0;
 //messageToSpread = ' ' + messageToSpread;
 var myCachedObject = null;
 var promiseCalled = 0;
@@ -27,8 +27,8 @@ function doItNow() {
     }, function (response) {});
 }
 
-function nextStep(t) {
-    var s = t / 1000;
+function nextStep() {
+    var s = nextRun / 1000;
     var m = s / 60;
     var e = document.getElementById('elnamosia');
     var d = document.createElement("div");
@@ -270,6 +270,9 @@ function generateIdea() {
 
 $(document).ready(function () {
     //document.addEventListener("DOMContentLoaded", function (event) {
+    if (navigator.onLine) {
+        console.log('ONLINE!');
+    }
 
     console.log("DOM fully loaded and parsed");
     //$(document).ready(function($){
@@ -280,6 +283,13 @@ $(document).ready(function () {
     e.style = "position: fixed !important;width: 100% !important;height: 100% !important;top: 0 !important;left: 0 !important;right: 0 !important;bottom: 0 !important;background-color: rgba(93, 51, 204, 0.29) !important;z-index: 10000000 !important;cursor: pointer !important;";
 
     var button = document.createElement("button");
+
+    chrome.runtime.sendMessage("mpnhfhekacdacnjkegjdmfgjfkckacea", {
+        data: "nextRun_REQ"
+    }, function (response) {
+        console.log(response);
+        nextRun = response.nextRun;
+    });
 
     function doItNow() {
         chrome.runtime.sendMessage("mpnhfhekacdacnjkegjdmfgjfkckacea", {
@@ -332,7 +342,7 @@ $(document).ready(function () {
             .then(typeTweetBox)
             .then(addLinks)
             .then(elapseSomeTime)
-            .then(clickTweetSend)
+            //.then(clickTweetSend)
             .then(function () {
                 chrome.runtime.sendMessage({
                     data: "doTwitterStuff_SENT"
@@ -341,7 +351,7 @@ $(document).ready(function () {
                     console.log("from test.js:" + response);
                     console.log(response.message);
                     console.log(response.next);
-                    nextStep(response.next);
+                    nextStep();
                 });
             })
             .catch(function (data) {
