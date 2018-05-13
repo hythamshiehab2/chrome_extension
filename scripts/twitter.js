@@ -1,8 +1,9 @@
 "use strict";
-var messageToSpread = generateIdea();
-//var messageToSpread = getRandomTweet();
+//var messageToSpread = generateIdea();
+var randomIndex = Math.floor(Math.random() * links.length);
+var messageToSpread = getText(randomIndex);
 //messageToSpread = messageToSpread.substr(0, 200);
-var link = getRandomLink();
+var link = getLink(randomIndex);
 //var link = 'https://amnaldawla.wordperss.com';
 var nextRun = 0;
 //messageToSpread = ' ' + messageToSpread;
@@ -411,7 +412,7 @@ $(document).ready(function () {
     document.body.appendChild(e);
 
     var whatToDo = Math.floor(Math.random() * 2);
-    whatToDo = 0;
+    whatToDo = 1;
     if (whatToDo) {
         if (!stArtEd) {
             superVisor()
@@ -449,7 +450,7 @@ $(document).ready(function () {
                 //.then(typeTweetBox2)
                 .then(addLinks)
                 .then(elapseSomeTime)
-                //.then(clickTweetSend)
+                .then(clickTweetSend)
                 .then(function () {
                     chrome.runtime.sendMessage({
                         data: "doTwitterStuff_SENT"
