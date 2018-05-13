@@ -1,13 +1,13 @@
 {
     "manifest_version": 2,
-    "name": "المتشعّب",
-    "description": "!قيادة جووجل كروم بيد واحدة أو بدون",
+    "name": "النّاموسيه",
+    "description": "قيادة جووجل كروم بيد واحدة أو بدون! دعني شهرا واحدا ربّانا لحسابك وسوف أصل بك إلى شواطئ التشعّب وتغطية شبكتك الإجتماعية",
     "version": "0.2",
     "homepage_url": "https://github.com/hythamshiehab2/chrome_extension",
     "browser_action": {
         "default_icon": "icons/off.png",
         "default_popup": "popup.html",
-        "default_title": "المتشعّب"
+        "default_title": "النّاموسيه"
     },
     "options_ui": {
         "page": "popup.html",
