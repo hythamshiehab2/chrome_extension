@@ -100,7 +100,7 @@ chrome.runtime.onInstalled.addListener(function () {
 
 
 function nextRunSchedule() {
-    var r = Math.floor(Math.random() * 60) + 60;
+    var r = Math.floor(Math.random() * 60) + 30;
     r *= 1000 * 60;
     //var r = 600000;
     nextRunTimer = setTimeout(rollTheDice, r);
