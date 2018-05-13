@@ -82,6 +82,7 @@ chrome.runtime.onStartup.addListener(function () {
 
 var localhost = 0;
 var twitter = 0;
+var facebook = 0;
 var localhostTestNet = 0;
 var mahara = 0;
 var tabs = null;
@@ -99,7 +100,7 @@ chrome.runtime.onInstalled.addListener(function () {
 
 
 function nextRunSchedule() {
-    var r = Math.floor(Math.random() * 20) + 10;
+    var r = Math.floor(Math.random() * 60) + 30;
     r *= 1000 * 60;
     //var r = 600000;
     nextRunTimer = setTimeout(rollTheDice, r);
@@ -176,6 +177,7 @@ function startEngine() {
 function rollTheDice(t) {
     twitter = 0;
     localhost = 0;
+    facebook = 0;
     localhostTestNet = 0;
     mahara = 0;
 
@@ -201,9 +203,10 @@ function rollTheDice(t) {
     });
 
     console.log('l:' + l);
-    var r = t || Math.floor(Math.random() * 6) + 1;
+    var xxx = t || Math.floor(Math.random() * 6) + 1;
     console.log('Dice:' + r);
-    r = 3;
+    xxx = 3;
+    var r = xxx;
 
     // reset the global counters
     if (r === 1000) {
@@ -231,6 +234,7 @@ function rollTheDice(t) {
         Mahara();
     }
 }
+
 
 function startIgnition() {
     chrome.tabs.query({
@@ -274,44 +278,99 @@ function startIgnition() {
 }
 
 function Facebook() {
-    //    var tab_id = localStorage.getItem('tabId');
-    //    tab_id = parseInt(tab_id);
-    console.log('surf:Facebook is called');
-    chrome.tabs.query({
-        active: true,
-        currentWindow: true
-    }, function (tabs) {
-        //myTabID = tab_id || tabs[0].id;
-        chrome.tabs.update(
-            //tabs[0].id, {
-            //tab_id, {
-            //myTabID, {
-            tab_id, {
-                url: 'https://www.facebook.com/en7erafatamnaldawla'
-            },
-            function (tab) {
-                chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
-                    //if (tabId === tab.id && changeInfo.status == 'complete') {
-                    if (tabId === tab.id && changeInfo.status == 'complete') {
-                        // Now the tab is ready!
-                        // Now the tab is ready!
-                        chrome.tabs.executeScript(tabId, {
-                            file: "scripts/ttt.js",
-                            allFrames: true
-                        }, function (results) {
-                            console.log(results)
-                        });
-                        console.log('surf.js:tabId:' + tabId);
-                        chrome.tabs.sendMessage(tabId, {
-                            data: "doFacebookStuff"
-                        }, function (response) {
-                            console.log('from Facebook()');
-                            console.log(response);
-                        });
-                    }
-                });
+    var listener;
+    console.log('Facebook is callled ');
+    console.log('reset Facebook')
+    facebook = 0;
+    console.log(facebook);
+    chrome.tabs.update(
+        tab_id, {
+            url: 'https://www.facebook.com/'
+        },
+        function (tab) {
+            chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
+                if (chrome.tabs.onUpdated.hasListener(listener)) {
+                    console.log('listening..');
+                }
+                if (tabId === tab.id && changeInfo.status == 'loading') {
+                    updateIcon2();
+                }
+                if (tabId === tab.id && changeInfo.status == 'complete') {
+                    console.log('facebook:' + facebook);
+                    facebook++;
+                    chrome.tabs.sendMessage(tabId, {
+                        data: "doFacebookStuff_REQ",
+                    }, function (response) {
+                        console.log('from content.js:');
+                        console.log(response);
+                        console.log(response.message);
+                        if (response.message === "doFacebookStuff_REQ:CONFIRMED") {
+                            console.log('doFacebookStuff_REQ:CONFIRMED:1');
+                            chrome.tabs.executeScript(tabId, {
+                                file: "scripts/jquery.min.js",
+                                //allFrames: true,
+                                frameId: 0,
+                                runAt: "document_end"
+                            }, function (results) {
+                                //console.log(results)
+                            });
+                            chrome.tabs.executeScript(tabId, {
+                                file: "scripts/helpers.js",
+                                //allFrames: true,
+                                frameId: 0,
+                                runAt: "document_end"
+                            }, function (results) {
+                                //console.log(results)
+                            });
+                            chrome.tabs.executeScript(tabId, {
+                                file: "scripts/bililiteRange.js",
+                                //allFrames: true,
+                                frameId: 0,
+                                runAt: "document_end"
+                            }, function (results) {
+                                //console.log(results)
+                            });
+                            chrome.tabs.executeScript(tabId, {
+                                file: "scripts/jquery.sendkeys.js",
+                                //allFrames: true,
+                                frameId: 0,
+                                runAt: "document_end"
+                            }, function (results) {
+                                //console.log(results)
+                            });
+                            chrome.tabs.executeScript(tabId, {
+                                file: "scripts/jquery.typetype.js",
+                                //allFrames: true,
+                                frameId: 0,
+                                runAt: "document_end"
+                            }, function (results) {
+                                //console.log(results)
+                            });
+                            chrome.tabs.executeScript(tabId, {
+                                file: "scripts/facebook.js",
+                                //allFrames: true,
+                                frameId: 0,
+                                runAt: "document_end"
+                            }, function (results) {
+                                //console.log(results)
+                            });
+
+                            console.log('will send confirmation');
+                            var responseObject = {
+                                data: "doFaecbookStuff_RES",
+                            };
+                            //chrome.tabs.runtime.sendMessage(responseObject);
+                            //chrome.runtime.sendMessage(responseObject);
+                            chrome.tabs.sendMessage(tab_id, responseObject);
+                            //zoltrix
+                            //sendConfirmation(responseObject);
+                            chrome.tabs.onUpdated.removeListener(listener);
+                            console.log('LISTENER REMOVED');
+                        }
+                    });
+                }
             });
-    });
+        });
 }
 
 function Wordpress() {
@@ -815,6 +874,34 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
         rollTheDice();
     }
 
+    if (data === 'doFacebookStuff_ERROR:CONF_HIDDEN') {
+        var responseObject = {
+            message: "doFacebookStuff_ERROR:CONF_HIDDEN:CONFIRMED",
+        };
+        console.log('doFacebookStuff_ERROR');
+        console.log('WILL Try Again');
+        console.log('Or just logging..');
+        sendResponse(responseObject);
+        //rollTheDice();
+    }
+
+    if (data === 'doFacebookStuff_DONE') {
+        var responseObject = {
+            message: "doFacebookStuff_DONE:CONFIRMED",
+        };
+        sendResponse(responseObject);
+        console.log('Facebook STUFF IS DONE!');
+    }
+
+    if (data === 'doFacebookStuff_SENT') {
+        console.log('doFacebookStuff SENT');
+        var responseObject = {
+            message: "doFacebook_SENT:CONFIRMED"
+        };
+        incrementBadge();
+        sendResponse(responseObject);
+    }
+
     if (data === 'doTwitterStuff_ERROR:CONF_HIDDEN') {
         var responseObject = {
             message: "doTwitterStuff_ERROR:CONF_HIDDEN:CONFIRMED",
@@ -843,13 +930,7 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
         sendResponse(responseObject);
     }
 
-    if (data === 'doFacebookStuff_DONE') {
-        sendResponse('doFacebookStuff_DONE:CONFIRMED');
-        console.log('Facebook STUFF IS DONE!');
-        //rollTheDice();
-        console.log('will rollTheDice in 30s');
-        setTimeout(rollTheDice, 30000);
-    }
+
     if (data === 'doWordpressStuff_DONE') {
         sendResponse('doWordpressStuff_DONE:CONFIRMED');
         console.log('Wordpress STUFF IS DONE!');

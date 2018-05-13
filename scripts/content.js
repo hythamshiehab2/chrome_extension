@@ -24,6 +24,15 @@ if (navigator.onLine) {
             };
             sendResponse(responseObject);
         }
+
+        if (data === 'doFacebookStuff_REQ') {
+            console.log('doFacebookStuff_REQ RECIEVED');
+            console.log('SENDING CONFIRMATION')
+            var responseObject = {
+                message: "doFacebookStuff_REQ:CONFIRMED",
+            };
+            sendResponse(responseObject);
+        }
     });
 } else {
     console.log('Connection flaky');
