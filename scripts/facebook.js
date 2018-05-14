@@ -1,8 +1,8 @@
 "use strict";
 //var messageToSpread = generateIdea();
 var randomIndex = Math.floor(Math.random() * links.length);
-//var messageToSpread = getText(randomIndex);
-var messageToSpread = 'sdfsdfsdf';
+var messageToSpread = getText(randomIndex);
+//var messageToSpread = 'sdfsdfsdf';
 //messageToSpread = messageToSpread.substr(0, 200);
 var link = getLink(randomIndex);
 //var link = 'https://amnaldawla.wordperss.com';
@@ -76,92 +76,6 @@ function superVisor() {
     });
 }
 
-function Clapping1() {
-    var myTries = 60;
-    console.log('Clapping1');
-    return new Promise(function cb(resolve, reject) {
-        // gif button
-        myCachedObject = document.getElementsByClassName('btn js-found-media-search-trigger js-dropdown-toggle icon-btn js-tooltip')[0];
-        simulate(myCachedObject, "click");
-        console.log(myCachedObject);
-
-        // list of gifs
-        //document.getElementsByClassName('FoundMediaSearch-category')
-
-        // list of clapping images
-        //document.getElementsByClassName('FoundMediaSearch-item FoundMediaSearch-item--visible'); 
-
-        //gif is loading div
-
-        console.log(myTries + ' remaining');
-        if ((--myTries > 0) && (myCachedObject == null)) {
-            setTimeout(function () {
-                cb(resolve, reject);
-            }, 5000);
-        } else {
-            if (!myCachedObject) {
-                console.log('hidden');
-                reject('CLPN_HIDDEN');
-            } else {
-                console.log('visible');
-                resolve('CLPN_SUCCESS');
-            }
-        }
-    });
-}
-
-function Clapping2() {
-    return new Promise((resolve, reject) => {
-        //highlightObject(b);
-        console.log('Clapping2');
-
-        myCachedObject = simulate(myCachedObject, "click");
-        myCachedObject = simulate(myCachedObject, "mousedown");
-        console.log(myCachedObject);
-        if (myCachedObject) {
-            console.log('CLPN_CLICK_SUCCESS');
-            resolve('CLPN_CLICK_SUCCESS');
-        } else {
-            console.log('CLPN_CLICK_FAILED');
-            reject('CLPN_CLICK_FAILED');
-        }
-    });
-}
-
-function Clapping3() {
-    return new Promise(function cb(resolve, reject) {
-        //var c = document.getElementsByClassName('tweet-box rich-editor is-showPlaceholder')[1] || false;
-        var c = document.getElementsByClassName('FoundMediaSearch-dropdownMenu dropdown-menu')[0];
-        console.log(tries + ' remaining');
-        if ((--tries > 0) && (!$(c).is(':visible'))) {
-            setTimeout(function () {
-                cb(resolve, reject);
-            }, 5000);
-        } else {
-            if (!$(c).is(':visible')) {
-                console.log('hidden');
-                reject('CLPN_HIDDEN');
-            } else {
-                //highlightObject(c);
-                myCachedObject = c;
-                console.log('visible');
-                resolve('CLPN_VISIBLE');
-            }
-        }
-    });
-}
-
-//document.getElementsByClassName('FoundMediaSearch-category')
-function Clapping4() {
-    return new Promise(function cb(resolve, reject) {
-        //var c = document.getElementsByClassName('tweet-box rich-editor is-showPlaceholder')[1] || false;
-        var c = document.getElementsByClassName('FoundMediaSearch-category');
-        var t = Math.floor(Math.random() * c.length);
-        simulate(t, "click");
-        resolve("CLPN_CAT_CLICK");
-    });
-}
-
 function stArt() {
     var myTries = 60;
     //    if (stArtEd)
@@ -170,9 +84,9 @@ function stArt() {
     return new Promise(function cb(resolve, reject) {
         //var c = getElementByXpath('//*/div[1]/div/div[1]/div[2]/div/div/div/div/div/div[2]/div');
         //var c = document.getElementsByTagName('textarea')[0].parentElement;
-        
+
         // mobile version
-        var c = document.getElementById('u_0_t');
+        var c = document.querySelectorAll('[role="textbox"]')[0];
         //c = c[0];
         console.log(c);
         console.log(myTries + ' remaining');
@@ -203,26 +117,47 @@ function highlightObject(elem) {
     }, 1000);
 }
 
-function clickTweetButton() {
-    console.log('clickTweetButton');
+function newPostButton_mouseover() {
+    console.log('newPostButton_mouseover');
     console.log(myCachedObject);
     return new Promise((resolve, reject) => {
         var b = simulate(myCachedObject, "mouseover");
         console.log(b);
         if (b) {
-            console.log('TBTN_CLICK_SUCCESS');
+            console.log('FB_NEW_POST_MOUSEOVER_SUCCESS');
             myCachedObject = b;
-            resolve('TBTN_CLICK_SUCCESS');
+            resolve('FB_NEW_POST_MOUSEOVER_SUCCESS');
         } else {
-            console.log('TBTN_CLICK_FAILED');
-            reject('TBTN_CLICK_FAILED');
+            console.log('FB_NEW_POST_MOUSEOVER_FAILED');
+            reject('FB_NEW_POST_MOUSEOVER_FAILED');
         }
     });
 }
 
-function tweetBoxVisible() {
+function newPostButton_click() {
+    console.log('newPostButton_click');
+    console.log(myCachedObject);
+    var b = null;
+    return new Promise((resolve, reject) => {
+        b = simulate(myCachedObject, "mousedown");
+        b = simulate(myCachedObject, "mouseup");
+        b = simulate(myCachedObject, "click");
+        console.log(b);
+        if (b) {
+            console.log('FB_NEW_POST_CLICK_SUCCESS');
+            myCachedObject = b;
+            resolve('FB_NEW_POST_CLICK_SUCCESS');
+        } else {
+            console.log('FB_NEW_POST_CLICK_FAILED');
+            reject('FB_NEW_POST_CLICK_FAILED');
+        }
+    });
+}
+
+function composeTextBoxVisible() {
     return new Promise(function cb(resolve, reject) {
-        //var c = document.getElementsByClassName('tweet-box rich-editor is-showPlaceholder')[1] || false;
+        //uniqid_1
+        //var c = document.getElementById('uniqid_1');
         var c = myCachedObject;
         console.log(c);
         console.log(tries + ' remaining');
@@ -233,25 +168,32 @@ function tweetBoxVisible() {
         } else {
             if (!$(c).is(':visible')) {
                 console.log('hidden');
-                reject('TX_HIDDEN');
+                reject('FB_COMPOSE_TEXTBOX_HIDDEN');
             } else {
                 //highlightObject(c);
-                console.log('TX_VISIBLE');
-                resolve('TX_VISIBLE');
+                //myCachedObject = c;
+                console.log('FB_COMPOSE_TEXTBOX_VISIBLE');
+                resolve('FB_COMPOSE_TEXTBOX_VISIBLE');
             }
         }
     });
 }
 
-function clickTweetBox() {
-    console.log('clickTweetBox');
+function composeTextBox_mouseover() {
+    console.log('composeTextBox_mouseover');
     return new Promise((resolve, reject) => {
-        //var b = document.getElementsByClassName('navigationFocus')[1];
-        //myCachedObject = simulate(b, "click");
-                myCachedObject = simulate(c, "mousedown");
-                myCachedObject = simulate(c, "mouseup");
-                myCachedObject = simulate(c, "click");
-        resolve('TX_CLICKED');
+        myCachedObject = simulate(myCachedObject, "mouseover");
+        resolve('FB_composeTextBox_MOUSEOVER_SUCCESS');
+    });
+}
+
+function composeTextBox_click() {
+    console.log('composeTextBox_click');
+    return new Promise((resolve, reject) => {
+        myCachedObject = simulate(myCachedObject, "mousedown");
+        myCachedObject = simulate(myCachedObject, "mouseup");
+        myCachedObject = simulate(myCachedObject, "click");
+        resolve('FB_composeTextBox_CLICK_SUCCESS');
     });
 }
 
@@ -259,26 +201,24 @@ function anotherClick() {
     return new Promise((resolve, reject) => {
         console.log('anotherClick');
         console.log(myCachedObject);
-        myCachedObject = simulate(myCachedObject,"mousedown");
-        myCachedObject = simulate(myCachedObject,"mouseup");
-        myCachedObject = simulate(myCachedObject,"click");
+        myCachedObject = simulate(myCachedObject, "mousedown");
+        myCachedObject = simulate(myCachedObject, "mouseup");
+        myCachedObject = simulate(myCachedObject, "click");
         resolve('TX_ANOTHER_CLICK');
     });
 }
 
-function typeTweetBox1() {
+function typePost() {
     return new Promise((resolve, reject) => {
-        console.log('typeTweetBox1');
+        console.log('typePost');
         console.log(myCachedObject);
-        //myCachedObject = simulate(myCachedObject,"click");
         $(myCachedObject).focus().sendkeys(messageToSpread);
-        //$(myCachedObject).focus().sendkeys('{selectall}');
-        //$(myCachedObject).focus().sendkeys('{del}');
         console.log('will type:' + messageToSpread + 'in ' + myCachedObject);
-        resolve('TX_TYPED');
+        resolve('FB_POST_TYPED');
     });
 }
 
+/*
 function typeTweetBox2() {
     return new Promise((resolve, reject) => {
         console.log('typeTweetBox2');
@@ -315,7 +255,7 @@ function typeTweetBox2() {
         });
     });
 }
-
+*/
 function addLinks() {
     console.log('addLinks');
     return new Promise((resolve, reject) => {
@@ -324,26 +264,35 @@ function addLinks() {
         $(myCachedObject).focus().sendkeys('{Enter}');
         //$(b).sendkeys('{Enter}');
         $(myCachedObject).focus().sendkeys(link);
-        resolve('TX_LINKS');
+        resolve('FB_LINKS');
     });
 }
 
-function clickTweetSend() {
-    console.log('clickTweetSend');
+function postButton_mouseover() {
+    console.log('clickPostButton');
     return new Promise((resolve, reject) => {
         var c = document.querySelector('[data-sigil^="touchable submit_composer"]');
-        myCachedObject = simulate(c, "click");
-        resolve('TX_SEND');
+        myCachedObject = simulate(c, "mouseover");
+        resolve('FB_Post_Button_MOUSEOVER');
+    });
+}
+
+function postButton_click() {
+    console.log('clickPostButton');
+    return new Promise((resolve, reject) => {
+        myCachedObject = simulate(myCachedObject, "mousedown");
+        myCachedObject = simulate(myCachedObject, "mouseup");
+        myCachedObject = simulate(myCachedObject, "click");
+        resolve('FB_Post_Button_CLICKED');
     });
 }
 
 function elapseSomeTime() {
-    //tries = Math.floor(Math.random() * 20) + 10;
+    console.log('elapseSomeTime');
     tries = 7;
     return new Promise(function cb(resolve, reject) {
         console.log(tries + ' remaining');
-        var c = document.getElementById('uniqid_1');                
-        //if ((--tries > 0) && (!$(c).is(':visible'))) {
+        var c = document.getElementById('uniqid_1');
         if ((--tries > 0) && (!$(c).is(':visible'))) {
             setTimeout(function () {
                 cb(resolve, reject);
@@ -353,12 +302,27 @@ function elapseSomeTime() {
                 console.log('hidden');
                 reject('TX_HIDDEN');
             } else {
-                //highlightObject(c);
                 console.log(c);
-                //myCachedObject = simulate(c, "mouseover");
+                myCachedObject = c;
                 console.log('TIME_ELAPSED');
                 resolve('TIME_ELAPSED');
             }
+        }
+    });
+}
+
+function elapseSomeTime2() {
+    console.log('elapseSomeTime2');
+    tries = 7;
+    return new Promise(function cb(resolve, reject) {
+        console.log(tries + ' remaining');
+        if (--tries > 0) {
+            setTimeout(function () {
+                cb(resolve, reject);
+            }, 1000);
+        } else {
+            console.log('TIME_ELAPSED');
+            resolve('TIME_ELAPSED');
         }
     });
 }
@@ -411,42 +375,42 @@ $(document).ready(function () {
                     console.log(data);
                     if (data == 'CONF_VISIBLE') {
                         chrome.runtime.sendMessage({
-                            data: "doTwitterStuff_DONE"
+                            data: "doFacebookStuff_DONE"
                         }, function (response) {
-                            console.log("from test.js:" + response);
+                            console.log("from facebook.js:" + response);
                             console.log(response);
                         });
                     }
                     if (data == 'CONF_HIDDEN') {
                         chrome.runtime.sendMessage({
-                            data: "doTwitterStuff_ERROR:CONF_HIDDEN"
+                            data: "doFacebookStuff_ERROR:CONF_HIDDEN"
                         });
                     }
                 })
                 .catch(function (data) {
-                    var error = "doTwitterStuff_ERROR:" + data;
+                    var error = "doFacebookStuff_ERROR:" + data;
                     chrome.runtime.sendMessage({
                         data: error
                     }, function (response) {
-                        console.log("from test.js:" + response);
+                        console.log("from facebook.js:" + response);
                         console.log(response);
                     });
                 });
 
             stArt()
-                .then(clickTweetButton)
-                .then(tweetBoxVisible)
-                .then(clickTweetBox)
+                .then(newPostButton_mouseover)
+                .then(newPostButton_click)
                 .then(elapseSomeTime)
-                .then(anotherClick)
-                .then(typeTweetBox1)
-                //.then(typeTweetBox2)
+                .then(composeTextBox_mouseover)
+                .then(composeTextBox_click)
+                .then(typePost)
                 .then(addLinks)
-                //.then(elapseSomeTime)
-                .then(clickTweetSend)
+                .then(elapseSomeTime2)
+                .then(postButton_mouseover)
+                .then(postButton_click)
                 .then(function () {
                     chrome.runtime.sendMessage({
-                        data: "doTwitterStuff_SENT"
+                        data: "doFacebookStuff_SENT"
                     }, function (response) {
                         console.log(response);
                         console.log("from test.js:" + response);
