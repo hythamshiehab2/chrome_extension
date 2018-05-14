@@ -236,7 +236,6 @@ function tweetBoxVisible() {
                 reject('TX_HIDDEN');
             } else {
                 //highlightObject(c);
-                myCachedObject = simulate(c, "click");
                 console.log('TX_VISIBLE');
                 resolve('TX_VISIBLE');
             }
@@ -249,7 +248,9 @@ function clickTweetBox() {
     return new Promise((resolve, reject) => {
         //var b = document.getElementsByClassName('navigationFocus')[1];
         //myCachedObject = simulate(b, "click");
-        myCachedObject = simulate(myCachedObject, "click");
+                myCachedObject = simulate(c, "mousedown");
+                myCachedObject = simulate(c, "mouseup");
+                myCachedObject = simulate(c, "click");
         resolve('TX_CLICKED');
     });
 }
@@ -258,8 +259,9 @@ function anotherClick() {
     return new Promise((resolve, reject) => {
         console.log('anotherClick');
         console.log(myCachedObject);
+        myCachedObject = simulate(myCachedObject,"mousedown");
+        myCachedObject = simulate(myCachedObject,"mouseup");
         myCachedObject = simulate(myCachedObject,"click");
-        myCachedObject.click();
         resolve('TX_ANOTHER_CLICK');
     });
 }
@@ -268,7 +270,7 @@ function typeTweetBox1() {
     return new Promise((resolve, reject) => {
         console.log('typeTweetBox1');
         console.log(myCachedObject);
-        myCachedObject = simulate(myCachedObject,"click");
+        //myCachedObject = simulate(myCachedObject,"click");
         $(myCachedObject).focus().sendkeys(messageToSpread);
         //$(myCachedObject).focus().sendkeys('{selectall}');
         //$(myCachedObject).focus().sendkeys('{del}');
@@ -353,7 +355,7 @@ function elapseSomeTime() {
             } else {
                 //highlightObject(c);
                 console.log(c);
-                myCachedObject = simulate(c, "mouseover");
+                //myCachedObject = simulate(c, "mouseover");
                 console.log('TIME_ELAPSED');
                 resolve('TIME_ELAPSED');
             }
