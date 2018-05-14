@@ -203,9 +203,10 @@ function rollTheDice(t) {
     });
 
     console.log('l:' + l);
-    var xxx = t || Math.floor(Math.random() * 6) + 1;
+    //var xxx = t || Math.floor(Math.random() * 6) + 1;
+    var xxx = t || Math.floor(Math.random() * 6);
     console.log('Dice:' + r);
-    xxx = 1;
+    xxx = Math.floor(Math.random() * 2) + 1;
     var r = xxx;
 
     // reset the global counters
@@ -217,10 +218,10 @@ function rollTheDice(t) {
         Facebook();
     }
     if (r === 2) {
-        Wordpress();
+        Twitter();
     }
     if (r === 3) {
-        Twitter();
+        Wordpress();
     }
     if (r === 4) {
         Localhost();
