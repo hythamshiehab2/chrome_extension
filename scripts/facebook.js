@@ -1,7 +1,8 @@
 "use strict";
 //var messageToSpread = generateIdea();
 var randomIndex = Math.floor(Math.random() * links.length);
-var messageToSpread = getText(randomIndex);
+//var messageToSpread = getText(randomIndex);
+var messageToSpread = 'sdfsdfsdf';
 //messageToSpread = messageToSpread.substr(0, 200);
 var link = getLink(randomIndex);
 //var link = 'https://amnaldawla.wordperss.com';
@@ -168,7 +169,10 @@ function stArt() {
     //    stArtEd++;    
     return new Promise(function cb(resolve, reject) {
         //var c = getElementByXpath('//*/div[1]/div/div[1]/div[2]/div/div/div/div/div/div[2]/div');
-        var c = document.getElementsByTagName('textarea')[0].parentElement;
+        //var c = document.getElementsByTagName('textarea')[0].parentElement;
+        
+        // mobile version
+        var c = document.getElementById('u_0_t');
         //c = c[0];
         console.log(c);
         console.log(myTries + ' remaining');
@@ -203,7 +207,7 @@ function clickTweetButton() {
     console.log('clickTweetButton');
     console.log(myCachedObject);
     return new Promise((resolve, reject) => {
-        var b = simulate(myCachedObject, "click");
+        var b = simulate(myCachedObject, "mouseover");
         console.log(b);
         if (b) {
             console.log('TBTN_CLICK_SUCCESS');
@@ -243,18 +247,28 @@ function tweetBoxVisible() {
 function clickTweetBox() {
     console.log('clickTweetBox');
     return new Promise((resolve, reject) => {
-        var b = document.getElementsByClassName('navigationFocus')[1];
-        myCachedObject = simulate(b, "click");
+        //var b = document.getElementsByClassName('navigationFocus')[1];
+        //myCachedObject = simulate(b, "click");
+        myCachedObject = simulate(myCachedObject, "click");
         resolve('TX_CLICKED');
+    });
+}
+
+function anotherClick() {
+    return new Promise((resolve, reject) => {
+        console.log('anotherClick');
+        console.log(myCachedObject);
+        myCachedObject = simulate(myCachedObject,"click");
+        myCachedObject.click();
+        resolve('TX_ANOTHER_CLICK');
     });
 }
 
 function typeTweetBox1() {
     return new Promise((resolve, reject) => {
         console.log('typeTweetBox1');
-        if (typing)
-            return;
-        typing = true;
+        console.log(myCachedObject);
+        myCachedObject = simulate(myCachedObject,"click");
         $(myCachedObject).focus().sendkeys(messageToSpread);
         //$(myCachedObject).focus().sendkeys('{selectall}');
         //$(myCachedObject).focus().sendkeys('{del}');
@@ -287,8 +301,8 @@ function typeTweetBox2() {
                 //$(myCachedObject).focus().sendkeys('{ArrowLeft}');
                 //$(myCachedObject).focus().sendkeys('{ArrowRight}');
                 //$(myCachedObject).focus().sendkeys('{mark}');
-                var e = myCachedObject.innerText.substr(myCachedObject.innerText.length - 1, 1);
-                console.log(e);
+                //var e = myCachedObject.innerText.substr(myCachedObject.innerText.length - 1, 1);
+                //console.log(e);
                 //$(myCachedObject).focus().sendkeys('{backspace}');
                 //$(myCachedObject).focus().sendkeys(e);
             },
@@ -315,7 +329,7 @@ function addLinks() {
 function clickTweetSend() {
     console.log('clickTweetSend');
     return new Promise((resolve, reject) => {
-        var c = document.querySelectorAll('[data-testid="react-composer-post-button"]')[0];
+        var c = document.querySelector('[data-sigil^="touchable submit_composer"]');
         myCachedObject = simulate(c, "click");
         resolve('TX_SEND');
     });
@@ -323,16 +337,26 @@ function clickTweetSend() {
 
 function elapseSomeTime() {
     //tries = Math.floor(Math.random() * 20) + 10;
-    tries = 3;
+    tries = 7;
     return new Promise(function cb(resolve, reject) {
         console.log(tries + ' remaining');
-        if (--tries > 0) {
-            console.log(tries + ' remaining');
+        var c = document.getElementById('uniqid_1');                
+        //if ((--tries > 0) && (!$(c).is(':visible'))) {
+        if ((--tries > 0) && (!$(c).is(':visible'))) {
             setTimeout(function () {
                 cb(resolve, reject);
-            }, 1000);
+            }, 5000);
         } else {
-            resolve('TIME_ELAPSED');
+            if (!$(c).is(':visible')) {
+                console.log('hidden');
+                reject('TX_HIDDEN');
+            } else {
+                //highlightObject(c);
+                console.log(c);
+                myCachedObject = simulate(c, "mouseover");
+                console.log('TIME_ELAPSED');
+                resolve('TIME_ELAPSED');
+            }
         }
     });
 }
@@ -410,10 +434,9 @@ $(document).ready(function () {
             stArt()
                 .then(clickTweetButton)
                 .then(tweetBoxVisible)
-                //.then(elapseSomeTime)
-                //.then(clickTweetBox)
-                //.then(elapseSomeTime)
-                //.then(elapseSomeTime)
+                .then(clickTweetBox)
+                .then(elapseSomeTime)
+                .then(anotherClick)
                 .then(typeTweetBox1)
                 //.then(typeTweetBox2)
                 .then(addLinks)

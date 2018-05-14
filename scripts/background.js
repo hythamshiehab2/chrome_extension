@@ -205,7 +205,7 @@ function rollTheDice(t) {
     console.log('l:' + l);
     var xxx = t || Math.floor(Math.random() * 6) + 1;
     console.log('Dice:' + r);
-    xxx = 3;
+    xxx = 1;
     var r = xxx;
 
     // reset the global counters
@@ -285,7 +285,7 @@ function Facebook() {
     console.log(facebook);
     chrome.tabs.update(
         tab_id, {
-            url: 'https://www.facebook.com/'
+            url: 'https://m.facebook.com/'
         },
         function (tab) {
             chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
